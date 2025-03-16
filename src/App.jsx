@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { RouterObject } from './RouterList';
-import './styles/index.css';
+import '@/styles/index.css';
 
 function App() {
   return (
