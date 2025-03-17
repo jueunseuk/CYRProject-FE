@@ -17,5 +17,5 @@ const BackGroundWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #F6F6F6;
+    background-color: #F8F8F8;
 `;

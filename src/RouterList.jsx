@@ -1,15 +1,16 @@
 // src/RouterList.js
 import { createBrowserRouter } from "react-router-dom";
-import Home from "@/pages/Home.jsx";
+import BackGround from "@/pages/BackGround/BackGround";
+import Home from "@/pages/Home";
 import SignupLayout from "@/components/layout/SignupLayout";
-import EmailSignupVerify from "@/pages/auth/EmailSignupVerify";
+import EmailVerify from "@/pages/auth/emailVerify";
+import SignupForm from "@/pages/auth/signupForm";
 import LoginLayout from "@/components/layout/LoginLayout";
-import Login from "@/pages/auth/Login";
-import EmailLogin from "@/pages/auth/EmailLogin";
-import ResetPassword from "@/pages/auth/ResetPassword";
+import Login from "@/pages/auth/login";
+import EmailLogin from "@/pages/auth/emailLogin";
 import WrongPage from "@/pages/wrong/WrongPage";
-import SignupForm from "./pages/auth/SignupForm";
-import BackGround from "./pages/BackGround/BackGround";
+import ResetPassword from "@/pages/auth/resetPassword";
+ 
 
 export const RouterList = () => [
     {
@@ -21,12 +22,12 @@ export const RouterList = () => [
                 element: <Home />
             },
             {
-                path: "/signup",
+                path: "signup",
                 element: <SignupLayout />,
                 children: [
                     {
                         path: "email/verify",
-                        element: <EmailSignupVerify />
+                        element: <EmailVerify />
                     },
                     {
                         path: "form",
@@ -35,7 +36,7 @@ export const RouterList = () => [
                 ]
             },
             {
-                path: "/login",
+                path: "login",
                 element: <LoginLayout />,
                 children: [
                     {

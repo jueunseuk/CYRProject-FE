@@ -1,9 +1,10 @@
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 const SignupLayout = () => {
     return (
         <SignupBackGround>
-            
+            <Outlet />
         </SignupBackGround>
     );
 }
