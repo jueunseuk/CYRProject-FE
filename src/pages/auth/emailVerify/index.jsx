@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import { useState } from "react";
-import { requestEmailCode } from "@/apis/auth/api";
+import { requestEmailCode, requestVerificationCode } from "@/apis/authentication";
 
 const EmailVerify = () => {
     const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const EmailVerify = () => {
     }
 
     const handleRequestCode = async () => {
-        if (!email) {
+        if(!email) {
             alert("이메일을 입력해주세요.");
             return;
         }
@@ -26,7 +26,16 @@ const EmailVerify = () => {
     };
 
     const handleRequestVerification = async () => {
-
+        if(!code) {
+            alert("코드를 입력해주세요.");
+        }
+        try {
+            await requestVerificationCode(email, code);
+            alert("이메일 인증이 완료되었습니다.");
+            navigate('/signup/form');
+        } catch (error) {
+            alert(error);
+        }
     }
 
     const handleEmailChange = (e) => {
