@@ -13,7 +13,6 @@ export const Logo = styled.img.attrs({
 export const VerticalWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px;
     margin-bottom: 10px;
 `;
 
@@ -51,12 +50,12 @@ export const LoginNextButton = styled.div`
     align-items: center;
     width: 330px;
     height: 40px;
-    background-color: #C6BC73;
+    background-color: ${({disabled}) => (disabled ? "#B8B8B8" : "#C6BC73")};
     border-radius: 15px;
     font-weight: 700;
     color: white;
     font-size: 16px;
-    cursor: pointer;
+    cursor: ${({ disabled }) => (disabled ? "" : "pointer")};
 `;
 
 export const SignupArea = styled.div`
