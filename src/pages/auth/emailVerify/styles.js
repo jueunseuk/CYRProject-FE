@@ -59,7 +59,7 @@ export const EmailSendButton = styled.div`
     width: 82px;
     height: 34px;
     border-radius: 10px;
-    font-size: 12px;
+    font-size: 14px;
     color: white;
     background-color: black;
     cursor: pointer;
@@ -71,13 +71,13 @@ export const LoginNextButton = styled.div`
     align-items: center;
     width: 330px;
     height: 40px;
-    background-color: #C6BC73;
+    background-color: ${({ disabled }) => (disabled ? "#B8B8B8" : "#C6BC73")};
     border-radius: 15px;
     font-weight: 700;
     color: white;
     font-size: 16px;
     margin-top: 10px;
-    cursor: pointer;
+    cursor: ${({ disabled }) => (disabled ? "" : "pointer")};
 `;
 
 export const NavigateText = styled.div`

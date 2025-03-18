@@ -2,6 +2,8 @@ import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 const EmailLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -35,7 +37,7 @@ const EmailLogin = () => {
                     <S.InputField type="password" onChange={handlePasswordChange}/>
                 </S.InputArea>
             </S.VerticalWrapper>
-            <S.LoginNextButton>로그인</S.LoginNextButton>
+            <S.LoginNextButton disabled={email === "" || password.length === ""}>로그인</S.LoginNextButton>
             <S.SignupArea>
                 <S.NavigateText onClick={handleNavigateLogin}>처음으로 돌아가기</S.NavigateText>
                 <S.GuideText>|</S.GuideText>
