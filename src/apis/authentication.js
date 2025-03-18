@@ -12,7 +12,7 @@ export const requestEmailCode = async (email) => {
     }
 };
 
-export const requestVerificationCode = async ({email, code}) => {
+export const requestVerificationCode = async (email, code) => {
     try {
         const response = await axios.post(`${backendUrl}/auth/email/check`, {email, code});
         return response.data;
