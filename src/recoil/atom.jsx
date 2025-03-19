@@ -11,9 +11,10 @@ export const signupState = atom ({
 export const userState = atom ({
     key : 'userState',
     default: {
-        method: "",
-        email: "",
+        userId: "",
         name: "",
-        nickname: ""
+        nickname: "",
+        accessToken: "",
+        role: "",
     },
 });

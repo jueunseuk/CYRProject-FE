@@ -1,9 +1,10 @@
+import * as A from "@/apis/authentication"
 import * as S from "./styles";
 import { useRef, useState } from "react";
 import defualt from "@/assets/image/default-bg.jpg"
 import { useNavigate } from "react-router-dom";
-import { signupState } from "@/recoil/atom";
-import { useRecoilState } from "recoil";
+import { signupState, userState } from "@/recoil/atom";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 const nicknamePattern = /^(?=.*[A-Za-z가-힣\d])[A-Za-z가-힣\d]{2,8}$/;
 const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
@@ -11,6 +12,7 @@ const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]
 const SignupForm = () => {
     const navigate = useNavigate();
     const [state] = useRecoilState(signupState);
+    const setUserState = useSetRecoilState(userState);
     const fileInputRef = useRef(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [formData, setFormData] = useState({
@@ -19,10 +21,8 @@ const SignupForm = () => {
         password: "",
         confirmPassword: "",
         nickname: "",
-        profileImageUrl: "",
+        profileUrl: "",
     });
-
-    
 
     const handleNavigateHome = () => {
         navigate(-2);
@@ -46,7 +46,7 @@ const SignupForm = () => {
 
         setFormData({
             ...formData,
-            profileImageUrl: fileURL,
+            profileUrl: fileURL,
         });
     };
 
@@ -58,6 +58,27 @@ const SignupForm = () => {
         if(e.length === 0) return "#B8B8B8";
         return pattern.test(e) ? "#7f52ff" : "#ff3838";
     };
+
+    const handleRequestSignup = async () => {
+        try {
+            const response = await A.requestSignup(state.method, state.email, formData.name, formData.password, formData.nickname, formData.profileUrl);
+            
+            const accessToken = response.headers["authorization"]; 
+
+            setUserState((prevUser) => ({
+                ...prevUser,
+                userId: response.data.userId,
+                name: response.data.name,
+                nickname: response.data.nickname,
+                accessToken: accessToken,
+                role: response.data.role,
+            }))
+            console.log(userState)
+            navigate('/');
+        } catch(error) {
+
+        }
+    }
 
     return (
         <>
@@ -84,7 +105,7 @@ const SignupForm = () => {
                     </S.InputLable>
                     <S.InputField type="text" name="name" value={formData.name} onChange={handleChange} />
                 </S.InputArea>
-                {state.method !== 'oauth' && (
+                {(state.method !== 'KAKAO' && state.method !== 'NAVER' && state.method !== 'GOOGLE') && (
                     <>
                         <S.InputArea>
                             <S.InputLable>
@@ -111,11 +132,10 @@ const SignupForm = () => {
                     <S.InputField type="text" name="nickname" value={formData.nickname} onChange={handleChange} />
                 </S.InputArea>
 
-                <S.SubmitButton disabled={
-                    formData.email === "" ||
-                    formData.name === "" ||
-                    formData.password === "" ||
-                    formData.confirmPassword
+                <S.SubmitButton onClick={handleRequestSignup} disabled={
+                    formData.name.length < 2 ||
+                    !passwordPattern.test(formData.password) ||
+                    formData.password !== formData.confirmPassword
                 }>가입하기</S.SubmitButton>
             </S.SignupForm>
         </>

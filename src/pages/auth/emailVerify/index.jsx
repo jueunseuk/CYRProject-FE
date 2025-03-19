@@ -58,7 +58,7 @@ const EmailVerify = () => {
             setState((prev) => ({
                 ...prev,
                 email: email,
-                method: 'email'
+                method: 'EMAIL'
             }));
 
             navigate('/signup/form');

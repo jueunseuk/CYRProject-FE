@@ -37,3 +37,25 @@ export const requestVerificationCode = async (email, code) => {
     }
 };
 
+export const requestSignup = async (method, email, name, password, nickname, profileUrl) => {
+    try {
+        const response = await axios.post(`${backendUrl}/auth/signup`, {method, email, name, password, nickname, profileUrl});
+        return response.data;
+    } catch (error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.code;
+
+            if(errorCode === 'AUTH_001') {
+                alert("비밀번호가 조건을 만족하지 않습니다.");
+            } else if(errorCode === 'AUTH_005') {
+                alert("유효하지 않은 로그인 방식입니다.");
+            } else if(errorCode === 'MAIL_006') {
+                alert("이미 가입된 이메일입니다.\n이메일 로그인 화면으로 이동합니다.");
+            }
+
+            throw error;
+        } else {
+            alert("서버가 원활하지 않습니다.\n10분 뒤 로그인 시도해주세요.");
+        }
+    }
+}
