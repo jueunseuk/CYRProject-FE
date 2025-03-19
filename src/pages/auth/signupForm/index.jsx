@@ -61,9 +61,9 @@ const SignupForm = () => {
 
     const handleRequestSignup = async () => {
         try {
-            const response = await A.requestSignup(state.method, state.email, formData.name, formData.password, formData.nickname, formData.profileUrl);
+            const response = await A.requestSignup(state.method, state.email, formData.name, formData.password, formData.nickname, formData.profileUrl, {withCredentials: true});
             
-            const accessToken = response.headers["authorization"]; 
+            const accessToken = response.headers["authorization"];
 
             setUserState((prevUser) => ({
                 ...prevUser,
@@ -72,8 +72,7 @@ const SignupForm = () => {
                 nickname: response.data.nickname,
                 accessToken: accessToken,
                 role: response.data.role,
-            }))
-            console.log(userState)
+            }));
             navigate('/');
         } catch(error) {
 
