@@ -1,7 +1,5 @@
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
-
 const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
 export const requestEmailCode = async (email) => {
@@ -39,10 +37,10 @@ export const requestVerificationCode = async (email, code) => {
     }
 };
 
-export const requestSignup = async (method, email, name, password, nickname, profileUrl) => {
+export const requestSignup = async (method, email, name, password, nickname, profileUrl, config) => {
     try {
-        const response = await axios.post(`${backendUrl}/auth/signup`, {method, email, name, password, nickname, profileUrl});
-        return response.data;
+        const response = await axios.post(`${backendUrl}/auth/signup`, {method, email, name, password, nickname, profileUrl}, config);
+        return response;
     } catch (error) {
         if(error.response && error.response.data) {
             const errorCode = error.response.code;
