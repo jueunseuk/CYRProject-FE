@@ -73,6 +73,8 @@ const SignupForm = () => {
                 accessToken: accessToken,
                 role: response.data.role,
             }));
+
+            alert("성공적으로 가입했습니다!");
             navigate('/');
         } catch(error) {
 
