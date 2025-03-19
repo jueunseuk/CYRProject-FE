@@ -40,7 +40,6 @@ const EmailVerify = () => {
             await requestEmailCode(email);
             if(intervalId) clearInterval(intervalId);
         } catch (error) {
-            alert(error);
         }
     };
 
@@ -53,7 +52,9 @@ const EmailVerify = () => {
             alert("이메일 인증이 완료되었습니다.");
             navigate('/signup/form');
         } catch (error) {
-            alert(error);
+            if(error.response?.data?.code === 'MAIL_006') {
+                navigate('/login/email');
+            }
         }
     }
 
