@@ -1,7 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import * as A from "@/apis/authentication";
 import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { requestEmailCode, requestVerificationCode } from "@/apis/authentication";
+import { useRecoilState } from "recoil";
+import { signupState } from "@/recoil/atom";
 
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -10,9 +12,10 @@ const EmailVerify = () => {
     const [code, setCode] = useState("");
     const [timer, setTimer] = useState(0);
     const [intervalId, setIntervalId] = useState(null);
+    const [state, setState] = useRecoilState(signupState)
     const navigate = useNavigate();
 
-    const handleNavigateLogin = () => {
+    const handleNavigateLogin = (e) => {
         navigate('/login');
     }
 
@@ -37,9 +40,10 @@ const EmailVerify = () => {
         }
         try {
             setTimer(600);
-            await requestEmailCode(email);
+            await A.requestEmailCode(email);
             if(intervalId) clearInterval(intervalId);
         } catch (error) {
+
         }
     };
 
@@ -48,8 +52,15 @@ const EmailVerify = () => {
             return;
         }
         try {
-            await requestVerificationCode(email, code);
+            await A.requestVerificationCode(email, code);
             alert("이메일 인증이 완료되었습니다.");
+
+            setState((prev) => ({
+                ...prev,
+                email: email,
+                method: 'email'
+            }));
+
             navigate('/signup/form');
         } catch (error) {
             if(error.response?.data?.code === 'MAIL_006') {
@@ -74,7 +85,7 @@ const EmailVerify = () => {
             <S.GuideText>인증코드는 10분간 유효합니다.</S.GuideText>
             <S.VerticalWrapper>
                 <S.HorizontalWrapper>
-                    <S.InputField type="email" width="225px" placeholder="example@gmail.com" onChange={handleEmailChange}/>
+                    <S.InputField type="email" name="email" width="225px" placeholder="example@gmail.com" onChange={handleEmailChange}/>
                     <S.EmailSendButton onClick={handleRequestCode} disabled={timer > 0}>
                         {timer > 0 ? `${Math.floor(timer / 60)}:${(timer % 60).toString().padStart(2, "0")}` : "코드 전송"}
                     </S.EmailSendButton>
