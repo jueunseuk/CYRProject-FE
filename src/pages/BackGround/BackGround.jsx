@@ -12,7 +12,7 @@ const BackGround = () => {
 export default BackGround;
 
 const BackGroundWrapper = styled.div`
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
