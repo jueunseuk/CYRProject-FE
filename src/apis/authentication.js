@@ -1,5 +1,7 @@
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
 export const requestEmailCode = async (email) => {
