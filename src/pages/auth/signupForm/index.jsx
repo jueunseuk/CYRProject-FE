@@ -8,6 +8,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 
 const nicknamePattern = /^(?=.*[A-Za-z가-힣\d])[A-Za-z가-힣\d]{2,8}$/;
 const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+const MAX_SIZE = 5 * 1024 * 1024;
 
 const SignupForm = () => {
     const navigate = useNavigate();
@@ -40,6 +41,11 @@ const SignupForm = () => {
         const file = event.target.files[0];
 
         if (!file) return;
+
+        if(file.size > MAX_SIZE) {
+            alert("파일의 크기가 너무 큽니다.\n5MB 이하의 이미지만 업로드 가능합니다.");
+            return;
+        }
 
         const fileURL = URL.createObjectURL(file);
         setImagePreview(fileURL);
