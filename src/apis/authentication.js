@@ -46,7 +46,7 @@ export const requestSignup = async (formData, config) => {
                 "Content-Type": "multipart/form-data",
             },
         });
-        console.log(response);
+        
         return response;
     } catch (error) {
         if(error.response && error.response.data) {
