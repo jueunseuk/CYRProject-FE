@@ -21,7 +21,7 @@ const SignupForm = () => {
         password: "",
         confirmPassword: "",
         nickname: "",
-        profileUrl: "",
+        profileImage: null,
     });
 
     const handleNavigateHome = () => {
@@ -46,7 +46,7 @@ const SignupForm = () => {
 
         setFormData({
             ...formData,
-            profileUrl: fileURL,
+            profileImage: file,
         });
     };
 
@@ -61,10 +61,21 @@ const SignupForm = () => {
 
     const handleRequestSignup = async () => {
         try {
-            const response = await A.requestSignup(state.method, state.email, formData.name, formData.password, formData.nickname, formData.profileUrl, {withCredentials: true});
-            
+            const formDataToSend = new FormData();
+            formDataToSend.append("method", state.method);
+            formDataToSend.append("email", state.email);
+            formDataToSend.append("name", formData.name);
+            formDataToSend.append("password", formData.password);
+            formDataToSend.append("nickname", formData.nickname);
+    
+            if(formData.profileImage) {
+                formDataToSend.append("profileImage", formData.profileImage);
+            }
+    
+            const response = await A.requestSignup(formDataToSend, { withCredentials: true });
+    
             const accessToken = response.headers["authorization"];
-
+    
             setUserState((prevUser) => ({
                 ...prevUser,
                 userId: response.data.userId,
@@ -72,14 +83,15 @@ const SignupForm = () => {
                 nickname: response.data.nickname,
                 accessToken: accessToken,
                 role: response.data.role,
+                profileUrl: response.data.profileUrl,
             }));
-
+    
             alert("성공적으로 가입했습니다!");
             navigate('/');
-        } catch(error) {
-
+        } catch (error) {
+            console.error("회원가입 실패:", error);
         }
-    }
+    };
 
     return (
         <>

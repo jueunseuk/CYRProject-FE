@@ -12,6 +12,7 @@ export const userState = atom ({
     key : 'userState',
     default: {
         userId: "",
+        profileUrl: "",
         name: "",
         nickname: "",
         accessToken: "",
