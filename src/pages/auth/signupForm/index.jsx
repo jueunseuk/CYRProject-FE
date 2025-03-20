@@ -74,8 +74,8 @@ const SignupForm = () => {
     
             const response = await A.requestSignup(formDataToSend, { withCredentials: true });
     
-            const accessToken = response.headers["authorization"];
-    
+            const accessToken = response?.headers?.authrization;
+
             setUserState((prevUser) => ({
                 ...prevUser,
                 userId: response.data.userId,
@@ -86,7 +86,7 @@ const SignupForm = () => {
                 profileUrl: response.data.profileUrl,
             }));
     
-            alert("성공적으로 가입했습니다!");
+            alert("성공적으로 가입했습니다!\n정회원 요청을 통해 정식으로 카페에서 활동해보세요!");
             navigate('/');
         } catch (error) {
             console.error("회원가입 실패:", error);
