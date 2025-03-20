@@ -3,6 +3,7 @@ import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { userState } from "@/recoil/atom";
+import { useSetRecoilState } from "recoil";
 
 const EmailLogin = () => {
     const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ const EmailLogin = () => {
 
     const handleEmailChange = (value) => {
         setEmail(value);
-      };
+    };
     
     const handlePasswordChange = (value) => {
     setPassword(value);

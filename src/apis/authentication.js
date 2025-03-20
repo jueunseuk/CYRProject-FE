@@ -37,13 +37,20 @@ export const requestVerificationCode = async (email, code) => {
     }
 };
 
-export const requestSignup = async (method, email, name, password, nickname, profileUrl, config) => {
+export const requestSignup = async (formData, config) => {
     try {
-        const response = await axios.post(`${backendUrl}/auth/signup`, {method, email, name, password, nickname, profileUrl}, config);
+        const response = await axios.post(`${backendUrl}/auth/signup`, formData, {
+            ...config,
+            headers: {
+                ...config?.headers,
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        
         return response;
     } catch (error) {
         if(error.response && error.response.data) {
-            const errorCode = error.response.code;
+            const errorCode = error.response.data.code;
 
             if(errorCode === 'AUTH_001') {
                 alert("비밀번호가 조건을 만족하지 않습니다.");
@@ -58,7 +65,7 @@ export const requestSignup = async (method, email, name, password, nickname, pro
             alert("서버가 원활하지 않습니다.\n10분 뒤 로그인 시도해주세요.");
         }
     }
-}
+};
 
 export const requestLogin = async (email, password, config) => {
     try {
