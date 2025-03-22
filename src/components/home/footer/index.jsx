@@ -1,8 +1,10 @@
+import * as S from "./styles";
+
 const Footer = () => {
     return (
-        <Wrapper>
+        <S.Wrapper>
             
-        </Wrapper>
+        </S.Wrapper>
     );
 }
 

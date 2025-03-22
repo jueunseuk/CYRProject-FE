@@ -12,12 +12,12 @@ const EmailLogin = () => {
     const navigate = useNavigate();
 
     const handleNavigateResetPassword = () => {
-        navigate('/login/reset-password');
-    }
+        navigate('/auth/login/reset-password');
+    };
 
     const handleNavigateLogin = () => {
-        navigate('/login');
-    }
+        navigate('/auth/login');
+    };
 
     const handleEmailChange = (value) => {
         setEmail(value);

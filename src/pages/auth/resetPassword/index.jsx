@@ -5,7 +5,7 @@ const ResetPassword = () => {
     const navigate = useNavigate();
 
     const handleNavigateLogin = () => {
-        navigate('/login');
+        navigate('/auth/login');
     }
 
     return (

@@ -1,7 +1,8 @@
 // src/RouterList.js
 import { createBrowserRouter } from "react-router-dom";
-import BackGround from "@/pages/BackGround/BackGround";
-import Home from "@/pages/Home";
+import LoginBackGround from "@/pages/BackGround/LoginBackGround";
+import DefaultBackGround from "@/pages/BackGround/DefaultBackGround";
+import Home from "@/pages/home";
 import SignupLayout from "@/components/layout/SignupLayout";
 import EmailVerify from "@/pages/auth/emailVerify";
 import SignupForm from "@/pages/auth/signupForm";
@@ -10,17 +11,13 @@ import Login from "@/pages/auth/login";
 import EmailLogin from "@/pages/auth/emailLogin";
 import WrongPage from "@/pages/wrong/WrongPage";
 import ResetPassword from "@/pages/auth/resetPassword";
- 
+import HomeLayout from "@/components/layout/HomeLayout";
 
 export const RouterList = () => [
     {
-        path: "/",
-        element: <BackGround />,
+        path: "/auth",
+        element: <LoginBackGround />,
         children: [
-            {
-                path: "",
-                element: <Home />
-            },
             {
                 path: "signup",
                 element: <SignupLayout />,
@@ -56,6 +53,22 @@ export const RouterList = () => [
             {
                 path: "*",
                 element: <WrongPage />
+            },
+        ]
+    },
+    {
+        path: "/",
+        element: <DefaultBackGround />,
+        children: [
+            {
+                path: "",
+                element: <HomeLayout />,
+                children: [
+                    {
+                        path: "",
+                        element: <Home />
+                    }
+                ]
             },
         ]
     }

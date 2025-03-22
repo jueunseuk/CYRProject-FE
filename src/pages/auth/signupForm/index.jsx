@@ -1,7 +1,7 @@
 import * as A from "@/apis/authentication"
 import * as S from "./styles";
 import { useRef, useState } from "react";
-import defualt from "@/assets/image/default-bg.jpg"
+import defualt from "@/assets/image/default_profile.jpg"
 import { useNavigate } from "react-router-dom";
 import { signupState, userState } from "@/recoil/atom";
 import { useRecoilState, useSetRecoilState } from "recoil";
