@@ -5,11 +5,11 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleNavigateEmailLogin = () => {
-        navigate('/login/email');
+        navigate('/auth/login/email');
     }
 
     const handleNavigateEmailSignup = () => {
-        navigate('/signup/email/verify');
+        navigate('/auth/signup/email/verify');
     }
 
     return (

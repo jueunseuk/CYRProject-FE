@@ -16,7 +16,7 @@ const EmailVerify = () => {
     const navigate = useNavigate();
 
     const handleNavigateLogin = (e) => {
-        navigate('/login');
+        navigate('/auth/login');
     }
 
     useEffect(() => {
