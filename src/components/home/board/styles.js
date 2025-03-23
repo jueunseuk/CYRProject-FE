@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     width: 100%;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+    padding: 2.5px 0;
 `;
 
 export const Contour = styled.hr`

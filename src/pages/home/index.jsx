@@ -1,5 +1,5 @@
-import Board from "@/components/home/board";
 import * as S from "./styles";
+import Board from "@/components/home/board";
 import Banner from "@/components/home/banner";
 import Footer from "@/components/home/footer";
 import GuestInfo from "@/components/home/guestInfo";
@@ -21,6 +21,7 @@ const Home = () => {
 
                 </S.VerticalWrapper>
             </S.HorizontalWrapper>
+            <S.Contour />
             <Footer></Footer>
         </>
     );
