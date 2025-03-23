@@ -43,7 +43,7 @@ export const VerticalWrapper = styled.div`
 
 export const Text = styled.div`
     font-size: ${({size}) => size};
-    font-weight: ${({weight}) => weight};
+    font-weight: ${({$weight}) => $weight};
     color: ${({color}) => color || "black"};
 `;
     

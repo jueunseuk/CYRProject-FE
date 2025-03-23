@@ -12,7 +12,7 @@ const LoginInfo = () => {
             <S.ProfileArea>
                 <S.ProfileImage />
                 <S.VerticalWrapper>
-                    <S.Text size={"16px"} weight={"600"}>말랑준듀</S.Text>
+                    <S.Text size={"16px"} $weight={"600"}>말랑준듀</S.Text>
                     <S.Text size={"12px"} color={"#878787"}>가입일 25.01.25</S.Text>
                 </S.VerticalWrapper>
             </S.ProfileArea>
