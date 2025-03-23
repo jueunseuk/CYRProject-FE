@@ -3,13 +3,20 @@ import styled from "styled-components";
 export const HorizontalWrapper = styled.div`
     display: flex;
     width: 100%;
-    gap: 15px;
+    justify-content: space-between;
 `;
 
-export const VerticalWrapper = styled.div`
+export const SidebarWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: ${({ width }) => width};
+    width: 200px;
+`;
+
+export const ContentWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 865px;
 `;
 
 export const Contour = styled.div`

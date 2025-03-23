@@ -53,6 +53,7 @@ export const SubTitle = styled.div`
     gap: 3px;
     font-size: 13px;
     cursor: pointer;
+    padding: 0 0 0 3px;
 
     &:hover {
         text-decoration: underline;
