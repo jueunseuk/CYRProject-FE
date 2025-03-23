@@ -1,3 +1,4 @@
+import Board from "@/components/home/board";
 import * as S from "./styles";
 import Banner from "@/components/home/banner";
 import Footer from "@/components/home/footer";
@@ -14,6 +15,7 @@ const Home = () => {
                     <GuestInfo></GuestInfo>
                     <LoginInfo></LoginInfo>
                     <Search></Search>
+                    <Board></Board>
                 </S.VerticalWrapper>
                 <S.VerticalWrapper width={"865px"}>
 

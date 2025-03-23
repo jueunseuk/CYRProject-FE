@@ -85,12 +85,12 @@ const EmailVerify = () => {
             <S.GuideText>인증코드는 10분간 유효합니다.</S.GuideText>
             <S.VerticalWrapper>
                 <S.HorizontalWrapper>
-                    <S.InputField type="email" name="email" width="225px" placeholder="example@gmail.com" onChange={handleEmailChange}/>
+                    <S.InputField type="email" name="email" $width="225px" placeholder="example@gmail.com" onChange={handleEmailChange}/>
                     <S.EmailSendButton onClick={handleRequestCode} disabled={timer > 0}>
                         {timer > 0 ? `${Math.floor(timer / 60)}:${(timer % 60).toString().padStart(2, "0")}` : "코드 전송"}
                     </S.EmailSendButton>
                 </S.HorizontalWrapper>
-                <S.InputField type="text" width="330px" maxLength="6" placeholder="인증코드 6자리를 입력해주세요." onChange={handleCodeChange}/>
+                <S.InputField type="text" $width="330px" maxLength="6" placeholder="인증코드 6자리를 입력해주세요." onChange={handleCodeChange}/>
             </S.VerticalWrapper>
             <S.LoginNextButton onClick={handleRequestVerification} disabled={email === "" || code.length !== 6}>확인</S.LoginNextButton>
             <S.NavigateText onClick={handleNavigateLogin}>처음으로 돌아가기</S.NavigateText>

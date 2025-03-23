@@ -40,7 +40,7 @@ export const InputField = styled.input.attrs((props) => {
     type: props.type || "text"
 })`
     font-size: 14px;
-    width: ${({ width }) => width};
+    width: ${({ $width }) => $width};
     height: 40px;
     border: none;
     border-bottom: 1px solid #B8B8B8;
