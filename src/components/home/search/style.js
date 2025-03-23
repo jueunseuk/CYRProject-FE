@@ -15,6 +15,7 @@ export const SearchInput = styled.input.attrs({
 })`
     width: 147px;
     height: 20px;
+    font-size: 12px;
     border: solid 2px #C6BC73;
     outline: none;
 `;

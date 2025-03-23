@@ -49,25 +49,28 @@ export const Text = styled.div`
     
 export const LevelArea = styled.div`
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: row-reverse;
+    justify-content: center;
+    width: 170px;
+    flex-wrap: wrap-reverse;
+    gap: 12px;
 `;
 
 export const LevelSet = styled.div`
     display: flex;
-    gap: 5px;
+    gap: 7px;
 `;
 
 export const LevelText = styled.div`
-    font-size: 10px;
+    font-size: 14px;
 `;
 
 export const LevelIcon = styled.img.attrs((props) => {
     src: props.src
     alt: "Level Icon"
 })`
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
 `;
 
 export const WriteButton = styled.button`
