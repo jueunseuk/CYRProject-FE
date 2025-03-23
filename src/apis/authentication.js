@@ -34,6 +34,28 @@ export const requestVerificationCode = async (email, code) => {
         }
     }
 };
+export const requestVerificationCodePassword = async (email, code) => {
+    try {
+        const response = await axios.post(`${backendUrl}/auth/email/check`, {email, code});
+        return response.data;
+    } catch (error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.data.code;
+
+            if(errorCode === 'MAIL_003') {
+                alert("인증 코드가 일치하지 않습니다.");
+            } else if(errorCode === 'MAIL_004') {
+                alert("존재하지 않거나 잘못된 이메일입니다.");
+            } else if(errorCode === 'MAIL_005') {
+                alert("이메일 인증 시간을 초과했습니다.");
+            }
+
+            throw error;
+        } else {
+            alert("서버 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+    }
+};
 
 export const requestSignup = async (formData, config) => {
     try {

@@ -29,7 +29,9 @@ const EmailLogin = () => {
 
     const handleRequestLogin = async () => {
         try {
+            console.log("before", email, password);
             const response = await A.requestLogin(email, password, {withCredentials: true});
+            console.log("after");
 
             const accessToken = response.headers["authorization"];
 
