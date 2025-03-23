@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import banner from "@/assets/image/banner.png";
 
-export const BannerImage = styled.img.attrs({
-    src: banner,
-    alt: "Banner Image"
-})`
-    width: 100%;
-    heigth: 500px;
-    cursor: pointer;
+export const Wrapper = styled.div`
+    width: 1080px;
+    height: 500px;
     margin-bottom: 10px;
+`;
+
+export const BannerImage = styled.img`
+    cursor: pointer;
 `;
