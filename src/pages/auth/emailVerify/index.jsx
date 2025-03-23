@@ -41,6 +41,7 @@ const EmailVerify = () => {
         try {
             setTimer(600);
             await A.requestEmailCode(email);
+            alert("이메일로 인증 코드를 전송했습니다.");
             if(intervalId) clearInterval(intervalId);
         } catch (error) {
 
@@ -61,7 +62,7 @@ const EmailVerify = () => {
                 method: 'EMAIL'
             }));
 
-            navigate('/signup/form');
+            navigate('/auth/signup/form');
         } catch (error) {
             if(error.response?.data?.code === 'MAIL_006') {
                 navigate('/login/email');

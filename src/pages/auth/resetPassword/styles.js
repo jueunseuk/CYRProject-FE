@@ -56,19 +56,20 @@ export const InputField = styled.input.attrs((props) => {
     }
 `;
 
-export const LoginNextButton = styled.div`
+export const LoginNextButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 330px;
     height: 40px;
-    background-color: #C6BC73;
+    background-color: ${({ disabled }) => (disabled ? "#B8B8B8" : "#C6BC73")};
+    border: none;
     border-radius: 15px;
     font-weight: 700;
     color: white;
     font-size: 16px;
     margin-top: 10px;
-    cursor: pointer;
+    cursor: ${({ disabled }) => (disabled ? "" : "pointer")};
 `;
 
 export const SignupArea = styled.div`
