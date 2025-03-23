@@ -52,7 +52,7 @@ const EmailVerifyPassword = () => {
             return;
         }
         try {
-            await A.requestVerificationCode(email, code);
+            await A.requestVerificationCodePassword(email, code);
             alert("이메일 인증이 완료되었습니다.");
 
             setState((prev) => ({
