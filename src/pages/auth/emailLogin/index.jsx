@@ -19,19 +19,17 @@ const EmailLogin = () => {
         navigate('/auth/login');
     };
 
-    const handleEmailChange = (value) => {
-        setEmail(value);
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
     };
     
-    const handlePasswordChange = (value) => {
-    setPassword(value);
+    const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
     };
 
     const handleRequestLogin = async () => {
         try {
-            console.log("before", email, password);
             const response = await A.requestLogin(email, password, {withCredentials: true});
-            console.log("after");
 
             const accessToken = response.headers["authorization"];
 
