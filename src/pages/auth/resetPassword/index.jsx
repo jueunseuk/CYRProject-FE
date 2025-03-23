@@ -1,8 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
+import { useRecoilState } from "recoil";
+import { signupState } from "@/recoil/atom";
+
+const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
 
 const ResetPassword = () => {
     const navigate = useNavigate();
+    const [state] = useRecoilState(signupState);
 
     const handleNavigateLogin = () => {
         navigate('/auth/login');
@@ -19,7 +24,7 @@ const ResetPassword = () => {
             <S.VerticalWrapper>
                 <S.InputArea>
                     <S.InputGuideText><S.Essential>*</S.Essential>이메일</S.InputGuideText>
-                    <S.InputField type="email"/>
+                    <S.InputField type="email" name="email" value={state} readOnly/>
                 </S.InputArea>
                 <S.InputArea>
                     <S.InputGuideText><S.Essential>*</S.Essential>새 비밀번호</S.InputGuideText>

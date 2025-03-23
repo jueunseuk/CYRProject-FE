@@ -5,6 +5,7 @@ import DefaultBackGround from "@/pages/BackGround/DefaultBackGround";
 import Home from "@/pages/home";
 import SignupLayout from "@/components/layout/SignupLayout";
 import EmailVerify from "@/pages/auth/emailVerify";
+import EmailVerifyPassword from "@/pages/auth/emailVerifyPassword";
 import SignupForm from "@/pages/auth/signupForm";
 import LoginLayout from "@/components/layout/LoginLayout";
 import Login from "@/pages/auth/login";
@@ -43,6 +44,10 @@ export const RouterList = () => [
                     {
                         path: "email", 
                         element: <EmailLogin />
+                    },
+                    {
+                        path: "email/verify",
+                        element: <EmailVerifyPassword />
                     },
                     {
                         path: "reset-password",

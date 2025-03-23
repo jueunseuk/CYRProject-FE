@@ -12,7 +12,7 @@ export const Logo = styled.img.attrs({
 export const LoginMethod = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     margin-top: 40px;
 `;
 
