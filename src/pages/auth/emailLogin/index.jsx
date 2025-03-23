@@ -12,7 +12,7 @@ const EmailLogin = () => {
     const navigate = useNavigate();
 
     const handleNavigateResetPassword = () => {
-        navigate('/auth/login/reset-password');
+        navigate('/auth/login/email/verify');
     };
 
     const handleNavigateLogin = () => {
@@ -54,11 +54,11 @@ const EmailLogin = () => {
             <S.VerticalWrapper>
                 <S.InputArea>
                     <S.InputGuideText>이메일</S.InputGuideText>
-                    <S.InputField type="email" onChange={handleEmailChange}/>
+                    <S.InputField type="email" name="email" onChange={handleEmailChange}/>
                 </S.InputArea>
                 <S.InputArea>
                     <S.InputGuideText>비밀번호</S.InputGuideText>
-                    <S.InputField type="password" onChange={handlePasswordChange}/>
+                    <S.InputField type="password" name="password" onChange={handlePasswordChange}/>
                 </S.InputArea>
             </S.VerticalWrapper>
             <S.LoginNextButton disabled={email === "" || password.length === ""} onClick={handleRequestLogin}>로그인</S.LoginNextButton>

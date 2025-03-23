@@ -26,8 +26,6 @@ export const requestVerificationCode = async (email, code) => {
                 alert("존재하지 않거나 잘못된 이메일입니다.");
             } else if(errorCode === 'MAIL_005') {
                 alert("이메일 인증 시간을 초과했습니다.");
-            } else if(errorCode === 'MAIL_006') {
-                alert("이미 가입된 이메일입니다.\n이메일 로그인 화면으로 이동합니다.");
             }
 
             throw error;
