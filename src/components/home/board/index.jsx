@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { BOARDS } from "@/constants/boards";
-import dash from "@/assets/icon/etc/dash.svg"
+import dash from "@/assets/icon/etc/dash.svg";
 
 const Board = () => {
     return (

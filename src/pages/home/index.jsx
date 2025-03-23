@@ -1,26 +1,36 @@
-import Board from "@/components/home/board";
 import * as S from "./styles";
+import Board from "@/components/home/board";
 import Banner from "@/components/home/banner";
 import Footer from "@/components/home/footer";
 import GuestInfo from "@/components/home/guestInfo";
 import LoginInfo from "@/components/home/loginInfo";
 import Search from "@/components/home/search";
+import AnnouncementSummary from "@/components/home/announcement";
+import Cheer from "@/components/home/cheer";
+import CalendarSummary from "@/components/home/calendar";
+import Link from "@/components/home/link";
 
 const Home = () => {
     return (
         <>
             <Banner></Banner>
             <S.HorizontalWrapper>
-                <S.VerticalWrapper width={"200px"}>
+                <S.SidebarWrapper>
                     <GuestInfo></GuestInfo>
                     <LoginInfo></LoginInfo>
                     <Search></Search>
                     <Board></Board>
-                </S.VerticalWrapper>
-                <S.VerticalWrapper width={"865px"}>
-
-                </S.VerticalWrapper>
+                </S.SidebarWrapper>
+                <S.ContentWrapper>
+                    <AnnouncementSummary />
+                    <S.HorizontalWrapper>
+                        <Cheer />
+                        <CalendarSummary />
+                        <Link />
+                    </S.HorizontalWrapper>
+                </S.ContentWrapper>
             </S.HorizontalWrapper>
+            <S.Contour />
             <Footer></Footer>
         </>
     );

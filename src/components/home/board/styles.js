@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     width: 100%;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+    padding: 2.5px 0;
 `;
 
 export const Contour = styled.hr`
@@ -52,6 +53,7 @@ export const SubTitle = styled.div`
     gap: 3px;
     font-size: 13px;
     cursor: pointer;
+    padding: 0 0 0 3px;
 
     &:hover {
         text-decoration: underline;
