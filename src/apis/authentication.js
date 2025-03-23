@@ -67,7 +67,7 @@ export const requestSignup = async (formData, config) => {
 
 export const requestLogin = async (email, password, config) => {
     try {
-        const response = await axios.post(`${backendUrl}/login`, {email, password}, config);
+        const response = await axios.post(`${backendUrl}/auth/login`, {email, password}, config);
         return response;
     } catch (error) {
         if(error.response && error.response.data) {
@@ -79,6 +79,29 @@ export const requestLogin = async (email, password, config) => {
                 alert("유효하지 않은 로그인 방식입니다.");
             } else if(errorCode === 'MAIL_006') {
                 alert("이미 가입된 이메일입니다.\n이메일 로그인 화면으로 이동합니다.");
+            }
+
+            throw error;
+        } else {
+            alert("서버가 원활하지 않습니다.\n10분 뒤 로그인 시도해주세요.");
+        }
+    }
+}
+
+export const requestResetPassword = async (email, password, config) => {
+    try {
+        const response = await axios.post(`${backendUrl}/auth/password/reset`, {email, password}, config);
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.code;
+
+            if(errorCode === 'MAIL_004') {
+                alert("일치하는 이메일을 찾을 수 없습니다.");
+            } else if(errorCode === 'AUTH_007') {
+                alert("이미 탈퇴한 계정입니다.");
+            } else if(errorCode === 'AUTH_001') {
+                alert("유효하지 않은 패스워드 값입니다.");
             }
 
             throw error;
