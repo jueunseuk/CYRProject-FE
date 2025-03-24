@@ -22,6 +22,8 @@ const NaverCallback = () => {
             try {
                 const response = await A.requestNaverUserInformation(code, state);
 
+                const accessToken = response.headers["authorization"]?.replace("Bearer ", "");
+
                 setUserState((prevUser) => ({
                     ...prevUser,
                     userId: response.data.userId,
@@ -40,7 +42,7 @@ const NaverCallback = () => {
             }
         };
       
-        return <div>네이버 로그인 처리 중...</div>;
+        return <div></div>;
     };
 
 export default NaverCallback;
