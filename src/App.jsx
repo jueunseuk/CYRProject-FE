@@ -1,14 +1,12 @@
 import { StrictMode, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import { RecoilRoot, useSetRecoilState } from 'recoil';
+import { RecoilRoot } from 'recoil';
 import { RouterObject } from './RouterList';
-import { userState } from './recoil/atom';
 import axios from 'axios';
 import '@/styles/index.css';
 
 const AppWithAuth = () => {
-  const setUser = useSetRecoilState(userState);
 
     useEffect(() => {
         const restoreLogin = async () => {
