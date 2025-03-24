@@ -3,8 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { RecoilRoot, useSetRecoilState } from 'recoil';
 import { RouterObject } from './RouterList';
-import '@/styles/index.css';
+import { userState } from './recoil/atom';
 import axios from 'axios';
+import '@/styles/index.css';
 
 const AppWithAuth = () => {
   const setUser = useSetRecoilState(userState);
