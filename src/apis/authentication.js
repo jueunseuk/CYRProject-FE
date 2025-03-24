@@ -153,7 +153,7 @@ export const requestNaverUserInformation = async (code, state) => {
 
             throw error;
         } else {
-            alert("서버가 원활하지 않습니다.\n10분 뒤 로그인 시도해주세요.");
+            alert("서버가 원활하지 않습니다.\n 다시 시도해주세요.");
         }
     }
 }
