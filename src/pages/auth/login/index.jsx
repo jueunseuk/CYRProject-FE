@@ -14,7 +14,7 @@ const Login = () => {
 
     const handleNavigateNaverLogin = () => {
         const clientId = import.meta.env.VITE_NAVER_CLIENT_ID;
-        const redirectUri = encodeURIComponent('https://cyr-project-fe.vercel.app/auth/callback-naver');
+        const redirectUri = import.meta.env.VITE_NAVER_REDIRECT_URI;
         const state = 'cyr-project';
     
         const naverLoginUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}`;
