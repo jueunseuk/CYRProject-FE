@@ -1,9 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot, useSetRecoilState } from 'recoil';
 import { RouterObject } from './RouterList';
 import '@/styles/index.css';
+import axios from 'axios';
 
 const AppWithAuth = () => {
   const setUser = useSetRecoilState(userState);
