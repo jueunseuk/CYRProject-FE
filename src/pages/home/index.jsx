@@ -11,18 +11,17 @@ import CalendarSummary from "@/components/home/calendar";
 import Link from "@/components/home/link";
 import LatestPost from "@/components/home/latest";
 import GallerySummary from "@/components/home/gallery";
-import { userState } from "@/recoil/atom";
-import { useRecoilState } from "recoil";
+import useUserInfo from "@/hooks/localStorage";
 
 const Home = () => {
-    const [user, setUser] = useRecoilState(userState);
+    const user = useUserInfo();
 
     return (
         <>
             <Banner></Banner>
             <S.HorizontalWrapper>
                 <S.SidebarWrapper>
-                    {user.userId ? (
+                    {user && user.userId ? (
                         <LoginInfo></LoginInfo>
                     ) : (
                         <GuestInfo></GuestInfo>

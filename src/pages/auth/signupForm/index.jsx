@@ -3,8 +3,8 @@ import * as S from "./styles";
 import { useRef, useState } from "react";
 import defualt from "@/assets/image/default_profile.jpg"
 import { useNavigate } from "react-router-dom";
-import { signupState, userState } from "@/recoil/atom";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { signupState } from "@/recoil/atom";
+import { useRecoilState } from "recoil";
 
 const nicknamePattern = /^(?=.*[A-Za-z가-힣\d])[A-Za-z가-힣\d]{2,8}$/;
 const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
@@ -13,7 +13,6 @@ const MAX_SIZE = 5 * 1024 * 1024;
 const SignupForm = () => {
     const navigate = useNavigate();
     const [state] = useRecoilState(signupState);
-    const setUserState = useSetRecoilState(userState);
     const fileInputRef = useRef(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [formData, setFormData] = useState({
@@ -80,13 +79,12 @@ const SignupForm = () => {
     
             const response = await A.requestSignup(formDataToSend, { withCredentials: true });
 
-            setUserState((prevUser) => ({
-                ...prevUser,
+            localStorage.setItem("userInfo", JSON.stringify({
                 userId: response.data.userId,
-                name: response.data.name,
                 nickname: response.data.nickname,
                 role: response.data.role,
-                profileUrl: response.data.profileUrl,
+                name: response.data.name,
+                profileUrl: response.data.profileUrl
             }));
     
             alert("성공적으로 가입했습니다!\n정회원 요청을 통해 정식으로 카페에서 활동해보세요!");

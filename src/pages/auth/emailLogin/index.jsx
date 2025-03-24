@@ -2,13 +2,10 @@ import * as A from "@/apis/authentication"
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { userState } from "@/recoil/atom";
-import { useSetRecoilState } from "recoil";
 
 const EmailLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const setUserState = useSetRecoilState(userState);
     const navigate = useNavigate();
 
     const handleNavigateResetPassword = () => {
@@ -31,15 +28,12 @@ const EmailLogin = () => {
         try {
             const response = await A.requestLogin(email, password, {withCredentials: true});
 
-            const accessToken = response.headers["authorization"];
-
-            setUserState((prevUser) => ({
-                ...prevUser,
+            localStorage.setItem("userInfo", JSON.stringify({
                 userId: response.data.userId,
-                name: response.data.name,
                 nickname: response.data.nickname,
-                accessToken: accessToken,
                 role: response.data.role,
+                name: response.data.name,
+                profileUrl: response.data.profileUrl
             }));
 
             navigate('/');
