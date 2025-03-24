@@ -33,7 +33,7 @@ const AppWithAuth = () => {
       };
 
       restoreLogin();
-    }, [setUser]);
+    }, []);
 
   return <RouterProvider router={RouterObject} />;
 };
