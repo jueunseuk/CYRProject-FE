@@ -147,6 +147,8 @@ export const requestNaverUserInformation = async (code, state) => {
                 alert("네이버에서 사용자의 정보를 불러오는데 실패했습니다.");
             } else if(errorCode === 'AUTH_006') {
                 alert("현재 활동 중인 사용자가 아닙니다.");
+            } else if(errorCode === 'AUTH_012') {
+                alert("CSRF Exception 발생");
             }
 
             throw error;
