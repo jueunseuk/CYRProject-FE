@@ -7,14 +7,3 @@ export const signupState = atom ({
         email: ''
     },
 });
-
-export const userState = atom ({
-    key : 'userState',
-    default: {
-        userId: "",
-        profileUrl: "",
-        name: "",
-        nickname: "",
-        role: "",
-    },
-});

@@ -11,11 +11,10 @@ import CalendarSummary from "@/components/home/calendar";
 import Link from "@/components/home/link";
 import LatestPost from "@/components/home/latest";
 import GallerySummary from "@/components/home/gallery";
-import { userState } from "@/recoil/atom";
-import { useRecoilState } from "recoil";
+import { getUserInfo } from "@/hooks/localStorage";
 
 const Home = () => {
-    const [user, setUser] = useRecoilState(userState);
+    const user = getUserInfo();
 
     return (
         <>
