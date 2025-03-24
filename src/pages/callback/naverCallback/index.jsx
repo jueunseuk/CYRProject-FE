@@ -6,16 +6,16 @@ const NaverCallback = () => {
       const [searchParams] = useSearchParams();
       const navigate = useNavigate();
     
-      useEffect(() => {
-          const code = searchParams.get("code");
-          const state = searchParams.get("state");
+        useEffect(() => {
+            const code = searchParams.get("code");
+            const state = searchParams.get("state");
 
-          if (code) {
-              handleNaverLogin(code, state);
-          }
-      }, []);
+            if (code) {
+                handleNaverLogin(code, state);
+            }
+        }, []);
     
-      const handleNaverLogin = async (code, state) => {
+        const handleNaverLogin = async (code, state) => {
             try {
                 const response = await A.requestNaverUserInformation(code, state);
 
@@ -27,7 +27,6 @@ const NaverCallback = () => {
                     profileUrl: response.data.profileUrl
                 }));
 
-                alert('가입 완료!\n프로필에서 내 정보를 꾸밀 수 있어요!');
                 navigate('/');
             } catch (err) {
                 navigate('/');
