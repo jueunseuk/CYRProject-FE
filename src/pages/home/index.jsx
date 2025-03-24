@@ -11,15 +11,22 @@ import CalendarSummary from "@/components/home/calendar";
 import Link from "@/components/home/link";
 import LatestPost from "@/components/home/latest";
 import GallerySummary from "@/components/home/gallery";
+import { userState } from "@/recoil/atom";
+import { useRecoilState } from "recoil";
 
 const Home = () => {
+    const [user, setUser] = useRecoilState(userState);
+
     return (
         <>
             <Banner></Banner>
             <S.HorizontalWrapper>
                 <S.SidebarWrapper>
-                    <GuestInfo></GuestInfo>
-                    <LoginInfo></LoginInfo>
+                    {user.accessToken ? (
+                        <LoginInfo></LoginInfo>
+                    ) : (
+                        <GuestInfo></GuestInfo>
+                    )}
                     <Search></Search>
                     <Board></Board>
                 </S.SidebarWrapper>
