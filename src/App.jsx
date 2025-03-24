@@ -19,14 +19,12 @@ const AppWithAuth = () => {
                   { withCredentials: true }
             );
 
-            const accessToken = res.headers["authorization"];
-            if(accessToken) {
+            if(res.data && res.data.userId) {
               setUser({
                   userId: res.data.userId,
                   name: res.data.name,
                   nickname: res.data.nickname,
                   profileUrl: res.data.profileUrl,
-                  accessToken: accessToken,
                   role: res.data.role,
                 });
             }

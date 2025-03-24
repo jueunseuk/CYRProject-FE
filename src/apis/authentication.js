@@ -110,9 +110,9 @@ export const requestLogin = async (email, password, config) => {
     }
 }
 
-export const requestResetPassword = async (email, password, config) => {
+export const requestResetPassword = async (email, password) => {
     try {
-        const response = await axios.post(`${backendUrl}/auth/password/reset`, {email, password}, config);
+        const response = await axios.post(`${backendUrl}/auth/password/reset`, {email, password}, {withCredentials: true});
         return response;
     } catch(error) {
         if(error.response && error.response.data) {
