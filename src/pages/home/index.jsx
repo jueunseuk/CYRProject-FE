@@ -11,10 +11,10 @@ import CalendarSummary from "@/components/home/calendar";
 import Link from "@/components/home/link";
 import LatestPost from "@/components/home/latest";
 import GallerySummary from "@/components/home/gallery";
-import { getUserInfo } from "@/hooks/localStorage";
+import useUserInfo from "@/hooks/localStorage";
 
 const Home = () => {
-    const user = getUserInfo();
+    const user = useUserInfo();
 
     return (
         <>
