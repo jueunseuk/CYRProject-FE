@@ -21,7 +21,7 @@ const Home = () => {
             <Banner></Banner>
             <S.HorizontalWrapper>
                 <S.SidebarWrapper>
-                    {user.userId ? (
+                    {user && user.userId ? (
                         <LoginInfo></LoginInfo>
                     ) : (
                         <GuestInfo></GuestInfo>
