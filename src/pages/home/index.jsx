@@ -22,7 +22,7 @@ const Home = () => {
             <Banner></Banner>
             <S.HorizontalWrapper>
                 <S.SidebarWrapper>
-                    {user.accessToken ? (
+                    {user.userId ? (
                         <LoginInfo></LoginInfo>
                     ) : (
                         <GuestInfo></GuestInfo>

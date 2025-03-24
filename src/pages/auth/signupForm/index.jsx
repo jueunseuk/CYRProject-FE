@@ -79,15 +79,12 @@ const SignupForm = () => {
             }
     
             const response = await A.requestSignup(formDataToSend, { withCredentials: true });
-    
-            const accessToken = response.headers["authorization"]?.replace("Bearer ", "");
 
             setUserState((prevUser) => ({
                 ...prevUser,
                 userId: response.data.userId,
                 name: response.data.name,
                 nickname: response.data.nickname,
-                accessToken: accessToken,
                 role: response.data.role,
                 profileUrl: response.data.profileUrl,
             }));

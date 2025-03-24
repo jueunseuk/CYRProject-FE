@@ -15,7 +15,6 @@ export const userState = atom ({
         profileUrl: "",
         name: "",
         nickname: "",
-        accessToken: "",
         role: "",
     },
 });
