@@ -132,3 +132,26 @@ export const requestResetPassword = async (email, password, config) => {
         }
     }
 }
+
+export const requestNaverUserInformation = async (code, state) => {
+    try {
+        const response = await axios.post(`${backendUrl}/auth/naver/callback`, {code, state}, {withCredentials: true});
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.code;
+
+            if(errorCode === 'AUTH_010') {
+                alert("유효하지 않은 네이버 인증 코드입니다.");
+            } else if(errorCode === 'AUTH_001') {
+                alert("네이버에서 사용자의 정보를 불러오는데 실패했습니다.");
+            } else if(errorCode === 'AUTH_006') {
+                alert("현재 활동 중인 사용자가 아닙니다.");
+            }
+
+            throw error;
+        } else {
+            alert("서버가 원활하지 않습니다.\n10분 뒤 로그인 시도해주세요.");
+        }
+    }
+}

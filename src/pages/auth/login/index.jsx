@@ -12,12 +12,16 @@ const Login = () => {
         navigate('/auth/signup/email/verify');
     }
 
+    const handleNavigateNaverLogin = () => {
+        navigate('/auth/callback-naver');
+    }
+
     return (
         <>
             <S.Logo />
             <S.LoginMethod >
                 <S.KakaoLoginButton>카카오로 로그인하기</S.KakaoLoginButton>
-                <S.NaverLoginButton>네이버로 로그인하기</S.NaverLoginButton>
+                <S.NaverLoginButton onClick={handleNavigateNaverLogin}>네이버로 로그인하기</S.NaverLoginButton>
                 <S.GoogleLoginButton>구글로 로그인하기</S.GoogleLoginButton>
                 <S.EmailLoginButton onClick={handleNavigateEmailLogin}>이메일로 로그인하기</S.EmailLoginButton>
             </S.LoginMethod>

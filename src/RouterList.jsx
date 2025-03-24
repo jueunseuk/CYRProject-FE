@@ -13,6 +13,7 @@ import EmailLogin from "@/pages/auth/emailLogin";
 import WrongPage from "@/pages/wrong/WrongPage";
 import ResetPassword from "@/pages/auth/resetPassword";
 import HomeLayout from "@/components/layout/HomeLayout";
+import NaverCallback from "./pages/callback/naverCallback";
 
 export const RouterList = () => [
     {
@@ -56,8 +57,8 @@ export const RouterList = () => [
                 ]
             },
             {
-                path: "*",
-                element: <WrongPage />
+                path: "callback-naver",
+                element: <NaverCallback />
             },
         ]
     },
@@ -76,6 +77,10 @@ export const RouterList = () => [
                 ]
             },
         ]
+    },
+    {
+        path: "*",
+        element: <WrongPage />
     }
 ];
 
