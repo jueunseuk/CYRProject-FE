@@ -37,7 +37,6 @@ const NaverCallback = () => {
                 alert('가입 완료!\n프로필에서 내 정보를 꾸밀 수 있어요!');
                 navigate('/');
             } catch (err) {
-                alert("로그인 실패!");
                 navigate('/');
             }
         };
