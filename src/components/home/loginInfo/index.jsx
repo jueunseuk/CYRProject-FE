@@ -1,3 +1,4 @@
+import * as A from "@/apis/user"
 import * as S from "./styles";
 import sand from "@/assets/icon/level/sand.svg";
 import house from "@/assets/icon/level/house.svg";
@@ -18,7 +19,7 @@ const LoginInfo = () => {
     useEffect(() => {
         const fetchExp = async () => {
             try {
-                const response = await requestUserExperience();
+                const response = await A.requestUserExperience();
                 setUserExp(formatExp(response.data.expCnt));
             } catch (error) {
                 console.error("경험치 불러오기 실패:", error);
