@@ -11,7 +11,9 @@ import { formatExp } from "@/util/expFormatter";
 
 const LoginInfo = () => {
     const user = useUserInfo();
-    const [userExp, setUserExp] = useState(null);
+    const [userExp, setUserExp] = useState({
+        sand: 0, house: 0, castle: 0, desert: 0, glass: 0
+    });
 
     useEffect(() => {
         const fetchExp = async () => {
