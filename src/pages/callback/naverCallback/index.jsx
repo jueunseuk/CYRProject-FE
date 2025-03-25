@@ -24,6 +24,7 @@ const NaverCallback = () => {
                     nickname: response.data.nickname,
                     role: response.data.role,
                     name: response.data.name,
+                    createdAt: response.data.createdAt,
                     profileUrl: response.data.profileUrl
                 }));
 

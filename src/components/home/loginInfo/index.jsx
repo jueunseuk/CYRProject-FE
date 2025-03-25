@@ -4,15 +4,18 @@ import house from "@/assets/icon/level/house.svg";
 import castle from "@/assets/icon/level/castle.svg";
 import desert from "@/assets/icon/level/desert.svg";
 import glass from "@/assets/icon/level/glass.svg";
+import useUserInfo from "@/hooks/localStorage";
 
 const LoginInfo = () => {
+    const user = useUserInfo();
+
     return (
         <S.Wrapper>
             <S.Title>내 정보</S.Title>
             <S.ProfileArea>
                 <S.ProfileImage />
                 <S.VerticalWrapper>
-                    <S.Text size={"16px"} $weight={"600"}>말랑준듀</S.Text>
+                    <S.Text size={"16px"} $weight={"600"}>{user.nickname ? user.nickname : user.name}</S.Text>
                     <S.Text size={"12px"} color={"#878787"}>가입일 25.01.25</S.Text>
                 </S.VerticalWrapper>
             </S.ProfileArea>
