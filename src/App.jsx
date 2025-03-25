@@ -28,7 +28,7 @@ const AppWithAuth = () => {
                 }));
             }
 
-            console.log("출력2", res.data.createdAt);
+            console.log("출력2", res.data);
           } catch (error) {
               console.log("로그인 실패 또는 비로그인 상태");
               localStorage.removeItem("userInfo");
