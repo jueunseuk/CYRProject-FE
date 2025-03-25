@@ -35,7 +35,7 @@ const LoginInfo = () => {
             const response = await A.requestLogout();
             localStorage.removeItem("userInfo");
             console.log(response.data.result);
-            window.location.reload;
+            window.location.reload();
         } catch(error) {
             console.error('로그아웃 실패', error);
         }
