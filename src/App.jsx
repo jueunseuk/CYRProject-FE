@@ -23,6 +23,7 @@ const AppWithAuth = () => {
                     nickname: res.data.nickname,
                     role: res.data.role,
                     name: res.data.name,
+                    createdAt: res.data.createdAt,
                     profileUrl: res.data.profileUrl
                 }));
             }
