@@ -1,4 +1,5 @@
-import * as A from "@/apis/user"
+import * as U from "@/apis/user";
+import * as A from "@/apis/authentication";
 import * as S from "./styles";
 import sand from "@/assets/icon/level/sand.svg";
 import house from "@/assets/icon/level/house.svg";
@@ -19,7 +20,7 @@ const LoginInfo = () => {
     useEffect(() => {
         const fetchExp = async () => {
             try {
-                const response = await A.requestUserExperience();
+                const response = await U.requestUserExperience();
                 setUserExp(formatExp(response.data));
             } catch (error) {
                 console.error("경험치 불러오기 실패:", error);
@@ -29,6 +30,16 @@ const LoginInfo = () => {
         fetchExp();
     }, []);
 
+    const handleRequestLogout = async () => {
+        try {
+            const response = await A.requestLogout();
+            localStorage.removeItem("userInfo");
+            console.log(response.data.result);
+        } catch(error) {
+            console.error('로그아웃 실패', error);
+        }
+    }
+
     return (
         <S.Wrapper>
             <S.Title>내 정보</S.Title>
@@ -36,7 +47,7 @@ const LoginInfo = () => {
                 <S.ProfileImage />
                 <S.VerticalWrapper>
                     <S.Text size={"16px"} $weight={"600"}>{user.nickname ? user.nickname : user.name}</S.Text>
-                    <S.Text size={"12px"} color={"#878787"}>가입일 {formatDate(user.createdAt, 2)}</S.Text>
+                    <S.Text size={"12px"} color={"#878787"}>{formatDate(user.createdAt, 2)}</S.Text>
                 </S.VerticalWrapper>
             </S.ProfileArea>
             <S.LevelArea>
@@ -62,7 +73,7 @@ const LoginInfo = () => {
                 </S.LevelSet>
             </S.LevelArea>
             <S.WriteButton>글쓰기</S.WriteButton>
-            <S.LinkText>로그아웃</S.LinkText>
+            <S.LinkText onClick={handleRequestLogout}>로그아웃</S.LinkText>
         </S.Wrapper>
     );
 }

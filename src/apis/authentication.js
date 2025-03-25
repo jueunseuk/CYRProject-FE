@@ -1,4 +1,5 @@
 import axios from "axios";
+import instance from "./instance";
 
 const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
@@ -156,4 +157,8 @@ export const requestNaverUserInformation = async (code, state) => {
             alert("서버가 원활하지 않습니다.\n 다시 시도해주세요.");
         }
     }
+}
+
+export const requestLogout = () => {
+    return instance.post("/auth/logout");
 }
