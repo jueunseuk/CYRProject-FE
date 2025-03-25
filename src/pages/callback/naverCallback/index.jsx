@@ -28,8 +28,6 @@ const NaverCallback = () => {
                     profileUrl: response.data.profileUrl
                 }));
 
-                console.log("출력1", response.data.createdAt)
-
                 navigate('/');
             } catch (err) {
                 navigate('/');
