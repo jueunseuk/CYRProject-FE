@@ -29,7 +29,7 @@ const AppWithAuth = () => {
             }
 
           } catch (error) {
-              console.log("로그인 실패 또는 비로그인 상태");
+              console.log("Failed to Login");
               localStorage.removeItem("userInfo");
           }
       };

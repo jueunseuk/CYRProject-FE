@@ -16,20 +16,24 @@ import yureeSong from "@/assets/icon/board_sub/yuree_song.svg";
 
 export const BOARDS = [
     {
+      id: "1",
       label: "전체게시글",
       path: "/new",
     },
     {
+      id: "2",
       label: "인기글",
       icon: popularity,
       path: "/popular",
     },
     {
+      id: "3",
       label: "출석",
       icon: attendance,
       path: "/attendance",
     },
     {
+      id: "4",
       label: "유리 갤러리",
       icon: gallery,
       path: "/gallery",
@@ -38,40 +42,40 @@ export const BOARDS = [
       label: "NOTICE",
       icon: notification,
       children: [
-        { label: "공지사항", icon: notificationAnnouncement, path: "/notification/announcement" },
-        { label: "이벤트", icon: notificationEvent, path: "/notification/event" },
-        { label: "캘린더", icon: notificationCalendar, path: "/notification/calendar" },
-        { label: "투표", icon: notificationPoll, path: "/notification/poll" },
+        { id: "5", label: "공지사항", icon: notificationAnnouncement, path: "/announcement" },
+        { id: "6", label: "이벤트", icon: notificationEvent, path: "/event" },
+        { id: "7", label: "캘린더", icon: notificationCalendar, path: "/calendar" },
+        { id: "8", label: "투표", icon: notificationPoll, path: "/poll" },
       ],
     },
     {
       label: "모래 이야기",
       icon: sand,
       children: [
-        { label: "자유게시판", path: "/morae/free" },
-        { label: "질문게시판", path: "/morae/qna" },
-        { label: "내가 그린 유리", path: "/morae/art" },
-        { label: "내가 부른 유리", path: "/morae/cover" },
-        { label: "To. 유리", path: "/morae/letter" },
+        { id: "9", label: "자유게시판", path: "/free" },
+        { id: "10", label: "질문게시판", path: "/qna" },
+        { id: "11", label: "내가 그린 유리", path: "/art" },
+        { id: "12", label: "내가 부른 유리", path: "/cover" },
+        { id: "13", label: "To. 유리", path: "/letter" },
       ],
     },
     {
       label: "유리 이야기",
       icon: yuree,
       children: [
-        { label: "내가 좋아하는 유리 노래", icon: yureeSong, path: "/yuri/favorite-songs" },
-        { label: "미발매곡 가사 탐구", icon: yureeLyrics, path: "/yuri/unreleased-lyrics" },
-        { label: "콘서트 후기", icon: yureeConcert, path: "/yuri/concert-review" },
-        { label: "굿즈 후기", icon: yureeGoods, path: "/yuri/goods-review" },
+        { id: "14", label: "내가 좋아하는 유리 노래", icon: yureeSong, path: "/favorite" },
+        { id: "15", label: "미발매곡 가사 탐구", icon: yureeLyrics, path: "/unreleased" },
+        { id: "16", label: "콘서트 후기", icon: yureeConcert, path: "/concert" },
+        { id: "17", label: "굿즈 후기", icon: yureeGoods, path: "/goods" },
       ],
     },
     {
       label: "커뮤니티 이야기",
       icon: community,
       children: [
-        { label: "건의하기", path: "/community/suggestion" },
-        { label: "신고하기", path: "/community/complaint" },
-        { label: "운영자 신청", path: "/community/manager-apply" },
+        { id: "18", label: "건의하기", path: "/suggestion" },
+        { id: "19", label: "신고하기", path: "/complaint" },
+        { id: "20", label: "운영자 신청", path: "/apply" },
       ],
     },
   ];
