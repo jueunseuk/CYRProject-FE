@@ -3,9 +3,9 @@ import instance from "./instance";
 
 const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
-export const getAllPosts = async (form, config = {}) => {
+export const getAllPosts = async (form) => {
     try {
-        const response = await axios.get(`${backendUrl}/posts/new`, form, config);
+        const response = await axios.get(`${backendUrl}/posts/new`, {params: form, headers: {Accept: "application/json"}});
         return response;
     } catch(error) {
         if(error.response && error.response.data) {
