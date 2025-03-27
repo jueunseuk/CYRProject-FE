@@ -6,9 +6,9 @@ import '@/styles/index.css';
 function App() {
   return (
     <StrictMode>
-      <RecoilRoot>
-        <AppWithAuth />
-      </RecoilRoot>
+        <RecoilRoot>
+          <RouterProvider router={RouterObject} />
+        </RecoilRoot>
     </StrictMode>
   );
 }
