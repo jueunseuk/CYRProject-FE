@@ -18,7 +18,7 @@ const NewBoard = () => {
             try {
                 const response = await P.getAllPosts(form);
                 setPosts(response.data.content);
-                console.log(response.data.content)
+                console.log(response.data)
             } catch(error) {
                 
             }
