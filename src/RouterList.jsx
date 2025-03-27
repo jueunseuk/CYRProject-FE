@@ -13,7 +13,8 @@ import EmailLogin from "@/pages/auth/emailLogin";
 import WrongPage from "@/pages/wrong/WrongPage";
 import ResetPassword from "@/pages/auth/resetPassword";
 import HomeLayout from "@/components/layout/HomeLayout";
-import NaverCallback from "./pages/callback/naverCallback";
+import NaverCallback from "@/pages/callback/naverCallback";
+import PostList from "@/pages/postList";
 
 export const RouterList = () => [
     {
@@ -73,7 +74,19 @@ export const RouterList = () => [
                     {
                         path: "",
                         element: <Home />
-                    }
+                    },
+                    {
+                        path: "board/:subPath",
+                        element: <PostList />
+                    },
+                    {
+                        path: "post/:postId",
+                        element: <Home />
+                    },
+                    {
+                        path: "post/write",
+                        element: <Home />
+                    },
                 ]
             },
         ]
