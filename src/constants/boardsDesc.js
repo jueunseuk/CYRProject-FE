@@ -1,7 +1,7 @@
 export const BOARD_DESCRIPTIONS = {
     new: {
       label: "전체 게시글",
-      description: "모든 게시글을 최신순으로 한 눈에 모아 볼 수 있어요.",
+      description: "모든 게시글이 모여있는 게시판이에요.",
     },
     popular: {
       label: "인기 게시글",
