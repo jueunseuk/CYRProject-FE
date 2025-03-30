@@ -1,25 +1,32 @@
 import * as P from "@/apis/post";
 import * as S from "./styles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/util/dateFormatter";
 import { getEmpathyColor } from "@/util/empathySelector";
 
-const pageSize = 10;
-
 const NewBoard = () => {
     const {subPath} = useParams();
     const [page, setPage] = useState(0);
     const [sort, setSort] = useState("createdAt");
-    const [totalPages, setTotalPages] = useState(0);
+    const [totalPage, setTotalPage] = useState(0);
     const [totalElements, setTotalElements] = useState(0);
     const [posts, setPosts] = useState([]);
+    const navigate = useNavigate();
 
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
 
     const handleClickSort = (value) => {
         setSort(value);
+    }
+
+    const handleClickPage = (pageNum) => {
+        setPage(pageNum-1);
+    }
+
+    const handleNavigatePost = (pageNum) => {
+
     }
 
     useEffect(() => {
@@ -28,6 +35,7 @@ const NewBoard = () => {
                 const response = await P.getAllPosts({page, sort});
                 setPosts(response.data.content);
                 setTotalElements(response.data.totalElements);
+                setTotalPage(response.data.totalPages);
             } catch(error) {
                 
             }
@@ -35,9 +43,19 @@ const NewBoard = () => {
         fetchPosts();
     }, [page, sort, subPath]);
 
-    const currentBlock = Math.floor(page / pageSize);
-    const startPage = currentBlock * pageSize;
-    const endPage = Math.min(startPage + pageSize, totalPages);
+    const getPageComponent = () => {
+        const pages = Array.from({length: totalPage}, (_, i) => i+1);
+
+        return (
+            <>
+                {pages.map((pageNum) => (
+                        <S.PageButton $weight={page === pageNum-1 ? "700" : "400"} $border={page === pageNum-1 ? "1px" : "0px"} key={pageNum} onClick={() => handleClickPage(pageNum)}>
+                            {pageNum}
+                        </S.PageButton>
+                ))}
+            </>
+        )
+    };
 
     return (
         <>
@@ -80,16 +98,17 @@ const NewBoard = () => {
                         {posts.map((post) => (
                             <S.Row key={post.postId}>
                                 <S.Column>{post.boardKorean}</S.Column>
-                                <S.Column $align={"left"}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
-                                <S.Column $align={"left"}>{post.userNickname}</S.Column>
-                                <S.Column $color={"#878787"}>{formatDate(post.createdAt, 3)}</S.Column>
-                                <S.Column $color={"#878787"}>{post.viewCnt}</S.Column>
+                                <S.Column $align={"left"} onClick={() => handleNavigatePost(key)}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
+                                <S.Column $align={"left"} $size={"12px"}>{post.userNickname}</S.Column>
+                                <S.Column $color={"#878787"} $size={"12px"}>{formatDate(post.createdAt, 3)}</S.Column>
+                                <S.Column $color={"#878787"} $size={"12px"}>{post.viewCnt}</S.Column>
                                 <S.Column $color={getEmpathyColor(post.empathyCnt)}>{post.empathyCnt}</S.Column>
                             </S.Row>
                         ))}
                     </tbody>
                 </S.Table>
                 <S.PaginationArea>
+                    {getPageComponent()}
                 </S.PaginationArea>
             </S.Wrapper>
         </>

@@ -14,6 +14,8 @@ export const formatDate = (dateString, formatType = 1) => {
       date.getFullYear() === now.getFullYear() &&
       date.getMonth() === now.getMonth() &&
       date.getDate() === now.getDate();
+
+    const isThisYear = date.getFullYear() === now.getFullYear();
   
     switch (formatType) {
       case 1:
@@ -22,7 +24,8 @@ export const formatDate = (dateString, formatType = 1) => {
         return `${year}.${month}.${day}`;
       case 3:
         if(isToday) return `${hour}:${minute}`;
-        else return `${month}.${day}`;
+        else if(isThisYear) return `${month}.${day}`;
+        else return `${year}.${month}.${day}`;
       case 4:
         return `${year}년 ${month}월 ${day}일 ${hour}:${minute}`;
       default:
