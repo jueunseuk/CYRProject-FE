@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     border: 1px solid #E7E7E7;
     padding: 20px;
@@ -96,7 +97,7 @@ export const Field = styled.th`
 `;
 
 export const Column = styled.td`
-    font-size: 13px;
+    font-size: ${({$size}) => $size || "13px"};
     max-width: 350px;
     padding: 8px;
     text-align: ${({$align}) => $align || "center"};
@@ -108,13 +109,26 @@ export const Column = styled.td`
 
 export const PaginationArea = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    width: 590px;
+    gap: 10px;
+    font-size: 12px;
+    margin-top: 20px;
 `;
 
 export const PageButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
-    border: 1px solid #878787;
+    cursor: pointer;
+    border: ${({$border}) => $border || "0px"} solid black;
+    font-weight: ${({$weight}) => $weight || "400"};
+
+    &:hover {
+        text-decoration: underline;
+    }
 `;
