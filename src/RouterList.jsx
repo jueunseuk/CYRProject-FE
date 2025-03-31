@@ -14,7 +14,7 @@ import WrongPage from "@/pages/wrong/WrongPage";
 import ResetPassword from "@/pages/auth/resetPassword";
 import HomeLayout from "@/components/layout/HomeLayout";
 import NaverCallback from "@/pages/callback/naverCallback";
-import PostList from "@/pages/postList";
+import PostList from "@/pages/posts";
 
 export const RouterList = () => [
     {

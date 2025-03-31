@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import { useParams } from "react-router-dom";
 import Board from "@/components/home/board";
 import Banner from "@/components/home/banner";
 import Footer from "@/components/home/footer";
@@ -6,9 +7,18 @@ import GuestInfo from "@/components/home/guestInfo";
 import LoginInfo from "@/components/home/loginInfo";
 import Search from "@/components/home/search";
 import useUserInfo from "@/hooks/localStorage";
-import { useParams } from "react-router-dom";
 import NewBoard from "@/components/board/newBoard";
 import WrongPage from "../wrong/WrongPage";
+import PopularBoard from "@/components/board/popularBoard";
+import FreeBoard from "@/components/board/freeboard";
+import QnABoard from "@/components/board/qnaBoard";
+import ArtBoard from "@/components/board/artBoard";
+import CoverBoard from "@/components/board/coverBoard";
+import LetterBoard from "@/components/board/freeboard";
+import FavoriteBoard from "@/components/board/favoriteBoard";
+import UnreleasedBoard from "@/components/board/unreleasedBoard";
+import ConcertBoard from "@/components/board/concertBoard";
+import GoodsBoard from "@/components/board/goodsBoard";
 
 const PostList = () => {
     const user = useUserInfo();
@@ -17,22 +27,22 @@ const PostList = () => {
     const getBoardComponent = () => {
         switch(subPath) {
             case "new": return <NewBoard />;
-            case "popular": return <NewBoard />;
+            case "popular": return <PopularBoard />;
             case "attendance": return <NewBoard />;
             case "gallery": return <NewBoard />;
             case "announcement": return <NewBoard />;
             case "event": return <NewBoard />;
             case "calendar": return <NewBoard />;
             case "poll": return <NewBoard />;
-            case "free": return <NewBoard />;
-            case "qna": return <NewBoard />;
-            case "art": return <NewBoard />;
-            case "cover": return <NewBoard />;
-            case "letter": return <NewBoard />;
-            case "favorite": return <NewBoard />;
-            case "unreleased": return <NewBoard />;
-            case "concert": return <NewBoard />;
-            case "goods": return <NewBoard />;
+            case "free": return <FreeBoard />;
+            case "qna": return <QnABoard />;
+            case "art": return <ArtBoard />;
+            case "cover": return <CoverBoard />;
+            case "letter": return <LetterBoard />;
+            case "favorite": return <FavoriteBoard />;
+            case "unreleased": return <UnreleasedBoard />;
+            case "concert": return <ConcertBoard />;
+            case "goods": return <GoodsBoard />;
             case "suggestion": return <NewBoard />;
             case "complaint": return <NewBoard />;
             case "apply": return <NewBoard />;
