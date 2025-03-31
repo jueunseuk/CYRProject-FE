@@ -32,3 +32,12 @@ export const formatDate = (dateString, formatType = 1) => {
         return dateString;
     }
 };
+
+export const toJavaLocalDateTime = (date = new Date()) => {
+  const offsetMs = date.getTimezoneOffset() * 60 * 1000;
+  const localDate = new Date(date.getTime() - offsetMs);
+
+  const pad = (n) => n.toString().padStart(2, "0");
+
+  return `${localDate.getFullYear()}-${pad(localDate.getMonth() + 1)}-${pad(localDate.getDate())}T${pad(localDate.getHours())}:${pad(localDate.getMinutes())}:${pad(localDate.getSeconds())}`;
+};
