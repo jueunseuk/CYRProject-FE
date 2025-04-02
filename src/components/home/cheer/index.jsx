@@ -1,21 +1,41 @@
 import * as C from "@/apis/cheer";
 import * as S from "./styles";
 import information from "@/assets/icon/etc/information.svg";
+import { useEffect, useState } from "react";
 
 const Cheer = () => {
+    const [totalCheer, setTotalCheer] = useState("");
 
     const handleRequestCheer = async () => {
         try {
-            const response = await C.requestCheer();
+            await C.requestCheer();
+            window.location.reload();
         } catch(error) {
             if(error.response && error.response.data) {
                 const status = error.response.status;
+
                 if(status === 401) {
                     alert("로그인이 필요한 서비스입니다.");
+                    console.log(error.response);
+                } else if(error.response.data.code === "CHEER_002") {
+                    alert("응원은 1분에 한 번씩만 가능합니다!");
                 }
             }
         }
-    }
+    };
+
+    useEffect(() => {
+        const fetchCheer = async () => {
+            try {
+                const response = await C.requestCheerCnt();
+                setTotalCheer(response.data);
+            } catch(error) {
+                console.log("응원 집계 현황을 불러오는 데 실패했습니다.");
+            }
+        }
+
+        fetchCheer();
+    }, []);
 
     return (
         <>
@@ -35,7 +55,7 @@ const Cheer = () => {
                     <S.Content>
                         <S.Text $size={"12px"} $color={"white"}>응원합계</S.Text>
                         <S.Text $size={"12px"} $color={"white"}>ㅡ</S.Text>
-                        <S.Text $size={"16px"} $weight={"700"} $color={"white"}>32,235 회</S.Text>
+                        <S.Text $size={"16px"} $weight={"700"} $color={"white"}>{totalCheer} 회</S.Text>
                         <S.CheerButton onClick={handleRequestCheer}>응원</S.CheerButton>
                     </S.Content>
                 </S.ContentArea>
