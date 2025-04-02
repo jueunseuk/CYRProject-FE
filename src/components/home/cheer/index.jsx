@@ -1,7 +1,22 @@
+import * as C from "@/apis/cheer";
 import * as S from "./styles";
 import information from "@/assets/icon/etc/information.svg";
 
 const Cheer = () => {
+
+    const handleRequestCheer = async () => {
+        try {
+            const response = await C.requestCheer();
+        } catch(error) {
+            if(error.response && error.response.data) {
+                const status = error.response.status;
+                if(status === 401) {
+                    alert("로그인이 필요한 서비스입니다.");
+                }
+            }
+        }
+    }
+
     return (
         <>
             <S.Wrapper>
@@ -21,7 +36,7 @@ const Cheer = () => {
                         <S.Text $size={"12px"} $color={"white"}>응원합계</S.Text>
                         <S.Text $size={"12px"} $color={"white"}>ㅡ</S.Text>
                         <S.Text $size={"16px"} $weight={"700"} $color={"white"}>32,235 회</S.Text>
-                        <S.CheerButton>응원</S.CheerButton>
+                        <S.CheerButton onClick={handleRequestCheer}>응원</S.CheerButton>
                     </S.Content>
                 </S.ContentArea>
             </S.Wrapper>
