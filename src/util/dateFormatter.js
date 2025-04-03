@@ -28,6 +28,8 @@ export const formatDate = (dateString, formatType = 1) => {
         else return `${year}.${month}.${day}`;
       case 4:
         return `${year}년 ${month}월 ${day}일 ${hour}:${minute}`;
+      case 5:
+        return `${year}.${month}.${day}`;
       default:
         return dateString;
     }

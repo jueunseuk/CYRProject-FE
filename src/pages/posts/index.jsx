@@ -19,6 +19,10 @@ import FavoriteBoard from "@/components/board/favoriteBoard";
 import UnreleasedBoard from "@/components/board/unreleasedBoard";
 import ConcertBoard from "@/components/board/concertBoard";
 import GoodsBoard from "@/components/board/goodsBoard";
+import SuggestionBoard from "@/components/board/suggestionBoard";
+import ComplaintBoard from "@/components/board/complaintBoard";
+import ApplyBoard from "@/components/board/applyBoard";
+import AttendanceBoard from "@/components/board/attendanceBoard";
 
 const PostList = () => {
     const user = useUserInfo();
@@ -28,7 +32,7 @@ const PostList = () => {
         switch(subPath) {
             case "new": return <NewBoard />;
             case "popular": return <PopularBoard />;
-            case "attendance": return <NewBoard />;
+            case "attendance": return <AttendanceBoard />;
             case "gallery": return <NewBoard />;
             case "announcement": return <NewBoard />;
             case "event": return <NewBoard />;
@@ -43,12 +47,9 @@ const PostList = () => {
             case "unreleased": return <UnreleasedBoard />;
             case "concert": return <ConcertBoard />;
             case "goods": return <GoodsBoard />;
-            case "suggestion": return <NewBoard />;
-            case "complaint": return <NewBoard />;
-            case "apply": return <NewBoard />;
-            case "new": return <NewBoard />;
-            case "new": return <NewBoard />;
-            case "new": return <NewBoard />;
+            case "suggestion": return <SuggestionBoard />;
+            case "complaint": return <ComplaintBoard />;
+            case "apply": return <ApplyBoard />;
             default : return <WrongPage />;
         }
     };
