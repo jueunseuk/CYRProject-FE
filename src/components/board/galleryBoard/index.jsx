@@ -2,8 +2,9 @@ import * as S from "./styles";
 import { useNavigate, useParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { useEffect, useState } from "react";
-import upload from "@/assets/icon/etc/upload.svg";
+import upload from "@/assets/icon/gallery/upload.svg";
 import defaultProfile from "@/assets/image/default_profile.jpg";
+import GalleryUpload from "@/components/modal/galleryUpload";
 
 const GalleryBoard = () => {
     const {subPath} = useParams();
@@ -13,12 +14,20 @@ const GalleryBoard = () => {
     const [totalElements, setTotalElements] = useState(0);
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
     const boardId = 4;
 
     const handleClickSort = (value) => {
         setSort(value);
+    }
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    }
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
     }
 
     const handleClickPage = (pageNum) => {
@@ -42,6 +51,7 @@ const GalleryBoard = () => {
     return (
         <>
             <S.Wrapper>
+                {isModalOpen && <GalleryUpload onClose={handleCloseModal} />}
                 <S.Title>{boardInfo.label}</S.Title>
                 <S.Description>{boardInfo.description}</S.Description>
                 <S.Header>
@@ -49,7 +59,9 @@ const GalleryBoard = () => {
                         <S.Text $size={"11px"} $weight={"700"}>{totalElements}</S.Text>
                         <S.Text $size={"11px"}>개의 글</S.Text>
                     </S.TextArea>
-                    <S.GalleryUploadButton><S.Icon src={upload}></S.Icon>유리 사진 업로드</S.GalleryUploadButton>
+                    <S.GalleryUploadButton onClick={handleOpenModal}>
+                        <S.Icon src={upload}></S.Icon>유리 사진 업로드
+                    </S.GalleryUploadButton>
                     <S.SortArea>
                         <S.Sort onClick={() => handleClickSort("createdAt")} $weight={sort === "createdAt" ? 700 : ""}>New</S.Sort>
                         <S.Text $size={"11px"}>|</S.Text>
