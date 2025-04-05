@@ -11,6 +11,10 @@ export const BOARD_DESCRIPTIONS = {
       label: "출석",
       description: "매일 출석 체크하고 유리 얘기 함께해요!",
     },
+    gallery: {
+      label: "유리 갤러리",
+      description: "유리의 사진을 감상할 수 있는 공간이에요. 귀여운 유리 사진이 있다면 모래들끼리 공유해요!",
+    },
     announcement: {
       label: "공지사항",
       description: "팬카페 운영과 관련된 중요한 소식을 전해드려요. 꼭 확인해주세요!",
