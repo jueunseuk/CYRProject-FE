@@ -9,11 +9,11 @@ import { formatDate } from "@/util/dateFormatter";
 const GalleryPost = () => {
     const {postId} = useParams();
     const [formData, setFormData] = useState({
-        title: "title",
-        author: "author",
+        title: "",
+        author: "",
         profileImageUrl: "",
-        description: "description",
-        picturedAt: "picturedAt",
+        description: "",
+        picturedAt: "0000.00.00",
         imageUrls: []
     });
 
@@ -57,8 +57,8 @@ const GalleryPost = () => {
                         <S.Text $size={"14px"} style={{whiteSpace: "pre-line", lineHeight: "20px"}}>{formData.description}</S.Text>
                     </S.DescriptionArea>
                     <S.ImageArea>
-                        {formData.imageUrls.map((_, i) => (
-                            <S.ImageItem key={i}/>
+                        {formData.imageUrls.map((url, i) => (
+                            <S.ImageItem key={i} src={url} alt={`gallery-img-${i}`} />
                         ))}
                     </S.ImageArea>
                 </S.Content>
