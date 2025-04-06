@@ -68,6 +68,7 @@ const GalleryUpload = ({onClose}) => {
 
             G.requestGalleryUpload(formData);
 
+            onClose();
         } catch(error) {
 
         }
