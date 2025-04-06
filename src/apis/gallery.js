@@ -28,3 +28,16 @@ export const getAllGalleryImages = async (form) => {
         }
     }
 };
+
+export const getGallery = async (galleryId) => {
+    try {
+        const response = instance.get(`/gallery/${galleryId}`, {headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            console.log("갤러리를 불러오는 데 실패했습니다.");
+        } else {
+            console.log("서버가 응답하지 않습니다.");
+        }
+    }
+};
