@@ -33,7 +33,7 @@ const GalleryPost = () => {
 
     return (
         <>
-            {formData ? 
+            {!formData ? 
                 <S.Wrapper /> :
                 <S.Wrapper>
                     <S.VerticalWrapper>
