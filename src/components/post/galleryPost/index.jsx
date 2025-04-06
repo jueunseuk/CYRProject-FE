@@ -8,23 +8,26 @@ import { formatDate } from "@/util/dateFormatter";
 
 const GalleryPost = () => {
     const {postId} = useParams();
+    const [skeleton, setSkeleton] = useState(true);
     const [formData, setFormData] = useState({
         title: "",
         author: "",
         profileImageUrl: "",
         description: "",
-        picturedAt: "0000.00.00",
+        picturedAt: "",
         imageUrls: []
     });
 
     useEffect(() => {
         const fetchGallery = async () => {
                 try {
+                    setSkeleton(true);
                     const response = await G.getGallery(postId);
-                    console.log(response);
                     setFormData(response.data);
                 } catch(error) {
                     
+                } finally {
+                    setSkeleton(false);
                 }
             };
     
@@ -33,7 +36,7 @@ const GalleryPost = () => {
 
     return (
         <>
-            {!formData ? 
+            {skeleton ? 
                 <S.Wrapper /> :
                 <S.Wrapper>
                     <S.VerticalWrapper>
