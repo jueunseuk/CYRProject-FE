@@ -125,7 +125,8 @@ export const PageButton = styled.div`
     width: 20px;
     height: 20px;
     cursor: pointer;
-    border: ${({$border}) => $border || "0px"} solid black;
+    border: ${({$border}) => $border || "0px"} solid #C6BC73;
+    color: #C6BC73;
     font-weight: ${({$weight}) => $weight || "400"};
 
     &:hover {
