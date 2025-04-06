@@ -58,7 +58,7 @@ const GalleryUpload = ({onClose}) => {
             const formData = new FormData();
             formData.append("title", title);
             formData.append("description", description);
-            formData.append("picturedAt", date);
+            formData.append("picturedAt", `${date}T00:00:00`);
             formData.append("title", title);
             formData.append("type", "CYR");
 
