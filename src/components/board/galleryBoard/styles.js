@@ -107,7 +107,7 @@ export const GalleryItem = styled.div`
     width: 200px;
     height: 200px;
     background-color: black;
-    background-image: url(${props => props.imageUrl});
+    background-image: url(${props => props.$imageUrl});
     background-size: cover;
     background-position: center;
     cursor: pointer;

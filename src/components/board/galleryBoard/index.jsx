@@ -70,25 +70,25 @@ const GalleryBoard = () => {
                 </S.Header>
                 <S.Contour />
                 <S.GalleryArea>
-                    <S.GalleryItem imageUrl={defaultProfile}>
+                    <S.GalleryItem $imageUrl={defaultProfile}>
                         <S.OverlayText $size={"15px"} $weight={"700"}>인스타 스토리에 올라온 율님 셀카</S.OverlayText>
                         <S.OverlayText $size={"12px"} $weight={"300"}>자세히보기</S.OverlayText>
                     </S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
                 </S.GalleryArea>
             </S.Wrapper>
         </>

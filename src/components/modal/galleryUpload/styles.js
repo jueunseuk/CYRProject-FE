@@ -53,7 +53,7 @@ export const InputArea = styled.div`
 
 export const InputTitle = styled.input.attrs({
     type: "text",
-    placeholder: "제목은 간단하게 입력해주세요."
+    placeholder: "제목은 간단하게 입력해주세요. (최소 5자, 최대 15자)"
 })`
     width: 440px;
     height: 40px;
@@ -66,10 +66,9 @@ export const InputTitle = styled.input.attrs({
 `;
 
 export const InputDesc = styled.textarea.attrs({
-    placeholder: "설명은 되도록 자세히 작성해주세요!"
+    placeholder: "설명은 되도록 자세히 작성해주세요! (최소 10자)"
 })`
     width: 440px;
-    height: 40px;
     min-height: 100px;
     font-size: 13px;
     padding: 10px;
@@ -78,6 +77,17 @@ export const InputDesc = styled.textarea.attrs({
     border-radius: 8px;
     resize: vertical;
     outline: none;
+`;
+
+export const InputDate = styled.input.attrs({
+    type: "date"
+})`
+    width: 130px;
+    height: 40px;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
 `;
 
 export const FileArea = styled.div`
@@ -91,16 +101,57 @@ export const FileItem = styled.img`
     width: 80px;
     height: 80px;
     border-radius: 8px;
+    cursor: pointer;
 `;
 
 export const FileUploadButton = styled.div`
     width: 80px;
     height: 80px;
-    background-image: url(${props => props.imageUrl});
+    background-image: url(${props => props.$imageUrl});
     background-size: cover;
     cursor: pointer;
 `;
 
 export const FileInput = styled.input`
     display: none;
+`;
+
+export const SubmitButton = styled.button`
+    align-self: center;
+    width: 330px;
+    height: 40px;
+    background-color: ${({ disabled }) => (disabled ? "#B8B8B8" : "#C6BC73")};
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    margin-top: 20px;
+    cursor: ${({ disabled }) => (disabled ? "" : "pointer")};
+`;
+
+export const TooltipWrapper = styled.div`
+    position: relative;
+    display: inline-block;
+
+    &:hover span {
+        visibility: visible;
+        opacity: 1;
+    }
+`;
+
+export const TooltipText = styled.span`
+    position: absolute;
+    bottom: 150%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: nowrap;
+    z-index: 1;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
 `;
