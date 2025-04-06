@@ -15,6 +15,7 @@ import ResetPassword from "@/pages/auth/resetPassword";
 import HomeLayout from "@/components/layout/HomeLayout";
 import NaverCallback from "@/pages/callback/naverCallback";
 import PostList from "@/pages/posts";
+import Post from "@/components/post/post";
 
 export const RouterList = () => [
     {
@@ -80,8 +81,8 @@ export const RouterList = () => [
                         element: <PostList />
                     },
                     {
-                        path: "post/:postId",
-                        element: <Home />
+                        path: ":subPath/:postId",
+                        element: <Post />
                     },
                     {
                         path: "post/write",
