@@ -66,7 +66,7 @@ const GalleryUpload = ({onClose}) => {
                 formData.append("images", file);
             });
 
-            await G.requestGalleryUpload(formData);
+            await G.getGalleryUpload(formData);
 
             window.location.reload();
         } catch(error) {
