@@ -24,17 +24,17 @@ export const Text = styled.div`
 
 export const ContentArea = styled.div`
     display:flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 5px;
     width: 100%;
-    height: 175px;
+    height: 140px;
+    padding: 10px 0;
 `;
 
-export const Content = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100px;
-    margin-left: 30px;
+export const GalleryItem = styled.img`
+    width: 140px;
+    height: 140px;
+    background-image: url(${props => encodeURI(props.$imageUrl)});
+    cursor: pointer;
+    object-fit: cover;
 `;
-

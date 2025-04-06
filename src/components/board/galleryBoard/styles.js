@@ -127,12 +127,18 @@ export const GalleryItem = styled.div`
     }
 
     &:hover::after {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.65);
     }
 
     &:hover div {
         opacity: 1;
     }
+`;
+
+export const SkeletonItem = styled.div`
+    width: 200px;
+    height: 200px;
+    background-color: #F0F0F0;
 `;
 
 export const OverlayText = styled.div`

@@ -14,6 +14,7 @@ const GalleryBoard = () => {
     const [totalElements, setTotalElements] = useState(0);
     const [images, setImages] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [skeleton, setSkeleton] = useState(true);
 
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
     const boardId = 4;
@@ -34,31 +35,35 @@ const GalleryBoard = () => {
     }
 
     useEffect(() => {
-            const fetchPosts = async () => {
-                try {
-                    const response = await G.getAllGalleryImages({page, sort});
-                    setImages(response.data.content);
-                    setTotalElements(response.data.totalElements);
-                    setTotalPage(response.data.totalPages);
-                } catch(error) {
-                    
-                }
+        const fetchImages = async () => {
+            try {
+                setSkeleton(true);
+                const response = await G.getAllGalleryImages({page, sort});
+                setImages(response.data.content);
+                setTotalElements(response.data.totalElements);
+                setTotalPage(response.data.totalPages);
+            } catch(error) {
+                
+            } finally {
+                setSkeleton(false);
             }
-            fetchPosts();
+        };
+
+        fetchImages();
     }, [page, sort]);
 
     const getPageComponent = () => {
-            const pages = Array.from({length: totalPage}, (_, i) => i+1);
-    
-            return (
-                <>
-                    {pages.map((pageNum) => (
-                            <S.PageButton $weight={page === pageNum-1 ? "700" : "400"} $border={page === pageNum-1 ? "1px" : "0px"} key={pageNum} onClick={() => handleClickPage(pageNum)}>
-                                {pageNum}
-                            </S.PageButton>
-                    ))}
-                </>
-            )
+        const pages = Array.from({length: totalPage}, (_, i) => i+1);
+
+        return (
+            <>
+                {pages.map((pageNum) => (
+                        <S.PageButton $weight={page === pageNum-1 ? "700" : "400"} $border={page === pageNum-1 ? "1px" : "0px"} key={pageNum} onClick={() => handleClickPage(pageNum)}>
+                            {pageNum}
+                        </S.PageButton>
+                ))}
+            </>
+        )
     };
 
     return (
@@ -83,12 +88,21 @@ const GalleryBoard = () => {
                 </S.Header>
                 <S.Contour />
                 <S.GalleryArea>
-                    {images.map((image) => (
-                        <S.GalleryItem key={image.galleryId} $imageUrl={image.galleryImageUrl}>
-                            <S.OverlayText $size={"15px"} $weight={"700"}>{image.galleryTitle}</S.OverlayText>
-                            <S.OverlayText $size={"12px"} $weight={"300"}>자세히보기</S.OverlayText>
-                        </S.GalleryItem>
-                    ))}
+                    {skeleton ? 
+                        (
+                            Array.from({length: 16}).map(() => (
+                                <S.SkeletonItem />
+                            ))
+                        ) :
+                        (
+                            images.map((image) => (
+                                <S.GalleryItem key={image.galleryImageId} $imageUrl={image.imageUrl}>
+                                    <S.OverlayText $size={"15px"} $weight={"700"}>{image.title}</S.OverlayText>
+                                    <S.OverlayText $size={"12px"} $weight={"300"}>자세히보기</S.OverlayText>
+                                </S.GalleryItem>
+                            ))
+                        )
+                    }
                 </S.GalleryArea>
                 <S.PaginationArea>
                     {getPageComponent()}
