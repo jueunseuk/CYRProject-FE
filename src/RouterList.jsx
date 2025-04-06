@@ -77,7 +77,7 @@ export const RouterList = () => [
                         element: <Home />
                     },
                     {
-                        path: "board/:subPath",
+                        path: ":subPath",
                         element: <PostList />
                     },
                     {

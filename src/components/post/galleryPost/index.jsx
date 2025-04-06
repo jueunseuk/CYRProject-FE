@@ -2,12 +2,14 @@ import * as G from "@/apis/gallery";
 import * as S from "./styles";
 import camera from "@/assets/icon/gallery/camera.svg";
 import author from "@/assets/icon/gallery/author.svg";
+import list from "@/assets/icon/gallery/list.svg";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
 
 const GalleryPost = () => {
     const {postId} = useParams();
+    const navigate = useNavigate();
     const [skeleton, setSkeleton] = useState(true);
     const [formData, setFormData] = useState({
         title: "",
@@ -17,6 +19,10 @@ const GalleryPost = () => {
         picturedAt: "",
         imageUrls: []
     });
+
+    const handleNavigateGallery = () => {
+        navigate("/gallery");
+    }
 
     useEffect(() => {
         const fetchGallery = async () => {
@@ -68,6 +74,7 @@ const GalleryPost = () => {
                         </S.ImageArea>
                     </S.Content>
                     </S.VerticalWrapper>
+                    <S.NaviagateButton onClick={handleNavigateGallery}><S.Icon src={list} $width={"13px"} $height={"10px"}/>목록</S.NaviagateButton>
                 </S.Wrapper>
             }
         </>
