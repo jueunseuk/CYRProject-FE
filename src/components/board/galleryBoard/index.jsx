@@ -1,6 +1,6 @@
 import * as G from "@/apis/gallery";
 import * as S from "./styles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { useEffect, useState } from "react";
 import upload from "@/assets/icon/gallery/upload.svg";
@@ -8,6 +8,7 @@ import GalleryUpload from "@/components/modal/galleryUpload";
 
 const GalleryBoard = () => {
     const {subPath} = useParams();
+    const navigate = useNavigate();
     const [page, setPage] = useState(0);
     const [sort, setSort] = useState("createdAt");
     const [totalPage, setTotalPage] = useState(0);
@@ -32,6 +33,10 @@ const GalleryBoard = () => {
 
     const handleClickPage = (pageNum) => {
         setPage(pageNum-1);
+    }
+
+    const handleNavigateGallery = (galleryId) => {
+        navigate(`/gallery/${galleryId}`);
     }
 
     useEffect(() => {
@@ -90,13 +95,13 @@ const GalleryBoard = () => {
                 <S.GalleryArea>
                     {skeleton ? 
                         (
-                            Array.from({length: 16}).map(() => (
-                                <S.SkeletonItem />
+                            Array.from({length: 16}).map((_, idx) => (
+                                <S.SkeletonItem key={idx}/>
                             ))
                         ) :
                         (
                             images.map((image) => (
-                                <S.GalleryItem key={image.galleryImageId} $imageUrl={image.imageUrl}>
+                                <S.GalleryItem key={image.galleryImageId} $imageUrl={image.imageUrl} onClick={() => handleNavigateGallery(image.galleryId)}>
                                     <S.OverlayText $size={"15px"} $weight={"700"}>{image.title}</S.OverlayText>
                                     <S.OverlayText $size={"12px"} $weight={"300"}>자세히보기</S.OverlayText>
                                 </S.GalleryItem>

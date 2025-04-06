@@ -57,7 +57,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px;
     width: 100%;
     gap: 20px;
 `;
@@ -83,4 +83,18 @@ export const ImageArea = styled.div`
 export const ImageItem = styled.img`
     width: 100%;
     object-fit: cover;
+`;
+
+export const NaviagateButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 15px;
+    background-color: #E7E7E7;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
 `;
