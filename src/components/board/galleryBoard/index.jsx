@@ -1,3 +1,4 @@
+import * as G from "@/apis/gallery";
 import * as S from "./styles";
 import { useNavigate, useParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
@@ -12,7 +13,7 @@ const GalleryBoard = () => {
     const [sort, setSort] = useState("createdAt");
     const [totalPage, setTotalPage] = useState(0);
     const [totalElements, setTotalElements] = useState(0);
-    const [posts, setPosts] = useState([]);
+    const [images, setImages] = useState([]);
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,8 +38,8 @@ const GalleryBoard = () => {
     useEffect(() => {
             const fetchPosts = async () => {
                 try {
-                    const response = await P.getAllPosts({page, sort});
-                    setPosts(response.data.content);
+                    const response = await G.getAllGalleryImages({page, sort});
+                    setImages(response.data.content);
                     setTotalElements(response.data.totalElements);
                     setTotalPage(response.data.totalPages);
                 } catch(error) {
@@ -46,7 +47,7 @@ const GalleryBoard = () => {
                 }
             }
             fetchPosts();
-        }, [page, sort, subPath]);
+    }, [page, sort]);
 
     return (
         <>
@@ -70,25 +71,12 @@ const GalleryBoard = () => {
                 </S.Header>
                 <S.Contour />
                 <S.GalleryArea>
-                    <S.GalleryItem $imageUrl={defaultProfile}>
-                        <S.OverlayText $size={"15px"} $weight={"700"}>인스타 스토리에 올라온 율님 셀카</S.OverlayText>
-                        <S.OverlayText $size={"12px"} $weight={"300"}>자세히보기</S.OverlayText>
-                    </S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
-                    <S.GalleryItem $imageUrl={defaultProfile}></S.GalleryItem>
+                    {images.map((image) => (
+                        <S.GalleryItem $imageUrl={image.galleryImageUrl}>
+                            <S.OverlayText $size={"15px"} $weight={"700"}>{image.galleryTitle}</S.OverlayText>
+                            <S.OverlayText $size={"12px"} $weight={"300"}>자세히보기</S.OverlayText>
+                        </S.GalleryItem>
+                    ))}
                 </S.GalleryArea>
             </S.Wrapper>
         </>
