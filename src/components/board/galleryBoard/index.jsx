@@ -1,10 +1,9 @@
 import * as G from "@/apis/gallery";
 import * as S from "./styles";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { useEffect, useState } from "react";
 import upload from "@/assets/icon/gallery/upload.svg";
-import defaultProfile from "@/assets/image/default_profile.jpg";
 import GalleryUpload from "@/components/modal/galleryUpload";
 
 const GalleryBoard = () => {
@@ -14,7 +13,6 @@ const GalleryBoard = () => {
     const [totalPage, setTotalPage] = useState(0);
     const [totalElements, setTotalElements] = useState(0);
     const [images, setImages] = useState([]);
-    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
@@ -49,6 +47,20 @@ const GalleryBoard = () => {
             fetchPosts();
     }, [page, sort]);
 
+    const getPageComponent = () => {
+            const pages = Array.from({length: totalPage}, (_, i) => i+1);
+    
+            return (
+                <>
+                    {pages.map((pageNum) => (
+                            <S.PageButton $weight={page === pageNum-1 ? "700" : "400"} $border={page === pageNum-1 ? "1px" : "0px"} key={pageNum} onClick={() => handleClickPage(pageNum)}>
+                                {pageNum}
+                            </S.PageButton>
+                    ))}
+                </>
+            )
+    };
+
     return (
         <>
             <S.Wrapper>
@@ -72,12 +84,15 @@ const GalleryBoard = () => {
                 <S.Contour />
                 <S.GalleryArea>
                     {images.map((image) => (
-                        <S.GalleryItem $imageUrl={image.galleryImageUrl}>
+                        <S.GalleryItem key={image.galleryId} $imageUrl={image.galleryImageUrl}>
                             <S.OverlayText $size={"15px"} $weight={"700"}>{image.galleryTitle}</S.OverlayText>
                             <S.OverlayText $size={"12px"} $weight={"300"}>자세히보기</S.OverlayText>
                         </S.GalleryItem>
                     ))}
                 </S.GalleryArea>
+                <S.PaginationArea>
+                    {getPageComponent()}
+                </S.PaginationArea>
             </S.Wrapper>
         </>
     )

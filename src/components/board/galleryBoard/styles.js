@@ -51,6 +51,8 @@ export const GalleryUploadButton = styled.button`
     gap: 10px;
     align-items: center;
     justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
     width: 225px;
     height: 30px;
     border: 1px solid #E7E7E7;
@@ -166,7 +168,8 @@ export const PageButton = styled.div`
     width: 20px;
     height: 20px;
     cursor: pointer;
-    border: ${({$border}) => $border || "0px"} solid black;
+    border: ${({$border}) => $border || "0px"} solid #C6BC73;
+    color: #C6BC73;
     font-weight: ${({$weight}) => $weight || "400"};
 
     &:hover {
