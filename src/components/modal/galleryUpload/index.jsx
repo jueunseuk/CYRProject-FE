@@ -68,7 +68,6 @@ const GalleryUpload = ({onClose}) => {
 
             G.requestGalleryUpload(formData);
 
-            onClose();
             window.location.reload();
         } catch(error) {
 
