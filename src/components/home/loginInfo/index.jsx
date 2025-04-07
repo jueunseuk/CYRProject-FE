@@ -45,7 +45,7 @@ const LoginInfo = () => {
         <S.Wrapper>
             <S.Title>내 정보</S.Title>
             <S.ProfileArea>
-                <S.ProfileImage />
+                <S.ProfileImage src={user.profileUrl}/>
                 <S.VerticalWrapper>
                     <S.Text size={"16px"} $weight={"600"}>{user.nickname ? user.nickname : user.name}</S.Text>
                     <S.Text size={"12px"} color={"#878787"}>{formatDate(user.createdAt, 2)}</S.Text>

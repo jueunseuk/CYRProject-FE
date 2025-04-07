@@ -7,7 +7,7 @@ const Board = () => {
     const navigate = useNavigate();
 
     const handleNavigateBoard = (path) => {
-        navigate(`/board${path}`);
+        navigate(`${path}`);
     }
 
     return (

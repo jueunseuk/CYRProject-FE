@@ -38,6 +38,7 @@ export const Profile = styled.img`
     height: 35px;
     border-radius: 35px;
     cursor: pointer;
+    object-fit: cover;
 `;
 
 export const Icon = styled.img`

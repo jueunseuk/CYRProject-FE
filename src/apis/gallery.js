@@ -16,6 +16,19 @@ export const getGalleryUpload = async (formData) => {
     }
 };
 
+export const getGalleryUpdate = async (galleryId, formData) => {
+    try {
+        const response = await instance.patch(`/gallery/${galleryId}`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        alert("갤러리 수정 성공!");
+        return response;
+    } catch (error) {
+        alert("갤러리 수정 실패!");
+        throw error;
+    }
+};
+
 export const getAllGalleryImages = async (form) => {
     try {
         const response = axios.get(`${backendUrl}/gallery`, {params: form, headers: {Accept: "application/json"}});
@@ -41,3 +54,15 @@ export const getGallery = async (galleryId) => {
         }
     }
 };
+
+export const deleteGallery = async (galleryId) => {
+    try {
+        instance.delete(`/gallery/${galleryId}`, {headers: {Accept: "application/json"}});
+    } catch(error) {
+        if(error.response && error.response.data) {
+            console.log("갤러리를 삭제하는 데 실패했습니다.");
+        } else {
+            console.log("서버가 응답하지 않습니다.");
+        }
+    }
+}

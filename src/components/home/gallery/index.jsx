@@ -8,7 +8,11 @@ const GallerySummary = () => {
     const [images, setImages] = useState([]);
 
     const handleNavigateGallery = () => {
-        navigate("/board/gallery");
+        navigate("/gallery");
+    }
+
+    const handleNavigateGalleryPost = (galleryId) => {
+        navigate(`/gallery/${galleryId}`);
     }
 
     useEffect(() => {
@@ -32,7 +36,12 @@ const GallerySummary = () => {
                 </S.TitleArea>
                 <S.ContentArea>
                     {images.slice(0, 6).map((image) => (
-                        <S.GalleryItem key={image.galleryImageId} src={encodeURI(image.imageUrl)} loading="lazy"/>
+                        <S.GalleryItem
+                            key={image.galleryImageId}
+                            src={encodeURI(image.imageUrl)}
+                            loading="lazy"
+                            onClick={() => handleNavigateGalleryPost(image.galleryId)}
+                        />
                     ))}
                 </S.ContentArea>
             </S.Wrapper>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import profile from "@/assets/image/default_profile.jpg";
 
 export const Wrapper = styled.div`
     display: flex;
@@ -25,12 +24,12 @@ export const ProfileArea = styled.div`
 `;
 
 export const ProfileImage = styled.img.attrs({
-    src: profile,
     alt: "Profile Image"
 })`
     width: 70px;
     height: 70px;
     border-radius: 50px;
+    object-fit: cover;
 `;
 
 export const VerticalWrapper = styled.div`
