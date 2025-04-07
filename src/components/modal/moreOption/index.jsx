@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import PostDeleteModal from "@/components/modal/postDelete";
 import GalleryUpdate from "@/components/modal/galleryUpdate";
+import more from "@/assets/icon/gallery/more.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -36,7 +37,7 @@ const MoreOption = ({formData}) => {
             {isDeleteModalOpen && <PostDeleteModal onClose={handleCloseModal} galleryId={formData.galleryId}/>}
             {isEditModalOpen && <GalleryUpdate onClose={handleCloseModal} prevData={formData}/>}
             <S.MoreOptionWrapper>
-                <S.MoreIcon onClick={handleOpenOption}>
+                <S.MoreIcon onClick={handleOpenOption} $more={more}>
                     {isOptionOpen && (
                         <S.OptionBox>
                             <S.OptionButton onClick={handleEditGallery}>수정</S.OptionButton>
