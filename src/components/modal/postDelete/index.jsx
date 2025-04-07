@@ -19,7 +19,7 @@ const PostDeleteModal = ({onClose, galleryId}) => {
                 <S.Content>
                     <S.Text $size={"20px"} $weight={"600"}>정말로 해당 게시글을 삭제하시겠습니까?</S.Text>
                     <S.HorizontalWrapper>
-                        <S.Button $bg={"#FF3838"} onClick={handleDeleteGallery}>삭제</S.Button>
+                        <S.Button $bg={"#FF3838"} style={{color: "white"}} onClick={handleDeleteGallery}>삭제</S.Button>
                         <S.Button $bg={"#E7E7E7"} onClick={onClose}>취소</S.Button>
                     </S.HorizontalWrapper>
                 </S.Content>

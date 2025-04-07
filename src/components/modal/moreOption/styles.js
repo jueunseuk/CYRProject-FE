@@ -1,13 +1,10 @@
 import styled from "styled-components";
 
 export const MoreOptionWrapper = styled.div`
+    position: relative;
 `;
 
-export const MoreIcon = styled.div`
-    position: relative;
-    background-image: ${({ $more }) => `url(${$more})`};
-    background-repeat: no-repeat;
-    background-position: center;
+export const MoreIcon = styled.img`
     width: 16px;
     height: 16px;
     cursor: pointer;
