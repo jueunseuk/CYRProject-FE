@@ -18,7 +18,7 @@ export const getGalleryUpload = async (formData) => {
 
 export const getGalleryUpdate = async (galleryId, formData) => {
     try {
-        const response = await instance.patch(`/gallery/${galleryId}`, formData, {
+        const response = await instance.put(`/gallery/${galleryId}`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         alert("갤러리 수정 성공!");
