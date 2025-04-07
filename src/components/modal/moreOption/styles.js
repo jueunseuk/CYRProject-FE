@@ -5,13 +5,12 @@ export const MoreOptionWrapper = styled.div`
 
 export const MoreIcon = styled.div`
     position: relative;
-    background-image: url(${({ $more }) => $more});
+    background-image: ${({ $more }) => `url(${$more})`};
     background-repeat: no-repeat;
     background-position: center;
     width: 16px;
     height: 16px;
     cursor: pointer;
-    z-index: 1000;
 `;
 
 export const OptionBox = styled.div`
