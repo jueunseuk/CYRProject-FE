@@ -37,15 +37,14 @@ const MoreOption = ({formData}) => {
             {isDeleteModalOpen && <PostDeleteModal onClose={handleCloseModal} galleryId={formData.galleryId}/>}
             {isEditModalOpen && <GalleryUpdate onClose={handleCloseModal} prevData={formData}/>}
             <S.MoreOptionWrapper>
-                <S.MoreIcon onClick={handleOpenOption} $more={more}>
-                    {isOptionOpen && (
-                        <S.OptionBox>
-                            <S.OptionButton onClick={handleEditGallery}>수정</S.OptionButton>
-                            <S.OptionButton onClick={handleDeleteGallery}>삭제</S.OptionButton>
-                            <S.OptionButton onClick={handleComplaintGallery}>게시글 신고</S.OptionButton>
-                        </S.OptionBox>
-                    )}
-                </S.MoreIcon>
+                <S.MoreIcon onClick={handleOpenOption} src={more} />
+                {isOptionOpen && (
+                    <S.OptionBox>
+                        <S.OptionButton onClick={handleEditGallery}>수정</S.OptionButton>
+                        <S.OptionButton onClick={handleDeleteGallery}>삭제</S.OptionButton>
+                        <S.OptionButton onClick={handleComplaintGallery}>게시글 신고</S.OptionButton>
+                    </S.OptionBox>
+                )}
             </S.MoreOptionWrapper>
         </>
     );
