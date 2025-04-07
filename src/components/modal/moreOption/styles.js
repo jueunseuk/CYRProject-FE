@@ -11,6 +11,7 @@ export const MoreIcon = styled.div`
     width: 16px;
     height: 16px;
     cursor: pointer;
+    z-index: 1000;
 `;
 
 export const OptionBox = styled.div`
