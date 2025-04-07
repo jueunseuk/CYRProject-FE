@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import more from "@/assets/icon/gallery/more.svg";
 
 export const MoreOptionWrapper = styled.div`
 `;
 
 export const MoreIcon = styled.div`
     position: relative;
-    background-image: url(${more});
+    background-image: url(${({ $more }) => $more});
     background-repeat: no-repeat;
     background-position: center;
     width: 16px;
