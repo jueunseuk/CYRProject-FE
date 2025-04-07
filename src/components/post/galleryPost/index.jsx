@@ -3,7 +3,6 @@ import * as S from "./styles";
 import camera from "@/assets/icon/gallery/camera.svg";
 import author from "@/assets/icon/gallery/author.svg";
 import list from "@/assets/icon/gallery/list.svg";
-import more from "@/assets/icon/gallery/more.svg";
 import MoreOption from "@/components/modal/moreOption";
 import useUserInfo from "@/hooks/localStorage";
 import { useEffect, useState } from "react";
@@ -54,7 +53,7 @@ const GalleryPost = () => {
                         <S.Text $size={"14px"} style={{cursor: "pointer"}} onClick={handleNavigateGallery}>유리 갤러리 &gt;</S.Text>
                         <S.HorizontalWrapper $justify={"space-between"} style={{width: "100%"}}>
                             <S.Text $size={"18px"} $weight={"700"} style={{marginTop: "1px"}}>{formData.title}</S.Text>
-                            {user.userId === formData.authorId ? (<MoreOption />) : ""}
+                            {user.userId === formData.authorId ? (<MoreOption formData={formData}/>) : ""}
                         </S.HorizontalWrapper>
                         <S.HorizontalWrapper $gap={"15px"} style={{marginTop: "10px"}}>
                             <S.Profile src={formData.profileImageUrl}/>
