@@ -22,7 +22,7 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 35px;
 `;
 
 export const HorizontalWrapper = styled.div`

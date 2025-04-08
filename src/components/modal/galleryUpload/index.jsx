@@ -8,6 +8,9 @@ import { useRef, useState } from "react";
 
 const MAX_SIZE = 10 * 1024 * 1024;
 const MAX_FILES = 10;
+const now = new Date();
+const pad = (n) => n.toString().padStart(2, '0');
+const today = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 
 const GalleryUpload = ({onClose}) => {
     const fileInputRef = useRef(null);
@@ -15,7 +18,7 @@ const GalleryUpload = ({onClose}) => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState(today);
 
     const handleClickFileUpload = () => {
         fileInputRef.current.click();
@@ -121,7 +124,7 @@ const GalleryUpload = ({onClose}) => {
                         <S.HorizontalWrapper>
                             <S.Text $size={"16px"} $weight={"700"}>촬영일</S.Text>
                         </S.HorizontalWrapper>
-                        <S.InputDate value={date} onChange={(e) => setDate(e.target.value)}></S.InputDate>
+                        <S.InputDate value={date} max={today} onChange={(e) => setDate(e.target.value)}></S.InputDate>
                     </S.InputArea>
                     <S.SubmitButton disabled={uploadedFiles.length === 0 ||
                         title.length < 5 ||
