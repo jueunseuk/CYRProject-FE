@@ -13,6 +13,7 @@ const GalleryUpdate = ({onClose, prevData}) => {
     const fileInputRef = useRef(null);
     const [imagePreviews, setImagePreviews] = useState(prevData?.imageUrls || []);
     const [uploadedFiles, setUploadedFiles] = useState(prevData?.imageUrls || []);
+    const [newUploadFiles, setNewUploadFiles] = useState([]);
     const [title, setTitle] = useState(prevData?.title || "");
     const [description, setDescription] = useState(prevData?.description || "");
     const [date, setDate] = useState(prevData?.picturedAt.split("T")[0] || "");
@@ -22,9 +23,19 @@ const GalleryUpdate = ({onClose, prevData}) => {
     }
 
     const handleRemoveFile = (index) => {
-        setImagePreviews((prev) =>
-            prev.filter((_, i) => i !== index)
-        );
+        const total = [...uploadedFiles, ...newUploadFiles.map(file => URL.createObjectURL(file))];
+        const removed = total[index];
+    
+        if (uploadedFiles.includes(removed)) {
+            setUploadedFiles(uploadedFiles.filter(url => url !== removed));
+        } else {
+            const fileIndex = index - uploadedFiles.length;
+            const updatedFiles = [...newUploadFiles];
+            updatedFiles.splice(fileIndex, 1);
+            setNewUploadFiles(updatedFiles);
+        }
+    
+        setImagePreviews(imagePreviews.filter((_, i) => i !== index));
     };
 
     const handleImageChange = (event) => {
@@ -38,22 +49,22 @@ const GalleryUpdate = ({onClose, prevData}) => {
         const previews = [];
     
         selectedFiles.forEach((file) => {
-          if (file.size > MAX_SIZE) {
-            alert(`${file.name}의 크기가 너무 큽니다.`);
-            return;
-          }
-    
-          validFiles.push(file);
-          previews.push(URL.createObjectURL(file));
+            if (file.size > MAX_SIZE) {
+                alert(`${file.name}의 크기가 너무 큽니다.`);
+                return;
+            }
+        
+            validFiles.push(file);
+            previews.push(URL.createObjectURL(file));
         });
     
-        setUploadedFiles((prev) => [...prev, ...validFiles]);
+        setNewUploadFiles((prev) => [...prev, ...validFiles]);
         setImagePreviews((prev) => [...prev, ...previews]);
     
         event.target.value = "";
     };
 
-    const requestGalleryUpload = async () => {
+    const requestGalleryUpdate = async () => {
         try {
             const formData = new FormData();
             formData.append("title", title);
@@ -61,7 +72,11 @@ const GalleryUpdate = ({onClose, prevData}) => {
             formData.append("picturedAt", `${date}T00:00:00`);
             formData.append("type", "CYR");
 
-            uploadedFiles.forEach((file) => {
+            uploadedFiles.forEach(url => {
+                formData.append("originalImages", url);
+            });
+
+            newUploadFiles.forEach((file) => {
                 formData.append("images", file);
             });
 
@@ -128,7 +143,7 @@ const GalleryUpdate = ({onClose, prevData}) => {
                         title.length > 15 ||
                         description.length < 10 ||
                         date.length === 0}
-                        onClick={requestGalleryUpload}
+                        onClick={requestGalleryUpdate}
                     >수정하기</S.SubmitButton>
                 </S.Content>
             </S.Wrapper>
