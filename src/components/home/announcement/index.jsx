@@ -1,6 +1,32 @@
+import * as P from "@/apis/post";
 import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { formatDate } from "@/util/dateFormatter";
 
 const AnnouncementSummary = () => {
+    const page = 0;
+    const sort = "createdAt";
+    const boardId = 5;
+    const [posts, setPosts] = useState([]);
+    const navigate = useNavigate();
+
+    const handleNavigatePost = (pageNum) => {
+
+    }
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const response = await P.getBoardPosts({page, sort, boardId});
+                setPosts(response.data.content);
+            } catch(error) {
+                
+            }
+        }
+        fetchPosts();
+    }, []);
+
     return (
         <>
             <S.Wrapper>
@@ -9,37 +35,30 @@ const AnnouncementSummary = () => {
                     <S.Text $size={"12px"} style={{cursor: "pointer"}}>더보기</S.Text>
                 </S.TitleArea>
                 <S.Table>
+                    <colgroup>
+                        <col style={{ width: "15%" }} />
+                        <col style={{ width: "51%" }} />
+                        <col style={{ width: "12%" }} />
+                        <col style={{ width: "12%" }} />
+                        <col style={{ width: "10%" }} />
+                    </colgroup>
                     <tbody>
-                        <S.FirstRow>
-                            <S.FirstColumn $align={"left"}><S.Text>[공지] 외로움이라는 건 정규 발매 기념 카세트 판매 안내</S.Text></S.FirstColumn>
-                            <S.Column><S.Text>최유리 공식 팬카페</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>2025.04.12</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>5,312</S.Text></S.Column>
+                        <S.FirstRow key={posts[0]?.postId}>
+                            <S.FirstColumn><S.Text>[{posts[0]?.boardKorean}]</S.Text></S.FirstColumn>
+                            <S.Column $align={"left"}><S.Text>{posts[0]?.title}</S.Text></S.Column>
+                            <S.Column $align={"left"}><S.Text>{posts[0]?.userNickname}</S.Text></S.Column>
+                            <S.Column><S.Text $color={"#878787"}>{formatDate(posts[0]?.createdAt, 3)}</S.Text></S.Column>
+                            <S.Column><S.Text $color={"#878787"}>{posts[0]?.viewCnt}</S.Text></S.Column>
                         </S.FirstRow>
-                        <S.Row>
-                            <S.FirstColumn $align={"left"}><S.Text>[공지] 최유리 - 다비치 EP [Stitch] 참여</S.Text></S.FirstColumn>
-                            <S.Column><S.Text>최유리 공식 팬카페</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>2025.04.01</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>3,175</S.Text></S.Column>
-                        </S.Row>
-                        <S.Row>
-                            <S.FirstColumn $align={"left"}><S.Text>[공지] 2025.03.28 ~ 29 커뮤니티 점검 및 서비스 일시 중지 안내</S.Text></S.FirstColumn>
-                            <S.Column><S.Text>커뮤니티 운영자</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>2025.03.24</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>2,465</S.Text></S.Column>
-                        </S.Row>
-                        <S.Row>
-                            <S.FirstColumn $align={"left"}><S.Text>[공지] 최유리 첫번째 정규 앨범 [746] CD 및 LP 예약 판매 안내</S.Text></S.FirstColumn>
-                            <S.Column><S.Text>최유리 공식 팬카페</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>2025.02.28</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>5,104</S.Text></S.Column>
-                        </S.Row>
-                        <S.Row>
-                            <S.FirstColumn $align={"left"}><S.Text>[공지] 최유리 - 단독 콘서트 ‘생각을 멈추다 보면’ 드레스 코드 및 유의사항 안내</S.Text></S.FirstColumn>
-                            <S.Column><S.Text>최유리 공식 팬카페</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>2025.02.15</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>3,943</S.Text></S.Column>
-                        </S.Row>
+                        {posts.slice(1, 15).map((post) => (
+                            <S.Row key={post.postId}>
+                                <S.FirstColumn><S.Text>[{post.boardKorean}]</S.Text></S.FirstColumn>
+                                <S.Column $align={"left"}><S.Text>{post.title}</S.Text></S.Column>
+                                <S.Column $align={"left"}><S.Text>{post.userNickname}</S.Text></S.Column>
+                                <S.Column><S.Text $color={"#878787"}>{formatDate(post.createdAt, 3)}</S.Text></S.Column>
+                                <S.Column><S.Text $color={"#878787"}>{post.viewCnt}</S.Text></S.Column>
+                            </S.Row>
+                        ))}
                     </tbody>
                 </S.Table>
             </S.Wrapper>
