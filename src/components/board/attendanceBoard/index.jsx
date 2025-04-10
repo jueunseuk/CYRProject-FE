@@ -25,6 +25,7 @@ const AttendanceBoard = () => {
         friday: 0,
         saturday: 0
     });
+    const [attendances, setAttendances] = useState([]);
 
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
     const boardId = 3;
@@ -41,7 +42,7 @@ const AttendanceBoard = () => {
 
     const handleClickAttendance = async () => {
         if(!comment || comment.trim() === "") {
-            alert("출석 코멘트를 입력해주세요!");
+            alert("내용을 입력해주세요!");
             return;
         }
 
@@ -62,6 +63,19 @@ const AttendanceBoard = () => {
             }
         }
         fetchCnt();
+    }, []);
+
+    useEffect(() => {
+        const fetchAttendance = async () => {
+            try {
+                const response = await A.requestAttendanceList();
+                setAttendances(response.data);
+                console.log(attendances);
+            } catch(error) {
+
+            }
+        }
+        fetchAttendance();
     }, []);
 
     return (
@@ -142,106 +156,28 @@ const AttendanceBoard = () => {
                         <S.Text $color={"#878787"} $size={"11px"}>출석과 함께 하고 싶은 말을 남겨보세요! 매일 출석하면 경험치를 얻을 수 있습니다.</S.Text>
                     </S.AttendanceArea>
 
-                    <S.AttendanceBlock>
-                        <S.UserProfile src={defaultProfile}/>
-                        <S.ContentBox>
-                            <S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={pencil} />
-                                    <S.Text $weight={"700"}>말랑준듀</S.Text>
+                    {attendances.map((attendance, idx) => (
+                        <S.AttendanceBlock key={idx}>
+                            <S.UserProfile src={attendance.profileImageUrl}/>
+                            <S.ContentBox>
+                                <S.HorizontalWrapper>
+                                    <S.HorizontalWrapper $gap={"5px"}>
+                                        <S.IconArea src={pencil} />
+                                        <S.Text $weight={"700"}>{attendance.userNickname}</S.Text>
+                                    </S.HorizontalWrapper>
+                                    <S.HorizontalWrapper $gap={"5px"}>
+                                        <S.IconArea src={clock} />
+                                        <S.Text $color={"#878787"} $size={"12px"}>{formatDate(attendance.createdAt, 6)}</S.Text>
+                                    </S.HorizontalWrapper>
+                                    <S.HorizontalWrapper $gap={"5px"}>
+                                        <S.IconArea src={attendanceBlack} />
+                                        <S.Text $size={"12px"}>{attendance.attendanceCnt}</S.Text>
+                                    </S.HorizontalWrapper>
                                 </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={clock} />
-                                    <S.Text $color={"#878787"} $size={"12px"}>15:24:38</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={attendanceBlack} />
-                                    <S.Text $size={"12px"}>162</S.Text>
-                                </S.HorizontalWrapper>
-                            </S.HorizontalWrapper>
-                            <S.AttendanceTextBox>오늘도 출석 성공!! 연속 100일 가즈아~!</S.AttendanceTextBox>
-                        </S.ContentBox>
-                    </S.AttendanceBlock>
-                    <S.AttendanceBlock>
-                        <S.UserProfile src={defaultProfile}/>
-                        <S.ContentBox>
-                            <S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={pencil} />
-                                    <S.Text $weight={"700"}>말랑준듀</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={clock} />
-                                    <S.Text $color={"#878787"} $size={"12px"}>15:24:38</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={attendanceBlack} />
-                                    <S.Text $size={"12px"}>162</S.Text>
-                                </S.HorizontalWrapper>
-                            </S.HorizontalWrapper>
-                            <S.AttendanceTextBox>오늘도 출석 성공!! 연속 100일 가즈아~!</S.AttendanceTextBox>
-                        </S.ContentBox>
-                    </S.AttendanceBlock>
-                    <S.AttendanceBlock>
-                        <S.UserProfile src={defaultProfile}/>
-                        <S.ContentBox>
-                            <S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={pencil} />
-                                    <S.Text $weight={"700"}>말랑준듀</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={clock} />
-                                    <S.Text $color={"#878787"} $size={"12px"}>15:24:38</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={attendanceBlack} />
-                                    <S.Text $size={"12px"}>162</S.Text>
-                                </S.HorizontalWrapper>
-                            </S.HorizontalWrapper>
-                            <S.AttendanceTextBox>오늘도 출석 성공!! 연속 100일 가즈아~!</S.AttendanceTextBox>
-                        </S.ContentBox>
-                    </S.AttendanceBlock>
-                    <S.AttendanceBlock>
-                        <S.UserProfile src={defaultProfile}/>
-                        <S.ContentBox>
-                            <S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={pencil} />
-                                    <S.Text $weight={"700"}>말랑준듀</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={clock} />
-                                    <S.Text $color={"#878787"} $size={"12px"}>15:24:38</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={attendanceBlack} />
-                                    <S.Text $size={"12px"}>162</S.Text>
-                                </S.HorizontalWrapper>
-                            </S.HorizontalWrapper>
-                            <S.AttendanceTextBox>오늘도 출석 성공!! 연속 100일 가즈아~!</S.AttendanceTextBox>
-                        </S.ContentBox>
-                    </S.AttendanceBlock>
-                    <S.AttendanceBlock>
-                        <S.UserProfile src={defaultProfile}/>
-                        <S.ContentBox>
-                            <S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={pencil} />
-                                    <S.Text $weight={"700"}>말랑준듀</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={clock} />
-                                    <S.Text $color={"#878787"} $size={"12px"}>15:24:38</S.Text>
-                                </S.HorizontalWrapper>
-                                <S.HorizontalWrapper $gap={"5px"}>
-                                    <S.IconArea src={attendanceBlack} />
-                                    <S.Text $size={"12px"}>162</S.Text>
-                                </S.HorizontalWrapper>
-                            </S.HorizontalWrapper>
-                            <S.AttendanceTextBox>오늘도 출석 성공!! 연속 100일 가즈아~!</S.AttendanceTextBox>
-                        </S.ContentBox>
-                    </S.AttendanceBlock>
+                                <S.AttendanceTextBox>{attendance.comment}</S.AttendanceTextBox>
+                            </S.ContentBox>
+                        </S.AttendanceBlock>
+                    ))}
                 </S.VerticalWrapper>
             </S.Wrapper>
         </>

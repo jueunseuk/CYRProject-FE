@@ -10,12 +10,12 @@ export const requestAttendance = async (data) => {
         alert("출석 완료!");
     } catch(error) {
         if(error.response && error.response.data) {
-            const errorCode = error.response.code;
-
+            const errorCode = error.response.data.code;
+            
             if(errorCode === 'ATT_001') {
                 alert("오늘 이미 출석을 완료했습니다!");
             } else if(errorCode === 'ATT_002') {
-                alert("출석 코멘트를 작성해주세요!");
+                alert("내용을 작성해주세요!");
             }
 
             throw error;
