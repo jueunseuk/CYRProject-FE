@@ -136,7 +136,9 @@ export const AttendanceBlock = styled.div`
 export const UserProfile = styled.img`
     width: 50px;
     heigth: 50px;
+    max-height: 50px;
     border-radius: 50px;
+    object-fit: cover;
 `;
 
 export const ContentBox = styled.div`
