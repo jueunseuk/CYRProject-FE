@@ -6,7 +6,7 @@ import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { formatDate } from "@/util/dateFormatter";
 import { getEmpathyColor } from "@/util/empathySelector";
 
-const CoverBoard = () => {
+const LetterBoard = () => {
     const {subPath} = useParams();
     const [page, setPage] = useState(0);
     const [totalPage, setTotalPage] = useState(0);
@@ -106,4 +106,4 @@ const CoverBoard = () => {
     )
 }
 
-export default CoverBoard;
+export default LetterBoard;

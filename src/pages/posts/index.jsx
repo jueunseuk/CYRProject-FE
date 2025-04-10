@@ -24,6 +24,7 @@ import ComplaintBoard from "@/components/board/complaintBoard";
 import ApplyBoard from "@/components/board/applyBoard";
 import AttendanceBoard from "@/components/board/attendanceBoard";
 import GalleryBoard from "@/components/board/galleryBoard";
+import AnnouncementBoard from "@/components/board/announcementBoard";
 
 const PostList = () => {
     const user = useUserInfo();
@@ -35,7 +36,7 @@ const PostList = () => {
             case "popular": return <PopularBoard />;
             case "attendance": return <AttendanceBoard />;
             case "gallery": return <GalleryBoard />;
-            case "announcement": return <NewBoard />;
+            case "announcement": return <AnnouncementBoard />;
             case "event": return <NewBoard />;
             case "calendar": return <NewBoard />;
             case "poll": return <NewBoard />;
