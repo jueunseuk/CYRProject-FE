@@ -43,13 +43,15 @@ const AnnouncementSummary = () => {
                         <col style={{ width: "10%" }} />
                     </colgroup>
                     <tbody>
-                        <S.FirstRow key={posts[0]?.postId}>
-                            <S.FirstColumn><S.Text>[{posts[0]?.boardKorean}]</S.Text></S.FirstColumn>
-                            <S.Column $align={"left"}><S.Text>{posts[0]?.title}</S.Text></S.Column>
-                            <S.Column $align={"left"}><S.Text>{posts[0]?.userNickname}</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>{formatDate(posts[0]?.createdAt, 3)}</S.Text></S.Column>
-                            <S.Column><S.Text $color={"#878787"}>{posts[0]?.viewCnt}</S.Text></S.Column>
-                        </S.FirstRow>
+                        {posts &&
+                            <S.FirstRow key={posts[0]?.postId}>
+                                <S.FirstColumn><S.Text>{posts.length > 0 ? `[${posts[0].boardKorean}]` : ""}</S.Text></S.FirstColumn>
+                                <S.Column $align={"left"}><S.Text>{posts[0]?.title}</S.Text></S.Column>
+                                <S.Column $align={"left"}><S.Text>{posts[0]?.userNickname}</S.Text></S.Column>
+                                <S.Column><S.Text $color={"#878787"}>{formatDate(posts[0]?.createdAt, 3)}</S.Text></S.Column>
+                                <S.Column><S.Text $color={"#878787"}>{posts[0]?.viewCnt}</S.Text></S.Column>
+                            </S.FirstRow>
+                        }
                         {posts.slice(1, 15).map((post) => (
                             <S.Row key={post.postId}>
                                 <S.FirstColumn><S.Text>[{post.boardKorean}]</S.Text></S.FirstColumn>
