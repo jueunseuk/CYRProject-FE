@@ -50,7 +50,7 @@ export const HorizontalWrapper = styled.div`
 
 export const TextBox = styled.div`
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 700;
     color: #B3A225;
     padding: 7px 13px;
     background-color: #F4F3E9;
