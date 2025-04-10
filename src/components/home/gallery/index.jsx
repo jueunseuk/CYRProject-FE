@@ -2,16 +2,23 @@ import * as G from "@/apis/gallery";
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useUserInfo from "@/hooks/localStorage";
 
 const GallerySummary = () => {
     const navigate = useNavigate();
     const [images, setImages] = useState([]);
+    const user = useUserInfo();
 
     const handleNavigateGallery = () => {
         navigate("/gallery");
     }
 
     const handleNavigateGalleryPost = (galleryId) => {
+        if (!user || !user.userId) {
+            alert("로그인 후 이용가능합니다.");
+            return;
+        }
+        
         navigate(`/gallery/${galleryId}`);
     }
 
