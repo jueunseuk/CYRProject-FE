@@ -163,3 +163,14 @@ export const AttendanceTextBox = styled.div`
     font-size: 12px;
     font-weight: 500;
 `;
+
+export const NoAttendanceWrapper = styled.div`
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+`;

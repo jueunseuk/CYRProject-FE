@@ -48,6 +48,7 @@ const AttendanceBoard = () => {
 
         try {
             await A.requestAttendance(comment);
+            window.location.reload();
         } catch(error) {
 
         }
@@ -156,7 +157,12 @@ const AttendanceBoard = () => {
                         <S.Text $color={"#878787"} $size={"11px"}>출석과 함께 하고 싶은 말을 남겨보세요! 매일 출석하면 경험치를 얻을 수 있습니다.</S.Text>
                     </S.AttendanceArea>
 
-                    {attendances.map((attendance, idx) => (
+                    {attendances.length === 0 ? (
+                        <S.NoAttendanceWrapper>
+                            <S.Text $color={"#878787"} $size={"16px"}>아직 출석한 사람이 없어요..</S.Text>
+                            <S.Text $color={"#878787"} $size={"16px"}>어서 첫번째 출석 도장을 찍어보세요!</S.Text>
+                        </S.NoAttendanceWrapper>
+                    ) : (attendances.map((attendance, idx) => (
                         <S.AttendanceBlock key={idx}>
                             <S.UserProfile src={attendance.profileImageUrl}/>
                             <S.ContentBox>
@@ -177,7 +183,7 @@ const AttendanceBoard = () => {
                                 <S.AttendanceTextBox>{attendance.comment}</S.AttendanceTextBox>
                             </S.ContentBox>
                         </S.AttendanceBlock>
-                    ))}
+                    )))}
                 </S.VerticalWrapper>
             </S.Wrapper>
         </>
