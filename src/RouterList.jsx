@@ -16,6 +16,7 @@ import HomeLayout from "@/components/layout/HomeLayout";
 import NaverCallback from "@/pages/callback/naverCallback";
 import PostList from "@/pages/posts";
 import Post from "@/components/post/post";
+import FooterPage from "@/pages/footerPage";
 
 export const RouterList = () => [
     {
@@ -87,6 +88,24 @@ export const RouterList = () => [
                     {
                         path: "post/write",
                         element: <Home />
+                    },
+
+                    // footer
+                    {
+                        path: "terms",
+                        element: <FooterPage />
+                    },
+                    {
+                        path: "guide",
+                        element: <FooterPage />
+                    },
+                    {
+                        path: "policy",
+                        element: <FooterPage />
+                    },
+                    {
+                        path: "about",
+                        element: <FooterPage />
                     },
                 ]
             },

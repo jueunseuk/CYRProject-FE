@@ -20,5 +20,6 @@ export const Text = styled.span`
 
     &:hover {
         text-decoration: underline;
+        font-weight: 500;
     }
 `;
