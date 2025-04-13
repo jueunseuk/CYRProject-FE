@@ -9,13 +9,19 @@ export const Wrapper = styled.div`
 
 export const TitleArea = styled.div`
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     gap: 5px;
     padding: 5px 10px;
     height: 24px;
     border-bottom: 2px solid black;
     cursor: default;
+`;
+
+export const ListArea = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
 `;
 
 export const Text = styled.div`
@@ -32,39 +38,27 @@ export const GradientText = styled.span`
   font-size: ${({$size}) => $size};
 `;
 
-export const CotentWrapper = styled.div`
-    display: flex;
-    gap: ${({$gap}) => $gap || "0"};
-    justify-content: ${({$justify}) => $justify || "space-between"};
-    align-items: ${({$align}) => $align || "center"};
-    width: 100%;
-    height: 175px;
-`;
-
 export const Content = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: ${({$gap}) => $gap || "5px"};
-    justify-content: ${({$justify}) => $justify || "flex-start"};
-    align-items: ${({$align}) => $align || "center"};
+    gap: 25px;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
     height: 175px;
-    padding: 10px 0 0 0;
+    padding: 10px;
 `;
 
 export const PresentImage = styled.img`
-    width: 45px;
-    heigth: 45px;
-    border-radius: 45px;
+    border-radius: 30px;
 `;
 
 export const LinkList = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
     width: 100%;
-    gap: 3px;
+    height: 100%;
+    gap: 5px;
 `;
 
 export const ItemArea = styled.div`
