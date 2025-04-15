@@ -2,6 +2,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import LoginBackGround from "@/pages/BackGround/LoginBackGround";
 import DefaultBackGround from "@/pages/BackGround/DefaultBackGround";
+import BoardBackGround from "@/pages/BackGround/BoardBackGround";
 import Home from "@/pages/home";
 import SignupLayout from "@/components/layout/SignupLayout";
 import EmailVerify from "@/pages/auth/emailVerify";
@@ -79,11 +80,18 @@ export const RouterList = () => [
                     },
                     {
                         path: ":subPath",
-                        element: <PostList />
-                    },
-                    {
-                        path: ":subPath/:postId",
-                        element: <Post />
+                        element: <BoardBackGround />,
+                        children: [
+                            {
+                                path: "",
+                                element: <PostList />
+                            },
+                            {
+                                path: ":postId",
+                                element: <Post />
+                            },
+                        ]
+
                     },
                     {
                         path: "post/write",

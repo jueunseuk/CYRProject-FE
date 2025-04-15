@@ -17,6 +17,7 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     gap: 50px;
     width: 865px;
+    background-color: blue;
 `;
 
 export const Contour = styled.div`
