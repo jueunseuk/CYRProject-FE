@@ -18,6 +18,7 @@ import NaverCallback from "@/pages/callback/naverCallback";
 import PostList from "@/pages/posts";
 import Post from "@/components/post/post";
 import FooterPage from "@/pages/footerPage";
+import Editor from "@/pages/editor";
 
 export const RouterList = () => [
     {
@@ -94,8 +95,8 @@ export const RouterList = () => [
 
                     },
                     {
-                        path: "post/write",
-                        element: <Home />
+                        path: "write/:type",
+                        element: <Editor />
                     },
 
                     // footer
