@@ -44,11 +44,25 @@ export const getBoardPosts = async (form) => {
 
 export const getPost = async (form, config = {}) => {
     try {
+        
     } catch(error) {
         if(error.response && error.response.data) {
             console.log("게시글 목록을 불러오는 데 실패했습니다.");
         } else {
             console.log("서버가 응답하지 않습니다.");
+        }
+    }
+}
+
+export const requestPost = async (form) => {
+    try {
+        const response = await axios.post("/posts/write", form, {headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            elert("게시글 등록에 실패했습니다.\n게시글 업로드 조건을 다시 확인해주세요.");
+        } else {
+            elert("서버가 응답하지 않습니다.");
         }
     }
 }

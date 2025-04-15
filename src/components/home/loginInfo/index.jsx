@@ -10,12 +10,18 @@ import useUserInfo from "@/hooks/localStorage";
 import { formatDate } from "@/util/dateFormatter";
 import { useEffect, useState } from "react";
 import { formatExp } from "@/util/expFormatter";
+import { useNavigate } from "react-router-dom";
 
 const LoginInfo = () => {
     const user = useUserInfo();
+    const navigate = useNavigate();
     const [userExp, setUserExp] = useState({
         sand: 0, house: 0, castle: 0, desert: 0, glass: 0
     });
+
+    const handleNavigateWrite = () => {
+        navigate("/write/post");
+    }
 
     useEffect(() => {
         const fetchExp = async () => {
@@ -73,7 +79,7 @@ const LoginInfo = () => {
                     <S.LevelText>{userExp.glass}</S.LevelText>
                 </S.LevelSet>
             </S.LevelArea>
-            <S.WriteButton>글쓰기</S.WriteButton>
+            <S.WriteButton onClick={handleNavigateWrite}>글쓰기</S.WriteButton>
             <S.LinkText onClick={handleRequestLogout}>로그아웃</S.LinkText>
         </S.Wrapper>
     );

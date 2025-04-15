@@ -1,16 +1,41 @@
 import * as S from "./styles";
 import useUserInfo from "@/hooks/localStorage";
 import EditorComponent from "@/components/editor/editorComponent";
+import { useEffect, useState } from "react";
 
-const PostEditor = () => {
+const PostEditor = ({requestBoard}) => {
     const user = useUserInfo();
-    console.log(user)
+    const [formData, setFormData] = useState({
+        boardId: requestBoard || 9,
+        title: "",
+        content: ""
+    });
+    console.log(formData.content)
+    const handleSelectChange = (e) => {
+        setFormData((prev) => ({
+            ...prev,
+            boardId: e.target.value,
+        }));
+    };
+
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+          e.preventDefault();
+          e.returnValue = "";
+        };
+      
+        window.addEventListener("beforeunload", handleBeforeUnload);
+      
+        return () => {
+          window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, []);
 
     return (
         <>
             <S.Wrapper>
-                <S.Select size={"1"}>
-                    {user.role === "MANAGER" && (
+                <S.Select size={"1"} value={formData.boardId} onChange={handleSelectChange}>
+                    {user?.role === "MANAGER" && (
                         <S.OptionGroup label="NOTICE">
                             <S.Option value={"5"}>공지사항</S.Option>
                             <S.Option value={"6"}>이벤트</S.Option>
@@ -37,8 +62,19 @@ const PostEditor = () => {
                         <S.Option value={"20"}>운영자 신청</S.Option>
                     </S.OptionGroup>
                 </S.Select>
-                <S.Input type="text" name="title" $width={"100%"} $border={"#CCC"}/>
-                <EditorComponent />
+                <S.Input 
+                    style={{marginTop: "5px", marginBottom: "5px"}}
+                    type="text" 
+                    name="title" 
+                    $width={"100%"} 
+                    $border={"#CCC"} 
+                    placeholder="제목을 입력하세요..."
+                    onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))} />
+                <EditorComponent
+                    value={formData.content}
+                    onChange={(value) => setFormData((prev) => ({ ...prev, content: value }))}
+                />
+                <S.SubmitButton disabled={formData.title.trim().length < 5 || formData.content.trim().length < 30} >등록</S.SubmitButton>
             </S.Wrapper>
         </>
     )
