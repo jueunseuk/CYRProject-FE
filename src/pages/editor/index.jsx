@@ -1,17 +1,25 @@
 import * as S from "./styles";
 import { useParams } from "react-router-dom";
-import Board from "@/components/home/board";
 import Banner from "@/components/home/banner";
-import Footer from "@/components/home/footer";
+import Search from "@/components/home/search";
 import GuestInfo from "@/components/home/guestInfo";
 import LoginInfo from "@/components/home/loginInfo";
-import Search from "@/components/home/search";
+import Board from "@/components/home/board";
+import Footer from "@/components/home/footer";
 import useUserInfo from "@/hooks/localStorage";
+import WrongPage from "../wrong/WrongPage";
+import PostEditor from "@/components/editor/postEditor";
 
-const Post = () => {
+const Editor = () => {
     const user = useUserInfo();
-    const {subPath} = useParams();
-    const {postId} = useParams();
+    const {type} = useParams();
+
+    const getBoardComponent = () => {
+        switch(type) {
+            case "post": return <PostEditor />;
+            default : return <WrongPage />;
+        }
+    };
 
     return (
         <>
@@ -27,13 +35,13 @@ const Post = () => {
                     <Board></Board>
                 </S.SidebarWrapper>
                 <S.ContentWrapper>
-                    게시판 글
+                    {getBoardComponent()}
                 </S.ContentWrapper>
             </S.HorizontalWrapper>
             <S.Contour />
             <Footer></Footer>
         </>
-    );
-}
+    )
+};
 
-export default Post;
+export default Editor;
