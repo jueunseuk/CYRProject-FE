@@ -10,7 +10,7 @@ const PostEditor = () => {
         <>
             <S.Wrapper>
                 <S.Select size={"1"}>
-                    {user.role && (
+                    {user.role === "MANAGER" && (
                         <S.OptionGroup label="NOTICE">
                             <S.Option value={"5"}>공지사항</S.Option>
                             <S.Option value={"6"}>이벤트</S.Option>
