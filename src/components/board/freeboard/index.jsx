@@ -6,7 +6,7 @@ import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { formatDate } from "@/util/dateFormatter";
 import { getEmpathyColor } from "@/util/empathySelector";
 
-const LetterBoard = () => {
+const FreeBoard = () => {
     const {subPath} = useParams();
     const [page, setPage] = useState(0);
     const [totalPage, setTotalPage] = useState(0);
@@ -15,16 +15,15 @@ const LetterBoard = () => {
     const navigate = useNavigate();
     
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
-    const boardId = 13;
+    const boardId = 9;
     const sort = "createdAt";
 
     const handleClickPage = (pageNum) => {
         setPage(pageNum-1);
     }
 
-    const handleNavigatePost = (pageNum) => {
-
-
+    const handleNavigatePost = (id) => {
+        navigate(`/${subPath}/${id}`);
     }
 
     useEffect(() => {
@@ -89,7 +88,7 @@ const LetterBoard = () => {
                         {posts.map((post) => (
                             <S.Row key={post.postId}>
                                 <S.Column>{post.postId}</S.Column>
-                                <S.Column $align={"left"} onClick={() => handleNavigatePost(key)}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
+                                <S.Column $align={"left"} onClick={() => handleNavigatePost(post.postId)}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"}>{post.userNickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(post.createdAt, 3)}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{post.viewCnt}</S.Column>
@@ -106,4 +105,4 @@ const LetterBoard = () => {
     )
 }
 
-export default LetterBoard;
+export default FreeBoard;

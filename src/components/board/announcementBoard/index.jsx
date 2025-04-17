@@ -22,9 +22,8 @@ const AnnouncementBoard = () => {
         setPage(pageNum-1);
     }
 
-    const handleNavigatePost = (pageNum) => {
-
-        
+    const handleNavigatePost = (id) => {
+        navigate(`/${subPath}/${id}`);
     }
 
     useEffect(() => {
