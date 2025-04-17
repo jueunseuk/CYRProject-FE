@@ -56,7 +56,7 @@ export const getPost = async (form, config = {}) => {
 
 export const requestPost = async (form) => {
     try {
-        const response = await axios.post("/posts/write", form, {headers: {Accept: "application/json"}});
+        const response = await instance.post("/posts", form, {headers: {Accept: "application/json"}});
         return response;
     } catch(error) {
         if(error.response && error.response.data) {

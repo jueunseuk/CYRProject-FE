@@ -9,9 +9,10 @@ export const Wrapper = styled.div`
 
 export const HorizontalWrapper = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-end;
+    justify-content: center;
     width: 100%;
+    gap: 10px;
 `;
 
 export const VerticalWrapper = styled.div`
@@ -20,6 +21,12 @@ export const VerticalWrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+`;
+
+export const Text = styled.div`
+    font-size: ${({$size}) => $size};
+    font-weight: ${({$weight}) => $weight || "400"};
+    color: ${({$color}) => $color}
 `;
 
 export const Input = styled.input`
@@ -47,16 +54,21 @@ export const OptionGroup = styled.optgroup`
 export const Option = styled.option`
 `;
 
+export const Icon = styled.img`
+    width: 16px;
+    height: 16px;
+    margin-top: 65px;
+`;
+
 export const SubmitButton = styled.button`
     align-self: center;
-    width: 100px;
-    height: 40px;
+    width: 80px;
+    height: 35px;
     background-color: ${({ disabled }) => (disabled ? "#B8B8B8" : "#C6BC73")};
     border: none;
-    border-radius: 8px;
     font-weight: 700;
     font-size: 16px;
     color: white;
-    margin-top: 65px;
+    margin-top: 20px;
     cursor: ${({ disabled }) => (disabled ? "" : "pointer")};
 `;

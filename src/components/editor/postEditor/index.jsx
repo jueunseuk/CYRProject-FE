@@ -1,16 +1,22 @@
+import * as P from "@/apis/post";
 import * as S from "./styles";
 import useUserInfo from "@/hooks/localStorage";
 import EditorComponent from "@/components/editor/editorComponent";
+import checked from "@/assets/icon/etc/checked.svg";
+import unchecked from "@/assets/icon/etc/unchecked.svg";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PostEditor = ({requestBoard}) => {
     const user = useUserInfo();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         boardId: requestBoard || 9,
         title: "",
-        content: ""
+        content: "",
+        locked: "PUBLIC"
     });
-    console.log(formData.content)
+    
     const handleSelectChange = (e) => {
         setFormData((prev) => ({
             ...prev,
@@ -18,6 +24,16 @@ const PostEditor = ({requestBoard}) => {
         }));
     };
 
+    const requestUploadPost = async () => {
+        try {
+            await P.requestPost(formData);
+            alert("게시글 업로드 완료!\n작성한 게시글로 이동합니다.");
+            navigate("/post");
+        } catch(error) {
+
+        }
+    }
+    
     useEffect(() => {
         const handleBeforeUnload = (e) => {
           e.preventDefault();
@@ -74,7 +90,16 @@ const PostEditor = ({requestBoard}) => {
                     value={formData.content}
                     onChange={(value) => setFormData((prev) => ({ ...prev, content: value }))}
                 />
-                <S.SubmitButton disabled={formData.title.trim().length < 5 || formData.content.trim().length < 30} >등록</S.SubmitButton>
+                <S.HorizontalWrapper>
+                    <S.Icon 
+                        src={formData.locked === "PUBLIC" ? unchecked : checked}
+                        onClick={() => setFormData((prev) => ({...prev, locked: prev.locked === "PUBLIC" ? "PRIVATE" : "PUBLIC"}))}
+                    />
+                    <S.Text $size={"14px"} $weight={"600"}>나만보기</S.Text>
+                </S.HorizontalWrapper>
+                <S.SubmitButton disabled={formData.title.trim().length < 5 || formData.content.trim().length < 30} 
+                    onClick={requestUploadPost}
+                >등록</S.SubmitButton>
             </S.Wrapper>
         </>
     )
