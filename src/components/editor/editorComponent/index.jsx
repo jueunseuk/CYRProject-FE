@@ -3,23 +3,19 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import "./styles.css"
 
-const EditorComponent = () => {
-    const [content, setContent] = useState('');
-
-    const handleEditorChange = (value) => {
-        setContent(value);
-    };
+const EditorComponent = ({value, onChange}) => {
 
     return (
         <>
             <ReactQuill
-                value={content}
-                onChange={handleEditorChange}
+                value={value}
+                onChange={onChange}
                 modules={{
                     toolbar: [
-                        [{ header: [1, 2, false] }],
-                        ['bold', 'italic', 'underline', 'strike'],
-                        [{ list: 'ordered' }, { list: 'bullet' }],
+                        [{ size: ["small", false, "large", "huge"] }],
+                        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                        [{ list: 'ordered' }, { list: 'bullet' }, { indent: "-1" }, { indent: "+1" }],
+                        [{ 'align': [] }],
                         ['link', 'image'],
                         ['clean'],
                     ],

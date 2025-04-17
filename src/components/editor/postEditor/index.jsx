@@ -1,16 +1,57 @@
+import * as P from "@/apis/post";
 import * as S from "./styles";
 import useUserInfo from "@/hooks/localStorage";
 import EditorComponent from "@/components/editor/editorComponent";
+import checked from "@/assets/icon/etc/checked.svg";
+import unchecked from "@/assets/icon/etc/unchecked.svg";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const PostEditor = () => {
+const PostEditor = ({requestBoard}) => {
     const user = useUserInfo();
-    console.log(user)
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        boardId: requestBoard || 9,
+        title: "",
+        content: "",
+        locked: "PUBLIC"
+    });
+    
+    const handleSelectChange = (e) => {
+        setFormData((prev) => ({
+            ...prev,
+            boardId: e.target.value,
+        }));
+    };
+
+    const requestUploadPost = async () => {
+        try {
+            await P.requestPost(formData);
+            alert("게시글 업로드 완료!\n작성한 게시글로 이동합니다.");
+            navigate("/post");
+        } catch(error) {
+
+        }
+    }
+    
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+          e.preventDefault();
+          e.returnValue = "";
+        };
+      
+        window.addEventListener("beforeunload", handleBeforeUnload);
+      
+        return () => {
+          window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, []);
 
     return (
         <>
             <S.Wrapper>
-                <S.Select size={"1"}>
-                    {user.role === "MANAGER" && (
+                <S.Select size={"1"} value={formData.boardId} onChange={handleSelectChange}>
+                    {user?.role === "MANAGER" && (
                         <S.OptionGroup label="NOTICE">
                             <S.Option value={"5"}>공지사항</S.Option>
                             <S.Option value={"6"}>이벤트</S.Option>
@@ -37,8 +78,28 @@ const PostEditor = () => {
                         <S.Option value={"20"}>운영자 신청</S.Option>
                     </S.OptionGroup>
                 </S.Select>
-                <S.Input type="text" name="title" $width={"100%"} $border={"#CCC"}/>
-                <EditorComponent />
+                <S.Input 
+                    style={{marginTop: "5px", marginBottom: "5px"}}
+                    type="text" 
+                    name="title" 
+                    $width={"100%"} 
+                    $border={"#CCC"} 
+                    placeholder="제목을 입력하세요..."
+                    onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))} />
+                <EditorComponent
+                    value={formData.content}
+                    onChange={(value) => setFormData((prev) => ({ ...prev, content: value }))}
+                />
+                <S.HorizontalWrapper>
+                    <S.Icon 
+                        src={formData.locked === "PUBLIC" ? unchecked : checked}
+                        onClick={() => setFormData((prev) => ({...prev, locked: prev.locked === "PUBLIC" ? "PRIVATE" : "PUBLIC"}))}
+                    />
+                    <S.Text $size={"14px"} $weight={"600"}>나만보기</S.Text>
+                </S.HorizontalWrapper>
+                <S.SubmitButton disabled={formData.title.trim().length < 5 || formData.content.trim().length < 30} 
+                    onClick={requestUploadPost}
+                >등록</S.SubmitButton>
             </S.Wrapper>
         </>
     )
