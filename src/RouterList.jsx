@@ -16,7 +16,7 @@ import ResetPassword from "@/pages/auth/resetPassword";
 import HomeLayout from "@/components/layout/HomeLayout";
 import NaverCallback from "@/pages/callback/naverCallback";
 import PostList from "@/pages/posts";
-import Post from "@/components/post/post";
+import Post from "@/pages/post";
 import FooterPage from "@/pages/footerPage";
 import Editor from "@/pages/editor";
 
