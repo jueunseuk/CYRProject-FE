@@ -6,7 +6,7 @@ import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { formatDate } from "@/util/dateFormatter";
 import { getEmpathyColor } from "@/util/empathySelector";
 
-const LetterBoard = () => {
+const FreeBoard = () => {
     const {subPath} = useParams();
     const [page, setPage] = useState(0);
     const [totalPage, setTotalPage] = useState(0);
@@ -15,7 +15,7 @@ const LetterBoard = () => {
     const navigate = useNavigate();
     
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
-    const boardId = 13;
+    const boardId = 9;
     const sort = "createdAt";
 
     const handleClickPage = (pageNum) => {
@@ -106,4 +106,4 @@ const LetterBoard = () => {
     )
 }
 
-export default LetterBoard;
+export default FreeBoard;
