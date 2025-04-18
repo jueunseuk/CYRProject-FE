@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
     display: flex;
@@ -133,12 +133,6 @@ export const GalleryItem = styled.div`
     &:hover div {
         opacity: 1;
     }
-`;
-
-export const SkeletonItem = styled.div`
-    width: 200px;
-    height: 200px;
-    background-color: #F0F0F0;
 `;
 
 export const OverlayText = styled.div`

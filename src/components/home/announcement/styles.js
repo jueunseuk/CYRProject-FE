@@ -24,15 +24,7 @@ export const Table = styled.table`
     width: 100%;
     min-height: 32.5px;
     border-collapse: collapse;
-`;
-
-export const FirstRow = styled.tr`
     border-top: 2px solid black;
-    background-color: #FFF9F9;
-
-    &:hover {
-        background-color: white;
-    }
 `;
 
 export const Row = styled.tr`
@@ -48,9 +40,10 @@ export const FirstColumn = styled.td`
     padding: 8px;
     text-align: ${({$align}) => $align || "center"};
     cursor: pointer;
-`;
-
+    `;
+    
 export const Column = styled.td`
     padding: 8px;
     text-align: ${({$align}) => $align || "center"};
+    cursor: pointer;
 `;
