@@ -3,6 +3,7 @@ import * as S from "./styles";
 import { useNavigate, useParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { useEffect, useState } from "react";
+import { SkeletonItem } from "@/common/component/Skeleton";
 import upload from "@/assets/icon/gallery/upload.svg";
 import GalleryUpload from "@/components/modal/galleryUpload";
 
@@ -96,7 +97,7 @@ const GalleryBoard = () => {
                     {skeleton ? 
                         (
                             Array.from({length: 16}).map((_, idx) => (
-                                <S.SkeletonItem key={idx}/>
+                                <SkeletonItem key={idx}/>
                             ))
                         ) :
                         (

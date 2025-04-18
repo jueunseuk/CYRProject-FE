@@ -3,24 +3,29 @@ import * as S from "./styles";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
+import { SkeletonItem } from "@/common/component/Skeleton";
 
 const LatestPost = () => {
     const page = 0;
     const sort = "createdAt";
     const [posts, setPosts] = useState([]);
+    const [skeleton, setSkeleton] = useState(true);
     const navigate = useNavigate();
 
-    const handleNavigatePost = (pageNum) => {
-
+    const handleNavigatePost = (boardName, id) => {
+        navigate(`/${boardName}/${id}`);
     }
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
+                setSkeleton(true);
                 const response = await P.getAllPosts({page, sort});
                 setPosts(response.data.content);
             } catch(error) {
                 
+            } finally {
+                setSkeleton(false);
             }
         }
         fetchPosts();
@@ -42,17 +47,20 @@ const LatestPost = () => {
                             <col style={{ width: "10%" }} />
                         </colgroup>
                         <tbody>
-                            <S.FirstRow key={posts[0]?.postId}>
-                                <S.FirstColumn><S.Text>{posts.length > 0 ? `[${posts[0].boardKorean}]` : ""}</S.Text></S.FirstColumn>
-                                <S.Column $align={"left"}><S.Text>{posts[0]?.title}</S.Text></S.Column>
-                                <S.Column $align={"left"}><S.Text>{posts[0]?.userNickname}</S.Text></S.Column>
-                                <S.Column><S.Text $color={"#878787"}>{formatDate(posts[0]?.createdAt, 3)}</S.Text></S.Column>
-                                <S.Column><S.Text $color={"#878787"}>{posts[0]?.viewCnt}</S.Text></S.Column>
-                            </S.FirstRow>
-                            {posts.slice(1, 15).map((post) => (
+                            {skeleton ?
+                                Array.from({ length: 15 }).map((_, index) => (
+                                    <S.Row key={index}>
+                                        <S.FirstColumn><SkeletonItem $width="100%" $height="15px" $radius={"5px"} /></S.FirstColumn>
+                                        <S.Column><SkeletonItem $width="100%" $height="15px" $radius={"5px"} /></S.Column>
+                                        <S.Column><SkeletonItem $width="100%" $height="15px" $radius={"5px"} /></S.Column>
+                                        <S.Column><SkeletonItem $width="100%" $height="15px" $radius={"5px"} /></S.Column>
+                                        <S.Column><SkeletonItem $width="100%" $height="15px" $radius={"5px"} /></S.Column>
+                                    </S.Row>
+                                ))
+                                : posts.slice(0, 15).map((post) => (
                                 <S.Row key={post.postId}>
                                     <S.FirstColumn><S.Text>[{post.boardKorean}]</S.Text></S.FirstColumn>
-                                    <S.Column $align={"left"}><S.Text>{post.title}</S.Text></S.Column>
+                                    <S.Column $align={"left"} onClick={() => handleNavigatePost(post.boardName, post.postId)}><S.Text>{post.title}</S.Text></S.Column>
                                     <S.Column $align={"left"}><S.Text>{post.userNickname}</S.Text></S.Column>
                                     <S.Column><S.Text $color={"#878787"}>{formatDate(post.createdAt, 3)}</S.Text></S.Column>
                                     <S.Column><S.Text $color={"#878787"}>{post.viewCnt}</S.Text></S.Column>

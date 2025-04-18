@@ -42,12 +42,13 @@ export const getBoardPosts = async (form) => {
     }
 }
 
-export const getPost = async (form, config = {}) => {
+export const getPost = async (postId) => {
     try {
-        
+        const response = await instance.get(`/posts/${postId}`, {headers: {Accept: "application/json"}});
+        return response;
     } catch(error) {
         if(error.response && error.response.data) {
-            console.log("게시글 목록을 불러오는 데 실패했습니다.");
+            console.log("게시글을 불러오는 데 실패했습니다.");
         } else {
             console.log("서버가 응답하지 않습니다.");
         }
