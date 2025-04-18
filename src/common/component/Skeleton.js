@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
 
-
 const shimmer = keyframes`
     0% {
         background-position: -200px 0;
@@ -19,7 +18,7 @@ export const SkeletonItem = styled.div`
         #E0E0E0 50%,
         #F5F5F5 100%
     );
-    background-size: 400px 100%;
+    background-size: ${({$size}) => $size || "400px"} 100%;
     animation: ${shimmer} 2.5s infinite linear;
     border-radius: ${({$radius}) => $radius || "8px"};
 `;

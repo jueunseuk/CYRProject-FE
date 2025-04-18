@@ -28,7 +28,7 @@ const PostEditor = ({requestBoard}) => {
         try {
             const response = await P.requestPost(formData);
             alert("게시글 업로드 완료!\n작성한 게시글로 이동합니다.");
-            navigate(`/${response.data.boardName}/${response.data.boardId}`);
+            navigate(`/${response.data.boardName}/${response.data.postId}`);
         } catch(error) {
 
         }
