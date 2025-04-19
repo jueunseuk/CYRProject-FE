@@ -59,12 +59,10 @@ const BasicPost = () => {
                             <S.Text $size={"14px"} style={{cursor: "pointer"}}>{boardInfo.label} &gt;</S.Text>
                             <S.HorizontalWrapper $justify={"space-between"} style={{width: "100%"}}>
                                 <S.Text $size={"18px"} $weight={"700"} style={{marginTop: "1px"}}>{postData.title}</S.Text>
-                                {user.userId === postData?.userId && (
-                                    <MoreOption formData={postData} />
-                                )}
+                                <MoreOption formData={postData} />
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"12px"} style={{marginTop: "10px"}}>
-                                <S.Profile />
+                                <S.Profile src={postData.profileImageUrl}/>
                                 <S.HorizontalWrapper>
                                     <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}}>{postData.userNickname}</S.Text>

@@ -40,3 +40,18 @@ export const OptionButton = styled.button`
         background-color: #f5f5f5;
     }
 `;
+
+export const ShareResultMessage = styled.span`
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: ${({$copy}) => $copy ? "" : "none"};
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 8px 20px;
+    border-radius: 14px;
+`;
