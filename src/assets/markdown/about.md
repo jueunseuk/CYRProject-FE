@@ -1,39 +1,38 @@
-# About Us
+# About Me
 
 ---
 
-자기소개:
+### I. 커뮤니티 소개
+#### **커뮤니티 이름** : 모래사장
+#### **개발 참여 인원** : 1명
+#### **개발 기간** : 2025.03.01 ~ 
+#### **담당**
+> 1. **Product** : 윤준수
+> 2. **Design** : 윤준수
+> 3. **Frontend** : 윤준수
+> 4. **Backend** : 윤준수
+> 5. **Database** : 윤준수
+> 6. **Deployment** : 윤준수
+#### **기술 스택**
+> 1. **Planning** : Google Sheets, Google Docs, Notion
+> 2. **Design** : Figma
+> 3. **Frontend** : React, Javascript, Recoil, Vite, Styled-Components, Axios
+> 4. **Backend** : Spring Boot, Java 21, Gradle, Spring Security, JPA
+> 5. **Database** : MySQL, ERD Cloud
+> 6. **DevOps & Deployment** : Vercel, Render, Amazon S3, Amazon RDS
+> 7. **Authentication** : OAuth2 (Naver, Kakao, Google), JWT
+> 8. **Others** : Postman, Swagger, Git, Github
 
-이름 또는 별명
+### II. 커뮤니티 개발자 소개
+#### **이름** : 윤준수
+#### **나이** : 2000년생
+#### **연락처** : junsu120202@gmail.com
+#### **인사말**
+안녕하세요. 백엔드 개발자 **윤준수**입니다.  
+가수 최유리님의 팬으로서 오래전부터 만들고 싶었던 모래들의 커뮤니티를 제작하게 되었습니다. 지속적으로 피드백 반영하며 개발 및 운영해 나갈 예정이니 많은 관심 및 이용 부탁드립니다.  
+추가로 문의사항이 있다면 이메일로 부탁드립니다.
+#### **관련 링크**
+1. [Github](https://github.com/jueunseuk "클릭 시 깃허브로 이동합니다.")
+2. [Blog](https://jundyu.tistory.com "클릭 시 블로그로 이동합니다.")
 
-간단한 인사말
-
-커뮤니티의 목적 및 방향:
-
-커뮤니티를 만든 이유
-
-추구하는 가치나 목표
-
-운영 철학:
-
-사용자와의 소통 방식
-
-운영 원칙과 중요하게 생각하는 부분 (존중, 열린 소통 등)
-
-주요 콘텐츠 소개:
-
-커뮤니티에서 다루는 주요 주제나 콘텐츠 종류
-
-참여자들이 얻을 수 있는 가치
-
-운영진 소개: (필요 시)
-
-간단한 운영자 소개 및 각자의 역할 안내
-
-커뮤니티에 참여하는 방법:
-
-처음 방문한 사람들이 쉽게 참여할 수 있도록 안내
-
-연락처 및 피드백 방법:
-
-궁금한 점이 있거나 피드백을 줄 수 있는 연락 방법 안내
+### III. 커뮤니티 운영진 소개
