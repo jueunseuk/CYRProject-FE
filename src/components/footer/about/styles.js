@@ -14,18 +14,47 @@ export const Wrapper = styled.div`
         border: 1px solid black;
     }
 
+    h2 {
+        font-size: 24px;
+    }
+
     h3 {
-        margin-top: 20px;
+        margin-top: 30px;
         margin-bottom: 5px;
+        font-size: 20px;
     }
 
     h4 {
-        padding-left: 20px;
+        padding-left: 12px;
         margin-top: 5px;
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    h5 {
+        font-size: 14px;
+    }
+
+    h6 {
+        font-size: 12px;
     }
     
     li {
-        padding-left: 40px;
-        margin-bottom: 5px;
+        list-style: number;
+        margin: 3px 10px 3px 30px;
+    }
+
+    blockquote {
+        margin-top: 5px;
+        margin-left: 12px;
+        background-color: #F4F3E9;
+        padding: 12px 8px;
+    }
+
+    p {
+        margin-top: 5px;
+        margin-left: 12px;
+        background-color:#F4F3E9;
+        padding: 16px;
     }
 `;
