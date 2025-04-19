@@ -48,7 +48,7 @@ const GallerySummary = () => {
                 <S.ContentArea>
                     {skeleton ? 
                         Array.from({ length: 6 }).map((_, index) => (
-                            <SkeletonItem $width={"140px"} $height={"140px"}/>
+                            <SkeletonItem key={index} $width={"140px"} $height={"140px"}/>
                         ))
                         : images.slice(0, 6).map((image) => (
                             <S.GalleryItem
