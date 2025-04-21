@@ -35,32 +35,32 @@ const Link = () => {
                         <S.LinkList>
                             <S.ItemArea>
                                 <S.Icon $icon={youtube}/>
-                                <S.Link href="https://www.youtube.com/channel/UCyUnjor6wyRA2Xt3fFwnf6w" target="_blank">
+                                <S.Link href="https://www.youtube.com/channel/UCyUnjor6wyRA2Xt3fFwnf6w" target="_blank" title="유리의 공식 유튜브 바로가기">
                                 <S.Text $color={"#FF0000"} $size={"15px"} $weight={"600"}>Youtube</S.Text></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={instagram}/>
-                                <S.Link href="https://www.instagram.com/_choiyuree/" target="_blank">
+                                <S.Link href="https://www.instagram.com/_choiyuree/" target="_blank" title="유리의 인스타그램 바로가기">
                                 <S.GradientText $size={"15px"} $weight={"600"}>Instagram</S.GradientText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={blog}/>
-                                <S.Link href="https://blog.naver.com/yureemorae" target="_blank">
+                                <S.Link href="https://blog.naver.com/yureemorae" target="_blank" title="유리의 블로그 바로가기">
                                 <S.Text $color={"#42D31A"} $size={"15px"} $weight={"600"}>Blog</S.Text></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={cafe}/>
-                                <S.Link href="https://cafe.daum.net/CHOIYUREE" target="_blank">
+                                <S.Link href="https://cafe.daum.net/CHOIYUREE" target="_blank" title="유리의 공식 팬 카페 바로가기">
                                 <S.Text $color={"#FF2041"} $size={"15px"} $weight={"600"}>Cafe</S.Text></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={facebook}/>
-                                <S.Link href="https://www.facebook.com/ChoiYuRee/" target="_blank">
+                                <S.Link href="https://www.facebook.com/ChoiYuRee/" target="_blank" title="유리의 공식 페이스북 바로가기">
                                 <S.Text $color={"#0866FF"} $size={"15px"} $weight={"600"}>Facebook</S.Text></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={soundcloud}/>
-                                <S.Link href="https://soundcloud.com/yureechoi" target="_blank">
+                                <S.Link href="https://soundcloud.com/yureechoi" target="_blank" title="유리의 사운드 클라우드 바로가기(현재 업데이트 X)">
                                 <S.Text $color={"#F26D23"} $size={"15px"} $weight={"600"}>SoundCloud</S.Text></S.Link>
                             </S.ItemArea>
                         </S.LinkList>
@@ -73,12 +73,12 @@ const Link = () => {
                         <S.LinkList>
                             <S.ItemArea>
                                 <S.Icon $icon={youtube}/>
-                                <S.Link href="https://www.youtube.com/@welcometoforest" target="_blank">
+                                <S.Link href="https://www.youtube.com/@welcometoforest" target="_blank" title="유리의 숲 유튜브 바로가기">
                                     <S.Text $color={"#FF0000"} $size={"15px"} $weight={"600"}>Youtube</S.Text></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={instagram}/>
-                                <S.Link href="https://www.instagram.com/_welcometoforest/" target="_blank">
+                                <S.Link href="https://www.instagram.com/_welcometoforest/" target="_blank" title="유리의 숲 인스타그램 바로가기">
                                     <S.GradientText $size={"15px"} $weight={"600"}>Instagram</S.GradientText></S.Link>
                             </S.ItemArea>
                         </S.LinkList>
@@ -91,22 +91,22 @@ const Link = () => {
                         <S.LinkList>
                             <S.ItemArea>
                                 <S.Icon $icon={youtube}/>
-                                <S.Link href="https://www.youtube.com/@navywave" target="_blank">
+                                <S.Link href="https://www.youtube.com/@navywave" target="_blank" title="네이브의 유튜브 바로가기">
                                     <S.Text $color={"#FF0000"} $size={"15px"} $weight={"600"}>Youtube</S.Text></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={instagram}/>
-                                <S.Link href="https://www.instagram.com/nave_label/" target="_blank">
+                                <S.Link href="https://www.instagram.com/nave_label/" target="_blank" title="네이브의 인스타그램 바로가기">
                                     <S.GradientText $size={"15px"} $weight={"600"}>Instagram</S.GradientText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={nave2}/>
-                                <S.Link href="https://navywave.kr/" target="_blank">
+                                <S.Link href="https://navywave.kr/" target="_blank" title="네이브 공식 홈페이지 바로가기">
                                     <S.Text $color={"#4266F8"} $size={"15px"} $weight={"600"}>Nave</S.Text></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={xtwitter}/>
-                                <S.Link href="https://www.instagram.com/nave_label/" target="_blank">
+                                <S.Link href="https://www.instagram.com/nave_label/" target="_blank" title="네이브 X 바로가기">
                                     <S.Text $color={"#000000"} $size={"15px"} $weight={"600"}>X</S.Text></S.Link>
                             </S.ItemArea>
                         </S.LinkList>
