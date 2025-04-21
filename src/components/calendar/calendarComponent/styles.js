@@ -32,11 +32,16 @@ export const Text = styled.span`
     color: ${({$color}) => $color || "black"};
 `;
 
+export const Legend = styled.div`
+    display: flex;
+    gap: 5px;
+    align-items: center;
+`;
+
 export const CalendarWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 800px;
-    margin-top: 25px;
 `;
 
 export const DayWrapper = styled.div`
@@ -75,7 +80,7 @@ export const DateItem = styled.div`
     justify-content: flex-start;
     gap: 10px;
     width: 110px;
-    min-height: 130px;
+    min-height: 120px;
     border: ${({$border}) => $border} black solid;
     border-radius: 5px;
     padding: 8px;
@@ -89,7 +94,7 @@ export const DateItem = styled.div`
     ${({ $hoverable }) =>
         $hoverable &&
         `&:hover {
-          transform: translateY(-5px) scale(1.5);
+          transform: translateY(-5px) scale(1.3);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
           z-index: 1;
         }
@@ -97,7 +102,7 @@ export const DateItem = styled.div`
         &:hover .date-content {
             color: black;
             flex-direction: column;
-            gap: 3px;
+            gap: 5px;
         }
 
         &:hover .calendar-text {
@@ -116,9 +121,9 @@ export const ScheduleWrapper = styled.div`
 `;
 
 export const Circle = styled.div`
-    width: 12px;
-    min-width: 12px;
-    height: 6px;
+    width: 6px;
+    min-width: 6px;
+    height: 12px;
     border-radius: 10px;
     background-color: ${({$bg}) => $bg};
 `;
