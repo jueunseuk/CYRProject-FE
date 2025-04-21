@@ -25,7 +25,7 @@ export const BOARD_DESCRIPTIONS = {
     },
     calendar: {
       label: "캘린더",
-      description: "유리의 공식 일정이나 커뮤니티에서 진행되는 일정을 확인할 수 있어요. 깔끔하게 정리되어 있어서 보기 편해요!",
+      description: "유리의 공식 일정이나 커뮤니티에서 진행되는 일정을 확인할 수 있어요.",
     },
     poll: {
       label: "투표",

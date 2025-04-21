@@ -73,19 +73,52 @@ export const DateItem = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    gap: 10px;
     width: 110px;
-    min-height: 120px;
-    border: 1px solid black;
+    min-height: 130px;
+    border: ${({$border}) => $border} black solid;
     border-radius: 5px;
     padding: 8px;
     background-color: ${({$bg}) => $bg || ""};
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+
+    .calendar-text {
+        display: none;
+    }
 
     ${({ $hoverable }) =>
         $hoverable &&
         `&:hover {
           transform: translateY(-5px) scale(1.5);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
           z-index: 1;
-    }`}
+        }
+
+        &:hover .date-content {
+            color: black;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        &:hover .calendar-text {
+            display: block;
+            word-break: break-word;
+            white-space: normal;
+        }
+    `}
+`;
+
+export const ScheduleWrapper = styled.div`
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+`;
+
+export const Circle = styled.div`
+    width: 12px;
+    min-width: 12px;
+    height: 6px;
+    border-radius: 10px;
+    background-color: ${({$bg}) => $bg};
 `;

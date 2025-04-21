@@ -1,3 +1,4 @@
+import * as C from "@/apis/calendar";
 import * as S from "./styles";
 import { useEffect, useState } from "react";
 
@@ -45,9 +46,22 @@ const CalendarComponent = () => {
     
             setArray(temp);
         };
-    
+
         fetchFormatMonth();
     }, [month]);
+
+    useEffect(() => {
+        const fetchSchedule = async () => {
+            try {
+                const reponse = await C.getCalendar(year, month);
+
+            } catch(error) {
+
+            }
+        };
+
+        fetchSchedule();
+    }, [month, year]);
 
     const getColor = (e) => {
         if(e % 7 === 0) {
@@ -57,6 +71,10 @@ const CalendarComponent = () => {
         } else {
             return "black";
         }
+    };
+
+    const getScheduleColor = (e) => {
+
     };
 
     return (
@@ -80,8 +98,24 @@ const CalendarComponent = () => {
 
                     <S.DateWrapper>
                         {array.map((value, idx) => (
-                            <S.DateItem key={idx} $bg={value === 0 ? "#EEE" : "white"} $hoverable={value !== 0}>
-                                <S.Text $size={"13px"} $weight={"700"} $color={() => getColor(idx)}>{value !== 0 ? value : ""}</S.Text>
+                            <S.DateItem key={idx} $bg={value === 0 ? "#EEE" : (value === now.getDate() ? "#F4F3E9" : "white")} $border={value === now.getDate() ? "2px" : "1px"} $hoverable={value !== 0}>
+                                <S.Text $size={"14px"} $weight={"700"} $color={() => getColor(idx)}>{value !== 0 ? value : ""}</S.Text>
+                                {value !== 0 && (
+                                    <S.HorizontalWrapper $gap={"8px"} $align={"flex-start"} $justify={"flex-start"} style={{flexWrap: "wrap"}} className="date-content">
+                                        <S.ScheduleWrapper>
+                                            <S.Circle $bg={"red"}></S.Circle>
+                                            <S.Text $size={"10px"} $weight={"700"} className="calendar-text">유리 생일</S.Text>
+                                        </S.ScheduleWrapper>
+                                        <S.ScheduleWrapper>
+                                            <S.Circle $bg={"blue"}></S.Circle>
+                                            <S.Text $size={"10px"} $weight={"700"} className="calendar-text">유리 뭐시기뭐시기기 콘서트</S.Text>
+                                        </S.ScheduleWrapper>
+                                        <S.ScheduleWrapper>
+                                            <S.Circle $bg={"cyan"}></S.Circle>
+                                            <S.Text $size={"10px"} $weight={"700"} className="calendar-text">유리 굿즈 발매</S.Text>
+                                        </S.ScheduleWrapper>
+                                    </S.HorizontalWrapper>
+                                )}
                             </S.DateItem>
                         ))}
                     </S.DateWrapper>
