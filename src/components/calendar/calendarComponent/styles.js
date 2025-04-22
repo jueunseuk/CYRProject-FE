@@ -115,7 +115,7 @@ export const DateItem = styled.div`
 
 export const ScheduleWrapper = styled.div`
     display: flex;
-    gap: 8px;
+    gap: 5px;
     align-items: center;
     justify-content: flex-start;
 `;
