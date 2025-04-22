@@ -2,6 +2,7 @@ import * as S from "./styles";
 import { useParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import CalendarComponent from "@/components/calendar/calendarComponent";
+import CalendarRequest from "@/components/calendar/calendarRequest";
 
 const CalendarBoard = () => {
     const {subPath} = useParams();
@@ -14,7 +15,8 @@ const CalendarBoard = () => {
                 <S.Title>{boardInfo.label}</S.Title>
                 <S.Description>{boardInfo.description}</S.Description>
                 <CalendarComponent />
-                
+                <S.Title style={{marginTop: "45px"}}>일정 추가/수정 요청</S.Title>
+                <CalendarRequest />
             </S.Wrapper>
         </>
     )
