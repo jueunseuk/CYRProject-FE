@@ -3,7 +3,6 @@ import * as S from "./styles";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { formatDate } from "@/util/dateFormatter";
 import { useParams } from "react-router-dom";
-import defaultProfile from "@/assets/image/default_profile.jpg";
 import attendanceBlack from "@/assets/icon/attendance/attendance_black.svg";
 import clock from "@/assets/icon/attendance/clock.svg";
 import pencil from "@/assets/icon/attendance/pencil.svg";
@@ -71,7 +70,6 @@ const AttendanceBoard = () => {
             try {
                 const response = await A.requestAttendanceList();
                 setAttendances(response.data);
-                console.log(attendances);
             } catch(error) {
 
             }
