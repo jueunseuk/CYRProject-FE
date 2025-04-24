@@ -10,6 +10,7 @@ import soundcloud from "@/assets/icon/link/soundcloud.svg";
 import cafe from "@/assets/icon/link/cafe.svg";
 import nave2 from "@/assets/icon/link/nave.svg";
 import xtwitter from "@/assets/icon/link/xtwitter.svg";
+import namu from "@/assets/icon/link/namu.svg";
 import { useState } from "react";
 
 const Link = () => {
@@ -62,6 +63,11 @@ const Link = () => {
                                 <S.Icon $icon={soundcloud}/>
                                 <S.Link href="https://soundcloud.com/yureechoi" target="_blank" title="유리의 사운드 클라우드 바로가기(현재 업데이트 X)">
                                 <S.Text $color={"#F26D23"} $size={"15px"} $weight={"600"}>SoundCloud</S.Text></S.Link>
+                            </S.ItemArea>
+                            <S.ItemArea>
+                                <S.Icon $icon={namu}/>
+                                <S.Link href="https://namu.wiki/w/%EC%B5%9C%EC%9C%A0%EB%A6%AC(%EA%B0%80%EC%88%98)" target="_blank" title="유리의 나무위키 바로가기">
+                                <S.Text $color={"#00A495  "} $size={"15px"} $weight={"600"}>NamuWiki</S.Text></S.Link>
                             </S.ItemArea>
                         </S.LinkList>
                     </S.Content>
