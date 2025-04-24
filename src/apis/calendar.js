@@ -81,4 +81,30 @@ export const postCalendar = async (formData) => {
             console.log("서버가 응답하지 않습니다.");
         }
     }
-}
+};
+
+export const getBeforeCalendar = async (params) => {
+    try {
+        const response = await axios.get(`${backendUrl}/calendar/before`, {params: params, headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            console.log("지난 스케줄을 가져오는데 실패했습니다.");
+        } else {
+            console.log("서버가 응답하지 않습니다.");
+        }
+    }
+};
+
+export const getAfterCalendar = async (params) => {
+    try {
+        const response = await axios.get(`${backendUrl}/calendar/after`, {params: params, headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            console.log("다가오는 스케줄을 가져오는데 실패했습니다.");
+        } else {
+            console.log("서버가 응답하지 않습니다.");
+        }
+    }
+};

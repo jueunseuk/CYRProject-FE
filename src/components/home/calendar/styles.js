@@ -28,24 +28,17 @@ export const ContentArea = styled.div`
     display:flex;
     flex-direction: column;
     justify-content: flex-start;
+    gap: 8px;
     height: 175px;
+    padding: 5px 5px;
 `;
 
-export const Table = styled.table`
+export const HorizontalWrapper = styled.div`
+    display: flex;
+    justify-content: ${({$justify}) => $justify || "flex-start"};
+    align-items: ${({$align}) => $align || "center"};
+    gap: 10px;
     width: 100%;
-    border-collapse: collapse;
-`;
-
-export const Row = styled.tr`
-    height: 35px;
-`;
-
-export const Column = styled.td`
-    padding: 0 5px;
-    text-align: left;
-    cursor: pointer;
-    font-size: 13px;
-    overflow: hidden;
 `;
 
 export const LeftDays = styled.div`
@@ -53,9 +46,9 @@ export const LeftDays = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 12px;
-    width: 45px;
-    height: 22px;
     border-radius: 25px;
     color: white;
     background-color: ${({$bg}) => $bg};
+    width: 45px;
+    height: 25px;
 `;
