@@ -31,23 +31,32 @@ const CalendarSummary = () => {
         fetchSchedule();
     }, []);
 
-    const getBgColor = leftText => {
-        const days = parseInt(leftText.replace(/D[-+]/, ""), 10)
-        if (isNaN(days)) return "#e0e0e0";
+    const getBgColor = text => {
+        const days = parseInt(text.replace("D-", ""), 10);
+        if(isNaN(days)) return "#C6BC73";
+        if(days < 0) return "#B7B7B7";
         if (days <= 3)  return "#C6BC73";
         if (days <= 10) return "#C8C09B";
         if (days <= 30) return "#B7B7B7";
         return "#e0e0e0";
     };
 
-    const getLeftText = dateStr => {
-        const today  = new Date();    today.setHours(0, 0, 0, 0);
-        const target = new Date(dateStr); target.setHours(0, 0, 0, 0);
-
-        const diff = Math.round((target - today) / MS_PER_DAY);
-
-        if (diff === 0) return "TODAY";
-        return diff > 0 ? `D-${diff}` : `D+${Math.abs(diff)}`;
+    const getLeft = (dateStr) => {
+        const today = new Date();
+        const target = new Date(dateStr);
+    
+        today.setHours(0, 0, 0, 0);
+        target.setHours(0, 0, 0, 0);
+    
+        const diff = (target.getTime() - today.getTime()) / MS_PER_DAY;
+    
+        if(diff > 0) {
+            return `D-${diff}`;
+        } else if(diff < 0) {
+            return `D-${-diff}`;
+        } else {
+            return "TODAY";
+        }
     };
 
     const currentSchedule = period === "after" ? afterSchedule : beforeSchedule;
@@ -67,11 +76,11 @@ const CalendarSummary = () => {
                         <S.Text>일정이 없습니다.</S.Text>
                     ) : (
                         currentSchedule.map((item) => {
-                            const leftText = getLeftText(item.date);
+                            const leftText = getLeft(item.date);
                             return (
                                 <S.HorizontalWrapper key={item.calendarId}>
                                     <S.LeftDays $bg={getBgColor(leftText)}>
-                                        {getLeftText(item.date)}
+                                        {leftText}
                                     </S.LeftDays>
                                     <S.Text title={`${item.type} : ${item.description}`} $size={"13px"}>{item.title}</S.Text>
                                 </S.HorizontalWrapper>
