@@ -3,8 +3,10 @@ import * as S from "./styles";
 import { useEffect, useState } from "react";
 import pencil from "@/assets/icon/attendance/pencil.svg";
 import unchecked from "@/assets/icon/etc/checked.svg";
+import useUserInfo from "@/hooks/localStorage";
 
 const CalendarRequest = () => {
+    const user = useUserInfo();
     const [requests, setRequests] = useState([]);
     const [content, setContent] = useState("");
 
@@ -64,7 +66,7 @@ const CalendarRequest = () => {
                                     <S.IconArea src={pencil} />
                                     <S.Text $weight={"700"}>{request.userNickname}</S.Text>
                                 </S.HorizontalWrapper>
-                                <S.IconArea title="완료로 표시" src={unchecked} style={{cursor: "pointer", width: "13px", height: "13px"}} onClick={() => handleRequestProcess(request.calendarRequestId)} />
+                                {(user.role === "MANAGER" || user.role === "ADMIN") && <S.IconArea title="완료로 표시" src={unchecked} style={{cursor: "pointer", width: "13px", height: "13px"}} onClick={() => handleRequestProcess(request.calendarRequestId)} />}
                             </S.HorizontalWrapper>
                             <S.RequestTextBox>{request.content}</S.RequestTextBox>
                         </S.ContentBox>
