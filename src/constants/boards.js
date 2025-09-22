@@ -52,7 +52,7 @@ export const BOARDS = [
       label: "모래 이야기",
       icon: sand,
       children: [
-        { id: 9, label: "자유게시판", path: "free" },
+        { id: "9", label: "자유게시판", path: "free" },
         { id: "10", label: "질문게시판", path: "qna" },
         { id: "11", label: "내가 그린 유리", path: "art" },
         { id: "12", label: "내가 부른 유리", path: "cover" },
