@@ -121,7 +121,7 @@ export const requestResetPassword = async (email, password) => {
     } catch(error) {
         if(error.response && error.response.data) {
             const errorCode = error.response.data.code;
-            console.log(error.response.data)
+
             if(errorCode === 'MAIL_004') {
                 alert("일치하는 이메일을 찾을 수 없습니다.");
             } else if(errorCode === 'AUTH_007') {
@@ -143,7 +143,7 @@ export const requestNaverUserInformation = async (code, state) => {
         return response;
     } catch(error) {
         if(error.response && error.response.data) {
-            const errorCode = error.response.code;
+            const errorCode = error.response.data.code;
 
             if(errorCode === 'AUTH_010') {
                 alert("유효하지 않은 네이버 인증 코드입니다.");
