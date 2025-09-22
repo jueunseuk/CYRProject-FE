@@ -51,7 +51,7 @@ const PostEditor = ({requestBoard}) => {
         <>
             <S.Wrapper>
                 <S.Select size={"1"} value={formData.boardId} onChange={handleSelectChange}>
-                    {user?.role === "MANAGER" && (
+                    {(user?.role === "MANAGER" || user?.role === "ADMIN") && (
                         <S.OptionGroup label="NOTICE">
                             <S.Option value={5}>공지사항</S.Option>
                             <S.Option value={6}>이벤트</S.Option>
