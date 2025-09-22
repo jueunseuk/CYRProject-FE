@@ -62,7 +62,7 @@ const EmailVerifyPassword = () => {
                 method: 'EMAIL'
             }));
 
-            navigate('/login/reset-password');
+            navigate('/auth/login/reset-password');
         } catch (error) {
             
         }
