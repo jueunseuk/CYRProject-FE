@@ -48,7 +48,7 @@ export const HorizontalWrapper = styled.div`
     align-items: center;
 `;
 
-export const CalendarUploadButton = styled.button`
+export const CalendarEditButton = styled.button`
     display: flex;
     gap: 10px;
     align-items: center;
@@ -61,7 +61,7 @@ export const CalendarUploadButton = styled.button`
     background-color: white;
     color: #C6BC73;
     cursor: pointer;
-    margin-top: 45px;
+    margin-top: 20px;
 `;
 
 export const Icon = styled.img`

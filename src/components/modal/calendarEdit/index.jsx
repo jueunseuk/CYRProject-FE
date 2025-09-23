@@ -1,7 +1,7 @@
 import * as C from "@/apis/calendar";
 import * as S from "./styles";
 import cancel from "@/assets/icon/gallery/cancel.svg";
-import upload from "@/assets/icon/gallery/upload.svg";
+import edit from "@/assets/icon/etc/edit.svg";
 import help from "@/assets/icon/gallery/help.svg";
 import { useState } from "react";
 
@@ -9,23 +9,22 @@ const now = new Date();
 const pad = (n) => n.toString().padStart(2, '0');
 const today = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 
-const CalendarUpload = ({onClose}) => {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [date, setDate] = useState(today);
-    const [type, setType] = useState("BROADCAST");
+const CalendarEdit = ({onClose, item}) => {
+    const [calendarId, setCalendarId] = useState(item?.calendarId);
+    const [title, setTitle] = useState(item?.title);
+    const [description, setDescription] = useState(item?.description);
+    const [date, setDate] = useState(item?.date);
+    const [type, setType] = useState(item?.type);
     
     const requestCalenarUpload = async () => {
         try {
-            await C.postCalendar({title, description, date, type});
+            await C.editCalendar({calendarId, title, description, date, type});
             alert("일정 업로드 완료!");
             window.location.reload();
         } catch(error) {
 
         }
     }
-
-    console.log(date)
 
     return (
         <>
@@ -42,7 +41,7 @@ const CalendarUpload = ({onClose}) => {
                                 <p style={{fontSize:"14px"}}>3. 일정 타입은 꼭 일정의 성격에 맞게 분류해주세요.</p>
                             </S.TooltipText>
                         </S.TooltipWrapper>
-                        <S.Icon src={upload} $width={"25px"} $height={"25px"}></S.Icon>
+                        <S.Icon src={edit} $width={"25px"} $height={"25px"}></S.Icon>
                         <S.Icon src={cancel} onClick={onClose}></S.Icon>
                     </S.HorizontalWrapper>
                     <S.InputArea>
@@ -92,4 +91,4 @@ const CalendarUpload = ({onClose}) => {
     );
 }
 
-export default CalendarUpload;
+export default CalendarEdit;

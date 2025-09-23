@@ -92,9 +92,9 @@ const CalendarComponent = () => {
         <>
             <S.Wrapper>
                 <S.HorizontalWrapper $gap={"120px"}>
-                    <S.Text $size={"28px"} $weight={"200"} style={{cursor: "pointer"}} onMouseDown={() => handleCurrentMonthValue(-1)}>&lt;</S.Text>
-                    <S.Text $size={"28px"} $weight={"700"}>{`${year} . ${formatMonth}`}</S.Text>
-                    <S.Text $size={"28px"} $weight={"200"} style={{cursor: "pointer"}} onMouseDown={() => handleCurrentMonthValue(1)}>&gt;</S.Text>
+                    <S.Text $size={"28px"} $weight={"200"} style={{cursor: "pointer", userSelect: "none"}} onMouseDown={() => handleCurrentMonthValue(-1)}>&lt;</S.Text>
+                    <S.Text $size={"28px"} $weight={"700"} style={{width: "140px", textAlign: "center"}}>{`${year} . ${formatMonth}`}</S.Text>
+                    <S.Text $size={"28px"} $weight={"200"} style={{cursor: "pointer", userSelect: "none"}} onMouseDown={() => handleCurrentMonthValue(1)}>&gt;</S.Text>
                 </S.HorizontalWrapper>
 
                 <S.HorizontalWrapper $gap={"10px"} $justify={"flex-end"} style={{marginTop: "25px", marginBottom: "10px", padding: "0 13px"}}>
