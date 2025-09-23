@@ -25,8 +25,6 @@ const CalendarUpload = ({onClose}) => {
         }
     }
 
-    console.log(date)
-
     return (
         <>
             <S.Wrapper>
@@ -35,8 +33,7 @@ const CalendarUpload = ({onClose}) => {
                         <S.TooltipWrapper>
                             <S.Icon src={help} $width={"15px"} $height={"15px"}></S.Icon>
                             <S.TooltipText>
-                                <p style={{fontSize: "16px", fontWeight:"700"}}>캘린더 업로드 가이드</p>
-                                <br />
+                                <p style={{fontSize: "16px", fontWeight:"700", marginBottom: "5px"}}>캘린더 업로드 가이드</p>
                                 <p style={{fontSize:"14px"}}>1. 일정 이름은 최대한 간단하게 나타내면 좋아요.</p>
                                 <p style={{fontSize:"14px"}}>2. 일정 설명은 자세한 시각, 장소 등을 전부 알려주세요.</p>
                                 <p style={{fontSize:"14px"}}>3. 일정 타입은 꼭 일정의 성격에 맞게 분류해주세요.</p>

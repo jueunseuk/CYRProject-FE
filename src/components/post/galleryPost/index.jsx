@@ -3,6 +3,7 @@ import * as S from "./styles";
 import camera from "@/assets/icon/gallery/camera.svg";
 import author from "@/assets/icon/gallery/author.svg";
 import list from "@/assets/icon/gallery/list.svg";
+import view from "@/assets/icon/post/view.svg";
 import MoreOption from "@/components/modal/moreOption";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -62,6 +63,10 @@ const GalleryPost = () => {
                             <S.HorizontalWrapper $gap={"5px"}>
                                 <S.Icon src={camera} $width={"10px"} $height={"10px"}/>
                                 <S.Text $size={"12px"} $color={"#878787"}>{formatDate(formData.picturedAt, 5)}</S.Text>
+                            </S.HorizontalWrapper>
+                            <S.HorizontalWrapper $gap={"5px"}>
+                                <S.Icon src={view} $width={"10px"} $height={"10px"}/>
+                                <S.Text $size={"12px"} $color={"#878787"}>{formData.viewCnt}</S.Text>
                             </S.HorizontalWrapper>
                         </S.HorizontalWrapper>
                     </S.VerticalWrapper>

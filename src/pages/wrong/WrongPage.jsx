@@ -1,15 +1,12 @@
-import styled from "styled-components";
+import * as S from "./styles";
+import notFound from "@/assets/image/404.png";
 
 const WrongPage = () => {
     return (
-        <Wrapper>
-            Wrong Page
-        </Wrapper>
+        <S.Wrapper>
+            <img src={notFound}></img>
+        </S.Wrapper>
     );
 }
 
 export default WrongPage;
-
-const Wrapper = styled.div`
-    
-`;

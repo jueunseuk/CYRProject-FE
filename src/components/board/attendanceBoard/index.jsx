@@ -7,6 +7,7 @@ import attendanceBlack from "@/assets/icon/attendance/attendance_black.svg";
 import clock from "@/assets/icon/attendance/clock.svg";
 import pencil from "@/assets/icon/attendance/pencil.svg";
 import { useEffect, useState } from "react";
+import useUserInfo from "@/hooks/localStorage";
 
 const AttendanceBoard = () => {
     const {subPath} = useParams();
@@ -25,6 +26,7 @@ const AttendanceBoard = () => {
         saturday: 0
     });
     const [attendances, setAttendances] = useState([]);
+    const user = useUserInfo();
 
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
     const boardId = 3;
@@ -86,7 +88,7 @@ const AttendanceBoard = () => {
                     <S.Text $size={"28px"} $weight={"700"}>{formatDate(new Date(), 5)}</S.Text>
 
                     <S.HorizontalWrapper $gap={"15px"}>
-                        <S.TextBox>#4월 출석자 수 : {cntData.thisMonthCnt}명</S.TextBox>
+                        <S.TextBox>#이번달 출석자 수 : {cntData.thisMonthCnt}명</S.TextBox>
                         <S.TextBox>#전월 대비 상승 : <S.Text $weight={"700"} $color={cntData.thisMonthCnt > cntData.beforeMonthCnt ? "blue" : "red"}>{cntData.thisMonthCnt > cntData.beforeMonthCnt ? `+${cntData.thisMonthCnt-cntData.beforeMonthCnt}명` : `-${cntData.thisMonthCnt-cntData.beforeMonthCnt}명`}</S.Text></S.TextBox>
                         <S.TextBox>#이번주 출석자 수 : {cntData.thisWeekCnt}명</S.TextBox>
                         <S.TextBox>#전주 대비 상승 : <S.Text $weight={"700"} $color={cntData.thisWeekCnt > cntData.beforeWeekCnt ? "blue" : "red"}>{cntData.thisWeekCnt > cntData.beforeWeekCnt ? `+${cntData.thisWeekCnt-cntData.beforeWeekCnt}명` : `-${cntData.thisWeekCnt-cntData.beforeWeekCnt}명`}</S.Text></S.TextBox>
@@ -150,7 +152,7 @@ const AttendanceBoard = () => {
                     <S.AttendanceArea>
                         <S.HorizontalWrapper style={{marginBottom: "5px"}}>
                             <S.InputField value={comment} onChange={(e) => setComment(e.target.value)}/>
-                            <S.AttendanceButton onClick={handleClickAttendance}>출석하기</S.AttendanceButton>
+                            <S.AttendanceButton onClick={handleClickAttendance} disabled={comment.length < 5 || user.role === "GUEST"}>출석하기</S.AttendanceButton>
                         </S.HorizontalWrapper>
                         <S.Text $color={"#878787"} $size={"11px"}>출석과 함께 하고 싶은 말을 남겨보세요! 매일 출석하면 경험치를 얻을 수 있습니다.</S.Text>
                     </S.AttendanceArea>

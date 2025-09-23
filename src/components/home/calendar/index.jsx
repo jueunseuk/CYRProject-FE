@@ -75,7 +75,7 @@ const CalendarSummary = () => {
                     {currentSchedule.length === 0 ? (
                         <S.Text>일정이 없습니다.</S.Text>
                     ) : (
-                        currentSchedule.map((item) => {
+                        currentSchedule.slice(0, 5).map((item) => {
                             const leftText = getLeft(item.date);
                             return (
                                 <S.HorizontalWrapper key={item.calendarId}>

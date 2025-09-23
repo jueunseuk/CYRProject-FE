@@ -4,9 +4,9 @@ const useUserInfo = () => {
   return useMemo(() => {
     try {
       const str = localStorage.getItem("userInfo");
-      return str ? JSON.parse(str) : null;
+      return str ? JSON.parse(str) : { role: "GUEST" };
     } catch {
-      return null;
+      return { role: "GUEST" };
     }
   }, []);
 };

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import pencil from "@/assets/icon/attendance/pencil.svg";
 import unchecked from "@/assets/icon/etc/checked.svg";
 import useUserInfo from "@/hooks/localStorage";
+import { formatDate } from "@/util/dateFormatter";
 
 const CalendarRequest = () => {
     const user = useUserInfo();
@@ -65,6 +66,7 @@ const CalendarRequest = () => {
                                 <S.HorizontalWrapper $justify={"flex-start"} $gap={"5px"}>
                                     <S.IconArea src={pencil} />
                                     <S.Text $weight={"700"}>{request.userNickname}</S.Text>
+                                    <S.Text $size={"11px"} $color={"#666666ff"}>{formatDate(request.createdAt, 5)}</S.Text>
                                 </S.HorizontalWrapper>
                                 {(user.role === "MANAGER" || user.role === "ADMIN") && <S.IconArea title="완료로 표시" src={unchecked} style={{cursor: "pointer", width: "13px", height: "13px"}} onClick={() => handleRequestProcess(request.calendarRequestId)} />}
                             </S.HorizontalWrapper>

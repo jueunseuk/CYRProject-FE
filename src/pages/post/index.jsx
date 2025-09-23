@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Board from "@/components/home/board";
 import Banner from "@/components/home/banner";
 import Footer from "@/components/home/footer";
@@ -11,10 +11,19 @@ import BasicPost from "@/components/post/basicPost";
 import GalleryPost from "@/components/post/galleryPost";
 import EventPost from "@/components/post/eventPost";
 import WrongPage from "../wrong/WrongPage";
+import { useEffect } from "react";
 
 const Post = () => {
     const user = useUserInfo();
     const {subPath} = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user || !user.userId) {
+            alert("로그인이 필요한 서비스입니다.");
+            navigate("/");
+        }
+    }, [user, navigate]);
 
     const getBoardComponent = () => {
         switch(subPath) {

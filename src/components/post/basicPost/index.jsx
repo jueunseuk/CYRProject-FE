@@ -56,7 +56,7 @@ const BasicPost = () => {
                     : (
                     <>
                         <S.VerticalWrapper>
-                            <S.Text $size={"14px"} style={{cursor: "pointer"}}>{boardInfo.label} &gt;</S.Text>
+                            <S.Text $size={"14px"} style={{cursor: "pointer"}} onClick={handleNavigatePostList}>{boardInfo.label} &gt;</S.Text>
                             <S.HorizontalWrapper $justify={"space-between"} style={{width: "100%"}}>
                                 <S.Text $size={"18px"} $weight={"700"} style={{marginTop: "1px"}}>{postData.title}</S.Text>
                                 <MoreOption formData={postData} />
