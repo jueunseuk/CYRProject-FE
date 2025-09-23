@@ -102,6 +102,7 @@ export const FileItem = styled.img`
     height: 80px;
     border-radius: 8px;
     cursor: pointer;
+    object-fit: cover;
 `;
 
 export const FileUploadButton = styled.div`
@@ -147,6 +148,7 @@ export const TooltipText = styled.span`
     background-color: white;
     color: white;
     padding: 15px;
+    border: 1px solid #9C9589;
     border-radius: 8px;
     white-space: nowrap;
     z-index: 1;

@@ -34,6 +34,8 @@ const CalendarBoard = () => {
         window.location.reload();
     }
 
+    const permission = user?.role === "MANAGER" || user?.role === "ADMIN";
+
     return (
         <>
             <S.Wrapper>
@@ -42,10 +44,16 @@ const CalendarBoard = () => {
                 <S.Title>{boardInfo.label}</S.Title>
                 <S.Description>{boardInfo.description}</S.Description>
                 <CalendarComponent />
-                {(user?.role === "MANAGER" || user?.role === "ADMIN") && 
-                    <S.CalendarEditButton onClick={handleOpenModal}><S.Icon src={upload}></S.Icon>일정 업로드</S.CalendarEditButton>}
-                {(user?.role === "MANAGER" || user?.role === "ADMIN") && 
-                    <S.CalendarEditButton onClick={handleOpenEditModal}><S.Icon src={edit}></S.Icon>일정 수정/삭제</S.CalendarEditButton>}
+                {permission && (
+                    <S.CalendarEditButton onClick={handleOpenModal}>
+                        <S.Icon src={upload}></S.Icon>일정 업로드
+                    </S.CalendarEditButton>
+                    )}
+                    {permission && (
+                    <S.CalendarEditButton onClick={handleOpenEditModal}>
+                        <S.Icon src={edit}></S.Icon>일정 수정/삭제
+                    </S.CalendarEditButton>
+                    )}
                 <S.Title style={{marginTop: "45px"}}>일정 추가/수정/삭제 요청</S.Title>
                 <CalendarRequest />
             </S.Wrapper>

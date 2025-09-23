@@ -45,7 +45,7 @@ const Cheer = () => {
                     <S.TooltipWrapper>
                         <S.IconArea src={information} />
                         <S.TooltipText>
-                            <p style={{fontSize: "16px", fontWeight:"700"}}>응원이란?</p>
+                            <p style={{fontSize: "16px", fontWeight:"700", marginBottom:"5px"}}>응원이란?</p>
                             <p style={{fontSize:"14px"}}>아래의 응원을 눌러서 유리를 응원해보세요!</p>
                             <p style={{fontSize:"14px"}}>응원은 1분에 1번씩만 가능합니다.</p>
                         </S.TooltipText>
