@@ -108,3 +108,36 @@ export const getAfterCalendar = async (params) => {
         }
     }
 };
+
+export const deleteCalendar = async (params) => {
+    try {
+        await instance.delete(`${backendUrl}/calendar`, {params: params, headers: {Accept: "application/json"}});
+    } catch(error) {
+        if(error.response && error.response.data) {
+            if(error.response.data.code === 'CAL_001') {
+                console.log("요청을 처리할 권한이 없습니다.")
+            }
+        } else {
+            console.log("서버가 응답하지 않습니다.");
+        }
+    }
+}
+
+export const editCalendar = async (params) => {
+    try {
+        await instance.put(`${backendUrl}/calendar`, params, { headers: {Accept: "application/json"} });
+    } catch(error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.data.code;
+            if(errorCode === 'CAL_001') {
+                alert("존재하지 않는 일정입니다.");
+            } else if(errorCode === 'CAL_004') {
+                alert("수정할 권한이 없습니다.");
+            }
+
+            throw error;
+        } else {
+            console.log("서버가 응답하지 않습니다.");
+        }
+    }
+}
