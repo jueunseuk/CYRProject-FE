@@ -28,6 +28,9 @@ const GalleryUpload = ({onClose}) => {
         setImagePreviews((prev) =>
             prev.filter((_, i) => i !== index)
         );
+        setUploadedFiles((prev) => 
+            prev.filter((_, i) => i !== index)
+        );
     };
 
     const handleImageChange = (event) => {

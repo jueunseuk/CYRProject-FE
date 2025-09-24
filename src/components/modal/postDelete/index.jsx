@@ -2,7 +2,7 @@ import * as G from "@/apis/gallery";
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 
-const PostDeleteModal = ({onClose, galleryId}) => {
+const PostDeleteModal = ({onClose, galleryId, onDeleted}) => {
     const navigate = useNavigate();
 
     const handleDeleteGallery = async () => {
@@ -10,6 +10,7 @@ const PostDeleteModal = ({onClose, galleryId}) => {
             await G.deleteGallery(galleryId);
             alert("갤러리를 성공적으로 삭제했습니다.");
             navigate("/gallery");
+            onDeleted();
         } catch(error) {
 
         }

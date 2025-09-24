@@ -47,7 +47,7 @@ const MoreOption = ({formData}) => {
     
     return (
         <>
-            {isDeleteModalOpen && <PostDeleteModal onClose={handleCloseModal} galleryId={formData.galleryId}/>}
+            {isDeleteModalOpen && <PostDeleteModal onClose={handleCloseModal} galleryId={formData.galleryId} onDeleted={() => navigate("/gallery")}/>}
             {isEditModalOpen && <GalleryUpdate onClose={handleCloseModal} prevData={formData}/>}
             <S.MoreOptionWrapper>
                 <S.MoreIcon onClick={handleOpenOption} src={more} />
