@@ -9,6 +9,7 @@ export const formatDate = (dateString, formatType = 1) => {
     const day = `${date.getDate()}`.padStart(2, "0");
     const hour = `${date.getHours()}`.padStart(2, "0");
     const minute = `${date.getMinutes()}`.padStart(2, "0");
+    const second = `${date.getSeconds()}`.padStart(2, "0");
 
     const isToday =
       date.getFullYear() === now.getFullYear() &&
@@ -30,6 +31,8 @@ export const formatDate = (dateString, formatType = 1) => {
         return `${year}년 ${month}월 ${day}일 ${hour}:${minute}`;
       case 5:
         return `${year}.${month}.${day}`;
+      case 6:
+        return `${hour}:${minute}:${second}`;
       default:
         return dateString;
     }

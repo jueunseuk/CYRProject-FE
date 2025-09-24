@@ -1,0 +1,8 @@
+.quill {
+    width: 100%;
+}
+
+.ql-editor {
+    min-height: 500px;
+    font-size: 14px;
+}

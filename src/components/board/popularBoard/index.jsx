@@ -26,8 +26,8 @@ const PopularBoard = () => {
         setPage(pageNum-1);
     }
 
-    const handleNavigatePost = (pageNum) => {
-
+    const handleNavigatePost = (boardName, id) => {
+        navigate(`/${boardName}/${id}`);
     }
 
     useEffect(() => {
@@ -39,7 +39,6 @@ const PopularBoard = () => {
             const end = toJavaLocalDateTime(now);
 
             try {
-                
                 const response = await P.getPopularPosts({page, sort, start, end});
                 setPosts(response.data.content);
                 setTotalElements(response.data.totalElements);
@@ -106,7 +105,7 @@ const PopularBoard = () => {
                         {posts.map((post) => (
                             <S.Row key={post.postId}>
                                 <S.Column>{post.boardKorean}</S.Column>
-                                <S.Column $align={"left"} onClick={() => handleNavigatePost(key)}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
+                                <S.Column $align={"left"} onClick={() => handleNavigatePost(post.boardName, post.postId)}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"}>{post.userNickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(post.createdAt, 3)}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{post.viewCnt}</S.Column>

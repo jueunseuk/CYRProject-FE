@@ -21,7 +21,7 @@ const EmailLogin = () => {
     };
     
     const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+        setPassword(e.target.value);
     };
 
     const handleRequestLogin = async () => {
@@ -39,7 +39,7 @@ const EmailLogin = () => {
 
             navigate('/');
         } catch (error) {
-
+            setPassword("");
         }
     }
 
@@ -49,14 +49,14 @@ const EmailLogin = () => {
             <S.VerticalWrapper>
                 <S.InputArea>
                     <S.InputGuideText>이메일</S.InputGuideText>
-                    <S.InputField type="email" name="email" onChange={handleEmailChange}/>
+                    <S.InputField type="email" name="email" value={email} onChange={handleEmailChange}/>
                 </S.InputArea>
                 <S.InputArea>
                     <S.InputGuideText>비밀번호</S.InputGuideText>
-                    <S.InputField type="password" name="password" onChange={handlePasswordChange}/>
+                    <S.InputField type="password" name="password" value={password} onChange={handlePasswordChange}/>
                 </S.InputArea>
             </S.VerticalWrapper>
-            <S.LoginNextButton disabled={email === "" || password.length === ""} onClick={handleRequestLogin}>로그인</S.LoginNextButton>
+            <S.LoginNextButton disabled={email === "" || password.length < 8} onClick={handleRequestLogin}>로그인</S.LoginNextButton>
             <S.SignupArea>
                 <S.NavigateText onClick={handleNavigateLogin}>처음으로 돌아가기</S.NavigateText>
                 <S.GuideText>|</S.GuideText>

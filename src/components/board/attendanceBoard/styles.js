@@ -50,7 +50,7 @@ export const HorizontalWrapper = styled.div`
 
 export const TextBox = styled.div`
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 700;
     color: #B3A225;
     padding: 7px 13px;
     background-color: #F4F3E9;
@@ -136,7 +136,9 @@ export const AttendanceBlock = styled.div`
 export const UserProfile = styled.img`
     width: 50px;
     heigth: 50px;
+    max-height: 50px;
     border-radius: 50px;
+    object-fit: cover;
 `;
 
 export const ContentBox = styled.div`
@@ -160,4 +162,15 @@ export const AttendanceTextBox = styled.div`
     padding: 10px;
     font-size: 12px;
     font-weight: 500;
+`;
+
+export const NoAttendanceWrapper = styled.div`
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 `;

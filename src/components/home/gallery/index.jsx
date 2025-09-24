@@ -2,26 +2,37 @@ import * as G from "@/apis/gallery";
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useUserInfo from "@/hooks/localStorage";
+import { SkeletonItem } from "@/common/component/Skeleton";
 
 const GallerySummary = () => {
     const navigate = useNavigate();
     const [images, setImages] = useState([]);
+    const [skeleton, setSkeleton] = useState(true);
+    const user = useUserInfo();
 
     const handleNavigateGallery = () => {
         navigate("/gallery");
     }
 
     const handleNavigateGalleryPost = (galleryId) => {
+        if (!user || !user.userId) {
+            alert("로그인 후 이용가능합니다.");
+            return;
+        }
         navigate(`/gallery/${galleryId}`);
     }
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
+                setSkeleton(true);
                 const response = await G.getAllGalleryImages();
                 setImages(response.data.content);
             } catch(error) {
                 
+            } finally {
+                setSkeleton(false);
             }
         }
         fetchPosts();
@@ -35,13 +46,16 @@ const GallerySummary = () => {
                     <S.Text $size={"12px"} style={{cursor: "pointer"}} onClick={handleNavigateGallery}>더보기</S.Text>
                 </S.TitleArea>
                 <S.ContentArea>
-                    {images.slice(0, 6).map((image) => (
-                        <S.GalleryItem
-                            key={image.galleryImageId}
-                            src={encodeURI(image.imageUrl)}
-                            loading="lazy"
-                            onClick={() => handleNavigateGalleryPost(image.galleryId)}
-                        />
+                    {skeleton ? 
+                        Array.from({ length: 6 }).map((_, index) => (
+                            <SkeletonItem key={index} $width={"140px"} $height={"140px"}/>
+                        ))
+                        : images.slice(0, 6).map((image) => (
+                            <S.GalleryItem
+                                key={image.galleryImageId}
+                                src={encodeURI(image.imageUrl)}
+                                onClick={() => handleNavigateGalleryPost(image.galleryId)}
+                            />
                     ))}
                 </S.ContentArea>
             </S.Wrapper>

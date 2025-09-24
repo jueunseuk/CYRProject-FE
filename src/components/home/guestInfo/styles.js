@@ -26,16 +26,3 @@ export const LoginButton = styled.button`
     border: none;
     cursor: pointer;
 `;
-
-export const HorizontalWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-`;
-
-export const LinkText = styled.div`
-    color: #B8B8B8;
-    font-size: 11px;
-    text-decoration: underline;
-    cursor: pointer;
-`;

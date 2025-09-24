@@ -22,15 +22,9 @@ export const Text = styled.div`
 
 export const Table = styled.table`
     width: 100%;
+    min-height: 481px;
     border-collapse: collapse;
-`;
-
-export const FirstRow = styled.tr`
     border-top: 2px solid black;
-
-    &:hover {
-        background-color:rgb(250, 250, 250);
-    }
 `;
 
 export const Row = styled.tr`
