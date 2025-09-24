@@ -138,7 +138,7 @@ const GalleryUpdate = ({onClose, prevData}) => {
                         </S.HorizontalWrapper>
                         <S.InputDate value={date} onChange={(e) => setDate(e.target.value)}></S.InputDate>
                     </S.InputArea>
-                    <S.SubmitButton disabled={uploadedFiles.length === 0 ||
+                    <S.SubmitButton disabled={uploadedFiles.length+newUploadFiles.length === 0 ||
                         title.length < 5 ||
                         title.length > 15 ||
                         description.length < 10 ||
