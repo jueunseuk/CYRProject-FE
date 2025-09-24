@@ -85,7 +85,7 @@ export const ImageItem = styled.img`
     object-fit: cover;
 `;
 
-export const NaviagateButton = styled.button`
+export const NavigateButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,4 +97,58 @@ export const NaviagateButton = styled.button`
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
+`;
+
+export const CommentWrapper = styled.div`
+    width: 100%;
+    background-color: #F4F3E9;
+    padding: 10px;
+`;
+
+export const CommentInputArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+`;
+
+export const InputField = styled.textarea`
+    font-size: 14px;
+    width: 750px;
+    height: 65px;
+    border: 1px solid #E4E4E4;
+    outline: none;
+    padding: 10px;
+    font-size: 15px;
+    resize: none;
+`;
+
+export const CommentButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    background-color: ${({disabled}) => (disabled ? "#B8B8B8" : "#C6BC73")};
+    font-weight: 700;
+    color: white;
+    font-size: 15px;
+    cursor: ${({ disabled }) => (disabled ? "" : "pointer")};
+`;
+
+export const CommentList = styled.div`
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    min-height: 150px;
+    justify-content: center;
+    padding: 25px;
+    gap: 25px;
+`;
+
+export const CommentItem = styled.div`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
 `;
