@@ -67,3 +67,23 @@ export const requestPost = async (form) => {
         }
     }
 }
+
+export const deletePost = async (postId) => {
+    try {
+        const response = await instance.delete(`/posts/${postId}`);
+    } catch(error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.data.code;
+
+            if(errorCode === 'POST_004') {
+                alert("삭제할 권한이 부족합니다.");
+            } else if(errorCode === "POST_001") {
+                alert("삭제됐거나 존재하지 않는 게시글입니다.");
+            }
+
+            throw error;
+        } else {
+            alert("서버가 원활하지 않습니다.\n 다시 시도해주세요.");
+        }
+    }
+}

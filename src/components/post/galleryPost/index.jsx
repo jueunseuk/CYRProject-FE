@@ -52,7 +52,7 @@ const GalleryPost = () => {
                         <S.Text $size={"14px"} style={{cursor: "pointer"}} onClick={handleNavigateGallery}>유리 갤러리 &gt;</S.Text>
                         <S.HorizontalWrapper $justify={"space-between"} style={{width: "100%"}}>
                             <S.Text $size={"18px"} $weight={"700"} style={{marginTop: "1px"}}>{formData.title}</S.Text>
-                            <MoreOption formData={formData} />
+                            <MoreOption formData={formData} type="gallery"/>
                         </S.HorizontalWrapper>
                         <S.HorizontalWrapper $gap={"15px"} style={{marginTop: "10px"}}>
                             <S.Profile src={formData.profileImageUrl}/>

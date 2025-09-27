@@ -22,6 +22,7 @@ const LatestPost = () => {
                 setSkeleton(true);
                 const response = await P.getAllPosts({page, sort});
                 setPosts(response.data.content);
+
             } catch(error) {
                 
             } finally {
@@ -60,7 +61,7 @@ const LatestPost = () => {
                                 : posts.slice(0, 15).map((post) => (
                                 <S.Row key={post.postId}>
                                     <S.FirstColumn><S.Text>[{post.boardKorean}]</S.Text></S.FirstColumn>
-                                    <S.Column $align={"left"} onClick={() => handleNavigatePost(post.boardName, post.postId)}><S.Text>{post.title}</S.Text></S.Column>
+                                    <S.Column $align={"left"} onClick={() => handleNavigatePost(post.boardName, post.postId)}><S.Text>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Text></S.Column>
                                     <S.Column $align={"left"}><S.Text>{post.userNickname}</S.Text></S.Column>
                                     <S.Column><S.Text $color={"#878787"}>{formatDate(post.createdAt, 3)}</S.Text></S.Column>
                                     <S.Column><S.Text $color={"#878787"}>{post.viewCnt}</S.Text></S.Column>

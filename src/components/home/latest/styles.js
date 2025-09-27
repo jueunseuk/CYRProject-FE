@@ -44,3 +44,12 @@ export const Column = styled.td`
     padding: 8px;
     text-align: ${({$align}) => $align || "center"};
 `;
+
+export const Comment = styled.span`
+    padding: 1px 4px;
+    margin-left: 5px;
+    font-size: 10px;
+    color: red;
+    border: 1px solid #B7B7B7;
+    border-radius: 5px;
+`;
