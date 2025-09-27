@@ -14,7 +14,7 @@ const DeleteModal = ({onClose, id, type}) => {
                 navigate("/gallery");
             } else {
                 await P.deletePost(id);
-                alert("게시글을 성공적으로 삭제했습니다.");
+                alert("게시글을 성공적으로 삭제했습니다.\n해당 게시판으로 이동합니다.");
                 navigate(`/${type}`);
             }
         } catch(error) {

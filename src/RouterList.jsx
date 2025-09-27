@@ -19,6 +19,7 @@ import PostList from "@/pages/posts";
 import Post from "@/pages/post";
 import FooterPage from "@/pages/footerPage";
 import Editor from "@/pages/editor";
+import UpdateEditor from "./pages/updateEditor";
 
 export const RouterList = () => [
     {
@@ -97,6 +98,10 @@ export const RouterList = () => [
                     {
                         path: "write/:type",
                         element: <Editor />
+                    },
+                    {
+                        path: "edit/:type/:postId",
+                        element: <UpdateEditor />
                     },
 
                     // footer
