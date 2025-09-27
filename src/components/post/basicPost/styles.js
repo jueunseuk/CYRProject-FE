@@ -153,3 +153,13 @@ export const CommentItem = styled.div`
     height: 100%;
     justify-content: flex-start;
 `;
+
+export const Button = styled.button`
+    width: 60px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: ${({$bg}) => $bg || "black"};
+    font-weight: 700;
+    cursor: pointer;
+`;

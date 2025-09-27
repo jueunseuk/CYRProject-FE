@@ -16,6 +16,7 @@ import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/component/Skeleton";
 import WrongPage from "@/pages/wrong/WrongPage";
+import MoreOptionComment from "@/components/modal/moreOptionComment";
 
 const BasicPost = () => {
     const user = useUserInfo();
@@ -29,6 +30,9 @@ const BasicPost = () => {
     const [locked, setLocked] = useState("PUBLIC");
     const [commentData, setCommentData] = useState([]);
     const [notFound, setNotFound] = useState(false);
+    const [editingCommentId, setEditingCommentId] = useState(null);
+    const [editingContent, setEditingContent] = useState("");
+    const [editingLocked, setEditingLocked] = useState("PUBLIC");
 
     const handleNavigatePostList = () => {
         navigate(`/${subPath}`);
@@ -54,7 +58,7 @@ const BasicPost = () => {
 
         fetchPost();
     }, []);
-
+    
     const handleClickComment = async () => {
         if(!comment || comment.trim() === "") {
             alert("내용을 입력해주세요!");
@@ -75,10 +79,28 @@ const BasicPost = () => {
         }
     }
 
+    const handleClickUpdateComment = async (commentId) => {
+        try {
+            const form = {
+                postId: postId,
+                comment: editingContent,
+                locked: editingLocked
+            };
+            await C.patchComment(form, commentId);
+            alert("댓글 수정 완료!");
+            setEditingCommentId(null);
+
+            const commentRes = await C.getPostCommentList(postId);
+            setCommentData(commentRes);
+        } catch(error) {
+
+        }
+    }
+
     if(notFound) {
         return <WrongPage />;
     }
-
+    
     return (
         <>
             <S.Wrapper>
@@ -143,15 +165,27 @@ const BasicPost = () => {
                         commentData.map((c) => (
                         <S.CommentItem key={c.commentId}>
                             <S.HorizontalWrapper $gap={"15px"} style={{width: "100%", alignItems: "flex-start"}}>
-                                <S.Profile src={c.profileUrl} style={{height: "50px", width: "50px", borderRadius: "50px"}}/>
+                                <S.Profile src={c.profileUrl} style={{height: "45px", width: "50px", borderRadius: "50px"}}/>
                                 <S.VerticalWrapper style={{height: "50%", justifyContent: "flex-start", gap: "10px"}}>
                                     <S.HorizontalWrapper>
                                         {c.userId === postData.userId && <S.Icon src={author}/>}
                                         <S.Text $size="14px" $weight="600">{c.userName}</S.Text>
                                         <S.Text $size="12px" $color="#878787">{formatDate(c.createdAt, 3)}</S.Text>
                                     </S.HorizontalWrapper>
-                                    <S.Text style={{textAlign: "left"}}>{c.content}</S.Text>
+                                    <S.Text $size="13px" style={{textAlign: "left"}}>{c.content}</S.Text>
+                                    {editingCommentId === c.commentId && (
+                                        <S.VerticalWrapper style={{width: "100px", gap: "5px"}}>
+                                            <S.InputField style={{minHeight: "100px", width: "700px"}} value={editingContent.trim()} onChange={(e) => setEditingContent(e.target.value)}/>
+                                            <S.HorizontalWrapper style={{width: "700px", display: "flex", justifyContent: "flex-end", gap: "5px"}}>
+                                                <S.Button $bg={"#C6BC73"} onClick={(() => handleClickUpdateComment(c.commentId))}>수정</S.Button>
+                                                <S.Button $bg={"#e2e2e2ff"} onClick={() => setEditingCommentId(null)}>취소</S.Button>
+                                            </S.HorizontalWrapper>
+                                        </S.VerticalWrapper>
+                                    )}
                                 </S.VerticalWrapper>
+                                <MoreOptionComment formData={c} onEdit={() => {
+                                    setEditingCommentId(c.commentId);
+                                    setEditingContent(c.content)}}/>
                             </S.HorizontalWrapper>
                         </S.CommentItem>
                         ))

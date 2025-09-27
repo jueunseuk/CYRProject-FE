@@ -48,6 +48,7 @@ const GalleryBoard = () => {
                 setImages(response.data.content);
                 setTotalElements(response.data.totalElements);
                 setTotalPage(response.data.totalPages);
+                console.log(images)
             } catch(error) {
                 
             } finally {
@@ -87,9 +88,9 @@ const GalleryBoard = () => {
                         <S.Icon src={upload}></S.Icon>유리 사진 업로드
                     </S.GalleryUploadButton>
                     <S.SortArea>
-                        <S.Sort onClick={() => handleClickSort("createdAt")} $weight={sort === "createdAt" ? 700 : ""}>New</S.Sort>
+                        <S.Sort title="최근에 찍은 사진 순으로 정렬" onClick={() => handleClickSort("createdAt")} $weight={sort === "createdAt" ? 700 : ""}>New</S.Sort>
                         <S.Text $size={"11px"}>|</S.Text>
-                        <S.Sort onClick={() => handleClickSort("picturedAt")} $weight={sort === "picturedAt" ? 700 : ""}>History</S.Sort>
+                        <S.Sort title="사용자의 최근 업로드 순으로 정렬" onClick={() => handleClickSort("picturedAt")} $weight={sort === "picturedAt" ? 700 : ""}>History</S.Sort>
                     </S.SortArea>
                 </S.Header>
                 <S.Contour />

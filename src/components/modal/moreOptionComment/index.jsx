@@ -1,32 +1,26 @@
 import * as S from "./styles";
 import DeleteModal from "@/components/modal/postDelete";
-import GalleryUpdate from "@/components/modal/galleryUpdate";
 import more from "@/assets/icon/gallery/more.svg";
 import cancel from "@/assets/icon/etc/cancel.svg";
 import useUserInfo from "@/hooks/localStorage";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const MoreOption = ({formData, type}) => {
+const MoreOptionComment = ({formData, type, onEdit}) => {
     const user = useUserInfo();
     const navigate = useNavigate();
     const [isOptionOpen, setIsOptionOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-    const [isCopy, setIsCopy] = useState(false);
-    const currentUrl = window.location.href;
+    const [isEditing, setIsEditing] = useState(false);
     
     const handleOpenOption = () => {
         setIsOptionOpen((prev) => !prev);
     }
 
     const handleEdit = () => {
-        if (type === "gallery") {
-            setIsEditModalOpen(true);
-        } else {
-            navigate(`/edit/post/${formData.postId}`);
-        }
+        if (onEdit) onEdit();
+        setIsOptionOpen(false);
     };
     
     const handleDelete = () => {
@@ -41,21 +35,11 @@ const MoreOption = ({formData, type}) => {
         setIsDeleteModalOpen(false);
         setIsEditModalOpen(false);
     }
-
-    const handleShareClick = () => {
-        setIsOptionOpen(false);
-        setIsCopy(true)
-        setTimeout(() => {
-            setIsCopy(false)
-        }, 2000);
-    }
-
+    
     return (
         <>
-            {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={type === "gallery" ? formData.galleryId : formData.postId} type={type}/>}
-            {isEditModalOpen && (
-                type === "gallery" 
-                    ? <GalleryUpdate onClose={handleCloseModal} prevData={formData} /> : null)}
+            {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={formData.commentId} type={"comment"}/>}
+            {isEditModalOpen }
             <S.MoreOptionWrapper>
                 <S.MoreIcon onClick={handleOpenOption} src={isOptionOpen ? cancel : more} />
                 {isOptionOpen && (
@@ -66,16 +50,12 @@ const MoreOption = ({formData, type}) => {
                                     <S.OptionButton onClick={handleDelete}>삭제</S.OptionButton>
                                 </>
                             )}
-                        <S.OptionButton onClick={handleComplaint}>게시글 신고</S.OptionButton>
-                        <CopyToClipboard text={currentUrl} onCopy={handleShareClick}>
-                            <S.OptionButton>링크 복사</S.OptionButton>
-                        </CopyToClipboard>
+                        <S.OptionButton onClick={handleComplaint}>댓글 신고</S.OptionButton>
                     </S.OptionBox>
                 )}
             </S.MoreOptionWrapper>
-            <S.ShareResultMessage $copy={isCopy}>클립보드에 복사 완료!</S.ShareResultMessage>
         </>
     );
 }
 
-export default MoreOption;
+export default MoreOptionComment;
