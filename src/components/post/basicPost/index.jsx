@@ -15,6 +15,7 @@ import list from "@/assets/icon/gallery/list.svg";
 import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/component/Skeleton";
+import WrongPage from "@/pages/wrong/WrongPage";
 
 const BasicPost = () => {
     const user = useUserInfo();
@@ -27,6 +28,7 @@ const BasicPost = () => {
     const [comment, setComment] = useState("");
     const [locked, setLocked] = useState("PUBLIC");
     const [commentData, setCommentData] = useState([]);
+    const [notFound, setNotFound] = useState(false);
 
     const handleNavigatePostList = () => {
         navigate(`/${subPath}`);
@@ -40,9 +42,11 @@ const BasicPost = () => {
                 setPostData(response.data);
                 const commentRes = await C.getPostCommentList(postId);
                 setCommentData(commentRes);
-                console.log(commentRes)
+                
             } catch(error) {
-
+                if(error.response.data.code === "POST_001") {
+                    setNotFound(true);
+                }
             } finally {
                 setSkeleton(false);
             }
@@ -71,6 +75,10 @@ const BasicPost = () => {
         }
     }
 
+    if(notFound) {
+        return <WrongPage />;
+    }
+
     return (
         <>
             <S.Wrapper>
@@ -86,7 +94,7 @@ const BasicPost = () => {
                             <S.Text $size={"14px"} style={{cursor: "pointer"}} onClick={handleNavigatePostList}>{boardInfo.label} &gt;</S.Text>
                             <S.HorizontalWrapper $justify={"space-between"} style={{width: "100%"}}>
                                 <S.Text $size={"18px"} $weight={"700"} style={{marginTop: "1px"}}>{postData.title}</S.Text>
-                                <MoreOption formData={postData} type={boardInfo.label}/>
+                                <MoreOption formData={postData} type={subPath}/>
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"12px"} style={{marginTop: "10px"}}>
                                 <S.Profile src={postData.profileImageUrl}/>
