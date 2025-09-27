@@ -15,6 +15,7 @@ import list from "@/assets/icon/gallery/list.svg";
 import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/component/Skeleton";
+import WrongPage from "@/pages/wrong/WrongPage";
 
 const BasicPost = () => {
     const user = useUserInfo();
@@ -27,6 +28,7 @@ const BasicPost = () => {
     const [comment, setComment] = useState("");
     const [locked, setLocked] = useState("PUBLIC");
     const [commentData, setCommentData] = useState([]);
+    const [notFound, setNotFound] = useState(false);
 
     const handleNavigatePostList = () => {
         navigate(`/${subPath}`);
@@ -40,9 +42,11 @@ const BasicPost = () => {
                 setPostData(response.data);
                 const commentRes = await C.getPostCommentList(postId);
                 setCommentData(commentRes);
-                console.log(commentRes)
+                
             } catch(error) {
-
+                if(error.response.data.code === "POST_001") {
+                    setNotFound(true);
+                }
             } finally {
                 setSkeleton(false);
             }
@@ -69,6 +73,10 @@ const BasicPost = () => {
         } catch(error) {
 
         }
+    }
+
+    if(notFound) {
+        return <WrongPage />;
     }
 
     return (

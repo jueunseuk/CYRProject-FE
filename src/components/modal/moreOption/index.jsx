@@ -20,15 +20,19 @@ const MoreOption = ({formData, type}) => {
         setIsOptionOpen((prev) => !prev);
     }
 
-    const handleEditGallery = () => {
-        setIsEditModalOpen(true);
+    const handleEdit = () => {
+        if (type === "gallery") {
+            setIsEditModalOpen(true);
+        } else {
+            navigate(`/edit/post/${formData.postId}`);
+        }
     };
     
-    const handleDeleteGallery = () => {
+    const handleDelete = () => {
         setIsDeleteModalOpen(true);
     };
 
-    const handleComplaintGallery = () => {
+    const handleComplaint = () => {
         navigate("/complaint");
     };
 
@@ -48,18 +52,20 @@ const MoreOption = ({formData, type}) => {
     return (
         <>
             {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={type === "gallery" ? formData.galleryId : formData.postId} type={type}/>}
-            {isEditModalOpen && <GalleryUpdate onClose={handleCloseModal} prevData={formData}/>}
+            {isEditModalOpen && (
+                type === "gallery" 
+                    ? <GalleryUpdate onClose={handleCloseModal} prevData={formData} /> : null)}
             <S.MoreOptionWrapper>
                 <S.MoreIcon onClick={handleOpenOption} src={more} />
                 {isOptionOpen && (
                     <S.OptionBox>
                         {(user.userId === formData.authorId || user.userId === formData.userId) && (
                                 <>
-                                    <S.OptionButton onClick={handleEditGallery}>수정</S.OptionButton>
-                                    <S.OptionButton onClick={handleDeleteGallery}>삭제</S.OptionButton>
+                                    <S.OptionButton onClick={handleEdit}>수정</S.OptionButton>
+                                    <S.OptionButton onClick={handleDelete}>삭제</S.OptionButton>
                                 </>
                             )}
-                        <S.OptionButton onClick={handleComplaintGallery}>게시글 신고</S.OptionButton>
+                        <S.OptionButton onClick={handleComplaint}>게시글 신고</S.OptionButton>
                         <CopyToClipboard text={currentUrl} onCopy={handleShareClick}>
                             <S.OptionButton>링크 복사</S.OptionButton>
                         </CopyToClipboard>

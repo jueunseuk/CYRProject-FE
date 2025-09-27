@@ -52,6 +52,8 @@ export const getPost = async (postId) => {
         } else {
             console.log("서버가 응답하지 않습니다.");
         }
+
+        throw error;
     }
 }
 
@@ -64,6 +66,29 @@ export const requestPost = async (form) => {
             elert("게시글 등록에 실패했습니다.\n게시글 업로드 조건을 다시 확인해주세요.");
         } else {
             elert("서버가 응답하지 않습니다.");
+        }
+    }
+}
+
+export const patchPost = async (form) => {
+    try {
+        const response = await instance.patch(`/posts/${form.postId}`, form, {headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.data.code;
+
+            if(errorCode === 'POST_004') {
+                alert("수정할 권한이 부족합니다.");
+            } else if(errorCode === "POST_001") {
+                alert("삭제됐거나 존재하지 않는 게시글입니다.");
+            } else if(errorCode === "POST_003") {
+                alert("내용이 너무 짧아서 수정에 실패했습니다.");
+            }
+
+            throw error;
+        } else {
+            alert("서버가 원활하지 않습니다.\n 다시 시도해주세요.");
         }
     }
 }
