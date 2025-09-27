@@ -44,7 +44,7 @@ const MoreOption = ({formData, type}) => {
             setIsCopy(false)
         }, 2000);
     }
-    
+
     return (
         <>
             {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={type === "gallery" ? formData.galleryId : formData.postId} type={type}/>}
