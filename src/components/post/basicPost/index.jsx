@@ -40,7 +40,7 @@ const BasicPost = () => {
                 setPostData(response.data);
                 const commentRes = await C.getPostCommentList(postId);
                 setCommentData(commentRes);
-
+                console.log(commentRes)
             } catch(error) {
 
             } finally {
@@ -122,7 +122,7 @@ const BasicPost = () => {
             </S.Wrapper>
 
             <S.CommentWrapper>
-                <S.Text $size={"18px"} $weight={"700"} style={{textAlign: "left", paddingLeft: "15px", marginBottom: "10px", marginTop: "10px"}}>댓글 {commentData.length}</S.Text>
+                <S.Text $size={"17px"} $weight={"700"} style={{textAlign: "left", paddingLeft: "15px", marginBottom: "10px", marginTop: "10px"}}>댓글 ({commentData.length})</S.Text>
                 <S.CommentInputArea>
                     <S.HorizontalWrapper style={{marginBottom: "5px"}}>
                         <S.InputField value={comment} onChange={(e) => setComment(e.target.value)}/>
