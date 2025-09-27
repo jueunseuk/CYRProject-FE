@@ -1,16 +1,22 @@
 import * as G from "@/apis/gallery";
+import * as P from "@/apis/post";
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 
-const PostDeleteModal = ({onClose, galleryId, onDeleted}) => {
+const DeleteModal = ({onClose, id, type}) => {
     const navigate = useNavigate();
 
     const handleDeleteGallery = async () => {
         try {
-            await G.deleteGallery(galleryId);
-            alert("갤러리를 성공적으로 삭제했습니다.");
-            navigate("/gallery");
-            onDeleted();
+            if(type === "gallery") {
+                await G.deleteGallery(id);
+                alert("성공적으로 삭제했습니다.");
+                navigate("/gallery");
+            } else {
+                await P.deletePost(id);
+                alert("게시글을 성공적으로 삭제했습니다.");
+                navigate(`/${type}`);
+            }
         } catch(error) {
 
         }
@@ -31,4 +37,4 @@ const PostDeleteModal = ({onClose, galleryId, onDeleted}) => {
     )
 };
 
-export default PostDeleteModal;
+export default DeleteModal;

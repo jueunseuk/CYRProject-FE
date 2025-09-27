@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import PostDeleteModal from "@/components/modal/postDelete";
+import DeleteModal from "@/components/modal/postDelete";
 import GalleryUpdate from "@/components/modal/galleryUpdate";
 import more from "@/assets/icon/gallery/more.svg";
 import useUserInfo from "@/hooks/localStorage";
@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const MoreOption = ({formData}) => {
+const MoreOption = ({formData, type}) => {
     const user = useUserInfo();
     const navigate = useNavigate();
     const [isOptionOpen, setIsOptionOpen] = useState(false);
@@ -47,7 +47,7 @@ const MoreOption = ({formData}) => {
     
     return (
         <>
-            {isDeleteModalOpen && <PostDeleteModal onClose={handleCloseModal} galleryId={formData.galleryId} onDeleted={() => navigate("/gallery")}/>}
+            {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={type === "gallery" ? formData.galleryId : formData.postId} type={type}/>}
             {isEditModalOpen && <GalleryUpdate onClose={handleCloseModal} prevData={formData}/>}
             <S.MoreOptionWrapper>
                 <S.MoreIcon onClick={handleOpenOption} src={more} />

@@ -40,7 +40,7 @@ const BasicPost = () => {
                 setPostData(response.data);
                 const commentRes = await C.getPostCommentList(postId);
                 setCommentData(commentRes);
-
+                console.log(commentRes)
             } catch(error) {
 
             } finally {
@@ -86,7 +86,7 @@ const BasicPost = () => {
                             <S.Text $size={"14px"} style={{cursor: "pointer"}} onClick={handleNavigatePostList}>{boardInfo.label} &gt;</S.Text>
                             <S.HorizontalWrapper $justify={"space-between"} style={{width: "100%"}}>
                                 <S.Text $size={"18px"} $weight={"700"} style={{marginTop: "1px"}}>{postData.title}</S.Text>
-                                <MoreOption formData={postData} />
+                                <MoreOption formData={postData} type={boardInfo.label}/>
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"12px"} style={{marginTop: "10px"}}>
                                 <S.Profile src={postData.profileImageUrl}/>
@@ -122,7 +122,7 @@ const BasicPost = () => {
             </S.Wrapper>
 
             <S.CommentWrapper>
-                <S.Text $size={"18px"} $weight={"700"} style={{textAlign: "left", paddingLeft: "15px", marginBottom: "10px", marginTop: "10px"}}>댓글 {commentData.length}</S.Text>
+                <S.Text $size={"17px"} $weight={"700"} style={{textAlign: "left", paddingLeft: "15px", marginBottom: "10px", marginTop: "10px"}}>댓글 ({commentData.length})</S.Text>
                 <S.CommentInputArea>
                     <S.HorizontalWrapper style={{marginBottom: "5px"}}>
                         <S.InputField value={comment} onChange={(e) => setComment(e.target.value)}/>

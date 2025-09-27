@@ -103,6 +103,7 @@ export const CommentWrapper = styled.div`
     width: 100%;
     background-color: #F4F3E9;
     padding: 10px;
+    margin-bottom: 50px;
 `;
 
 export const CommentInputArea = styled.div`
