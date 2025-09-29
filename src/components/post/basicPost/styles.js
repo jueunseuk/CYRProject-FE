@@ -99,6 +99,20 @@ export const NavigateButton = styled.button`
     cursor: pointer;
 `;
 
+export const EmpathyButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: ${({$bg}) => $bg || "#E7E7E7"};
+`;
+
 export const CommentWrapper = styled.div`
     width: 100%;
     background-color: #F4F3E9;

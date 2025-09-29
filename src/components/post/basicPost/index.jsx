@@ -1,5 +1,6 @@
 import * as P from "@/apis/post";
 import * as C from "@/apis/comment"
+import * as E from "@/apis/empathy";
 import * as S from "./styles";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -24,6 +25,8 @@ const BasicPost = () => {
     const {subPath} = useParams();
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
     const {postId} = useParams();
+    const [alreadyEmpathy, setAlreadyEmpathy] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
     const [skeleton, setSkeleton] = useState(true);
     const [postData, setPostData] = useState({});
     const [comment, setComment] = useState("");
@@ -44,6 +47,7 @@ const BasicPost = () => {
                 setSkeleton(true);
                 const response = await P.getPost(postId);
                 setPostData(response.data);
+                setAlreadyEmpathy(postData.alreadyEmpathy);
                 const commentRes = await C.getPostCommentList(postId);
                 setCommentData(commentRes);
                 
@@ -97,6 +101,27 @@ const BasicPost = () => {
         }
     }
 
+    const handleClickEmpathy = async (postId) => {
+        if (isDisabled) return;
+        setIsDisabled(true);
+
+        try {
+            if(!alreadyEmpathy) {
+                setAlreadyEmpathy(true);
+                await E.postEmpathy(postId);
+            } else {
+                setAlreadyEmpathy(false);
+                await E.deleteEmpathy(postId);
+            }
+        } catch(error) {
+
+        } finally {
+            setTimeout(() => {
+                setIsDisabled(false);
+            }, 3000);
+        }
+    }
+
     if(notFound) {
         return <WrongPage />;
     }
@@ -146,7 +171,10 @@ const BasicPost = () => {
                             <PostContent content={postData.content}/>
                         </S.Content>
                         </S.VerticalWrapper>
-                        <S.NavigateButton onClick={handleNavigatePostList}><S.Icon src={list} $width={"13px"} $height={"10px"}/>목록</S.NavigateButton>
+                        <S.HorizontalWrapper $gap={"10px"} style={{marginBottom: "30px"}}>
+                            <S.NavigateButton onClick={handleNavigatePostList}><S.Icon src={list} $width={"13px"} $height={"10px"}/>목록</S.NavigateButton>
+                            <S.EmpathyButton disabled={isDisabled} $bg={alreadyEmpathy ? "#C6BC73" : "#e2e2e2"} onClick={() => handleClickEmpathy(postId)}><S.Icon src={empathy} $width={"13px"} $height={"10px"}/>공감</S.EmpathyButton>
+                        </S.HorizontalWrapper>
                     </>
                 )}
             </S.Wrapper>
