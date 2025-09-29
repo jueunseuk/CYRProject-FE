@@ -18,7 +18,7 @@ const Footer = () => {
                     <S.Text>|</S.Text>
                     <S.Text onClick={() => handleNavigateFooter("guide")}>커뮤니티 이용가이드</S.Text>
                     <S.Text>|</S.Text>
-                    <S.Text onClick={() => handleNavigateFooter("about")}>About Me</S.Text>
+                    <S.Text onClick={() => handleNavigateFooter("about")}>About</S.Text>
                 </S.HorizontalWrapper>
                 <S.HorizontalWrapper>
                     <S.Text>CopyrightⓒJunsu All rights reserved.</S.Text>

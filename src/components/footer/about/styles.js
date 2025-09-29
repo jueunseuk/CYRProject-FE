@@ -7,54 +7,70 @@ export const Wrapper = styled.div`
     width: 100%;
     border: 1px solid #E7E7E7;
     padding: 20px;
+    gap: 5px;
+`;
 
-    hr {
-        width: 100%;
-        margin-top: 5px;
-        border: 1px solid black;
-    }
+export const Blank = styled.br`
+    height: 20px;
+`;
 
-    h2 {
-        font-size: 24px;
-    }
+export const Contour = styled.hr`
+    width: 100%;
+    border: 0;
+    background-color: #C6BC73;
+    height: 3px;
+    margin: 15px 0;
+    width: 50%;
+`
 
-    h3 {
-        margin-top: 30px;
-        margin-bottom: 5px;
-        font-size: 20px;
-    }
+export const Title = styled.h1`
+    font-size: 30px;
+`;
 
-    h4 {
-        padding-left: 12px;
-        margin-top: 5px;
-        font-weight: 500;
-        font-size: 16px;
-    }
+export const SubTitle = styled.span`
+    font-size: 19px;
+    font-weight: 600;
+`;
 
-    h5 {
-        font-size: 14px;
-    }
+export const Text = styled.span`
+    font-size: ${({$size}) => $size || "15px"};
+    font-weight: ${({$weight}) => $weight || "500"};
+    color: ${({$color}) => $color || "black"};
+`;
 
-    h6 {
-        font-size: 12px;
+export const Link = styled.a`
+    text-decoration: none;
+    color: #505050;
+    &: hover {
+        text-decoration: underline;
     }
+`;
+
+export const Image = styled.img`
+    width: 100%;
+    object-fit: cover;
+`;
+
+export const Introduce = styled.div`
+  color: #505050;
+`;
+
+export const List = styled.ol`
     
-    li {
-        list-style: number;
-        margin: 3px 10px 3px 30px;
-    }
+`;
 
-    blockquote {
-        margin-top: 5px;
-        margin-left: 12px;
-        background-color: #F4F3E9;
-        padding: 12px 8px;
-    }
-
-    p {
-        margin-top: 5px;
-        margin-left: 12px;
-        background-color:#F4F3E9;
-        padding: 16px;
-    }
+export const FirstListItem = styled.li`
+    border-left: 3px solid #505050;
+    padding-left: 3px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #505050;
+`;
+    
+export const SecondListItem = styled.li`
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #505050;
+    margin-bottom: 15px;
 `;

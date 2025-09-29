@@ -7,27 +7,69 @@ export const Wrapper = styled.div`
     width: 100%;
     border: 1px solid #E7E7E7;
     padding: 20px;
+    gap: 5px;
+`;
 
-    hr {
-        width: 100%;
-        margin-top: 5px;
-        margin-bottom: 30px;
-        border: 1px solid black;
-    }
+export const Blank = styled.br`
+    height: 20px;
+`;
 
-    h3 {
-        margin-top: 30px;
-        margin-bottom: 5px;
-    }
+export const Contour = styled.hr`
+    width: 100%;
+    border: 0;
+    background-color: #C6BC73;
+    height: 3px;
+    margin: 15px 0;
+    width: 50%;
+`
 
-    h4 {
-        padding-left: 20px;
-        margin-top: 5px;
-        font-weight: 500;
-    }
+export const Title = styled.h1`
+    font-size: 30px;
+`;
+
+export const SubTitle = styled.span`
+    font-size: 16px;
+    font-weight: 600;
+    color: red;
+`;
+
+export const Text = styled.span`
+    font-size: ${({$size}) => $size || "15px"};
+    font-weight: ${({$weight}) => $weight || "500"};
+    color: ${({$color}) => $color || "black"};
+`;
+
+export const List = styled.ol`
     
-    li {
-        padding-left: 40px;
-        margin-bottom: 5px;
+`;
+
+export const FirstListItem = styled.li`
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #505050;
+`;
+    
+export const SecondListItem = styled.li`
+    margin-left: 27px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #505050;
+`;
+
+export const ThirdListItem = styled.li`
+    margin-left: 42px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #505050;
+    list-style: 
+`;
+
+export const Link = styled.a`
+    text-decoration: none;
+    color: #505050;
+    &: hover {
+        text-decoration: underline;
     }
 `;
