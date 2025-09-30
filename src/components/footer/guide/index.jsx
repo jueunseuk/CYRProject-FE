@@ -116,7 +116,10 @@ const Guide = () => {
                             <S.ThirdListItem>- 활동별 모래알 획득 수치는 <S.Link href="#sand" style={{fontWeight: "600"}}>III.b.모래알</S.Link>을 참고해주세요.</S.ThirdListItem>
                         <S.SecondListItem>일정 기간 이상 출석을 하지 않으면 화로의 온도가 내려갑니다.</S.SecondListItem>
                             <S.ThirdListItem>- 활동에 따른 온도의 변화는 <S.Link href="#furnace" style={{fontWeight: "600"}}>III.c.화로</S.Link>를 참고해주세요.</S.ThirdListItem>
-                        <S.SecondListItem>화로의 온도가 1800도에 달하고, 모래알이 100개 모이면 하나의 유리 조각이 만들어집니다.</S.SecondListItem>
+                        <S.SecondListItem>화로의 온도가 1800℃이고, 모래알이 100개 모이면 하나의 유리 조각을 만들 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>유리 조각을 만들면 온도는 다시 0℃로 내려갑니다.</S.SecondListItem>
+                        <S.SecondListItem>화로의 온도는 1800℃가 되면 추가로 활동을 하더라도 온도가 올라가지 않습니다.</S.SecondListItem>
+                            <S.ThirdListItem>- 따라서 유리 조각을 만들 수 있을 때마다 바로 만드는 것이 좋습니다.</S.ThirdListItem>
                     <S.FirstListItem id="shop">k. 유리상점(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>프로필 꾸미기 아이템, 뱃지, 배경, 특별 이모티콘 등 다양한 디지털 굿즈를 구매할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트되어, 커뮤니티 활동에 지속적인 동기를 부여합니다.</S.SecondListItem>
