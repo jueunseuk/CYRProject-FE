@@ -1,22 +1,21 @@
 import * as U from "@/apis/user";
 import * as A from "@/apis/authentication";
 import * as S from "./styles";
-import sand from "@/assets/icon/level/sand.svg";
-import house from "@/assets/icon/level/house.svg";
-import castle from "@/assets/icon/level/castle.svg";
-import desert from "@/assets/icon/level/desert.svg";
-import glass from "@/assets/icon/level/glass.svg";
+import furnace from "@/assets/icon/user/furnace.svg";
+import sand from "@/assets/icon/user/sand.svg";
+import glass from "@/assets/icon/user/glass.svg";
 import useUserInfo from "@/hooks/localStorage";
 import { formatDate } from "@/util/dateFormatter";
 import { useEffect, useState } from "react";
-import { formatExp } from "@/util/expFormatter";
 import { useNavigate } from "react-router-dom";
 
 const LoginInfo = () => {
     const user = useUserInfo();
     const navigate = useNavigate();
-    const [userExp, setUserExp] = useState({
-        sand: 0, house: 0, castle: 0, desert: 0, glass: 0
+    const [userAmount, setUserAmount] = useState({
+        glass: 0,
+        sand: 0,
+        temperature: 0
     });
 
     const handleNavigateWrite = () => {
@@ -26,10 +25,10 @@ const LoginInfo = () => {
     useEffect(() => {
         const fetchExp = async () => {
             try {
-                const response = await U.requestUserExperience();
-                setUserExp(formatExp(response.data));
+                const response = await U.getUserSidebar();
+                setUserAmount(response.data);
             } catch (error) {
-                console.error("경험치 불러오기 실패:", error);
+
             }
         };
     
@@ -53,32 +52,37 @@ const LoginInfo = () => {
             <S.ProfileArea>
                 <S.ProfileImage src={user.profileUrl}/>
                 <S.VerticalWrapper>
-                    <S.Text size={"16px"} $weight={"600"}>{user.nickname ? user.nickname : user.name}</S.Text>
-                    <S.Text size={"12px"} color={"#878787"}>{formatDate(user.createdAt, 2)}</S.Text>
+                    <S.Text $size={"12px"} $weight={"300"}>{user.role}</S.Text>
+                    <S.Text $size={"16px"} $weight={"700"}>{user.nickname ? user.nickname : user.name}</S.Text>
+                    <S.Text $size={"11px"} $color={"#878787"}>{formatDate(user.createdAt, 2)}</S.Text>
                 </S.VerticalWrapper>
             </S.ProfileArea>
-            <S.LevelArea>
-                <S.LevelSet>
-                    <S.LevelIcon src={sand}/>
-                    <S.LevelText>{userExp.sand}</S.LevelText>
-                </S.LevelSet>
-                <S.LevelSet>
-                    <S.LevelIcon src={house}/>
-                    <S.LevelText>{userExp.house}</S.LevelText>
-                </S.LevelSet>
-                <S.LevelSet>
-                    <S.LevelIcon src={castle}/>
-                    <S.LevelText>{userExp.castle}</S.LevelText>
-                </S.LevelSet>
-                <S.LevelSet>
-                    <S.LevelIcon src={desert}/>
-                    <S.LevelText>{userExp.desert}</S.LevelText>
-                </S.LevelSet>
-                <S.LevelSet>
-                    <S.LevelIcon src={glass}/>
-                    <S.LevelText>{userExp.glass}</S.LevelText>
-                </S.LevelSet>
-            </S.LevelArea>
+            <S.IconArea>
+                <S.HorizontalWrapper $jc={"space-between"}>
+                    <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>
+                        <S.Icon src={glass} />
+                        <S.Text $size={"12px"}>유리</S.Text>
+                    </S.HorizontalWrapper>
+                    <S.DotLine></S.DotLine>
+                    <S.Text $size={"12px"} $weight={"600"}>{userAmount.glass} 조각</S.Text>
+                </S.HorizontalWrapper>
+                <S.HorizontalWrapper $jc={"space-between"}>
+                    <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>
+                        <S.Icon src={sand}/>
+                        <S.Text $size={"12px"}>모래알</S.Text>
+                    </S.HorizontalWrapper>
+                    <S.DotLine></S.DotLine>
+                    <S.Text $size={"12px"} $weight={"600"}>{userAmount.sand} 알</S.Text>
+                </S.HorizontalWrapper>
+                <S.HorizontalWrapper $jc={"space-between"}>
+                    <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>
+                        <S.Icon src={furnace}/>
+                        <S.Text $size={"12px"}>활동 온도</S.Text>
+                    </S.HorizontalWrapper>
+                    <S.DotLine></S.DotLine>
+                    <S.Text $size={"12px"} $weight={"600"}>{userAmount.temperature} ℃</S.Text>
+                </S.HorizontalWrapper>
+            </S.IconArea>
             <S.WriteButton onClick={handleNavigateWrite}>글쓰기</S.WriteButton>
             <S.LinkText onClick={handleRequestLogout}>로그아웃</S.LinkText>
         </S.Wrapper>

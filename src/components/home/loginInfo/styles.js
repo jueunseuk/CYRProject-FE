@@ -19,7 +19,8 @@ export const Title = styled.div`
 
 export const ProfileArea = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 10px;
     width: 170px;
 `;
 
@@ -35,28 +36,33 @@ export const ProfileImage = styled.img.attrs({
 export const VerticalWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 3px;
     justify-content: center;
     align-items: flex-start;
 `;
 
-export const Text = styled.div`
-    font-size: ${({size}) => size};
-    font-weight: ${({$weight}) => $weight};
-    color: ${({color}) => color || "black"};
-`;
-    
-export const LevelArea = styled.div`
+export const HorizontalWrapper = styled.div`
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    width: 170px;
-    flex-wrap: wrap-reverse;
-    gap: 12px;
+    gap: ${({$gap}) => $gap || "0px"};
+    justify-content: ${({$jc}) => $jc || "center"};
+    align-items: ${({$ai}) => $ai || "center"};
 `;
 
-export const LevelSet = styled.div`
+export const Text = styled.div`
+    font-size: ${({$size}) => $size};
+    font-weight: ${({$weight}) => $weight};
+    color: ${({$color}) => $color || "black"};
+`;
+
+export const DotLine = styled.div`
+    flex: 1;
+    border-bottom: 1px dotted #999;
+    margin: 0 8px;
+`;
+
+export const IconArea = styled.div`
     display: flex;
+    flex-direction: column;
+    width: 170px;
     gap: 7px;
 `;
 
@@ -64,12 +70,12 @@ export const LevelText = styled.div`
     font-size: 14px;
 `;
 
-export const LevelIcon = styled.img.attrs((props) => {
+export const Icon = styled.img.attrs((props) => {
     src: props.src
     alt: "Level Icon"
 })`
-    width: 15px;
-    height: 15px;
+    width: ${({$width}) => $width || "20px"};
+    height: ${({$height}) => $height || "20px"};
 `;
 
 export const WriteButton = styled.button`
