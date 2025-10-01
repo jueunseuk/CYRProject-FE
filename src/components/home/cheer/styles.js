@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import cheerBackground from "@/assets/image/cheer_bg.png"
 
 export const Wrapper = styled.div`
@@ -23,6 +23,18 @@ export const Text = styled.div`
     font-size: ${({$size}) => $size};
     font-weight: ${({$weight}) => $weight || "400"};
     color: ${({$color}) => $color}
+`;
+
+export const CountText = styled.div`
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    
+    ${({ $animate }) =>
+        $animate &&
+        css`
+        animation: ${spin} 0.4s ease;
+    `}
 `;
 
 export const IconArea = styled.img`
@@ -61,6 +73,7 @@ export const CheerButton = styled.button`
     
     &:hover {
         cursor: pointer;
+        background-color: #ebebebff;
     }
 `;
 
@@ -90,4 +103,10 @@ export const TooltipText = styled.span`
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease;
+`;
+
+const spin = keyframes`
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(360deg); }
+    100% { transform: rotateX(720deg); }
 `;

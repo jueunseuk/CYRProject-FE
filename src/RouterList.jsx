@@ -20,6 +20,8 @@ import Post from "@/pages/post";
 import FooterPage from "@/pages/footerPage";
 import Editor from "@/pages/editor";
 import UpdateEditor from "./pages/updateEditor";
+import My from "@/pages/my";
+import User from "@/pages/user";
 
 export const RouterList = () => [
     {
@@ -102,6 +104,14 @@ export const RouterList = () => [
                     {
                         path: "edit/:type/:postId",
                         element: <UpdateEditor />
+                    },
+                    {
+                        path: "/mypage",
+                        element: <My />
+                    },
+                    {
+                        path: "/users/:userId",
+                        element: <User />
                     },
 
                     // footer
