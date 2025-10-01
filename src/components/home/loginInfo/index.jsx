@@ -64,7 +64,7 @@ const LoginInfo = () => {
                         <S.Icon src={exp} />
                         <S.Text $size={"12px"}>경험치</S.Text>
                     </S.HorizontalWrapper>
-                    <S.DotLine></S.DotLine>
+                    <S.DotLine />
                     <S.Text $size={"12px"} $weight={"600"}>{userAmount.expCnt}</S.Text>
                 </S.HorizontalWrapper>
                 <S.HorizontalWrapper $jc={"space-between"}>
@@ -72,7 +72,7 @@ const LoginInfo = () => {
                         <S.Icon src={glass} />
                         <S.Text $size={"12px"}>유리</S.Text>
                     </S.HorizontalWrapper>
-                    <S.DotLine></S.DotLine>
+                    <S.DotLine />
                     <S.Text $size={"12px"} $weight={"600"}>{userAmount.glass} 조각</S.Text>
                 </S.HorizontalWrapper>
                 <S.HorizontalWrapper $jc={"space-between"}>
@@ -80,7 +80,7 @@ const LoginInfo = () => {
                         <S.Icon src={sand}/>
                         <S.Text $size={"12px"}>모래알</S.Text>
                     </S.HorizontalWrapper>
-                    <S.DotLine></S.DotLine>
+                    <S.DotLine />
                     <S.Text $size={"12px"} $weight={"600"}>{userAmount.sand} 알</S.Text>
                 </S.HorizontalWrapper>
                 <S.HorizontalWrapper $jc={"space-between"}>
@@ -88,7 +88,7 @@ const LoginInfo = () => {
                         <S.Icon src={furnace}/>
                         <S.Text $size={"12px"}>활동 온도</S.Text>
                     </S.HorizontalWrapper>
-                    <S.DotLine></S.DotLine>
+                    <S.DotLine />
                     <S.Text $size={"12px"} $weight={"600"}>{userAmount.temperature} ℃</S.Text>
                 </S.HorizontalWrapper>
             </S.IconArea>

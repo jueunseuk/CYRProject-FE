@@ -5,11 +5,14 @@ import { useEffect, useState } from "react";
 
 const Cheer = () => {
     const [totalCheer, setTotalCheer] = useState("");
+    const [animate, setAnimate] = useState(false);
 
     const handleRequestCheer = async () => {
         try {
             await C.requestCheer();
-            window.location.reload();
+            setTotalCheer(totalCheer+1);
+
+            setAnimate(true);
         } catch(error) {
             if(error.response && error.response.data) {
                 const status = error.response.status;
@@ -25,6 +28,13 @@ const Cheer = () => {
     };
 
     useEffect(() => {
+        if (animate) {
+            const timer = setTimeout(() => setAnimate(false), 400);
+            return () => clearTimeout(timer);
+        }
+    }, [animate]);
+
+    useEffect(() => {
         const fetchCheer = async () => {
             try {
                 const response = await C.requestCheerCnt();
@@ -35,7 +45,7 @@ const Cheer = () => {
         }
 
         fetchCheer();
-    }, []);
+    }, [totalCheer]);
 
     return (
         <>
@@ -55,7 +65,7 @@ const Cheer = () => {
                     <S.Content>
                         <S.Text $size={"12px"} $color={"white"}>응원합계</S.Text>
                         <S.Text $size={"12px"} $color={"white"}>ㅡ</S.Text>
-                        <S.Text $size={"16px"} $weight={"700"} $color={"white"}>{totalCheer} 회</S.Text>
+                        <S.CountText $animate={animate}>{totalCheer} 회</S.CountText>
                         <S.CheerButton onClick={handleRequestCheer}>응원</S.CheerButton>
                     </S.Content>
                 </S.ContentArea>
