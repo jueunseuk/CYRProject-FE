@@ -2,6 +2,7 @@ import * as S from "./styles";
 import * as U from "@/apis/user";
 import Information from "../information";
 import useUserInfo from "@/hooks/localStorage";
+import ParentGraph from "../parentGraph";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SkeletonItem } from "@/common/component/Skeleton";
@@ -37,11 +38,12 @@ const UserPage = () => {
     
     return (
         <S.Wrapper>
-            <S.HorizontalWrapper $jc={"space-between"}>
+            <S.HorizontalWrapper $jc={"space-between"} $ai={"flex-start"}>
                 {isLoading ? 
                     <SkeletonItem $width={"300px"} $height={"517px"} $radius={"25px"} /> : 
                     <Information isOwner={false} user={user} />
                 }
+                <ParentGraph isOwner={false} />
 
             </S.HorizontalWrapper>
         </S.Wrapper>

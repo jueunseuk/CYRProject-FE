@@ -5,11 +5,9 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border: 1px solid #C6BC73;
     border-radius: 25px;
-    padding: 30px 40px;
-    width: 300px;
-    gap: 30px;
+    width: 500px;
+    min-height: 517px;
 `;
 
 export const HorizontalWrapper = styled.div`
@@ -35,30 +33,29 @@ export const Text = styled.div`
     color: ${({$color}) => $color || "black"};
 `;
 
-export const ProfileImage = styled.img.attrs({
-    alt: "Profile Image"
-})`
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    object-fit: cover;
+export const TabWrapper = styled.div`
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid #cacaca;
+    width: 100%;
 `;
 
-export const Icon = styled.img.attrs((props) => {
-    src: props.src
-    alt: "Icon"
-})`
-    width: ${({$width}) => $width || "12px"};
-    height: ${({$height}) => $height || "12px"};
-
-    &: hover {
-        cursor: pointer;
-    }
+export const NavigateText = styled.div`
+    text-align: center;
+    font-size: 14px;
+    font-weight: ${({ $active }) => ($active ? "600" : "400")};
+    padding: 10px 25px;
+    cursor: pointer;
+    color: ${({ $active }) => ($active ? "black" : "#666")};
+    background-color: ${({ $active }) => ($active ? "#f6f6f6" : "white")};
 `;
 
-export const DotLine = styled.div`
-    flex: 1;
-    border-bottom: 1px dotted #999;
-    margin: 0 20px;
-    user-select: none;
+export const Underline = styled.div`
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: ${({ $width }) => $width}px;
+    background: black;
+    transition: transform 0.3s ease;
+    transform: translateX(${({ $offset }) => $offset}px);
 `;

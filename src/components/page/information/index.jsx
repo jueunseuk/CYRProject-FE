@@ -1,9 +1,10 @@
 import * as S from "./styles";
 import pencil from "@/assets/icon/post/author.svg";
 import { formatDate } from "@/util/dateFormatter";
+import { useEffect, useState } from "react";
 
 const Information = ({isOwner, user}) => {
-    
+    const [isNeeded, setIsNeeded] = useState(false);
 
     const getLoginMethodBackgroundColor = (method) => {
         if(method === "EMAIL") {
@@ -39,7 +40,19 @@ const Information = ({isOwner, user}) => {
         } else {
             return introduction;
         }
-    }
+    };
+
+    useEffect(() => {
+        if (user?.passwordUpdatedAt) {
+            const last = new Date(user.passwordUpdatedAt);
+            const today = new Date();
+            const diffDays = Math.floor((today - last) / (1000 * 60 * 60 * 24));
+
+            if (diffDays >= 90) {
+                setIsNeeded(true);
+            }
+        }
+    }, [user?.passwordUpdatedAt]);
 
     return (
         <S.Wrapper>
@@ -74,9 +87,9 @@ const Information = ({isOwner, user}) => {
                 <S.HorizontalWrapper $jc={"space-between"}>
                     <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>로그인</S.Text>
                     <S.DotLine />
-                    <S.Text $size={"13px"} 
+                    <S.Text $size={"13px"} $weight={"800"}
                         $color={getLoginMethodBackgroundColor("EMAIL").font} 
-                        style={{backgroundColor: getLoginMethodBackgroundColor(user.method).back, padding: "1px 2px"}}>{user.method}</S.Text>
+                        style={{backgroundColor: getLoginMethodBackgroundColor(user.method).back, padding: "1px 3px", borderRadius: "3px"}}>{user.method}</S.Text>
                 </S.HorizontalWrapper>
                 <S.HorizontalWrapper $jc={"space-between"}>
                     <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>가입일</S.Text>
@@ -89,8 +102,7 @@ const Information = ({isOwner, user}) => {
                 </S.VerticalWrapper>
             </S.VerticalWrapper>
 
-            {/* // 비번 변경 메세지 */}
-            {isOwner}
+            {(isOwner && isNeeded) && <S.Text $color={"#ff0000ff"}>비밀번호를 변경한 지 90일이 지났습니다.</S.Text>}
         </S.Wrapper>
     );
 };
