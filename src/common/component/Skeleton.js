@@ -19,6 +19,6 @@ export const SkeletonItem = styled.div`
         #F5F5F5 100%
     );
     background-size: ${({$size}) => $size || "400px"} 100%;
-    animation: ${shimmer} 2.5s infinite linear;
+    animation: ${shimmer} 3s infinite linear;
     border-radius: ${({$radius}) => $radius || "8px"};
 `;
