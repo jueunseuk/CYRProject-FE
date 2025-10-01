@@ -89,9 +89,9 @@ const AttendanceBoard = () => {
 
                     <S.HorizontalWrapper $gap={"15px"}>
                         <S.TextBox>#이번달 출석자 수 : {cntData.thisMonthCnt}명</S.TextBox>
-                        <S.TextBox>#전월 대비 상승 : <S.Text $weight={"700"} $color={cntData.thisMonthCnt > cntData.beforeMonthCnt ? "blue" : "red"}>{cntData.thisMonthCnt > cntData.beforeMonthCnt ? `+${cntData.thisMonthCnt-cntData.beforeMonthCnt}명` : `-${cntData.thisMonthCnt-cntData.beforeMonthCnt}명`}</S.Text></S.TextBox>
+                        <S.TextBox>#전월 대비 상승 : <S.Text $weight={"700"} $color={cntData.thisMonthCnt > cntData.beforeMonthCnt ? "blue" : "red"}>{cntData.thisMonthCnt > cntData.beforeMonthCnt ? `+${cntData.thisMonthCnt-cntData.beforeMonthCnt}명` : `${cntData.thisMonthCnt-cntData.beforeMonthCnt}명`}</S.Text></S.TextBox>
                         <S.TextBox>#이번주 출석자 수 : {cntData.thisWeekCnt}명</S.TextBox>
-                        <S.TextBox>#전주 대비 상승 : <S.Text $weight={"700"} $color={cntData.thisWeekCnt > cntData.beforeWeekCnt ? "blue" : "red"}>{cntData.thisWeekCnt > cntData.beforeWeekCnt ? `+${cntData.thisWeekCnt-cntData.beforeWeekCnt}명` : `-${cntData.thisWeekCnt-cntData.beforeWeekCnt}명`}</S.Text></S.TextBox>
+                        <S.TextBox>#전주 대비 상승 : <S.Text $weight={"700"} $color={cntData.thisWeekCnt > cntData.beforeWeekCnt ? "blue" : "red"}>{cntData.thisWeekCnt > cntData.beforeWeekCnt ? `+${cntData.thisWeekCnt-cntData.beforeWeekCnt}명` : `${cntData.thisWeekCnt-cntData.beforeWeekCnt}명`}</S.Text></S.TextBox>
                     </S.HorizontalWrapper>
 
                     <S.Table>

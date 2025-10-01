@@ -274,9 +274,14 @@ const Guide = () => {
                         </thead>
                         <tbody>
                             <S.Row>
+                                <S.Column colSpan={2}>가입 후 첫 출석</S.Column>
+                                <S.Column>+150℃</S.Column>
+                                <S.Column>-</S.Column>
+                            </S.Row>
+                            <S.Row>
                                 <S.Column colSpan={2}>연속 출석</S.Column>
                                 <S.Column>+100℃</S.Column>
-                                <S.Column>-</S.Column>
+                                <S.Column>연속 이틀차부터 적용</S.Column>
                             </S.Row>
                             <S.Row>
                                 <S.Column rowSpan={4}>출석 보너스</S.Column>
@@ -300,8 +305,13 @@ const Guide = () => {
                                 <S.Column>-</S.Column>
                             </S.Row>
                             <S.Row>
-                                <S.Column colSpan={2}>3일 이상 미출석</S.Column>
+                                <S.Column colSpan={2}>3일 이내 미출석 후 출석</S.Column>
                                 <S.Column>+50℃</S.Column>
+                                <S.Column>-</S.Column>
+                            </S.Row>
+                            <S.Row>
+                                <S.Column colSpan={2}>3일 초과 미출석 후 출석</S.Column>
+                                <S.Column><S.Text $color={"red"} $weight={"600"}>-50℃</S.Text></S.Column>
                                 <S.Column>-</S.Column>
                             </S.Row>
                             <S.Row>
