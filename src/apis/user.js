@@ -1,9 +1,5 @@
 import instance from "./instance";
 
-export const requestUserExperience = () => {
-    return instance.get("/user/exp");
-};
-
 export const getUserSidebar = async () => {
     try {
         const response = await instance.get(`/user/sidebar`);

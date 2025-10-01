@@ -2,6 +2,7 @@ import * as U from "@/apis/user";
 import * as A from "@/apis/authentication";
 import * as S from "./styles";
 import furnace from "@/assets/icon/user/furnace.svg";
+import exp from "@/assets/icon/user/exp.svg";
 import sand from "@/assets/icon/user/sand.svg";
 import glass from "@/assets/icon/user/glass.svg";
 import useUserInfo from "@/hooks/localStorage";
@@ -58,6 +59,14 @@ const LoginInfo = () => {
                 </S.VerticalWrapper>
             </S.ProfileArea>
             <S.IconArea>
+                <S.HorizontalWrapper $jc={"space-between"}>
+                    <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>
+                        <S.Icon src={exp} />
+                        <S.Text $size={"12px"}>경험치</S.Text>
+                    </S.HorizontalWrapper>
+                    <S.DotLine></S.DotLine>
+                    <S.Text $size={"12px"} $weight={"600"}>{userAmount.expCnt}</S.Text>
+                </S.HorizontalWrapper>
                 <S.HorizontalWrapper $jc={"space-between"}>
                     <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>
                         <S.Icon src={glass} />
