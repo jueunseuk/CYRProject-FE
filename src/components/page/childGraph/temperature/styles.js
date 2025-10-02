@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-start;
-    border: 1px solid #C6BC73;
+    align-items: center;
     border-radius: 25px;
-    padding: 30px 40px;
-    width: 300px;
-    gap: 30px;
+    padding: 15px 15px;
+    width: 100%;
+    gap: 5px;
 `;
 
 export const HorizontalWrapper = styled.div`
@@ -33,32 +32,4 @@ export const Text = styled.div`
     font-size: ${({$size}) => $size || "13px"};
     font-weight: ${({$weight}) => $weight || "400"};
     color: ${({$color}) => $color || "black"};
-`;
-
-export const ProfileImage = styled.img.attrs({
-    alt: "Profile Image"
-})`
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    object-fit: cover;
-`;
-
-export const Icon = styled.img.attrs((props) => {
-    src: props.src
-    alt: "Icon"
-})`
-    width: ${({$width}) => $width || "12px"};
-    height: ${({$height}) => $height || "12px"};
-
-    &: hover {
-        cursor: pointer;
-    }
-`;
-
-export const DotLine = styled.div`
-    flex: 1;
-    border-bottom: 1px dotted #999;
-    margin: 0 20px;
-    user-select: none;
 `;

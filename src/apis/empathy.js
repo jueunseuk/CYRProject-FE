@@ -8,7 +8,7 @@ export const postEmpathy = async (postId) => {
         const response = await instance.post(`/empathy/${postId}`);
         return response;
     } catch (error) {
-        console.log(error)
+        
         const errorCode = error.response.code;
         if(errorCode === "EMP_001") {
             alert(error.response.message);
