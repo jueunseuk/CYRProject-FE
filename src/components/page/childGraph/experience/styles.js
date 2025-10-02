@@ -33,3 +33,8 @@ export const Text = styled.div`
     font-weight: ${({$weight}) => $weight || "400"};
     color: ${({$color}) => $color || "black"};
 `;
+
+export const GraphWrapper = styled.div`
+    width: 500px;
+    height: 300px;
+`;

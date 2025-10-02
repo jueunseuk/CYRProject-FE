@@ -1,9 +1,11 @@
 import * as S from "./styles";
 import * as E from "@/apis/experience";
+import ExperienceGraph from "@/components/graph/experienceGraph";
 import { useEffect, useState } from "react";
 
 const Experience = ({userId}) => {
     const [data, setData] = useState({});
+    const [graphData, setGraphData] = useState(dummy);
 
     useEffect(() => {
         const fetchUserExperienceData = async () => {
@@ -53,8 +55,67 @@ const Experience = ({userId}) => {
             </S.VerticalWrapper>
 
             <S.Text $size={"17px"} $weight={"700"} style={{alignSelf: "flex-start"}}>히스토리</S.Text>
+            <S.GraphWrapper>
+                <ExperienceGraph data={graphData} />
+            </S.GraphWrapper>
         </S.Wrapper>
     );
 };
 
 export default Experience;
+
+const dummy = [
+  {
+    "id": "japan",
+    "data": [
+      {
+        "x": "plane",
+        "y": 286
+      },
+      {
+        "x": "helicopter",
+        "y": 238
+      },
+      {
+        "x": "boat",
+        "y": 205
+      },
+      {
+        "x": "train",
+        "y": 213
+      },
+      {
+        "x": "subway",
+        "y": 1
+      },
+      {
+        "x": "bus",
+        "y": 293
+      },
+      {
+        "x": "car",
+        "y": 152
+      },
+      {
+        "x": "moto",
+        "y": 43
+      },
+      {
+        "x": "bicycle",
+        "y": 213
+      },
+      {
+        "x": "horse",
+        "y": 136
+      },
+      {
+        "x": "skateboard",
+        "y": 192
+      },
+      {
+        "x": "others",
+        "y": 64
+      }
+    ]
+  }
+]
