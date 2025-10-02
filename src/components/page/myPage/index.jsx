@@ -1,11 +1,13 @@
 import * as S from "./styles";
 import * as U from "@/apis/user";
+import useUserInfo from "@/hooks/localStorage";
 import Information from "../information";
+import ParentGraph from "../parentGraph";
 import { useEffect, useState } from "react";
 import { SkeletonItem } from "@/common/component/Skeleton";
-import ParentGraph from "../parentGraph";
 
 const MyPage = () => {
+    const userInfo = useUserInfo();
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -31,7 +33,7 @@ const MyPage = () => {
                     <SkeletonItem $width={"300px"} $height={"517px"} $radius={"25px"} /> : 
                     <Information isOwner={true} user={user} />
                 }
-                <ParentGraph isOwner={true} />
+                <ParentGraph userId={userInfo.userId} />
                 
             </S.HorizontalWrapper>
         </S.Wrapper>

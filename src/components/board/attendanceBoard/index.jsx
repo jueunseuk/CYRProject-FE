@@ -49,6 +49,7 @@ const AttendanceBoard = () => {
 
         try {
             await A.requestAttendance(comment);
+            console.log()
             window.location.reload();
         } catch(error) {
 

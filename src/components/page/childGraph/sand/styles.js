@@ -4,10 +4,11 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     border-radius: 25px;
-    padding: 10px 15px;
+    padding: 15px 15px;
     width: 100%;
+    gap: 5px;
 `;
 
 export const HorizontalWrapper = styled.div`

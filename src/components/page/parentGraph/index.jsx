@@ -5,9 +5,9 @@ import Glass from "../childGraph/glass";
 import Sand from "../childGraph/sand";
 import Temperature from "../childGraph/temperature";
 
-const tabs = ["경험치", "모래알", "유리", "활동 온도"];
+const tabs = ["경험치", "모래알", "유리 조각", "활동 온도"];
 
-const ParentGraph = ({isOwner}) => {
+const ParentGraph = ({userId}) => {
     const [selected, setSelected] = useState(0);
     const [underline, setUnderline] = useState({ width: 0, offset: 0 });
     const refs = useRef([]);
@@ -24,10 +24,10 @@ const ParentGraph = ({isOwner}) => {
 
     const getGraphComponent = (selected) => {
         switch (selected) {
-            case 0: return <Experience />;
-            case 1: return <Sand />;
-            case 2: return <Glass />;
-            case 3: return <Temperature />;
+            case 0: return <Experience userId={userId} />;
+            case 1: return <Sand userId={userId} />;
+            case 2: return <Glass userId={userId} />;
+            case 3: return <Temperature userId={userId} />;
             default: return null;
         }
     };
