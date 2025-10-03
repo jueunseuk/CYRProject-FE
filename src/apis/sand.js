@@ -18,3 +18,17 @@ export const getUserSandData = async (userId) => {
     }
 };
 
+export const getUserSandHisotry = async (userId) => {
+    try {
+        const response = await instance.get(`/sand/history/${userId}`);
+        return response;
+    } catch (error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert(error.response.message);
+        }
+
+        throw error;
+    }
+};

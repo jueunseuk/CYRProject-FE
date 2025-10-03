@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     border-radius: 25px;
-    width: 500px;
+    width: 100%;
     min-height: 517px;
 `;
 
