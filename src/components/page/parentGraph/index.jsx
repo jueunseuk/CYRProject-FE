@@ -24,10 +24,10 @@ const ParentGraph = ({userId}) => {
 
     const getGraphComponent = (selected) => {
         switch (selected) {
-            case 0: return <Experience userId={userId} />;
-            case 1: return <Sand userId={userId} />;
-            case 2: return <Glass userId={userId} />;
-            case 3: return <Temperature userId={userId} />;
+            case 0: return <Experience userId={userId} type={"경험치"} />;
+            case 1: return <Sand userId={userId} type={"모래알"} />;
+            case 2: return <Glass userId={userId} type={"유리 조각"} />;
+            case 3: return <Temperature userId={userId} type={"활동 온도"} />;
             default: return null;
         }
     };

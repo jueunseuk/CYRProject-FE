@@ -18,3 +18,17 @@ export const getUserTemperatureData = async (userId) => {
     }
 };
 
+export const getUserTemperatureHisotry = async (userId) => {
+    try {
+        const response = await instance.get(`/temperature/history/${userId}`);
+        return response;
+    } catch (error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert(error.response.message);
+        }
+
+        throw error;
+    }
+};

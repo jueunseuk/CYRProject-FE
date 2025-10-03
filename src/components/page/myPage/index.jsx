@@ -33,9 +33,9 @@ const MyPage = () => {
                     <SkeletonItem $width={"300px"} $height={"517px"} $radius={"25px"} /> : 
                     <Information isOwner={true} user={user} />
                 }
-                <ParentGraph userId={userInfo.userId} />
                 
             </S.HorizontalWrapper>
+            <ParentGraph userId={userInfo.userId} />
         </S.Wrapper>
     )
 };
