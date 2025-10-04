@@ -34,6 +34,7 @@ const ParentGraph = ({userId}) => {
 
     return (
         <S.Wrapper>
+            <S.Text $size={"18px"} $weight={"700"}>활동 통계</S.Text>
             <S.HorizontalWrapper $jc={"flex-start"} >
                 <S.TabWrapper>
                     {tabs.map((tab, idx) => (

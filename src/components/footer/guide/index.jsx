@@ -253,7 +253,7 @@ const Guide = () => {
                             </S.Row>
                             <S.Row>
                                 <S.Column colSpan={2}>이용 가이드에 위배된 경우</S.Column>
-                                <S.Column><S.Text $color={"red"} $weight={"600"}>-10</S.Text></S.Column>
+                                <S.Column><S.Text $color={"red"} $weight={"600"}>-30</S.Text></S.Column>
                                 <S.Column>1회당</S.Column>
                             </S.Row>
                             <S.Row>

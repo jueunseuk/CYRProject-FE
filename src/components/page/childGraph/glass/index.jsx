@@ -1,5 +1,6 @@
 import * as S from "./styles";
 import * as G from "@/apis/glass";
+import glass from "@/assets/icon/user/glass.svg";
 import LineGraph from "@/components/graph/lineGraph";
 import { useEffect, useState } from "react";
 
@@ -32,7 +33,10 @@ const Glass = ({userId, type}) => {
 
     return (
         <S.Wrapper>
-            <S.Text $size={"17px"} $weight={"700"} style={{alignSelf: "flex-start"}}>유리 조각</S.Text>
+            <S.HorizontalWrapper $jc={"flex-start"} $gap={"5px"}>
+                <S.Text $size={"16px"} $weight={"700"} style={{alignSelf: "flex-start"}}>유리 조각</S.Text>
+                <S.Icon src={glass} $height={"15px"}/>
+            </S.HorizontalWrapper>
             <S.VerticalWrapper $ai={"center"} style={{marginBottom: "25px"}}>
                 <S.FieldWrapper>
                     <S.Text $size={"16px"}>현재 유리 조각 수</S.Text>
@@ -64,7 +68,7 @@ const Glass = ({userId, type}) => {
                 </S.FieldWrapper>
             </S.VerticalWrapper>
 
-            <S.Text $size={"17px"} $weight={"700"} style={{alignSelf: "flex-start"}}>히스토리</S.Text>
+            <S.Text $size={"16px"} $weight={"700"} style={{alignSelf: "flex-start"}}>히스토리</S.Text>
             <S.GraphWrapper>
                 {graphData[0]?.data.length === 0 ? 
                     <S.EmptyGraphWrapper>아직 아무런 활동 로그가 없어요..</S.EmptyGraphWrapper> : 
