@@ -5,6 +5,7 @@ import author from "@/assets/icon/gallery/author.svg";
 import list from "@/assets/icon/gallery/list.svg";
 import view from "@/assets/icon/post/view.svg";
 import MoreOption from "@/components/modal/moreOption";
+import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
@@ -22,6 +23,7 @@ const GalleryPost = () => {
         picturedAt: "",
         imageUrls: []
     });
+    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
     const handleNavigateGallery = () => {
         navigate("/gallery");
@@ -43,6 +45,14 @@ const GalleryPost = () => {
             fetchGallery();
     }, []);
 
+    const handleImageFullScreen = () => {
+        setIsProfileModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsProfileModalOpen(false);
+    };
+
     return (
         <>
             {skeleton ? 
@@ -55,7 +65,8 @@ const GalleryPost = () => {
                             <MoreOption formData={formData} type="gallery"/>
                         </S.HorizontalWrapper>
                         <S.HorizontalWrapper $gap={"15px"} style={{marginTop: "10px"}}>
-                            <S.Profile src={formData.profileImageUrl}/>
+                            {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={formData.profileImageUrl}/>}
+                            <S.Profile src={formData.profileImageUrl} onClick={() => handleImageFullScreen()} />
                             <S.HorizontalWrapper $gap={"5px"}>
                                 <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                 <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}}>{formData.author}</S.Text>

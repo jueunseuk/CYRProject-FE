@@ -13,11 +13,12 @@ import view from "@/assets/icon/post/view.svg";
 import comments from "@/assets/icon/post/comment.svg";
 import ellipse from "@/assets/icon/post/ellipse.svg";
 import list from "@/assets/icon/gallery/list.svg";
+import WrongPage from "@/pages/wrong/WrongPage";
+import MoreOptionComment from "@/components/modal/moreOptionComment";
+import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/component/Skeleton";
-import WrongPage from "@/pages/wrong/WrongPage";
-import MoreOptionComment from "@/components/modal/moreOptionComment";
 
 const BasicPost = () => {
     const user = useUserInfo();
@@ -36,6 +37,7 @@ const BasicPost = () => {
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editingContent, setEditingContent] = useState("");
     const [editingLocked, setEditingLocked] = useState("PUBLIC");
+    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
     const handleNavigatePostList = () => {
         navigate(`/${subPath}`);
@@ -81,7 +83,7 @@ const BasicPost = () => {
         } catch(error) {
 
         }
-    }
+    };
 
     const handleClickUpdateComment = async (commentId) => {
         try {
@@ -99,7 +101,7 @@ const BasicPost = () => {
         } catch(error) {
 
         }
-    }
+    };
 
     const handleClickEmpathy = async (postId) => {
         if (isDisabled) return;
@@ -120,11 +122,19 @@ const BasicPost = () => {
                 setIsDisabled(false);
             }, 3000);
         }
-    }
+    };
 
     if(notFound) {
         return <WrongPage />;
-    }
+    };
+
+    const handleImageFullScreen = () => {
+        setIsProfileModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsProfileModalOpen(false);
+    };
     
     return (
         <>
@@ -144,7 +154,8 @@ const BasicPost = () => {
                                 <MoreOption formData={postData} type={subPath}/>
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"12px"} style={{marginTop: "10px"}}>
-                                <S.Profile src={postData.profileImageUrl}/>
+                                {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={postData.profileImageUrl}/>}
+                                <S.Profile src={postData.profileImageUrl} onClick={() => handleImageFullScreen()} />
                                 <S.HorizontalWrapper>
                                     <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}}>{postData.userNickname}</S.Text>

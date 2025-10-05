@@ -11,7 +11,7 @@ const MyPage = () => {
     const userInfo = useUserInfo();
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-
+    
     const getUserProfileData = async () => {
         try {
             const response = await U.getUserProfileData();

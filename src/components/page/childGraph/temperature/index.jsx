@@ -72,7 +72,7 @@ const Temperature = ({userId, type}) => {
             <S.GraphWrapper>
                 {graphData[0]?.data.length === 0 ? 
                     <S.EmptyGraphWrapper>아직 아무런 활동 로그가 없어요..</S.EmptyGraphWrapper> : 
-                    <LineGraph data={graphData} type={type} profileUrl={user}
+                    <LineGraph data={graphData} type={type}
                 />}
             </S.GraphWrapper>
         </S.Wrapper>

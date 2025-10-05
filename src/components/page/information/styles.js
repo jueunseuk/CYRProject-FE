@@ -37,6 +37,10 @@ export const ProfileImage = styled.img.attrs({
     height: 100px;
     border-radius: 50px;
     object-fit: cover;
+
+    &: hover {
+        cursor: pointer;
+    }
 `;
 
 export const Icon = styled.img.attrs((props) => {
