@@ -123,6 +123,9 @@ const Guide = () => {
                     <S.FirstListItem id="shop">k. 유리상점(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>프로필 꾸미기 아이템, 뱃지, 배경, 특별 이모티콘 등 다양한 디지털 굿즈를 구매할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트되어, 커뮤니티 활동에 지속적인 동기를 부여합니다.</S.SecondListItem>
+                    <S.FirstListItem id="shop">l. 유리 노래(개발 예정)</S.FirstListItem>
+                        <S.SecondListItem></S.SecondListItem>
+                        <S.SecondListItem></S.SecondListItem>
                 </S.List>
                 <S.Blank />
 
@@ -253,7 +256,7 @@ const Guide = () => {
                             </S.Row>
                             <S.Row>
                                 <S.Column colSpan={2}>이용 가이드에 위배된 경우</S.Column>
-                                <S.Column><S.Text $color={"red"} $weight={"600"}>-10</S.Text></S.Column>
+                                <S.Column><S.Text $color={"red"} $weight={"600"}>-30</S.Text></S.Column>
                                 <S.Column>1회당</S.Column>
                             </S.Row>
                             <S.Row>

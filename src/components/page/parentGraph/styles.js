@@ -48,6 +48,8 @@ export const NavigateText = styled.div`
     cursor: pointer;
     color: ${({ $active }) => ($active ? "black" : "#666")};
     background-color: ${({ $active }) => ($active ? "#f6f6f6" : "white")};
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 `;
 
 export const Underline = styled.div`

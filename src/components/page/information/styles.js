@@ -2,14 +2,9 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border: 1px solid #C6BC73;
-    border-radius: 25px;
-    padding: 30px 40px;
-    width: 300px;
-    gap: 30px;
+    width: 100%;
 `;
 
 export const HorizontalWrapper = styled.div`
@@ -36,12 +31,16 @@ export const Text = styled.div`
 `;
 
 export const ProfileImage = styled.img.attrs({
-    alt: "Profile Image"
+    alt: ""
 })`
     width: 100px;
     height: 100px;
     border-radius: 50px;
     object-fit: cover;
+
+    &: hover {
+        cursor: pointer;
+    }
 `;
 
 export const Icon = styled.img.attrs((props) => {

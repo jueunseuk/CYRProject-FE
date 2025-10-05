@@ -1,5 +1,6 @@
 import * as S from "./styles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import Banner from "@/components/home/banner";
 import Search from "@/components/home/search";
 import GuestInfo from "@/components/home/guestInfo";
@@ -12,6 +13,16 @@ import UserPage from "@/components/page/userPage";
 const User = () => {
     const user = useUserInfo();
     const {userId} = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user?.userId) {
+            alert("로그인 후 이용가능합니다.\n메인화면으로 이동합니다.");
+            navigate("/");
+        }
+    }, [user, navigate]);
+    
+    if (!user?.userId) return null;
 
     return (
         <>
