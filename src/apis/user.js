@@ -38,3 +38,33 @@ export const getOtherProfileData = async (otherId) => {
         throw error;
     }
 };
+
+export const patchUserInformation = async (userData) => {
+    try {
+        const response = await instance.patch(`/user/profile/info`, userData);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            console.log("사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};
+
+export const patchUserProfile = async (formData) => {
+    try {
+        const response = await instance.patch(`/user/profile/image`, formData);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            console.log("사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};
