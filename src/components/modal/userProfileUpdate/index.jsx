@@ -52,7 +52,7 @@ const UserProfileUpdateModal = ({onClose, user}) => {
             }));
             
             alert("수정 완료!");
-            onClose();
+            window.location.reload();
         } catch (error) {
         } finally {
         }
