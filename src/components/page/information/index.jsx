@@ -1,12 +1,14 @@
 import * as S from "./styles";
 import pencil from "@/assets/icon/post/author.svg";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
+import UserProfileUpdateModal from "@/components/modal/userProfileUpdate";
 import { formatDate } from "@/util/dateFormatter";
 import { useEffect, useState } from "react";
 
 const Information = ({isOwner, user}) => {
     const [isNeeded, setIsNeeded] = useState(false);
     const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+    const [userUpdateModal, setUserUpdateModal] = useState(false);
 
     const getLoginMethodBackgroundColor = (method) => {
         if(method === "EMAIL") {
@@ -64,12 +66,21 @@ const Information = ({isOwner, user}) => {
         setIsProfileModalOpen(false);
     };
 
+    const handleUserProfileUpdateModal = () => {
+        setUserUpdateModal(true);
+    };
+
+    const closeUserProfileUpdateModal = () => {
+        setUserUpdateModal(false);
+    };
+
     return (
         <S.Wrapper>
+            {userUpdateModal && <UserProfileUpdateModal user={user} onClose={() => closeUserProfileUpdateModal()} />}
             <S.VerticalWrapper $gap={"30px"}>
                 <S.HorizontalWrapper $gap={"8px"}>
                     <S.Text $size={"18px"} $weight={"700"}>{isOwner ? "내" : "사용자"} 정보</S.Text>
-                    {isOwner && <S.Icon src={pencil} />}
+                    {isOwner && <S.Icon src={pencil} onClick={() => handleUserProfileUpdateModal()} />}
                 </S.HorizontalWrapper>
                 <S.VerticalWrapper>
                     {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={user.profileUrl}/>}
