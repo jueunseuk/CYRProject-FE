@@ -47,7 +47,7 @@ export const Icon = styled.img`
     height: ${({$height}) => $height || "15px"};
     cursor: pointer;
     position: absolute;
-    right: 15px;
+    right: 25px;
 `;
 
 export const Text = styled.span`
@@ -97,6 +97,7 @@ export const Select = styled.select`
     width: 150px;
     height: 40px;
     padding: 10px;
+    border-radius: 8px;
 `;
 
 export const InputImage = styled.img`

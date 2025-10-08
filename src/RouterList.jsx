@@ -22,6 +22,7 @@ import Editor from "@/pages/editor";
 import UpdateEditor from "./pages/updateEditor";
 import My from "@/pages/my";
 import User from "@/pages/user";
+import Activity from "@/pages/activity";
 
 export const RouterList = () => [
     {
@@ -107,11 +108,19 @@ export const RouterList = () => [
                     },
                     {
                         path: "/mypage",
-                        element: <My />
+                        element: <My />,
+                    },
+                    {
+                        path: "/mypage/:subPath",
+                        element: <Activity />
                     },
                     {
                         path: "/users/:userId",
                         element: <User />
+                    },
+                    {
+                        path: "/users/:userId/:subPath",
+                        element: <Activity />
                     },
 
                     // footer

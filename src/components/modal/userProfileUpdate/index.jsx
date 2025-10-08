@@ -89,7 +89,7 @@ const UserProfileUpdateModal = ({onClose, user}) => {
                     </S.VerticalWrapper>
                     <S.VerticalWrapper $ai={"flex-start"} $gap={"5px"}>
                         <S.Text $size={"15px"} $weight={"600"} style={{paddingLeft: "5px"}} >나이</S.Text>
-                        <S.Input $width={"220px"} value={userRevision.age} onChange={(e) => setUserRevision({...userRevision, age : e.target.value})} />
+                        <S.Input $width={"110px"} value={userRevision.age} onChange={(e) => setUserRevision({...userRevision, age : e.target.value})} />
                     </S.VerticalWrapper>
                     <S.VerticalWrapper $ai={"flex-start"} $gap={"5px"}>
                         <S.Text $size={"15px"} $weight={"600"} style={{paddingLeft: "5px"}} >한 줄 인사</S.Text>

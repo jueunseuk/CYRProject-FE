@@ -24,6 +24,19 @@ export const VerticalWrapper = styled.div`
     width: 100%;
 `;
 
+export const FieldWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 8px;
+    
+    &: hover {
+        scale: 1.01;
+    }
+`;
+
 export const Text = styled.div`
     font-size: ${({$size}) => $size || "13px"};
     font-weight: ${({$weight}) => $weight || "400"};
@@ -33,9 +46,10 @@ export const Text = styled.div`
 export const ProfileImage = styled.img.attrs({
     alt: ""
 })`
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+    width: 150px;
+    height: 150px;
+    border: 3px solid #C6BC73;
+    border-radius: 150px;
     object-fit: cover;
 
     &: hover {

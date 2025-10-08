@@ -13,7 +13,7 @@ const Guide = () => {
         <>
             <S.Wrapper>
                 <S.Title>커뮤니티 이용 가이드</S.Title>
-                <S.Text>본 커뮤니티는 이용자 모두가 안전하고 쾌적하게 활동할 수 있도록 건전한 운영 원칙과 이용 규칙을 마련하여 공개합니다. 이용가이드는 커뮤니티 내에서 발생할 수 있는 갈등과 문제를 예방하고, 모든 이용자가 존중받는 환경을 보장하기 위한 기준이 됩니다.</S.Text>
+                <S.Text>본 커뮤니티는 이용자 모두가 안전하고 즐겁게 활동할 수 있도록 운영 원칙과 이용 규칙을 마련했습니다. 본 이용 가이드는 커뮤니티 내에서의 건전한 소통을 돕고, 모든 이용자가 존중받는 환경을 유지하기 위한 기준이 됩니다. 이용 가이드를 참고하여 더욱 즐겁고 원활한 커뮤니티 활동을 이어가시길 바랍니다.</S.Text>
                 <S.Blank />
 
                 <S.SubTitle>I. 게시판별 목적 안내</S.SubTitle>
@@ -111,7 +111,7 @@ const Guide = () => {
                         <S.SecondListItem>본 커뮤니티에는 생성형 AI로 제작한 가수 최유리님의 이모티콘이 있습니다.</S.SecondListItem>
                         <S.SecondListItem>무료로 사용할 수 있는 이모티콘부터 숨겨진 업적, 유리상점 등에서 여러 이모티콘을 얻어서 사용할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>율모티콘은 출석, 게시글, 댓글, 율톡에 한해 사용 가능합니다.</S.SecondListItem>
-                    <S.FirstListItem>j. 유리공방(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem>j. 유리공방</S.FirstListItem>
                         <S.SecondListItem>출석을 통해 화로의 온도를 높이고, 여러 활동(게시글 작성, 댓글 등)을 통해 모래알을 모을 수 있습니다.</S.SecondListItem>
                             <S.ThirdListItem>- 활동별 모래알 획득 수치는 <S.Link href="#sand" style={{fontWeight: "600"}}>III.b.모래알</S.Link>을 참고해주세요.</S.ThirdListItem>
                         <S.SecondListItem>일정 기간 이상 출석을 하지 않으면 화로의 온도가 내려갑니다.</S.SecondListItem>

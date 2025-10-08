@@ -49,8 +49,10 @@ export const Icon = styled.img.attrs((props) => {
 export const ItemList = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    gap: 15px;
     width: 100%;
+    height: 100%;
 `;
 
 export const ItemBox = styled.div`
@@ -66,5 +68,6 @@ export const ItemBox = styled.div`
     &: hover {
         background-color: #fbfbfbff;
         cursor: pointer;
+        border: 2px solid black;
     };
 `;
