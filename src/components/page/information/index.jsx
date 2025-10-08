@@ -35,7 +35,7 @@ const Information = ({isOwner, user}) => {
     };
 
     const getIntroductionText = (introduction) => {
-        if(introduction == null) {
+        if(introduction == null || introduction === "") {
             if(isOwner) {
                 return "한 줄 인사를 작성해 자신을 나타내보세요!";
             } else {
@@ -91,34 +91,34 @@ const Information = ({isOwner, user}) => {
                     </S.HorizontalWrapper>
                     <S.Text $size={"12px"} $color={"#878787"}>{user.email}</S.Text>
                 </S.VerticalWrapper>
-                <S.VerticalWrapper $gap={"25px"} style={{padding: "0 20px"}}>
-                    <S.HorizontalWrapper $jc={"space-between"}>
+                <S.VerticalWrapper $gap={"15px"} style={{padding: "0 20px"}}>
+                    <S.FieldWrapper $jc={"space-between"}>
                         <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>이름</S.Text>
                         <S.DotLine />
                         <S.Text $size={"13px"}>{user.name}</S.Text>
-                    </S.HorizontalWrapper>
-                    <S.HorizontalWrapper $jc={"space-between"}>
+                    </S.FieldWrapper>
+                    <S.FieldWrapper $jc={"space-between"}>
                         <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>성별</S.Text>
                         <S.DotLine />
                         <S.Text $size={"13px"} >{getGenderText(user.gender)}</S.Text>
-                    </S.HorizontalWrapper>
-                    <S.HorizontalWrapper $jc={"space-between"}>
+                    </S.FieldWrapper>
+                    <S.FieldWrapper $jc={"space-between"}>
                         <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>나이</S.Text>
                         <S.DotLine />
                         <S.Text $size={"13px"} >{user.age === 0 ? "미등록" : user.age}</S.Text>
-                    </S.HorizontalWrapper>
-                    <S.HorizontalWrapper $jc={"space-between"}>
+                    </S.FieldWrapper>
+                    <S.FieldWrapper $jc={"space-between"}>
                         <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>로그인</S.Text>
                         <S.DotLine />
                         <S.Text $size={"13px"} $weight={"800"}
                             $color={getLoginMethodBackgroundColor("EMAIL").font} 
                             style={{backgroundColor: getLoginMethodBackgroundColor(user.method).back, padding: "1px 3px", borderRadius: "3px"}}>{user.method}</S.Text>
-                    </S.HorizontalWrapper>
-                    <S.HorizontalWrapper $jc={"space-between"}>
+                    </S.FieldWrapper>
+                    <S.FieldWrapper $jc={"space-between"}>
                         <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>가입일</S.Text>
                         <S.DotLine />
                         <S.Text $size={"13px"} >{formatDate(user.createdAt, 2)}</S.Text>
-                    </S.HorizontalWrapper>
+                    </S.FieldWrapper>
                     <S.VerticalWrapper $ai={"flex-start"}>
                         <S.Text $size={"13px"} $weight={"700"} style={{marginBottom: "3px"}}>한 줄 인사</S.Text>
                         <S.Text $size={"12px"} $color={"#878787"} style={{textAlign: "left"}}>{getIntroductionText(user.introduction)}</S.Text>

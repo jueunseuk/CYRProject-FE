@@ -68,3 +68,18 @@ export const patchUserProfile = async (formData) => {
         throw error;
     }
 };
+
+export const getUserActivityData = async (userId) => {
+    try {
+        const response = await instance.get(`/user/${userId}/activity`);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            console.log("사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+}

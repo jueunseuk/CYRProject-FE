@@ -37,7 +37,7 @@ const MyPage = () => {
                 }}>
                 <S.HorizontalWrapper $jc={"space-between"} $ai={"flex-start"} $gap={"41px"}>
                     <Information isOwner={true} user={user} />
-                    <ParentRecord />
+                    <ParentRecord user={user} />
                 </S.HorizontalWrapper>
                 <S.HorizontalWrapper $gap={"5px"}>
                     <S.Icon src={refresh} ></S.Icon>
