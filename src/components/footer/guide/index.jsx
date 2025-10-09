@@ -83,7 +83,7 @@ const Guide = () => {
                 <S.List>
                     <S.FirstListItem>a. 출석</S.FirstListItem>
                         <S.SecondListItem>하루에 한 번씩 출석을 할 수 있는 서비스입니다.</S.SecondListItem>
-                        <S.SecondListItem>하루의 기준은 KST 기준은 00:00부터 23:59입니다.</S.SecondListItem>
+                        <S.SecondListItem>하루의 기준은 KST 기준 00:00부터 23:59입니다.</S.SecondListItem>
                     <S.FirstListItem>b. 응원</S.FirstListItem>
                         <S.SecondListItem>사용자는 메인 화면의 응원 버튼을 눌러서 아티스트를 응원할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>응원은 최대 1분에 1번씩 가능하고 응원을 클릭하는 순간 카운트가 시작됩니다.</S.SecondListItem>

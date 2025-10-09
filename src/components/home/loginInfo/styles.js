@@ -20,7 +20,7 @@ export const Title = styled.div`
 export const ProfileArea = styled.div`
     display: flex;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 15px;
     width: 170px;
 `;
 

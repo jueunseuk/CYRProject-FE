@@ -12,6 +12,8 @@ const ParentRecord = ({user}) => {
     const [activityData, setActivityData] = useState({});
 
     useEffect(() => {
+        if (!user?.userId) return;
+
         const fetchUserActivityData = async () => {
             try {
                 const response = await U.getUserActivityData(user.userId);

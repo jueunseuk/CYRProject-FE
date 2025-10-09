@@ -9,21 +9,12 @@ const Cheer = () => {
 
     const handleRequestCheer = async () => {
         try {
-            await C.requestCheer();
-            setTotalCheer(totalCheer+1);
+            const response = await C.requestCheer();
+            setTotalCheer(response.data);
 
             setAnimate(true);
         } catch(error) {
-            if(error.response && error.response.data) {
-                const status = error.response.status;
 
-                if(status === 401) {
-                    alert("로그인이 필요한 서비스입니다.");
-                    console.log(error.response);
-                } else if(error.response.data.code === "CHEER_002") {
-                    alert("응원은 1분에 한 번씩만 가능합니다!");
-                }
-            }
         }
     };
 

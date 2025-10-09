@@ -22,6 +22,22 @@ const MyPage = () => {
             setIsLoading(false);
         }
     };
+
+    const syncronizeUserActivityCount = async () => {
+        try {
+            const response = await U.patchUserActivityCntWithSync();
+            console.log(response.data)
+            alert(`활동이 다음과 같이 갱신되었습니다.
+- 작성한 글 : ${response.data.postCnt}
+- 작성한 댓글 : ${response.data.commentCnt}
+- 공감한 글 : ${response.data.empathyCnt}
+- 업로드한 사진 : ${response.data.imageCnt}\n
+페이지를 다시 불러옵니다.`);
+            window.location.reload();
+        } catch(error) {
+
+        }
+    };
     
     useEffect(() => {
         getUserProfileData();
@@ -42,7 +58,7 @@ const MyPage = () => {
                 <S.HorizontalWrapper $gap={"5px"}>
                     <S.Icon src={refresh} ></S.Icon>
                     <S.Text $color={"#878787"} >
-                        <S.LinkText>여기서</S.LinkText> 프로필을 강제로 갱신할 수 있습니다.
+                        <S.LinkText onClick={() => syncronizeUserActivityCount()}>여기서</S.LinkText> 프로필을 강제로 갱신할 수 있습니다.
                     </S.Text>
                 </S.HorizontalWrapper>
             </S.VerticalWrapper>
