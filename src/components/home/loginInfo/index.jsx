@@ -25,6 +25,10 @@ const LoginInfo = () => {
         navigate("/write/post");
     };
 
+    const handleNavigateMyPage = () => {
+        navigate("/mypage");
+    };
+
     useEffect(() => {
         const fetchExp = async () => {
             try {
@@ -73,7 +77,12 @@ const LoginInfo = () => {
                     <S.Text $size={"11px"} $color={"#878787"}>{formatDate(user.createdAt, 2)}</S.Text>
                 </S.VerticalWrapper>
             </S.ProfileArea>
-            <S.IconArea>
+            <S.HorizontalWrapper $jc={"center"} $gap={"10px"} style={{width: "100%"}}>
+                <S.Text $size={"13px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => handleNavigateMyPage()}>마이페이지</S.Text>
+                <S.Text $size={"13px"} $weight={"600"}>|</S.Text>
+                <S.Text $size={"13px"} $weight={"600"} style={{cursor: "pointer"}}>유리 공방</S.Text>
+            </S.HorizontalWrapper>
+            <S.IconArea >
                 <S.HorizontalWrapper $jc={"space-between"}>
                     <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>
                         <S.Icon src={exp} />

@@ -33,7 +33,8 @@ export const CountText = styled.div`
     ${({ $animate }) =>
         $animate &&
         css`
-        animation: ${spin} 0.4s ease;
+        animation: ${spinAndScale} 0.4s ease;
+        scale: 1.1;
     `}
 `;
 
@@ -105,8 +106,14 @@ export const TooltipText = styled.span`
     transition: opacity 0.3s ease;
 `;
 
-const spin = keyframes`
-    0% { transform: rotateX(0deg); }
-    50% { transform: rotateX(360deg); }
-    100% { transform: rotateX(720deg); }
+const spinAndScale = keyframes`
+  0% {
+    transform: rotateX(0deg) scale(1);
+  }
+  50% {
+    transform: rotateX(360deg) scale(1.05);
+  }
+  100% {
+    transform: rotateX(720deg) scale(1);
+  }
 `;
