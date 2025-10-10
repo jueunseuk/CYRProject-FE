@@ -5,6 +5,7 @@ import Glass from "../childGraph/glass";
 import Sand from "../childGraph/sand";
 import Temperature from "../childGraph/temperature";
 import Cheer from "../childGraph/cheer";
+import Attendance from "../childGraph/attendance";
 
 const tabs = ["경험치", "모래알", "유리 조각", "활동 온도", "응원", "출석"];
 
@@ -30,7 +31,7 @@ const ParentGraph = ({userId}) => {
             case 2: return <Glass userId={userId} type={"유리 조각"} />;
             case 3: return <Temperature userId={userId} type={"활동 온도"} />;
             case 4: return <Cheer userId={userId} type={"응원"} />;
-            case 5: return <Cheer userId={userId} type={"출석"} />;
+            case 5: return <Attendance userId={userId} />;
             default: return null;
         }
     };

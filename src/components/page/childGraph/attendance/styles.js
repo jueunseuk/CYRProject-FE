@@ -44,7 +44,7 @@ export const Icon = styled.img.attrs((props) => {
 
 export const GraphWrapper = styled.div`
     width: 100%;
-    height: 350px;
+    height: 160px;
 `;
 
 export const EmptyGraphWrapper = styled.div`

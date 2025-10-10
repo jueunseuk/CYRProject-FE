@@ -30,7 +30,7 @@ const Cheer = ({userId, type}) => {
         fetchUserSandData();
         fetchUserSandHistory();
     }, [userId]);
-
+    console.log(graphData)
     return (
         <S.Wrapper>
             <S.HorizontalWrapper $jc={"flex-start"} $gap={"5px"}>
