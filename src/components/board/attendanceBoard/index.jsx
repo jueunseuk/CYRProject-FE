@@ -8,10 +8,11 @@ import clock from "@/assets/icon/attendance/clock.svg";
 import pencil from "@/assets/icon/attendance/pencil.svg";
 import { useEffect, useState } from "react";
 import useUserInfo from "@/hooks/localStorage";
+import { getAttendanceMessage } from "@/util/getAttendanceMessage";
 
 const AttendanceBoard = () => {
     const {subPath} = useParams();
-    const [comment, setComment] = useState("");
+    const [comment, setComment] = useState(getAttendanceMessage().message);
     const [cntData, setCntData] = useState({
         thisMonthCnt: 0,
         beforeMonthCnt: 0,
@@ -27,7 +28,7 @@ const AttendanceBoard = () => {
     });
     const [attendances, setAttendances] = useState([]);
     const user = useUserInfo();
-
+    
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
     const boardId = 3;
 
