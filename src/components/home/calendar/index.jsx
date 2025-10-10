@@ -31,14 +31,18 @@ const CalendarSummary = () => {
         fetchSchedule();
     }, []);
 
-    const getBgColor = text => {
-        const days = parseInt(text.replace("D-", ""), 10);
-        if(isNaN(days)) return "#C6BC73";
-        if(days < 0) return "#B7B7B7";
-        if (days <= 3)  return "#C6BC73";
-        if (days <= 10) return "#C8C09B";
-        if (days <= 30) return "#B7B7B7";
-        return "#e0e0e0";
+    const getScheduleColor = (type) => {
+        switch(type) {
+            case "BROADCAST" : return "#F44336"; // red
+            case "RADIO" : return "#FF9800"; // orange
+            case "CONCERT" : return "#9C27B0"; // purple
+            case "UNIV" : return "#3F51B5"; // indigo
+            case "FESTIVAL" : return "#2196F3"; // blue
+            case "ANNIVERSARY" : return "#4CAF50"; // green
+            case "BIRTHDAY" : return "#C6BC73"; // signiture
+            case "RELEASE" : return "#FF3399"; // pink
+            case "ETC" : return "#878787"; // gray
+        };
     };
 
     const getLeft = (dateStr) => {
@@ -53,7 +57,7 @@ const CalendarSummary = () => {
         if(diff > 0) {
             return `D-${diff}`;
         } else if(diff < 0) {
-            return `D-${-diff}`;
+            return `D+${-diff}`;
         } else {
             return "TODAY";
         }
@@ -79,7 +83,7 @@ const CalendarSummary = () => {
                             const leftText = getLeft(item.date);
                             return (
                                 <S.HorizontalWrapper key={item.calendarId}>
-                                    <S.LeftDays $bg={getBgColor(leftText)}>
+                                    <S.LeftDays $bg={getScheduleColor(item.type)}>
                                         {leftText}
                                     </S.LeftDays>
                                     <S.Text title={`${item.type} : ${item.description}`} $size={"13px"}>{item.title}</S.Text>
