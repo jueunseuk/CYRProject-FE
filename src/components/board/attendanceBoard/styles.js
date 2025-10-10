@@ -108,7 +108,7 @@ export const InputField = styled.textarea`
     border: 1px solid #E4E4E4;
     outline: none;
     padding: 10px;
-    font-size: 15px;
+    font-size: 14px;
     resize: vertical;
 `;
 
