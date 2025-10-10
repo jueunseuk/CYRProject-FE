@@ -3,9 +3,10 @@ import * as U from "@/apis/user";
 import Information from "../information";
 import useUserInfo from "@/hooks/localStorage";
 import ParentGraph from "../parentGraph";
+import refresh from "@/assets/icon/user/refresh.svg";
+import ParentRecord from "../parentRecord";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { SkeletonItem } from "@/common/component/Skeleton";
 
 const UserPage = () => {
     const navigate = useNavigate();
@@ -38,14 +39,18 @@ const UserPage = () => {
     
     return (
         <S.Wrapper>
-            <S.HorizontalWrapper $jc={"space-between"} $ai={"flex-start"}>
-                {isLoading ? 
-                    <SkeletonItem $width={"300px"} $height={"517px"} $radius={"25px"} /> : 
+            <S.VerticalWrapper $gap={"30px"}
+                style={{border: "1px solid #C6BC73",
+                    borderRadius: "25px",
+                    backgroundColor: "#fcf9e5ff",
+                    padding: "30px"
+                }}>
+                <S.HorizontalWrapper $jc={"space-between"} $ai={"flex-start"} $gap={"41px"}>
                     <Information isOwner={false} user={user} />
-                }
-                <ParentGraph userId={userId} />
-
-            </S.HorizontalWrapper>
+                    <ParentRecord user={user} />
+                </S.HorizontalWrapper>
+            </S.VerticalWrapper>
+            <ParentGraph userId={userId} />
         </S.Wrapper>
     )
 };

@@ -4,8 +4,9 @@ import Experience from "../childGraph/experience";
 import Glass from "../childGraph/glass";
 import Sand from "../childGraph/sand";
 import Temperature from "../childGraph/temperature";
+import Cheer from "../childGraph/cheer";
 
-const tabs = ["경험치", "모래알", "유리 조각", "활동 온도"];
+const tabs = ["경험치", "모래알", "유리 조각", "활동 온도", "응원"];
 
 const ParentGraph = ({userId}) => {
     const [selected, setSelected] = useState(0);
@@ -24,16 +25,18 @@ const ParentGraph = ({userId}) => {
 
     const getGraphComponent = (selected) => {
         switch (selected) {
-            case 0: return <Experience userId={userId} />;
-            case 1: return <Sand userId={userId} />;
-            case 2: return <Glass userId={userId} />;
-            case 3: return <Temperature userId={userId} />;
+            case 0: return <Experience userId={userId} type={"경험치"} />;
+            case 1: return <Sand userId={userId} type={"모래알"} />;
+            case 2: return <Glass userId={userId} type={"유리 조각"} />;
+            case 3: return <Temperature userId={userId} type={"활동 온도"} />;
+            case 4: return <Cheer userId={userId} type={"응원"} />;
             default: return null;
         }
     };
 
     return (
         <S.Wrapper>
+            <S.Text $size={"18px"} $weight={"700"} style={{marginBottom: "10px"}}>활동 통계</S.Text>
             <S.HorizontalWrapper $jc={"flex-start"} >
                 <S.TabWrapper>
                     {tabs.map((tab, idx) => (

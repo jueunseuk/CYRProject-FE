@@ -18,3 +18,17 @@ export const getUserExperienceData = async (userId) => {
     }
 };
 
+export const getUserExperienceHisotry = async (userId) => {
+    try {
+        const response = await instance.get(`/experience/history/${userId}`);
+        return response;
+    } catch (error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert(error.response.message);
+        }
+
+        throw error;
+    }
+};

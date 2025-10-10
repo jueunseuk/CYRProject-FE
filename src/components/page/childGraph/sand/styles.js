@@ -33,3 +33,42 @@ export const Text = styled.div`
     font-weight: ${({$weight}) => $weight || "400"};
     color: ${({$color}) => $color || "black"};
 `;
+
+export const Icon = styled.img.attrs((props) => {
+    src: props.src
+    alt: "Level Icon"
+})`
+    width: ${({$width}) => $width};
+    height: ${({$height}) => $height};
+`;
+
+export const GraphWrapper = styled.div`
+    width: 100%;
+    height: 350px;
+`;
+
+export const EmptyGraphWrapper = styled.div`
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #cacacaff;
+`;
+
+export const FieldWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    
+    &: hover {
+        scale: 1.01;
+        background-color: #f1f1f1ff;
+    }
+`;

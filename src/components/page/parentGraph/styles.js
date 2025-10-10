@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     border-radius: 25px;
-    width: 500px;
+    width: 100%;
     min-height: 517px;
 `;
 
@@ -48,6 +48,8 @@ export const NavigateText = styled.div`
     cursor: pointer;
     color: ${({ $active }) => ($active ? "black" : "#666")};
     background-color: ${({ $active }) => ($active ? "#f6f6f6" : "white")};
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 `;
 
 export const Underline = styled.div`

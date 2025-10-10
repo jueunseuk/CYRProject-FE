@@ -6,6 +6,7 @@ import exp from "@/assets/icon/user/exp.svg";
 import sand from "@/assets/icon/user/sand.svg";
 import glass from "@/assets/icon/user/glass.svg";
 import useUserInfo from "@/hooks/localStorage";
+import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,9 +19,14 @@ const LoginInfo = () => {
         sand: 0,
         temperature: 0
     });
+    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
     const handleNavigateWrite = () => {
         navigate("/write/post");
+    };
+
+    const handleNavigateMyPage = () => {
+        navigate("/mypage");
     };
 
     useEffect(() => {
@@ -49,20 +55,34 @@ const LoginInfo = () => {
 
     const handleNavigateMypage = () => {
         navigate("/mypage");
-    }
+    };
+
+    const handleImageFullScreen = () => {
+        setIsProfileModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsProfileModalOpen(false);
+    };
 
     return (
         <S.Wrapper>
             <S.Title>내 정보</S.Title>
             <S.ProfileArea>
-                <S.ProfileImage src={user.profileUrl} onClick={() => handleNavigateMypage()}  style={{cursor: "pointer"}}/>
+                {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={user.profileUrl}/>}
+                <S.ProfileImage src={user.profileUrl} onClick={() => handleImageFullScreen()}  style={{cursor: "pointer"}}/>
                 <S.VerticalWrapper>
                     <S.Text $size={"12px"} $weight={"300"}>{user.role}</S.Text>
                     <S.Text $size={"16px"} $weight={"700"} onClick={() => handleNavigateMypage()} style={{cursor: "pointer"}}>{user.nickname ? user.nickname : user.name}</S.Text>
                     <S.Text $size={"11px"} $color={"#878787"}>{formatDate(user.createdAt, 2)}</S.Text>
                 </S.VerticalWrapper>
             </S.ProfileArea>
-            <S.IconArea>
+            <S.HorizontalWrapper $jc={"center"} $gap={"10px"} style={{width: "100%"}}>
+                <S.Text $size={"13px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => handleNavigateMyPage()}>마이페이지</S.Text>
+                <S.Text $size={"13px"} $weight={"600"}>|</S.Text>
+                <S.Text $size={"13px"} $weight={"600"} style={{cursor: "pointer"}}>유리 공방</S.Text>
+            </S.HorizontalWrapper>
+            <S.IconArea >
                 <S.HorizontalWrapper $jc={"space-between"}>
                     <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>
                         <S.Icon src={exp} />
