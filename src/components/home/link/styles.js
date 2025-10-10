@@ -30,6 +30,12 @@ export const Text = styled.div`
     color: ${({$color}) => $color};
 `;
 
+export const LinkText = styled.div`
+    font-size: 15px;
+    font-weight: 600;
+    color: ${({$color}) => $color};
+`;
+
 export const GradientText = styled.span`
   background: linear-gradient(90deg, #FFD153, #EF4C5E, #C837AB, #5956CA);
   -webkit-background-clip: text;
@@ -66,6 +72,10 @@ export const ItemArea = styled.div`
     align-items: center;
     width: 100%;
     gap: 3px;
+
+    &: hover {
+        scale: 1.05;
+    }
 `;
 
 export const Icon = styled.div`

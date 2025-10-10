@@ -37,7 +37,7 @@ const Link = () => {
                             <S.ItemArea>
                                 <S.Icon $icon={youtube}/>
                                 <S.Link href="https://www.youtube.com/channel/UCyUnjor6wyRA2Xt3fFwnf6w" target="_blank" title="유리의 공식 유튜브 바로가기">
-                                <S.Text $color={"#FF0000"} $size={"15px"} $weight={"600"}>Youtube</S.Text></S.Link>
+                                <S.LinkText $color={"#FF0000"}>Youtube</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={instagram}/>
@@ -47,27 +47,27 @@ const Link = () => {
                             <S.ItemArea>
                                 <S.Icon $icon={blog}/>
                                 <S.Link href="https://blog.naver.com/yureemorae" target="_blank" title="유리의 블로그 바로가기">
-                                <S.Text $color={"#42D31A"} $size={"15px"} $weight={"600"}>Blog</S.Text></S.Link>
+                                <S.LinkText $color={"#42D31A"}>Blog</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={cafe}/>
                                 <S.Link href="https://cafe.daum.net/CHOIYUREE" target="_blank" title="유리의 공식 팬 카페 바로가기">
-                                <S.Text $color={"#FF2041"} $size={"15px"} $weight={"600"}>Cafe</S.Text></S.Link>
+                                <S.LinkText $color={"#FF2041"}>Cafe</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={facebook}/>
                                 <S.Link href="https://www.facebook.com/ChoiYuRee/" target="_blank" title="유리의 공식 페이스북 바로가기">
-                                <S.Text $color={"#0866FF"} $size={"15px"} $weight={"600"}>Facebook</S.Text></S.Link>
+                                <S.LinkText $color={"#0866FF"}>Facebook</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={soundcloud}/>
                                 <S.Link href="https://soundcloud.com/yureechoi" target="_blank" title="유리의 사운드 클라우드 바로가기(현재 업데이트 X)">
-                                <S.Text $color={"#F26D23"} $size={"15px"} $weight={"600"}>SoundCloud</S.Text></S.Link>
+                                <S.LinkText $color={"#F26D23"}>SoundCloud</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={namu}/>
                                 <S.Link href="https://namu.wiki/w/%EC%B5%9C%EC%9C%A0%EB%A6%AC(%EA%B0%80%EC%88%98)" target="_blank" title="유리의 나무위키 바로가기">
-                                <S.Text $color={"#00A495  "} $size={"15px"} $weight={"600"}>NamuWiki</S.Text></S.Link>
+                                <S.LinkText $color={"#00A495  "}>NamuWiki</S.LinkText></S.Link>
                             </S.ItemArea>
                         </S.LinkList>
                     </S.Content>
@@ -80,7 +80,7 @@ const Link = () => {
                             <S.ItemArea>
                                 <S.Icon $icon={youtube}/>
                                 <S.Link href="https://www.youtube.com/@welcometoforest" target="_blank" title="유리의 숲 유튜브 바로가기">
-                                    <S.Text $color={"#FF0000"} $size={"15px"} $weight={"600"}>Youtube</S.Text></S.Link>
+                                    <S.LinkText $color={"#FF0000"}>Youtube</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={instagram}/>
@@ -98,7 +98,7 @@ const Link = () => {
                             <S.ItemArea>
                                 <S.Icon $icon={youtube}/>
                                 <S.Link href="https://www.youtube.com/@navywave" target="_blank" title="네이브의 유튜브 바로가기">
-                                    <S.Text $color={"#FF0000"} $size={"15px"} $weight={"600"}>Youtube</S.Text></S.Link>
+                                    <S.LinkText $color={"#FF0000"} $size={"15px"} $weight={"600"}>Youtube</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={instagram}/>
@@ -108,12 +108,12 @@ const Link = () => {
                             <S.ItemArea>
                                 <S.Icon $icon={nave2}/>
                                 <S.Link href="https://navywave.kr/" target="_blank" title="네이브 공식 홈페이지 바로가기">
-                                    <S.Text $color={"#4266F8"} $size={"15px"} $weight={"600"}>Nave</S.Text></S.Link>
+                                    <S.LinkText $color={"#4266F8"} $size={"15px"} $weight={"600"}>Nave</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
                                 <S.Icon $icon={xtwitter}/>
                                 <S.Link href="https://www.instagram.com/nave_label/" target="_blank" title="네이브 X 바로가기">
-                                    <S.Text $color={"#000000"} $size={"15px"} $weight={"600"}>X</S.Text></S.Link>
+                                    <S.LinkText $color={"#000000"} $size={"15px"} $weight={"600"}>X</S.LinkText></S.Link>
                             </S.ItemArea>
                         </S.LinkList>
                     </S.Content>
