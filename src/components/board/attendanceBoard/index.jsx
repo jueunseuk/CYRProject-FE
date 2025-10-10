@@ -1,13 +1,14 @@
 import * as A from "@/apis/attendance";
 import * as S from "./styles";
-import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
-import { formatDate } from "@/util/dateFormatter";
-import { useParams } from "react-router-dom";
 import attendanceBlack from "@/assets/icon/attendance/attendance_black.svg";
 import clock from "@/assets/icon/attendance/clock.svg";
 import pencil from "@/assets/icon/attendance/pencil.svg";
-import { useEffect, useState } from "react";
+import refresh from "@/assets/icon/user/refresh.svg";
 import useUserInfo from "@/hooks/localStorage";
+import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
+import { formatDate } from "@/util/dateFormatter";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { getAttendanceMessage } from "@/util/getAttendanceMessage";
 
 const AttendanceBoard = () => {
@@ -55,7 +56,11 @@ const AttendanceBoard = () => {
         } catch(error) {
 
         }
-    }
+    };
+
+    const handleChangeAttendanceMessgae = () => {
+        setComment(getAttendanceMessage().message);
+    };
 
     useEffect(() => {
         const fetchCnt = async () => {
@@ -152,8 +157,9 @@ const AttendanceBoard = () => {
                     </S.Table>
 
                     <S.AttendanceArea>
-                        <S.HorizontalWrapper style={{marginBottom: "5px"}}>
-                            <S.InputField value={comment} onChange={(e) => setComment(e.target.value)}/>
+                        <S.HorizontalWrapper style={{marginBottom: "5px", position: "relative"}}>
+                            <S.Icon src={refresh} onClick={() => handleChangeAttendanceMessgae()} />
+                            <S.InputField value={comment} onChange={(e) => setComment(e.target.value)} />
                             <S.AttendanceButton onClick={handleClickAttendance} disabled={comment.length < 5 || user.role === "GUEST"}>출석하기</S.AttendanceButton>
                         </S.HorizontalWrapper>
                         <S.Text $color={"#878787"} $size={"11px"}>출석과 함께 하고 싶은 말을 남겨보세요! 매일 출석하면 경험치를 얻을 수 있습니다.</S.Text>

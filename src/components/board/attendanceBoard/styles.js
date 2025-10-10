@@ -174,3 +174,12 @@ export const NoAttendanceWrapper = styled.div`
     justify-content: center;
     gap: 20px;
 `;
+
+export const Icon = styled.img`
+    width: ${({$width}) => $width || "15px"};
+    height: ${({$height}) => $height || "15px"};
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 710px;
+`;
