@@ -7,7 +7,7 @@ const LineGraph = ({data, type}) => {
             data={data}
             margin={{ top: 10, right: 30, bottom: 50, left: 60 }}
             yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-            curve="cardinal"
+            curve="linear"
             axisBottom={{ legend: '날짜', legendOffset: 40 }}
             axisLeft={{ legend: `${type}`, legendOffset: -50 }}
             lineWidth={3}

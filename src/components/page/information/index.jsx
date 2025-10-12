@@ -85,11 +85,11 @@ const Information = ({isOwner, user}) => {
                 <S.VerticalWrapper>
                     {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={user.profileUrl}/>}
                     <S.ProfileImage src={user.profileUrl} style={{marginBottom: "10px"}} onClick={() => handleImageFullScreen()} />
-                    <S.HorizontalWrapper $gap={"5px"}>
+                    <S.HorizontalWrapper $gap={"5px"} style={{height: "16px"}}>
                         <S.Text $size={"12px"} $weight={"400"} $color={"#1f1f1fff"}>{user.role}</S.Text>
                         <S.Text $size={"14px"} $weight={"700"}>{user.nickname}</S.Text>
                     </S.HorizontalWrapper>
-                    <S.Text $size={"12px"} $color={"#878787"}>{user.email}</S.Text>
+                    <S.Text $size={"12px"} $color={"#878787"} style={{height: "14px"}}>{user.email}</S.Text>
                 </S.VerticalWrapper>
                 <S.VerticalWrapper $gap={"15px"} style={{padding: "0 20px"}}>
                     <S.FieldWrapper $jc={"space-between"}>
@@ -108,7 +108,7 @@ const Information = ({isOwner, user}) => {
                         <S.Text $size={"13px"} >{user.age === 0 ? "미등록" : user.age}</S.Text>
                     </S.FieldWrapper>
                     <S.FieldWrapper $jc={"space-between"}>
-                        <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>로그인</S.Text>
+                        <S.Text $size={"13px"} $weight={"700"} style={{width: "35px", height: "17px"}}>로그인</S.Text>
                         <S.DotLine />
                         <S.Text $size={"13px"} $weight={"800"}
                             $color={getLoginMethodBackgroundColor("EMAIL").font} 
@@ -119,10 +119,10 @@ const Information = ({isOwner, user}) => {
                         <S.DotLine />
                         <S.Text $size={"13px"} >{formatDate(user.createdAt, 2)}</S.Text>
                     </S.FieldWrapper>
-                    <S.VerticalWrapper $ai={"flex-start"}>
+                    <S.ColumnFieldWrapper $ai={"flex-start"} style={{padding: "8px 5px"}}>
                         <S.Text $size={"13px"} $weight={"700"} style={{marginBottom: "3px"}}>한 줄 인사</S.Text>
                         <S.Text $size={"12px"} $color={"#878787"} style={{textAlign: "left"}}>{getIntroductionText(user.introduction)}</S.Text>
-                    </S.VerticalWrapper>
+                    </S.ColumnFieldWrapper>
                 </S.VerticalWrapper>
 
                 {(isOwner && isNeeded) && <S.Text $color={"#ff0000ff"}>비밀번호를 변경한 지 90일이 지났습니다.</S.Text>}

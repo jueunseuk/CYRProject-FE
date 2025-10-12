@@ -1,17 +1,19 @@
 import * as G from "@/apis/gallery";
 import * as S from "./styles";
-import { useNavigate, useParams } from "react-router-dom";
+import upload from "@/assets/icon/gallery/upload.svg";
+import GalleryUpload from "@/components/modal/galleryUpload";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { useEffect, useState } from "react";
 import { SkeletonItem } from "@/common/component/Skeleton";
-import upload from "@/assets/icon/gallery/upload.svg";
-import GalleryUpload from "@/components/modal/galleryUpload";
+import { formatDate } from "@/util/dateFormatter";
 
 const GalleryBoard = () => {
     const {subPath} = useParams();
     const navigate = useNavigate();
-    const [page, setPage] = useState(0);
-    const [sort, setSort] = useState("createdAt");
+    const [searchParams, setSearchParams] = useSearchParams();
+    const page = Number(searchParams.get("page")) || 1;
+    const sort = searchParams.get("sort") || "picturedAt";
     const [totalPage, setTotalPage] = useState(0);
     const [totalElements, setTotalElements] = useState(0);
     const [images, setImages] = useState([]);
@@ -22,7 +24,7 @@ const GalleryBoard = () => {
     const boardId = 4;
 
     const handleClickSort = (value) => {
-        setSort(value);
+        setSearchParams({ page: 1, sort : value });
     }
 
     const handleOpenModal = () => {
@@ -33,7 +35,7 @@ const GalleryBoard = () => {
     }
 
     const handleClickPage = (pageNum) => {
-        setPage(pageNum-1);
+        setSearchParams({ page: pageNum, sort : sort });
     }
 
     const handleNavigateGallery = (galleryId) => {
@@ -44,11 +46,11 @@ const GalleryBoard = () => {
         const fetchImages = async () => {
             try {
                 setSkeleton(true);
-                const response = await G.getAllGalleryImages({page, sort});
+                const response = await G.getAllGalleryImages({page: page > 0 ? page - 1 : 0, sort});
                 setImages(response.data.content);
                 setTotalElements(response.data.totalElements);
                 setTotalPage(response.data.totalPages);
-                console.log(images)
+
             } catch(error) {
                 
             } finally {
@@ -57,7 +59,7 @@ const GalleryBoard = () => {
         };
 
         fetchImages();
-    }, [page, sort]);
+    }, [searchParams, sort]);
 
     const getPageComponent = () => {
         const pages = Array.from({length: totalPage}, (_, i) => i+1);
@@ -65,7 +67,7 @@ const GalleryBoard = () => {
         return (
             <>
                 {pages.map((pageNum) => (
-                        <S.PageButton $weight={page === pageNum-1 ? "700" : "400"} $border={page === pageNum-1 ? "1px" : "0px"} key={pageNum} onClick={() => handleClickPage(pageNum)}>
+                        <S.PageButton $weight={page === pageNum ? "700" : "400"} $border={page === pageNum ? "1px" : "0px"} key={pageNum} onClick={() => handleClickPage(pageNum)}>
                             {pageNum}
                         </S.PageButton>
                 ))}
@@ -82,15 +84,15 @@ const GalleryBoard = () => {
                 <S.Header>
                     <S.TextArea>
                         <S.Text $size={"11px"} $weight={"700"}>{totalElements}</S.Text>
-                        <S.Text $size={"11px"}>개의 글</S.Text>
+                        <S.Text $size={"11px"}>개의 사진</S.Text>
                     </S.TextArea>
                     <S.GalleryUploadButton onClick={handleOpenModal}>
                         <S.Icon src={upload}></S.Icon>유리 사진 업로드
                     </S.GalleryUploadButton>
                     <S.SortArea>
-                        <S.Sort title="최근에 찍은 사진 순으로 정렬" onClick={() => handleClickSort("createdAt")} $weight={sort === "createdAt" ? 700 : ""}>New</S.Sort>
+                        <S.Sort title="최근에 찍은 사진 순으로 정렬" onClick={() => handleClickSort("picturedAt")} $weight={sort === "picturedAt" ? 700 : ""}>New</S.Sort>
                         <S.Text $size={"11px"}>|</S.Text>
-                        <S.Sort title="사용자의 최근 업로드 순으로 정렬" onClick={() => handleClickSort("picturedAt")} $weight={sort === "picturedAt" ? 700 : ""}>History</S.Sort>
+                        <S.Sort title="사용자의 최근 업로드 순으로 정렬" onClick={() => handleClickSort("createdAt")} $weight={sort === "createdAt" ? 700 : ""}>History</S.Sort>
                     </S.SortArea>
                 </S.Header>
                 <S.Contour />
@@ -102,10 +104,11 @@ const GalleryBoard = () => {
                             ))
                         ) :
                         (
-                            images.map((image) => (
+                            images?.map((image) => (
                                 <S.GalleryItem key={image.galleryImageId} $imageUrl={image.imageUrl} onClick={() => handleNavigateGallery(image.galleryId)}>
-                                    <S.OverlayText $size={"15px"} $weight={"700"}>{image.title}</S.OverlayText>
-                                    <S.OverlayText $size={"12px"} $weight={"300"}>자세히보기</S.OverlayText>
+                                    <S.OverlayText $size={"13px"} $weight={"300"} style={{color: "#dadadaff"}}>{formatDate(image.pictureAt, 2)}</S.OverlayText>
+                                    <S.OverlayText $size={"15px"} $weight={"600"} >{image.title}</S.OverlayText>
+                                    <S.OverlayText $size={"11px"} $weight={"500"} style={{color: "#dadadaff"}}>@{image.nickname}</S.OverlayText>
                                 </S.GalleryItem>
                             ))
                         )

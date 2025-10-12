@@ -98,3 +98,67 @@ export const patchUserActivityCntWithSync = async () => {
         throw error;
     }
 };
+
+export const getUserPosts = async (searchId, form) => {
+    try {
+        const response = await instance.get(`/user/${searchId}/posts`, 
+            {params: form, headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert("해당 사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};
+
+export const getUserEmpathyPosts = async (searchId, form) => {
+    try {
+        const response = await instance.get(`/user/${searchId}/empathized-post`, 
+            {params: form, headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert("해당 사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};
+
+export const getUserComments = async (searchId, form) => {
+    try {
+        const response = await instance.get(`/user/${searchId}/comments`, 
+            {params: form, headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert("해당 사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};
+
+export const getUserImages = async (searchId, form) => {
+    try {
+        const response = await instance.get(`/user/${searchId}/images`, 
+            {params: form, headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert("해당 사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};

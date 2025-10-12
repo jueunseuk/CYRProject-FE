@@ -124,9 +124,13 @@ const Guide = () => {
                     <S.FirstListItem id="shop">k. 유리상점(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>프로필 꾸미기 아이템, 뱃지, 배경, 특별 이모티콘 등 다양한 디지털 굿즈를 구매할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트되어, 커뮤니티 활동에 지속적인 동기를 부여합니다.</S.SecondListItem>
-                    <S.FirstListItem id="shop">l. 유리 노래(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem id="shop">l. 율 Shorts(개발 예정)</S.FirstListItem>
+                        <S.SecondListItem>가수 최유리님과 관련된 유튜브 쇼츠 영상을 모아서 볼 수 있는 서비스입니다.</S.SecondListItem>
                         <S.SecondListItem></S.SecondListItem>
-                        <S.SecondListItem></S.SecondListItem>
+                    <S.FirstListItem id="shop">m. 율퀴즈~(개발 예정)</S.FirstListItem>
+                        <S.SecondListItem>가수 최유리님과 관련된 다양한 주제로 구성된 퀴즈를 풀 수 있는 서비스입니다.</S.SecondListItem>
+                        <S.SecondListItem>퀴즈를 맞히면 커뮤니티 활동 보상으로 모래알이 지급됩니다.</S.SecondListItem>
+                        <S.SecondListItem>커뮤니티의 매니저 등급 이상의 회원만 문제를 출제할 수 있습니다.</S.SecondListItem>
                 </S.List>
                 <S.Blank />
 
