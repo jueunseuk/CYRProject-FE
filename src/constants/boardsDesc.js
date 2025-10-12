@@ -53,7 +53,7 @@ export const BOARD_DESCRIPTIONS = {
     },
     favorite: {
       label: "내가 좋아하는 유리 노래",
-      description: "유리의 곡 중 가장 좋아하는 노래를 소개해보세요. 추억도 함께 나누면 좋구요 🎶",
+      description: "유리의 곡 중 가장 좋아하는 노래를 소개해보세요. 노래와 관련된 추억도 함께 나누면 좋구요 🎶",
     },
     unreleased: {
       label: "미발매곡 가사 탐구",

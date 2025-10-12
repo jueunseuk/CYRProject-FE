@@ -1,6 +1,6 @@
 import * as P from "@/apis/post";
 import * as S from "./styles";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { formatDate, toJavaLocalDateTime } from "@/util/dateFormatter";
@@ -8,7 +8,8 @@ import { getEmpathyColor } from "@/util/empathySelector";
 
 const PopularBoard = () => {
     const {subPath} = useParams();
-    const [page, setPage] = useState(0);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const page = Number(searchParams.get("page")) || 1;
     const [period, setPeriod] = useState("1440");
     const [totalPage, setTotalPage] = useState(0);
     const [totalElements, setTotalElements] = useState(0);
@@ -23,7 +24,7 @@ const PopularBoard = () => {
     }
 
     const handleClickPage = (pageNum) => {
-        setPage(pageNum-1);
+        setSearchParams({ page: pageNum });
     }
 
     const handleNavigatePost = (boardName, id) => {
@@ -39,7 +40,7 @@ const PopularBoard = () => {
             const end = toJavaLocalDateTime(now);
 
             try {
-                const response = await P.getPopularPosts({page, sort, start, end});
+                const response = await P.getPopularPosts({page: page > 0 ? page - 1 : 0, sort, start, end});
                 setPosts(response.data.content);
                 setTotalElements(response.data.totalElements);
                 setTotalPage(response.data.totalPages);
@@ -48,7 +49,7 @@ const PopularBoard = () => {
             }
         }
         fetchPosts();
-    }, [page, period, subPath]);
+    }, [searchParams, period, subPath]);
 
     const getPageComponent = () => {
         const pages = Array.from({length: Math.min(totalPage, 5)}, (_, i) => i+1);
@@ -56,7 +57,7 @@ const PopularBoard = () => {
         return (
             <>
                 {pages.map((pageNum) => (
-                        <S.PageButton $weight={page === pageNum-1 ? "700" : "400"} $border={page === pageNum-1 ? "1px" : "0px"} key={pageNum} onClick={() => handleClickPage(pageNum)}>
+                        <S.PageButton $weight={page === pageNum ? "700" : "400"} $border={page === pageNum ? "1px" : "0px"} key={pageNum} onClick={() => handleClickPage(pageNum)}>
                             {pageNum}
                         </S.PageButton>
                 ))}

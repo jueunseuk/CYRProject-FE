@@ -25,11 +25,25 @@ export const getGalleryUpdate = async (galleryId, formData) => {
     }
 };
 
-export const getAllGalleryImages = async (form) => {
+export const getRandomImages = async (amount) => {
     try {
-        const response = axios.get(`${backendUrl}/gallery`, {params: form, headers: {Accept: "application/json"}});
+        const response = await axios.get(`${backendUrl}/gallery/random/${amount}`);
         return response;
     } catch(error) {
+        if(error.response && error.response.data) {
+            console.log("갤러리를 불러오는 데 실패했습니다.");
+        } else {
+            console.log("서버가 응답하지 않습니다.");
+        }
+    }
+};
+
+export const getAllGalleryImages = async (form) => {
+    try {
+        const response = await instance.get(`${backendUrl}/gallery`, {params: form, headers: {Accept: "application/json"}});
+        return response;
+    } catch(error) {
+        console.log(error)
         if(error.response && error.response.data) {
             console.log("갤러리를 불러오는 데 실패했습니다.");
         } else {

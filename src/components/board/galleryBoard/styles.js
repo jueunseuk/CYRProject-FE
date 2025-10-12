@@ -104,7 +104,7 @@ export const GalleryItem = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 5px;
     position: relative;
     width: 200px;
     height: 200px;
@@ -138,7 +138,7 @@ export const GalleryItem = styled.div`
 export const OverlayText = styled.div`
     z-index: 2;
     color: white;
-    width: 75%;
+    width: 80%;
     text-align: center;
     font-size: ${({$size}) => $size};
     font-weight: ${({$weight}) => $weight};

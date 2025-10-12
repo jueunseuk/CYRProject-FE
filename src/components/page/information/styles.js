@@ -30,7 +30,19 @@ export const FieldWrapper = styled.div`
     align-items: center;
     width: 100%;
     padding: 8px 5px;
-    border-radius: 8px;
+    
+    &: hover {
+        scale: 1.01;
+    }
+`;
+
+export const ColumnFieldWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 8px 5px;
     
     &: hover {
         scale: 1.01;
