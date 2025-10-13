@@ -30,7 +30,7 @@ export const BoardBox = styled.div`
 export const SubBoardBox = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 5px;
     width: 100%;
 `;
 
