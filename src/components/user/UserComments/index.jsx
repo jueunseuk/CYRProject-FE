@@ -1,13 +1,13 @@
 import * as S from "./styles";
 import * as U from "@/apis/user";
 import desc from "@/assets/icon/etc/descending.svg";
-import useUserInfo from "@/hooks/localStorage";
 import { formatDate } from "@/util/dateFormatter";
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
-const MyComments = () => {
-    const user = useUserInfo();
+const UserComments = () => {
+    const {userId} = useParams();
+    const [userNickname, setUserNickname] = useState("");
     const [size, setSize] = useState(30);
     const [sort, setSort] = useState("createdAt");
     const [direction, setDirection] = useState("DESC");
@@ -34,19 +34,29 @@ const MyComments = () => {
     const handleNavigatePost = (boardName, postId) => {
         navigate(`/${boardName}/${postId}`);
     };
-    
+
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await U.getUserComments(user.userId, {page: page > 0 ? page - 1 : 0, sort, size, direction});
+                const response = await U.getUserComments(userId, {page: page > 0 ? page - 1 : 0, sort, size, direction});
                 setComments(response.data.content);
                 setTotalElements(response.data.totalElements);
                 setTotalPage(response.data.totalPages);
             } catch(error) {
                 
             }
-        }
+        };
 
+        const fetchUser = async () => {
+            try {
+                const response = await U.getOtherProfileData(userId);
+                setUserNickname(response.data.nickname);
+            } catch(error) {
+
+            }
+        };
+        
+        fetchUser();
         fetchComments();
     }, [searchParams, size, direction]);
 
@@ -67,8 +77,8 @@ const MyComments = () => {
     return (
         <>
             <S.Wrapper>
-                <S.Title>내가 작성한 댓글</S.Title>
-                <S.Description>내가 지금까지 작성했던 댓글들을 한 눈에 모아서 볼 수 있어요.</S.Description>
+                <S.Title>{userNickname}님이 작성한 댓글</S.Title>
+                <S.Description>{userNickname}님이 지금까지 작성했던 댓글들을 한 눈에 모아서 볼 수 있어요.</S.Description>
                 <S.TableHeader>
                     <S.TextArea>
                         <S.Text $size={"11px"} $weight={"700"}>{totalElements}</S.Text>
@@ -119,4 +129,4 @@ const MyComments = () => {
     )
 }
 
-export default MyComments;
+export default UserComments;

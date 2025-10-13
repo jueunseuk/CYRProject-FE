@@ -12,9 +12,14 @@ import { useEffect } from "react";
 import MyComments from "@/components/user/MyComments";
 import MyEmpathizedPosts from "@/components/user/MyEmpathizedPosts";
 import MyImages from "@/components/user/MyImages";
+import UserPosts from "@/components/user/UserPosts";
+import UserComments from "@/components/user/UserComments";
+import UserEmpathizedPosts from "@/components/user/UserEmpathizedPosts";
+import UserImages from "@/components/user/UserImages";
 
 const Activity = () => {
     const user = useUserInfo();
+    const {userId} = useParams();
     const {subPath} = useParams();
     const navigate = useNavigate();
 
@@ -25,7 +30,7 @@ const Activity = () => {
         }
     }, [user, navigate]);
 
-    const getComponent = () => {
+    const getMyComponent = () => {
         switch(subPath) {
             case "posts": return <MyPosts />;
             case "comments": return <MyComments />;
@@ -35,6 +40,16 @@ const Activity = () => {
         }
     };
 
+    const getUserComponent = () => {
+        switch(subPath) {
+            case "posts": return <UserPosts />;
+            case "comments": return <UserComments />;
+            case "empathized": return <UserEmpathizedPosts />;
+            case "images": return <UserImages />;
+            default : return <WrongPage />;
+        }
+    };
+    
     return (
         <>
             <Banner></Banner>
@@ -49,7 +64,7 @@ const Activity = () => {
                     <Board></Board>
                 </S.SidebarWrapper>
                 <S.ContentWrapper>
-                    {getComponent()}
+                    {userId === undefined ? getMyComponent() : getUserComponent()}
                 </S.ContentWrapper>
             </S.HorizontalWrapper>
             <S.Contour />
