@@ -57,6 +57,14 @@ const LoginInfo = () => {
         navigate("/mypage");
     };
 
+    const handleNavigateCraftshop = () => {
+        navigate("/user/craftshop");
+    }
+
+    const handleNavigateShop = () => {
+        navigate("/user/shop");
+    }
+
     const handleImageFullScreen = () => {
         setIsProfileModalOpen(true);
     };
@@ -111,12 +119,10 @@ const LoginInfo = () => {
                     <S.Text $size={"12px"} $weight={"600"}>{userAmount.temperature} ℃</S.Text>
                 </S.HorizontalWrapper>
             </S.IconArea>
-            <S.HorizontalWrapper $jc={"center"} $gap={"5px"} style={{width: "100%"}}>
-                <S.Text $size={"12px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => handleNavigateMyPage()}>마이페이지</S.Text>
-                <S.Text $size={"12px"} $weight={"600"}>|</S.Text>
-                <S.Text $size={"12px"} $weight={"600"} style={{cursor: "pointer"}}>유리 공방</S.Text>
-                <S.Text $size={"12px"} $weight={"600"}>|</S.Text>
-                <S.Text $size={"12px"} $weight={"600"} style={{cursor: "pointer"}}>유리 상점</S.Text>
+            <S.HorizontalWrapper $jc={"space-between"} style={{width: "170px"}}>
+                <S.NavigateText onClick={() => handleNavigateMyPage()}>마이페이지</S.NavigateText>
+                <S.NavigateText onClick={() => handleNavigateCraftshop()}>유리공방</S.NavigateText>
+                <S.NavigateText onClick={() => handleNavigateShop()}>유리상점</S.NavigateText>
             </S.HorizontalWrapper>
             <S.WriteButton onClick={handleNavigateWrite}>글쓰기</S.WriteButton>
             <S.LinkText onClick={handleRequestLogout}>로그아웃</S.LinkText>

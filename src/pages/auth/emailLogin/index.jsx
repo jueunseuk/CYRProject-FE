@@ -43,6 +43,12 @@ const EmailLogin = () => {
         }
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" && email !== "" && password.length >= 8) {
+            handleRequestLogin();
+        }
+    };
+
     return (
         <>
             <S.Logo />
@@ -53,7 +59,7 @@ const EmailLogin = () => {
                 </S.InputArea>
                 <S.InputArea>
                     <S.InputGuideText>비밀번호</S.InputGuideText>
-                    <S.InputField type="password" name="password" value={password} onChange={handlePasswordChange}/>
+                    <S.InputField type="password" name="password" value={password} onChange={handlePasswordChange} onKeyDown={handleKeyDown}/>
                 </S.InputArea>
             </S.VerticalWrapper>
             <S.LoginNextButton disabled={email === "" || password.length < 8} onClick={handleRequestLogin}>로그인</S.LoginNextButton>

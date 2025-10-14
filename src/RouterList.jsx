@@ -23,6 +23,8 @@ import UpdateEditor from "./pages/updateEditor";
 import My from "@/pages/my";
 import User from "@/pages/user";
 import Activity from "@/pages/activity";
+import Setting from "@/pages/setting";
+import Craftshop from "@/pages/craftshop";
 
 export const RouterList = () => [
     {
@@ -121,6 +123,18 @@ export const RouterList = () => [
                     {
                         path: "/users/:userId/:subPath",
                         element: <Activity />
+                    },
+                    {
+                        path: "/user/:subPath",
+                        element: <Craftshop />
+                    },
+                    {
+                        path: "/user/:subPath",
+                        element: <Craftshop />
+                    },
+                    {
+                        path: "/setting",
+                        element: <Setting />
                     },
 
                     // footer
