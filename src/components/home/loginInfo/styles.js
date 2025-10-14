@@ -89,6 +89,19 @@ export const WriteButton = styled.button`
     cursor: pointer;
 `;
 
+export const NavigateText = styled.div`
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #eeeeeeff;
+    padding: 3px 5px;
+    border-radius: 5px;
+
+    &: hover {
+        background-color: #e9e9e9ff;
+    }
+`;
+
 export const LinkText = styled.div`
     color: #B8B8B8;
     font-size: 11px;
