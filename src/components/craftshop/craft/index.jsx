@@ -39,7 +39,7 @@ const Craft = () => {
         } catch (error) {
 
         }
-    }
+    };
     
     useEffect(() => {
         fetchUserData();

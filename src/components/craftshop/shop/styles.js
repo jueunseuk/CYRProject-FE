@@ -15,7 +15,6 @@ export const HorizontalWrapper = styled.div`
     justify-content: ${({$jc}) => $jc || "center"};
     align-items: ${({$ai}) => $ai || "center"};
     gap: ${({$gap}) => $gap};
-    width: 100%;
 `;
 
 export const VerticalWrapper = styled.div`
@@ -46,52 +45,14 @@ export const QuoteWrapper = styled.div`
 export const Icon = styled.img.attrs((props) => {
     src: props.src
 })`
-    width: ${({$width}) => $width || "25px"};
+    width: ${({$width}) => $width || "15px"};
 `;
 
-export const ItemBox = styled.div`
-    width: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 25px 35px;
-    border-radius: 10px;
-    gap: 15px;
-
-    &:hover {
-        background-color: #f7f7f7ff;
-    }
+export const ItemImage = styled.img`
+    width: 100%;
 `;
 
-export const ColumnContour = styled.div`
-    width: 1px;
-    height: 75%;
-    background-color: #DDD;
-`;
-
-export const Button = styled.button`
-    width: 280px;
-    height: 40px;
-    align-self: center;
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.2s ease;
-    background: ${({ disabled }) => (disabled ? "#EEE" : "#C6BC73")};
-    color: ${({ disabled }) => (disabled ? "#aaa" : "white")};
-    opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
-    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-
-    &:hover {
-        background: ${({ disabled }) =>
-        disabled ? "#EEE" : "#d3c97fff"};
-    }
-`;
-
-export const ShopButton = styled.button`
+export const CraftShopButton = styled.button`
     padding: 10px 20px;
     align-self: center;
     display:flex;
@@ -112,36 +73,55 @@ export const ShopButton = styled.button`
     }
 `;
 
-export const LogWrapper = styled.div`
+export const TabWrapper = styled.div`
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid #cacaca;
     width: 100%;
-    overflow: auto;
+`;
+
+export const NavigateText = styled.div`
+    text-align: center;
+    font-size: 14px;
+    font-weight: ${({ $active }) => ($active ? "600" : "400")};
+    padding: 10px 25px;
+    cursor: pointer;
+    color: ${({ $active }) => ($active ? "black" : "#666")};
+    background-color: ${({ $active }) => ($active ? "#f6f6f6" : "white")};
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+`;
+
+export const Underline = styled.div`
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: ${({ $width }) => $width}px;
+    background: black;
+    transition: transform 0.3s ease;
+    transform: translateX(${({ $offset }) => $offset}px);
+`;
+
+export const ShopItemWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    gap: 15px;
+`;
+
+export const ShopItem = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-`;
-
-export const LogItem = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 8px 0px;
-    border-radius: 5px;
-    border-bottom: 1px solid #eeeeee;
-
-    &:hover {
-        background-color: #f3f3f3ff;
+    width: 194px;
+    padding: 10px 15px;
+    gap: 5px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+    &: hover {
+        background-color: #EEE;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-`;
-
-export const TextIcon = styled.div`
-    border-radius: 15px;
-    background-color: ${({$bg}) => $bg};
-    color: ${({$color}) => $color};
-    padding: 1px 5px;
-    margin: 0 15px;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 5px;
 `;
