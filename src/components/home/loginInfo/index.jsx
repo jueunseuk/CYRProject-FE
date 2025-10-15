@@ -5,6 +5,9 @@ import furnace from "@/assets/icon/user/furnace.svg";
 import exp from "@/assets/icon/user/exp.svg";
 import sand from "@/assets/icon/user/sand.svg";
 import glass from "@/assets/icon/user/glass.svg";
+import shop from "@/assets/icon/user/shop.svg";
+import factory from "@/assets/icon/user/factory.svg";
+import mypage from "@/assets/icon/user/mypage.svg";
 import useUserInfo from "@/hooks/localStorage";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
@@ -120,9 +123,18 @@ const LoginInfo = () => {
                 </S.HorizontalWrapper>
             </S.IconArea>
             <S.HorizontalWrapper $jc={"space-between"} style={{width: "170px"}}>
-                <S.NavigateText onClick={() => handleNavigateMyPage()}>마이페이지</S.NavigateText>
-                <S.NavigateText onClick={() => handleNavigateCraftshop()}>유리공방</S.NavigateText>
-                <S.NavigateText onClick={() => handleNavigateShop()}>유리상점</S.NavigateText>
+                <S.ItemBox onClick={() => handleNavigateMyPage()}>
+                    <S.Icon src={mypage} />
+                    <S.Text $size={"12px"} $weight={"600"}>마이페이지</S.Text>
+                </S.ItemBox>
+                <S.ItemBox onClick={() => handleNavigateCraftshop()}>
+                    <S.Icon src={factory} />
+                    <S.Text $size={"12px"} $weight={"600"}>유리공방</S.Text>
+                </S.ItemBox>
+                <S.ItemBox onClick={() => handleNavigateShop()}>
+                    <S.Icon src={shop} />
+                    <S.Text $size={"12px"} $weight={"600"}>유리상점</S.Text>
+                </S.ItemBox>
             </S.HorizontalWrapper>
             <S.WriteButton onClick={handleNavigateWrite}>글쓰기</S.WriteButton>
             <S.LinkText onClick={handleRequestLogout}>로그아웃</S.LinkText>

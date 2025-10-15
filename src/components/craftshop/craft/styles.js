@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     width: 100%;
     border: 1px solid #E7E7E7;
     padding: 20px;
-    gap: 20px;
+    gap: 60px;
 `;
 
 export const HorizontalWrapper = styled.div`
@@ -75,7 +75,7 @@ export const Button = styled.button`
     height: 40px;
     align-self: center;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     font-weight: 700;
     font-size: 16px;
     outline: none;
@@ -89,4 +89,59 @@ export const Button = styled.button`
         background: ${({ disabled }) =>
         disabled ? "#EEE" : "#d3c97fff"};
     }
+`;
+
+export const ShopButton = styled.button`
+    padding: 10px 20px;
+    align-self: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.2s ease;
+    background: #ecececff;
+    cursor: pointer;
+
+    &:hover {
+        background:  #e7e7e7ff;
+    }
+`;
+
+export const LogWrapper = styled.div`
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+`;
+
+export const LogItem = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px 0px;
+    border-radius: 5px;
+    border-bottom: 1px solid #eeeeee;
+
+    &:hover {
+        background-color: #f3f3f3ff;
+    }
+`;
+
+export const TextIcon = styled.div`
+    border-radius: 15px;
+    background-color: ${({$bg}) => $bg};
+    color: ${({$color}) => $color};
+    padding: 1px 5px;
+    margin: 0 15px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 5px;
 `;

@@ -162,3 +162,24 @@ export const getUserImages = async (searchId, form) => {
         throw error;
     }
 };
+
+export const postConvertGlass = async () => {
+    try {
+        const response = await instance.post(`/user/glass/convert`);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert("해당 사용자를 찾을 수 없습니다.");
+        } else if(errorCode === "GLASS_002") {
+            alert("모래알의 수량이 부족합니다.")
+        } else if(errorCode === "GLASS_003") {
+            alert("활동 온도가 1800℃보다 낮습니다.")
+        } else if(errorCode === "GLASS_002") {
+            
+        }
+
+        throw error;
+    }
+};

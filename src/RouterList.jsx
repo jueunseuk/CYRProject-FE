@@ -25,6 +25,7 @@ import User from "@/pages/user";
 import Activity from "@/pages/activity";
 import Setting from "@/pages/setting";
 import Craftshop from "@/pages/craftshop";
+import ScrollToTop from "./common/act/scrollToTop";
 
 export const RouterList = () => [
     {
@@ -79,7 +80,11 @@ export const RouterList = () => [
         children: [
             {
                 path: "",
-                element: <HomeLayout />,
+                element: (
+                    <>
+                        <HomeLayout />
+                        <ScrollToTop />
+                    </>),
                 children: [
                     {
                         path: "",
