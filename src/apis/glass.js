@@ -32,3 +32,16 @@ export const getUserGlassHisotry = async (userId) => {
         throw error;
     }
 };
+
+export const getAllGlassLog = async (form) => {
+    try {
+        const resopnse = await instance.get(`/glass/all`, {params: form, headers: {Accept: "application/json"}});
+        return resopnse;
+    } catch(error) {
+        if(error && error.response) {
+
+        } else {
+            console.log("서버가 응답하지 않습니다.")
+        }
+    }
+}
