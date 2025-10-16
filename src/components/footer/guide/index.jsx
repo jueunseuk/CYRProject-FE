@@ -176,6 +176,11 @@ const Guide = () => {
                                 <S.Column>+5</S.Column>
                                 <S.Column>투표당 한 번</S.Column>
                             </S.Row>
+                            <S.Row>
+                                <S.Column>상점 구매</S.Column>
+                                <S.Column>+3</S.Column>
+                                <S.Column>아이템 구매당 한 번</S.Column>
+                            </S.Row>
                         </tbody>
                     </S.Table>
                     <S.FirstListItem id="sand">b. 모래알</S.FirstListItem>
@@ -247,11 +252,6 @@ const Guide = () => {
                             <S.Row>
                                 <S.Column colSpan={2}>출석</S.Column>
                                 <S.Column>+3</S.Column>
-                                <S.Column>하루 한 번</S.Column>
-                            </S.Row>
-                            <S.Row>
-                                <S.Column colSpan={2}>응원</S.Column>
-                                <S.Column>+1</S.Column>
                                 <S.Column>하루 한 번</S.Column>
                             </S.Row>
                             <S.Row>

@@ -105,23 +105,24 @@ export const Underline = styled.div`
 export const ShopItemWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     gap: 15px;
 `;
 
 export const ShopItem = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 194px;
     padding: 10px 15px;
-    gap: 5px;
     border: 1px solid #eee;
     border-radius: 8px;
     transition: all 0.2s ease;
     cursor: pointer;
+    gap: 10px;
     
     &: hover {
-        background-color: #EEE;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+        scale: 1.03;
     }
 `;
