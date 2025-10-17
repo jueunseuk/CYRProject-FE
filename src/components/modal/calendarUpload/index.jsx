@@ -20,7 +20,7 @@ const CalendarUpload = ({onClose}) => {
     const [link2, setLink2] = useState("");
     const [date, setDate] = useState(today);
     const [type, setType] = useState("BROADCAST");
-    console.log(date)
+    
     const requestCalenarUpload = async () => {
         try {
             const formData = new FormData();
@@ -28,9 +28,9 @@ const CalendarUpload = ({onClose}) => {
             formData.append("description", description);
             formData.append("date", date);
             formData.append("type", type);
-            formData.append("link1", link1);
-            formData.append("link2", link2);
-            formData.append("file", file);
+            if(link1) formData.append("link1", link1);
+            if(link2) formData.append("link2", link2);
+            if(file) formData.append("file", file);
 
             await C.postCalendar(formData);
             alert("일정 업로드 완료!");

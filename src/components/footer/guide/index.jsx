@@ -108,7 +108,7 @@ const Guide = () => {
                         <S.SecondListItem>AI 율랑이에게 물어보면 직접 찾지 않아도 편하게 궁금한 내용을 알 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem>h. 율톡(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>커뮤니티에 접속한 유저끼리 실시간으로 대화를 주고 받을 수 있는 서비스입니다.</S.SecondListItem>
-                    <S.FirstListItem>i. 율모티콘(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem>i. 율모티콘</S.FirstListItem>
                         <S.SecondListItem>본 커뮤니티에는 생성형 AI로 제작한 가수 최유리님의 이모티콘이 있습니다.</S.SecondListItem>
                         <S.SecondListItem>무료로 사용할 수 있는 이모티콘부터 숨겨진 업적, 유리상점 등에서 여러 이모티콘을 얻어서 사용할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>율모티콘은 출석, 게시글, 댓글, 율톡에 한해 사용 가능합니다.</S.SecondListItem>
@@ -119,10 +119,12 @@ const Guide = () => {
                             <S.ThirdListItem>- 활동에 따른 온도의 변화는 <S.Link href="#furnace" style={{fontWeight: "600"}}>III.c.화로</S.Link>를 참고해주세요.</S.ThirdListItem>
                         <S.SecondListItem>화로의 온도가 1800℃이고, 모래알이 100개 모이면 하나의 유리 조각을 만들 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>유리 조각을 만들면 온도는 다시 0℃로 내려갑니다.</S.SecondListItem>
-                        <S.SecondListItem>화로의 온도는 1800℃가 되면 추가로 활동을 하더라도 온도가 올라가지 않습니다.</S.SecondListItem>
+                        <S.SecondListItem>화로의 온도는 1800℃가 되면 추가로 출석을 하더라도 온도가 올라가지 않습니다.</S.SecondListItem>
                             <S.ThirdListItem>- 따라서 유리 조각을 만들 수 있을 때마다 바로 만드는 것이 좋습니다.</S.ThirdListItem>
                     <S.FirstListItem id="shop">k. 유리상점</S.FirstListItem>
-                        <S.SecondListItem>프로필 꾸미기 아이템, 뱃지, 배경, 특별 이모티콘 등 다양한 디지털 굿즈를 구매할 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>공방에서 얻은 유리 조각으로 커뮤니티 내에서 사용할 수 있는 아이템을 살 수 있는 상점입니다.</S.SecondListItem>
+                        <S.SecondListItem>소모품 탭을 제외한 모든 아이템은 단 1회만 구매 가능합니다.</S.SecondListItem>
+                        <S.SecondListItem>소모품은 인벤토리에서 조회하거나 사용할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트되어, 커뮤니티 활동에 지속적인 동기를 부여합니다.</S.SecondListItem>
                     <S.FirstListItem id="shop">l. 율 Shorts(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>가수 최유리님과 관련된 유튜브 쇼츠 영상을 모아서 볼 수 있는 서비스입니다.</S.SecondListItem>

@@ -68,6 +68,7 @@ export const postCalendar = async (formData) => {
         await instance.post("/calendar", formData, {headers: {Accept: "application/json"}});
     } catch (error) {
         if(error.response && error.response.data) {
+            console.log(error)
             console.log("스케줄을 업로드하는 데 실패했습니다.");
         } else {
             console.log("서버가 응답하지 않습니다.");

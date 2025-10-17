@@ -99,6 +99,7 @@ const Shop = () => {
                     ))}
                     <S.Underline $width={underline.width} $offset={underline.offset} />
                 </S.TabWrapper>
+                <S.Text style={{margin: "10px 0"}}>{SHOPS[selectedTap].description}</S.Text>
                 <S.HorizontalWrapper $jc={"space-between"} style={{width: "100%", padding: "10px 5px"}}>
                     <S.Text><S.Text $weight={"700"}>{itemData?.length}</S.Text>개의 구매 가능한 상품</S.Text>
                     <S.HorizontalWrapper $ai={"center"} $jc={"space-between"} $gap={"5px"}>

@@ -1,6 +1,7 @@
 import * as C from "@/apis/calendar";
 import * as S from "./styles";
 import { useEffect, useState } from "react";
+import ScheduleFullScreen from "@/components/modal/scheduleFullScreen";
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
@@ -8,6 +9,8 @@ const CalendarSummary = () => {
     const [period, setPeriod] = useState("after");
     const [beforeSchedule, setBeforeSchedule] = useState([]);
     const [afterSchedule, setAfterSchedule] = useState([]);
+    const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
+    const [selectedSchedule, setSelectedSchedule] = useState({});
 
     const handlePeriodClick = (value) => {
         setPeriod(value);
@@ -68,6 +71,7 @@ const CalendarSummary = () => {
     return (
         <>
             <S.Wrapper>
+                {isScheduleModalOpen && <ScheduleFullScreen onClose={() => setIsScheduleModalOpen(false)} selectedSchedule={selectedSchedule}/>}
                 <S.TitleArea>
                     <S.Text $size={"16px"} $weight={"600"}>일정</S.Text>
                     <S.Text $size={"12px"} $weight={"600"} $color={period === 'after' ? "black" : "#878787"} onClick={() => handlePeriodClick("after")}>다가오는 일정</S.Text>
@@ -82,7 +86,7 @@ const CalendarSummary = () => {
                         currentSchedule.slice(0, 5).map((item) => {
                             const leftText = getLeft(item.date);
                             return (
-                                <S.HorizontalWrapper key={item.calendarId}>
+                                <S.HorizontalWrapper key={item.calendarId} onClick={() => {setSelectedSchedule(item); setIsScheduleModalOpen(true)}} style={{cursor: "pointer"}}>
                                     <S.LeftDays $bg={getScheduleColor(item.type)}>
                                         {leftText}
                                     </S.LeftDays>

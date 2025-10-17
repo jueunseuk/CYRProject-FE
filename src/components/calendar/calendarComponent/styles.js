@@ -108,8 +108,7 @@ export const DateItem = styled.div`
 
         &:hover .calendar-text {
             display: block;
-            word-break: break-word;
-            white-space: normal;
+            word-break: keep-all;
         }
     `}
 `;
