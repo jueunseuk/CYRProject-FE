@@ -30,6 +30,7 @@ const CalendarEdit = ({onClose, item}) => {
             formData.append("date", date);
             formData.append("type", type);
             formData.append("calendarId", calendarId);
+            if(imagePreview) formData.append("imageUrl", imagePreview);
             if(link1) formData.append("link1", link1);
             if(link2) formData.append("link2", link2);
             if(file) formData.append("file", file);
@@ -141,13 +142,13 @@ const CalendarEdit = ({onClose, item}) => {
                             <S.Option value="ETC">기타</S.Option>
                         </S.InputType>
                     </S.InputArea>
-                    <S.SubmitButton disabled={title.length < 3 ||
-                        title.length > 15 ||
+                    <S.SubmitButton disabled={title.length < 5 ||
+                        title.length > 25 ||
                         description.length < 5 ||
                         date.length === 0 ||
                         type.length === 0}
                         onClick={requestCalenarUpdate}
-                    >일정 업로드</S.SubmitButton>
+                    >일정 수정하기</S.SubmitButton>
                 </S.Content>
             </S.Wrapper>
         </>

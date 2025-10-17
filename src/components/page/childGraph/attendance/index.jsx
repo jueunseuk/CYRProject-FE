@@ -49,6 +49,10 @@ const Attendance = ({userId}) => {
                     <S.Text $size={"16px"}>{data.total}</S.Text>
                 </S.FieldWrapper>
                 <S.FieldWrapper>
+                    <S.Text $size={"16px"}>최대 연속 출석 수</S.Text>
+                    <S.Text $size={"16px"}>{data.maxConsecutiveCnt}</S.Text>
+                </S.FieldWrapper>
+                <S.FieldWrapper>
                     <S.Text $size={"16px"}>현재 연속 출석 수</S.Text>
                     <S.Text $size={"16px"}>{data.consecutiveCnt}</S.Text>
                 </S.FieldWrapper>

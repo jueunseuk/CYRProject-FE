@@ -38,7 +38,7 @@ const ScheduleFullScreen = ({onClose, selectedSchedule}) => {
                     <S.HorizontalWrapper $gap={"5px"} $jc>
                         <S.Text>분류</S.Text>
                         <S.Text>:</S.Text>
-                        <S.Text style={{fontWeight: "300"}} style={{color: getScheduleColor(selectedSchedule.type).color}}>{getScheduleColor(selectedSchedule.type).name}</S.Text>
+                        <S.Text style={{fontWeight: "300", color: getScheduleColor(selectedSchedule.type).color}}>{getScheduleColor(selectedSchedule.type).name}</S.Text>
                     </S.HorizontalWrapper>
                     {selectedSchedule.link1 && (
                         <S.HorizontalWrapper $gap={"5px"} $jc>
