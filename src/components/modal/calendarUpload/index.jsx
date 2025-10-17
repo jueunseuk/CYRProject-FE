@@ -3,27 +3,62 @@ import * as S from "./styles";
 import cancel from "@/assets/icon/gallery/cancel.svg";
 import upload from "@/assets/icon/gallery/upload.svg";
 import help from "@/assets/icon/gallery/help.svg";
-import { useState } from "react";
+import uploadFile from "@/assets/icon/gallery/upload_file.png";
+import { useRef, useState } from "react";
 
 const now = new Date();
 const pad = (n) => n.toString().padStart(2, '0');
 const today = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 
 const CalendarUpload = ({onClose}) => {
+    const fileInputRef = useRef(null);
+    const [imagePreview, setImagePreview] = useState(null);
+    const [file, setFile] = useState(null);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [link1, setLink1] = useState("");
+    const [link2, setLink2] = useState("");
     const [date, setDate] = useState(today);
     const [type, setType] = useState("BROADCAST");
-    
+    console.log(date)
     const requestCalenarUpload = async () => {
         try {
-            await C.postCalendar({title, description, date, type});
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("date", date);
+            formData.append("type", type);
+            formData.append("link1", link1);
+            formData.append("link2", link2);
+            formData.append("file", file);
+
+            await C.postCalendar(formData);
             alert("일정 업로드 완료!");
             window.location.reload();
         } catch(error) {
 
         }
-    }
+    };
+
+    const handleRemoveImage = () => {
+        setFile(null);
+        setImagePreview(null);
+    };
+
+    const handleClickFileUpload = () => {
+        fileInputRef.current.click();
+    };
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const previewUrl = URL.createObjectURL(file);
+        setFile(file);
+        setImagePreview(previewUrl);
+
+        event.target.value = "";
+    };
 
     return (
         <>
@@ -56,6 +91,33 @@ const CalendarUpload = ({onClose}) => {
                     </S.InputArea>
                     <S.InputArea>
                         <S.HorizontalWrapper>
+                            <S.Text $size={"16px"} $weight={"700"}>참고 이미지</S.Text>
+                        </S.HorizontalWrapper>
+                        <S.FileArea>
+                            <S.FileUploadButton $imageUrl={uploadFile} onClick={handleClickFileUpload}></S.FileUploadButton>
+                            {imagePreview && (<S.FileItem
+                                    src={imagePreview}
+                                    alt="preview"
+                                    onClick={handleRemoveImage}
+                                />
+                            )}
+                        </S.FileArea>
+                        <S.FileInput type="file" accept="image/png, image/jpg, image/jpeg" multiple ref={fileInputRef} onChange={handleImageChange}/>
+                    </S.InputArea>
+                    <S.InputArea>
+                        <S.HorizontalWrapper>
+                            <S.Text $size={"16px"} $weight={"700"}>관련 링크 1</S.Text>
+                        </S.HorizontalWrapper>
+                        <S.InputLink value={link1} onChange={(e) => setLink1(e.target.value)}></S.InputLink>
+                    </S.InputArea>
+                    <S.InputArea>
+                        <S.HorizontalWrapper>
+                            <S.Text $size={"16px"} $weight={"700"}>관련 링크 2</S.Text>
+                        </S.HorizontalWrapper>
+                        <S.InputLink value={link2} onChange={(e) => setLink2(e.target.value)}></S.InputLink>
+                    </S.InputArea>
+                    <S.InputArea>
+                        <S.HorizontalWrapper>
                             <S.Text $size={"16px"} $weight={"700"}>일정 날짜</S.Text>
                         </S.HorizontalWrapper>
                         <S.InputDate value={date} onChange={(e) => setDate(e.target.value)}></S.InputDate>
@@ -76,8 +138,8 @@ const CalendarUpload = ({onClose}) => {
                             <S.Option value="ETC">기타</S.Option>
                         </S.InputType>
                     </S.InputArea>
-                    <S.SubmitButton disabled={title.length < 3 ||
-                        title.length > 15 ||
+                    <S.SubmitButton disabled={title.length < 5 ||
+                        title.length > 25 ||
                         description.length < 5 ||
                         date.length === 0 ||
                         type.length === 0}

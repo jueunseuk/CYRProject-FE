@@ -5,7 +5,7 @@ const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
 export const getCalendar = async (year, month) => {
     try {
-        const response = await axios.get(`${backendUrl}/calendar/request/monthly`, {
+        const response = await axios.get(`${backendUrl}/calendar/monthly`, {
             params: {year, month},
             headers: {Accept: "application/json"}
         });
@@ -56,19 +56,11 @@ export const postCalendarRequest = async (data) => {
         });
     } catch (error) {
         if(error.response && error.response.data) {
-            console.log("스케줄을 업로드하는 데 실패했습니다.", error);
+            console.log("스케줄 요청을 업로드하는 데 실패했습니다.", error);
         } else {
             console.log("서버가 응답하지 않습니다.");
         }
     }
-};
-
-export const getRecentSchedule = async () => {
-
-};
-
-export const getBeforeSchedule = async () => {
-
 };
 
 export const postCalendar = async (formData) => {
@@ -123,9 +115,9 @@ export const deleteCalendar = async (params) => {
     }
 }
 
-export const editCalendar = async (params) => {
+export const editCalendar = async (calendarId, formData) => {
     try {
-        await instance.put(`${backendUrl}/calendar`, params, { headers: {Accept: "application/json"} });
+        await instance.patch(`${backendUrl}/calendar/${calendarId}`, formData, { headers: {Accept: "application/json"} });
     } catch(error) {
         if(error.response && error.response.data) {
             const errorCode = error.response.data.code;

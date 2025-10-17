@@ -3,28 +3,64 @@ import * as S from "./styles";
 import cancel from "@/assets/icon/gallery/cancel.svg";
 import edit from "@/assets/icon/etc/edit.svg";
 import help from "@/assets/icon/gallery/help.svg";
-import { useState } from "react";
+import uploadFile from "@/assets/icon/gallery/upload_file.png";
+import { useRef, useState } from "react";
 
 const now = new Date();
 const pad = (n) => n.toString().padStart(2, '0');
 const today = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 
 const CalendarEdit = ({onClose, item}) => {
-    const [calendarId, setCalendarId] = useState(item?.calendarId);
-    const [title, setTitle] = useState(item?.title);
+    const fileInputRef = useRef(null);
+    const [imagePreview, setImagePreview] = useState(item.imageUrl);
+    const [file, setFile] = useState(null);
+    const [calendarId, setCalendarId] = useState(item.calendarId);
+    const [title, setTitle] = useState(item.title);
     const [description, setDescription] = useState(item?.description);
-    const [date, setDate] = useState(item?.date);
-    const [type, setType] = useState(item?.type);
+    const [link1, setLink1] = useState(item.link1 ? item.link1 : null);
+    const [link2, setLink2] = useState(item.link2 ? item.link2 : null);
+    const [date, setDate] = useState(item.date);
+    const [type, setType] = useState(item.type);
     
-    const requestCalenarUpload = async () => {
+    const requestCalenarUpdate = async () => {
         try {
-            await C.editCalendar({calendarId, title, description, date, type});
-            alert("일정 업로드 완료!");
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("date", date);
+            formData.append("type", type);
+            formData.append("calendarId", calendarId);
+            if(link1) formData.append("link1", link1);
+            if(link2) formData.append("link2", link2);
+            if(file) formData.append("file", file);
+
+            await C.editCalendar(calendarId, formData);
+            alert("일정 수정 완료!");
             window.location.reload();
         } catch(error) {
 
         }
-    }
+    };
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const previewUrl = URL.createObjectURL(file);
+        setFile(file);
+        setImagePreview(previewUrl);
+
+        event.target.value = "";
+    };
+
+    const handleRemoveImage = () => {
+        setFile(null);
+        setImagePreview("");
+    };
+
+    const handleClickFileUpload = () => {
+        fileInputRef.current.click();
+    };
 
     return (
         <>
@@ -58,6 +94,33 @@ const CalendarEdit = ({onClose, item}) => {
                     </S.InputArea>
                     <S.InputArea>
                         <S.HorizontalWrapper>
+                            <S.Text $size={"16px"} $weight={"700"}>참고 이미지</S.Text>
+                        </S.HorizontalWrapper>
+                        <S.FileArea>
+                            <S.FileUploadButton $imageUrl={uploadFile} onClick={handleClickFileUpload}></S.FileUploadButton>
+                            {imagePreview && (<S.FileItem
+                                    src={imagePreview}
+                                    alt="preview"
+                                    onClick={handleRemoveImage}
+                                />
+                            )}
+                        </S.FileArea>
+                        <S.FileInput type="file" accept="image/png, image/jpg, image/jpeg" ref={fileInputRef} onChange={handleImageChange}/>
+                    </S.InputArea>
+                    <S.InputArea>
+                        <S.HorizontalWrapper>
+                            <S.Text $size={"16px"} $weight={"700"}>관련 링크 1</S.Text>
+                        </S.HorizontalWrapper>
+                        <S.InputLink value={link1} onChange={(e) => setLink1(e.target.value)}></S.InputLink>
+                    </S.InputArea>
+                    <S.InputArea>
+                        <S.HorizontalWrapper>
+                            <S.Text $size={"16px"} $weight={"700"}>관련 링크 2</S.Text>
+                        </S.HorizontalWrapper>
+                        <S.InputLink value={link2} onChange={(e) => setLink2(e.target.value)}></S.InputLink>
+                    </S.InputArea>
+                    <S.InputArea>
+                        <S.HorizontalWrapper>
                             <S.Text $size={"16px"} $weight={"700"}>일정 날짜</S.Text>
                         </S.HorizontalWrapper>
                         <S.InputDate value={date} onChange={(e) => setDate(e.target.value)}></S.InputDate>
@@ -83,7 +146,7 @@ const CalendarEdit = ({onClose, item}) => {
                         description.length < 5 ||
                         date.length === 0 ||
                         type.length === 0}
-                        onClick={requestCalenarUpload}
+                        onClick={requestCalenarUpdate}
                     >일정 업로드</S.SubmitButton>
                 </S.Content>
             </S.Wrapper>

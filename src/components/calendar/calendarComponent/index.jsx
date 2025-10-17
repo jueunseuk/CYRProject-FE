@@ -1,6 +1,7 @@
 import * as C from "@/apis/calendar";
 import * as S from "./styles";
 import { useEffect, useState } from "react";
+import ScheduleFullScreen from "@/components/modal/scheduleFullScreen";
 
 const maxDate = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -13,6 +14,8 @@ const CalendarComponent = () => {
     const [day, setDay] = useState(now.getDay());
     const [array, setArray] = useState([]);
     const [scheduleMap, setScheduleMap] = useState({});
+    const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
+    const [selectedSchedule, setSelectedSchedule] = useState({});
 
     const handleCurrentMonthValue = (e) => {
         const temp = month+e;
@@ -25,7 +28,7 @@ const CalendarComponent = () => {
         } else {
             setMonth(temp);
         }
-    }
+    };
 
     useEffect(() => {
         const fetchFormatMonth = () => {
@@ -88,6 +91,10 @@ const CalendarComponent = () => {
         };
     };
 
+    const handleCloseModal = () => {
+        setIsProfileModalOpen(false);
+    };
+
     return (
         <>
             <S.Wrapper>
@@ -147,6 +154,7 @@ const CalendarComponent = () => {
                         <S.DayItem $color={"blue"}>토</S.DayItem>
                     </S.DayWrapper>
 
+                    {isScheduleModalOpen && <ScheduleFullScreen onClose={() => setIsScheduleModalOpen(false)} selectedSchedule={selectedSchedule}/>}
                     <S.DateWrapper>
                         {array.map((value, idx) => {
                             const daySchedules = scheduleMap[value] || [];
@@ -159,7 +167,7 @@ const CalendarComponent = () => {
                                     <S.Text $size="13px" $weight="700" $color={getColor(idx)}>{value || ""}</S.Text>
                                     <S.HorizontalWrapper $gap={"8px"} $align={"flex-start"} $justify={"flex-start"} style={{flexWrap: "wrap"}} className="date-content">
                                         {daySchedules.map(s => (
-                                            <S.ScheduleWrapper key={s.calendarId}>
+                                            <S.ScheduleWrapper key={s.calendarId} onClick={() => {setSelectedSchedule(s); setIsScheduleModalOpen(true)}} >
                                                 <S.Circle $bg={() => getScheduleColor(s.type)} />
                                                 <S.Text $size="10px" $weight="700" className="calendar-text" title={s.description}>{s.title}</S.Text>
                                             </S.ScheduleWrapper>
@@ -168,7 +176,7 @@ const CalendarComponent = () => {
                                 </S.DateItem>
                             );
                         })}
-                        </S.DateWrapper>
+                    </S.DateWrapper>
                 </S.CalendarWrapper>
             </S.Wrapper>
         </>

@@ -119,6 +119,7 @@ export const ScheduleWrapper = styled.div`
     gap: 5px;
     align-items: center;
     justify-content: flex-start;
+    cursor: pointer;
 `;
 
 export const Circle = styled.div`
