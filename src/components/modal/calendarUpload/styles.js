@@ -53,10 +53,9 @@ export const InputArea = styled.div`
 
 export const InputTitle = styled.input.attrs({
     type: "text",
-    placeholder: "제목은 간단하게 입력해주세요. (최소 3자, 최대 15자)"
+    placeholder: "제목은 간단하게 입력해주세요. (최소 5자, 최대 25자)"
 })`
     width: 440px;
-    height: 40px;
     font-size: 13px;
     padding: 10px;
     background-color: white;
@@ -69,7 +68,21 @@ export const InputDesc = styled.textarea.attrs({
     placeholder: "설명은 되도록 자세히 작성해주세요! (최소 5자)"
 })`
     width: 440px;
-    min-height: 100px;
+    min-height: 75px;
+    max-height: 200px;
+    font-size: 13px;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    resize: vertical;
+    outline: none;
+`;
+
+export const InputLink = styled.input.attrs({
+    placeholder: "생략 가능"
+})`
+    width: 440px;
     font-size: 13px;
     padding: 10px;
     background-color: white;
@@ -139,4 +152,31 @@ export const TooltipText = styled.span`
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease;
+`;
+
+export const FileArea = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+`;
+
+export const FileUploadButton = styled.div`
+    width: 80px;
+    height: 80px;
+    background-image: url(${props => props.$imageUrl});
+    background-size: cover;
+    cursor: pointer;
+`;
+
+export const FileItem = styled.img`
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+    object-fit: cover;
+`;
+
+export const FileInput = styled.input`
+    display: none;
 `;

@@ -79,6 +79,19 @@ export const InputDesc = styled.textarea.attrs({
     outline: none;
 `;
 
+export const InputLink = styled.input.attrs({
+    placeholder: "생략 가능"
+})`
+    width: 440px;
+    font-size: 13px;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    resize: vertical;
+    outline: none;
+`;
+
 export const InputDate = styled.input.attrs({
     type: "date"
 })`
@@ -138,4 +151,31 @@ export const TooltipText = styled.span`
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease;
+`;
+
+export const FileArea = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+`;
+
+export const FileUploadButton = styled.div`
+    width: 80px;
+    height: 80px;
+    background-image: url(${props => props.$imageUrl});
+    background-size: cover;
+    cursor: pointer;
+`;
+
+export const FileItem = styled.img`
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+    object-fit: cover;
+`;
+
+export const FileInput = styled.input`
+    display: none;
 `;
