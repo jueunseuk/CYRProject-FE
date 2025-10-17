@@ -24,23 +24,22 @@ export const HorizontalWrapper = styled.div`
 export const VerticalWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
-    gap: ${({$gap}) => $gap || "10px"};
+    gap: 15px;
     align-items: ${({$ai}) => $ai};
     justify-content: ${({$jc}) => $jc};
+    width: 500px;
 `;
 
 export const Content = styled.div`
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
 `;
 
 export const Image = styled.img`
-    max-width: 70vw;
-    max-height: 70vh;
+    width: 500px;
     object-fit: contain;
 `;
 
@@ -57,13 +56,13 @@ export const Icon = styled.img`
 
 export const Text = styled.span`
     font-size: 15px;
-    font-weight: ${({$weight}) => $weight || "400"};
+    font-weight: ${({$weight}) => $weight || "600"};
     color: white;
 `;
 
 export const Link = styled.a`
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 300;
     color: white;
 `;
 
@@ -75,4 +74,5 @@ export const NoImage = styled.div`
     background-color: #eee;
     width: 300px;
     height: 300px;
+    font-size: 18px;
 `;
