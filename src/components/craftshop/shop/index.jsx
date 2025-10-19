@@ -2,7 +2,6 @@ import * as S from "./styles";
 import * as SH from "@/apis/shop";
 import * as U from "@/apis/user";
 import glass from "@/assets/icon/user/glass.svg";
-import factory from "@/assets/icon/user/factory.svg";
 import checked from "@/assets/icon/etc/checked.svg";
 import unchecked from "@/assets/icon/etc/unchecked.svg";
 import { SHOPS } from "@/constants/shops";
@@ -67,11 +66,6 @@ const Shop = () => {
         setBuyModalOpen(false);
         fetchShopItemList(selectedTap + 1);
     };
-
-    
-    const handleNavigateToCraftShop = () => {
-        navigate("/user/craftshop")
-    };
     
     return (
         <S.Wrapper>
@@ -83,7 +77,7 @@ const Shop = () => {
             </S.HorizontalWrapper>
             <S.QuoteWrapper>
                 <S.Text $size={"15px"} $weight={"600"}>공방에서 획득한 유리 조각은 유리 상점에서 사용할 수 있습니다.</S.Text>
-                <S.Text $size={"14px"}>상품 클릭 시 구매 가능합니다.</S.Text>
+                <S.Text $size={"14px"}>상품 클릭 시 구매 가능하고, 구매한 상품은 인벤토리에서 확인 가능합니다.</S.Text>
                 <S.Text $size={"14px"}>구매 복원은 불가능하니 신중한 구매 부탁드립니다.</S.Text>
             </S.QuoteWrapper>
             <S.VerticalWrapper>
@@ -99,7 +93,7 @@ const Shop = () => {
                     ))}
                     <S.Underline $width={underline.width} $offset={underline.offset} />
                 </S.TabWrapper>
-                <S.Text style={{margin: "10px 0"}}>{SHOPS[selectedTap].description}</S.Text>
+                <S.Text style={{margin: "10px 0", textAlign: "left", width: "100%"}}>{SHOPS[selectedTap].description}</S.Text>
                 <S.HorizontalWrapper $jc={"space-between"} style={{width: "100%", padding: "10px 5px"}}>
                     <S.Text><S.Text $weight={"700"}>{itemData?.length}</S.Text>개의 구매 가능한 상품</S.Text>
                     <S.HorizontalWrapper $ai={"center"} $jc={"space-between"} $gap={"5px"}>
@@ -137,7 +131,6 @@ const Shop = () => {
                     ))}
                 </S.ShopItemWrapper>
             </S.VerticalWrapper>
-            <S.CraftShopButton onClick={handleNavigateToCraftShop}><S.Icon src={factory} $width={"17px"} />유리공방으로 이동</S.CraftShopButton>
         </S.Wrapper>
     );
 };

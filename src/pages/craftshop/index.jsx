@@ -10,6 +10,8 @@ import Craft from "@/components/craftshop/craft";
 import Shop from "@/components/craftshop/shop";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import WrongPage from "../wrong/WrongPage";
+import Inventory from "@/components/craftshop/inventory";
 
 const Craftshop = () => {
     const user = useUserInfo();
@@ -22,6 +24,15 @@ const Craftshop = () => {
             navigate("/");
         }
     }, [user, navigate]);
+
+    const getComponent = () => {
+        switch(subPath) {
+            case "craftshop": return <Craft />;
+            case "shop": return <Shop />;
+            case "inventory": return <Inventory />;
+            default : return <WrongPage />;
+        }
+    };
     
     if (!user?.userId) return null;
 
@@ -39,7 +50,7 @@ const Craftshop = () => {
                     <Board></Board>
                 </S.SidebarWrapper>
                 <S.ContentWrapper>
-                    {subPath === "craftshop" ? <Craft /> : <Shop />}
+                    {getComponent()}
                 </S.ContentWrapper>
             </S.HorizontalWrapper>
             <S.Contour />

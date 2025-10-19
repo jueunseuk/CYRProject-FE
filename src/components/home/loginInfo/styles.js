@@ -103,10 +103,10 @@ export const ItemBox = styled.div`
     align-items: center;
     gap: 3px;
     padding: 5px;
-    margin-top: 5px;
     cursor: pointer;
 
-    &: hover {
+    &:hover {
         background-color: #eee;
     }
+
 `;

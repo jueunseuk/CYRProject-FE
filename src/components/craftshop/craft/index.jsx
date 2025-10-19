@@ -4,7 +4,6 @@ import * as G from "@/apis/glass";
 import glass from "@/assets/icon/user/glass.svg";
 import sand from "@/assets/icon/user/sand.svg";
 import furnace from "@/assets/icon/user/furnace.svg";
-import shop from "@/assets/icon/user/shop.svg";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/util/dateFormatter";
 import { useNavigate } from "react-router-dom";
@@ -162,9 +161,6 @@ const Craft = () => {
                     ))}
                 </S.LogWrapper>
             </S.VerticalWrapper>
-            <S.ShopButton onClick={handleNavigateToShop}>
-                <S.Icon src={shop} $width={"17px"} />유리상점으로 이동
-            </S.ShopButton>
         </S.Wrapper>
     );
 };

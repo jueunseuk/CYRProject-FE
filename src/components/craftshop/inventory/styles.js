@@ -49,7 +49,9 @@ export const Icon = styled.img.attrs((props) => {
 `;
 
 export const ItemImage = styled.img`
-    width: 100%;
+    width: 162px;
+    height: 162px;
+    object-fit: contain;
 `;
 
 export const TabWrapper = styled.div`
