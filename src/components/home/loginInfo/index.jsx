@@ -8,6 +8,8 @@ import glass from "@/assets/icon/user/glass.svg";
 import shop from "@/assets/icon/user/shop.svg";
 import factory from "@/assets/icon/user/factory.svg";
 import mypage from "@/assets/icon/user/mypage.svg";
+import inventory from "@/assets/icon/user/inventory.svg";
+import sandbox from "@/assets/icon/user/sandbox.svg";
 import useUserInfo from "@/hooks/localStorage";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
@@ -62,11 +64,15 @@ const LoginInfo = () => {
 
     const handleNavigateCraftshop = () => {
         navigate("/user/craftshop");
-    }
+    };
 
     const handleNavigateShop = () => {
         navigate("/user/shop");
-    }
+    };
+
+    const handleNavigateInventory = () => {
+        navigate("/user/inventory");
+    };
 
     const handleImageFullScreen = () => {
         setIsProfileModalOpen(true);
@@ -122,18 +128,26 @@ const LoginInfo = () => {
                     <S.Text $size={"12px"} $weight={"600"}>{userAmount.temperature} ℃</S.Text>
                 </S.HorizontalWrapper>
             </S.IconArea>
-            <S.HorizontalWrapper $jc={"space-between"} style={{width: "170px"}}>
-                <S.ItemBox onClick={() => handleNavigateMyPage()}>
+            <S.HorizontalWrapper $jc={"center"} $ai={"center"} style={{width: "170px", flexWrap: "wrap", columnGap: "7px"}}>
+                <S.ItemBox onClick={() => handleNavigateMyPage()} title="마이페이지로 이동">
                     <S.Icon src={mypage} />
-                    <S.Text $size={"12px"} $weight={"600"}>마이페이지</S.Text>
+                    <S.Text $size={"11px"} $weight={"600"}>마이페이지</S.Text>
                 </S.ItemBox>
-                <S.ItemBox onClick={() => handleNavigateCraftshop()}>
+                <S.ItemBox onClick={() => handleNavigateCraftshop()} title="유리공방으로 이동">
                     <S.Icon src={factory} />
-                    <S.Text $size={"12px"} $weight={"600"}>유리공방</S.Text>
+                    <S.Text $size={"11px"} $weight={"600"}>유리공방</S.Text>
                 </S.ItemBox>
-                <S.ItemBox onClick={() => handleNavigateShop()}>
+                <S.ItemBox onClick={() => handleNavigateShop()} title="유리상점으로 이동">
                     <S.Icon src={shop} />
-                    <S.Text $size={"12px"} $weight={"600"}>유리상점</S.Text>
+                    <S.Text $size={"11px"} $weight={"600"}>유리상점</S.Text>
+                </S.ItemBox>
+                <S.ItemBox onClick={() => handleNavigateInventory()} title="인벤토리로 이동">
+                    <S.Icon src={inventory} />
+                    <S.Text $size={"11px"} $weight={"600"}>인벤토리</S.Text>
+                </S.ItemBox>
+                <S.ItemBox onClick={() => handleNavigateInventory()} title="추가 예정">
+                    <S.Icon src={sandbox} />
+                    <S.Text $size={"11px"} $weight={"600"}>모래사장</S.Text>
                 </S.ItemBox>
             </S.HorizontalWrapper>
             <S.WriteButton onClick={handleNavigateWrite}>글쓰기</S.WriteButton>

@@ -91,27 +91,6 @@ export const Button = styled.button`
     }
 `;
 
-export const ShopButton = styled.button`
-    padding: 10px 20px;
-    align-self: center;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.2s ease;
-    background: #ecececff;
-    cursor: pointer;
-
-    &:hover {
-        background:  #e7e7e7ff;
-    }
-`;
-
 export const LogWrapper = styled.div`
     width: 100%;
     overflow: auto;

@@ -34,8 +34,6 @@ const Attendance = ({userId}) => {
         fetchUserAttendanceData();
         fetchUserAttendanceHistory();
     }, [userId]);
-    console.log(data)
-    console.log(graphData)
 
     return (
         <S.Wrapper>

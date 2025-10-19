@@ -126,10 +126,14 @@ const Guide = () => {
                         <S.SecondListItem>소모품 탭을 제외한 모든 아이템은 단 1회만 구매 가능합니다.</S.SecondListItem>
                         <S.SecondListItem>소모품은 인벤토리에서 조회하거나 사용할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트되어, 커뮤니티 활동에 지속적인 동기를 부여합니다.</S.SecondListItem>
-                    <S.FirstListItem id="shop">l. 율 Shorts(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem id="shop">l. 모래사장(개발 예정)</S.FirstListItem>
+                        <S.SecondListItem>나만의 모래사장을 상점에서 판매하는 아이템들과 함께 꾸밀 수 있는 공간입니다.</S.SecondListItem>
+                        <S.SecondListItem>자신만의 개성을 살려서 다른 사람들에게 자랑해보세요.</S.SecondListItem>
+                        <S.SecondListItem></S.SecondListItem>
+                    <S.FirstListItem id="shop">m. 율 Shorts(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>가수 최유리님과 관련된 유튜브 쇼츠 영상을 모아서 볼 수 있는 서비스입니다.</S.SecondListItem>
                         <S.SecondListItem></S.SecondListItem>
-                    <S.FirstListItem id="shop">m. 율퀴즈~(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem id="shop">n. 율퀴즈~(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>가수 최유리님과 관련된 다양한 주제로 구성된 퀴즈를 풀 수 있는 서비스입니다.</S.SecondListItem>
                         <S.SecondListItem>퀴즈를 맞히면 커뮤니티 활동 보상으로 모래알이 지급됩니다.</S.SecondListItem>
                         <S.SecondListItem>커뮤니티의 매니저 등급 이상의 회원만 문제를 출제할 수 있습니다.</S.SecondListItem>
