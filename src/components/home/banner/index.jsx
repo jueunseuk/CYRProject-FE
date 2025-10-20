@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import * as A from "@/apis/authentication";
-import * as UI from "@/apis/inventory";
+import * as UBS from "@/apis/userBannerSetting";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Pagination, Autoplay} from 'swiper/modules';
 import 'swiper/css';
@@ -35,7 +35,7 @@ const Banner = () => {
     useEffect(() => {
         const fetchBannerImages = async () => {
             try {
-                const response = await UI.getBuyList(2, {});
+                const response = await UBS.getUserBannerList({isActive: "true"});
                 if (response?.data?.length > 0) {
                     setImageData(() => [banner, ...response.data]);
                 }
