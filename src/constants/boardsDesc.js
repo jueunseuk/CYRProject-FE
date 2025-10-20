@@ -73,7 +73,7 @@ export const BOARD_DESCRIPTIONS = {
     },
     complaint: {
       label: "신고하기",
-      description: "커뮤니티 내에서 불편한 상황이 있었다면 이곳에 신고해주세요. 모두가 안전한 공간을 함께 만들어요.",
+      description: "커뮤니티 내에서 불편한 상황이 있었다면 이곳에 신고해주세요. 모두가 쾌적한 공간을 함께 만들어요.",
     },
     apply: {
       label: "운영자 신청",

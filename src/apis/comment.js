@@ -19,14 +19,6 @@ export const postComment = async (param) => {
     }
 }
 
-export const getUserCommentList = async () => {
-    try {
-
-    } catch(error) {
-        
-    }
-};
-
 export const getPostCommentList = async (postId) => {
     try {
         const response = await instance.get(`${backendUrl}/comment/${postId}`, { headers: { Accept: "application/json" } });

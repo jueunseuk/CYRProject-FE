@@ -9,6 +9,21 @@ export const Wrapper = styled.div`
     padding: 20px;
 `;
 
+export const HorizontalWrapper = styled.div`
+    display: flex;
+    justify-content: ${({$jc}) => $jc || "flex-start"};
+    align-items: ${({$ai}) => $ai || "flex-start"};
+    gap: ${({$gap}) => $gap};
+`;
+
+export const VerticalWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: ${({$jc}) => $jc || "flex-start"};
+    align-items: ${({$ai}) => $ai || "flex-start"};
+    gap: ${({$gap}) => $gap};
+`;
+
 export const Title = styled.div`
     display: flex;
     justify-content: flex-start;
@@ -16,6 +31,13 @@ export const Title = styled.div`
     width: 100%;
     font-size: 16px;
     font-weight: 600;
+`;
+
+export const CheckBox = styled.div`
+    width: 12px;
+    height: 12px;
+    background-color: ${({$bg}) => $bg};
+
 `;
 
 export const Description = styled.div`
