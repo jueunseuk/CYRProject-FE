@@ -74,8 +74,9 @@ const Guide = () => {
                         <S.SecondListItem>처음이라도 악의적으로 커뮤니티 규칙을 위반하는 사용자에 대해서도 영구적인 제재 조치가 부여될 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem>p. 운영자 신청</S.FirstListItem>
                         <S.SecondListItem>운영자 역할 수행을 희망하는 이용자가 신청할 수 있는 게시판입니다.</S.SecondListItem>
-                        <S.SecondListItem>신고 당한 이력이 있는 사용자의 경우 절대 운영자 신청이 불가능합니다.</S.SecondListItem>
+                        <S.SecondListItem>신고를 통해 제재를 당한 이력이 있는 사용자의 경우 운영자를 할 수 없습니다.</S.SecondListItem>
                         <S.SecondListItem>운영자의 후보가 다수 존재할 경우 커뮤니티 활동 이력, 기여도 등을 종합적으로 고려하여 결정합니다.</S.SecondListItem>
+                        <S.SecondListItem>커뮤니티의 활성화 규모에 따라 운영자의 수가 유동적으로 변할 수 있습니다.</S.SecondListItem>
                 </S.List>
                 <S.Blank />
 
@@ -105,13 +106,14 @@ const Guide = () => {
                         <S.SecondListItem>업적이 해방되는 조건은 모두 비공개이나 사용자끼리 정보를 공유하는 것은 가능합니다.</S.SecondListItem>
                     <S.FirstListItem>g. 율무위키(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>Archive형 백과사전으로 가수 최유리에 관한 모든 공식/비공식 자료가 정리되어 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>AI 율랑이에게 물어보면 직접 찾지 않아도 편하게 궁금한 내용을 알 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>율무위키 속 AI 율랑이에게 물어보면 직접 찾지 않아도 편하게 궁금한 내용을 알 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem>h. 율톡(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>커뮤니티에 접속한 유저끼리 실시간으로 대화를 주고 받을 수 있는 서비스입니다.</S.SecondListItem>
                     <S.FirstListItem>i. 율모티콘</S.FirstListItem>
+                        <S.SecondListItem>율모티콘이란 가수 최유리님을 바탕으로 AI를 이용해 생성한 이모티콘입니다.</S.SecondListItem>
                         <S.SecondListItem>본 커뮤니티에는 생성형 AI로 제작한 가수 최유리님의 이모티콘이 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>무료로 사용할 수 있는 이모티콘부터 숨겨진 업적, 유리상점 등에서 여러 이모티콘을 얻어서 사용할 수 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>율모티콘은 출석, 게시글, 댓글, 율톡에 한해 사용 가능합니다.</S.SecondListItem>
+                        <S.SecondListItem>이모티콘부터 숨겨진 업적을 달성하거나, 유리상점 등에서 이모티콘을 구매해 사용할 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>율모티콘은 출석, 게시글, 댓글, 율톡에 한해 사용 가능하고 추후 확장될 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem>j. 유리공방</S.FirstListItem>
                         <S.SecondListItem>출석을 통해 화로의 온도를 높이고, 여러 활동(게시글 작성, 댓글 등)을 통해 모래알을 모을 수 있습니다.</S.SecondListItem>
                             <S.ThirdListItem>- 활동별 모래알 획득 수치는 <S.Link href="#sand" style={{fontWeight: "600"}}>III.b.모래알</S.Link>을 참고해주세요.</S.ThirdListItem>
@@ -123,9 +125,9 @@ const Guide = () => {
                             <S.ThirdListItem>- 따라서 유리 조각을 만들 수 있을 때마다 바로 만드는 것이 좋습니다.</S.ThirdListItem>
                     <S.FirstListItem id="shop">k. 유리상점</S.FirstListItem>
                         <S.SecondListItem>공방에서 얻은 유리 조각으로 커뮤니티 내에서 사용할 수 있는 아이템을 살 수 있는 상점입니다.</S.SecondListItem>
-                        <S.SecondListItem>소모품 탭을 제외한 모든 아이템은 단 1회만 구매 가능합니다.</S.SecondListItem>
-                        <S.SecondListItem>소모품은 인벤토리에서 조회하거나 사용할 수 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트되어, 커뮤니티 활동에 지속적인 동기를 부여합니다.</S.SecondListItem>
+                        <S.SecondListItem>소모품을 제외한 모든 아이템은 단 1회만 구매 가능합니다.</S.SecondListItem>
+                        <S.SecondListItem>소모품은 인벤토리에서 조회하고 사용할 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트 됩니다.</S.SecondListItem>
                     <S.FirstListItem id="shop">l. 모래사장(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>나만의 모래사장을 상점에서 판매하는 아이템들과 함께 꾸밀 수 있는 공간입니다.</S.SecondListItem>
                         <S.SecondListItem>자신만의 개성을 살려서 다른 사람들에게 자랑해보세요.</S.SecondListItem>

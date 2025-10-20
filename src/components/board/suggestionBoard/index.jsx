@@ -88,7 +88,7 @@ const SuggestionBoard = () => {
                     <tbody>
                         {posts.map((post) => (
                             <S.Row key={post.postId}>
-                                <S.Column>{post.postId}</S.Column>
+                                <S.Column>{posts.length-idx}</S.Column>
                                 <S.Column $align={"left"} onClick={() => handleNavigatePost(post.postId)}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"}>{post.userNickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(post.createdAt, 3)}</S.Column>

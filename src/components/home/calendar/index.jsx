@@ -2,10 +2,12 @@ import * as C from "@/apis/calendar";
 import * as S from "./styles";
 import { useEffect, useState } from "react";
 import ScheduleFullScreen from "@/components/modal/scheduleFullScreen";
+import { useNavigate } from "react-router-dom";
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
 const CalendarSummary = () => {
+    const navigate = useNavigate();
     const [period, setPeriod] = useState("after");
     const [beforeSchedule, setBeforeSchedule] = useState([]);
     const [afterSchedule, setAfterSchedule] = useState([]);
@@ -77,6 +79,9 @@ const CalendarSummary = () => {
                     <S.Text $size={"12px"} $weight={"600"} $color={period === 'after' ? "black" : "#878787"} onClick={() => handlePeriodClick("after")}>다가오는 일정</S.Text>
                     <S.Text $size={"12px"} $weight={"600"} $color={"#878787"}>|</S.Text>
                     <S.Text $size={"12px"} $weight={"600"} $color={period === 'before' ? "black" : "#878787"} onClick={() => handlePeriodClick("before")}>지난 일정</S.Text>
+                    <S.Text $size={"11px"} $weight={"600"} style={{marginLeft: "65px", cursor: "pointer"}}
+                        onClick={() => navigate("/calendar")}
+                    >더보기</S.Text>
                 </S.TitleArea>
                 <S.ContentArea>
                 <S.ContentArea>

@@ -11,6 +11,7 @@ export const TitleArea = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    width: 100%;
     gap: 5px;
     padding: 5px 10px;
     height: 24px;
