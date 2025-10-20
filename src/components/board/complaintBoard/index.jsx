@@ -150,9 +150,9 @@ const ComplaintBoard = () => {
                         </S.FirstRow>
                     </thead>
                     <tbody>
-                        {complaintData.map((complaint) => (
+                        {complaintData.map((complaint, idx) => (
                             <S.Row key={complaint.complaintId}>
-                                <S.Column>{complaint.complaintId}</S.Column>
+                                <S.Column>{complaintData.length-idx}</S.Column>
                                 <S.Column>{complaint.categoryKorean}</S.Column>
                                 <S.Column $align={"left"} onClick={() => {handleOpenComplaintProcessModal(complaint.complaintId); setSelectItem(complaint);}} style={{cursor: "pointer"}}>{complaint.title}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"} onClick={() => navigate(`/users/${complaint.userId}`)} style={{cursor: "pointer"}}>{complaint.nickname}</S.Column>
