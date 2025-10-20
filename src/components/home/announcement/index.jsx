@@ -60,9 +60,9 @@ const AnnouncementSummary = () => {
                             ))
                             : posts.slice(0, 5).map((post) => (
                                 <S.Row key={post.postId}>
-                                    <S.FirstColumn><S.Text>[{post.boardKorean}]</S.Text></S.FirstColumn>
-                                    <S.Column $align={"left"} onClick={() => handleNavigatePost(post.postId)}><S.Text>{post.title}</S.Text></S.Column>
-                                    <S.Column $align={"left"}><S.Text>{post.userNickname}</S.Text></S.Column>
+                                    <S.FirstColumn><S.Text onClick={() => navigate(`/${post.boardName}`)} style={{cursor: "pointer"}}>[{post.boardKorean}]</S.Text></S.FirstColumn>
+                                    <S.Column $align={"left"} onClick={() => handleNavigatePost(post.postId)}><S.Text style={{cursor: "pointer"}}>{post.title}</S.Text></S.Column>
+                                    <S.Column $align={"left"}><S.Text onClick={() => navigate(`/users/${post.userId}`)} style={{cursor: "pointer"}}>{post.userNickname}</S.Text></S.Column>
                                     <S.Column><S.Text $color={"#878787"}>{formatDate(post.createdAt, 3)}</S.Text></S.Column>
                                     <S.Column><S.Text $color={"#878787"}>{post.viewCnt}</S.Text></S.Column>
                                 </S.Row>

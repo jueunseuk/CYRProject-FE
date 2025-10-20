@@ -39,11 +39,9 @@ export const Row = styled.tr`
 export const FirstColumn = styled.td`
     padding: 8px;
     text-align: ${({$align}) => $align || "center"};
-    cursor: pointer;
-    `;
+`;
     
 export const Column = styled.td`
     padding: 8px;
     text-align: ${({$align}) => $align || "center"};
-    cursor: pointer;
 `;
