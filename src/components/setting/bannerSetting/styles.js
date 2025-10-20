@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
 `;
 
 export const SettingWrapper = styled.div`
@@ -33,7 +34,43 @@ export const Text = styled.div`
     color: ${({$color}) => $color || "black"};
 `;
 
-export const Icon = styled.img`
-    width: ${({$width}) => $width};
-    height: ${({$height}) => $height};
+export const Image = styled.img`
+    width: 216px;
+    height: 100px;
+`;
+
+export const NoneImage = styled.div`
+    width: 216px;
+    height: 100px;
+    background-color: #eee;
+`;
+
+export const BannerItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid #C6BC73;
+
+    &: hover {
+        scale: 1.03;
+        box-shadow: 0 0 16px rgb(0, 0, 0, 0.3);
+    }
+`;
+
+export const Button = styled.button`
+    width: 80px;
+    padding: 8px 0;
+    border: none;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 13px;
+    outline: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &: hover {
+        background-color: ${({$bg}) => $bg};
+        color: ${({$color}) => $color || "black"};
+    }
 `;

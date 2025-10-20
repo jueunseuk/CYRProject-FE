@@ -1,7 +1,11 @@
+import { useState } from "react";
 import * as S from "./styles";
 import SA from "@/assets/image/SystemArchitecture.png";
+import ImageFullScreen from "@/components/modal/imageFullScreen";
 
 const About = () => {
+    const [imageModalOpen, setImageModalOpen] = useState(false);
+
     return (
         <>
             <S.Wrapper>
@@ -43,8 +47,8 @@ const About = () => {
                 <S.Blank />
 
                 <S.SubTitle>시스템 아키텍쳐</S.SubTitle>
-                <S.Image src={SA}></S.Image>
-
+                <S.Image src={SA} onClick={() => setImageModalOpen(true)} style={{cursor: "pointer"}} />
+                {imageModalOpen && <ImageFullScreen onClose={() => setImageModalOpen(false)} profile={SA} />}
             </S.Wrapper>
         </>
     )
