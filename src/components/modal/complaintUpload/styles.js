@@ -23,13 +23,22 @@ export const Content = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     gap: 20px;
+    box-shadow: 0px 0px 16px rgb(0, 0, 0, 0.5);
 `;
 
 export const HorizontalWrapper = styled.div`
     display: flex;
-    justify-content: ${({$justify}) => $justify || "flex-start"};
-    align-items: center;
-    width: 100%;
+    justify-content: ${({$jc}) => $jc || "flex-start"};
+    align-items: ${({$ai}) => $ai || "flex-start"};
+    gap: ${({$gap}) => $gap};
+`;
+
+export const VerticalWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: ${({$jc}) => $jc || "flex-start"};
+    align-items: ${({$ai}) => $ai || "flex-start"};
+    gap: ${({$gap}) => $gap};
 `;
 
 export const Icon = styled.img`
@@ -44,16 +53,8 @@ export const Text = styled.span`
     color: ${({$color}) => $color || "black"};
 `;
 
-export const InputArea = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-`;
-
-export const InputTitle = styled.input.attrs({
-    type: "text",
-    placeholder: "제목은 간단하게 입력해주세요. (최소 5자, 최대 25자)"
+export const InputText = styled.input.attrs({
+    type: "text"
 })`
     width: 440px;
     font-size: 13px;
@@ -64,53 +65,17 @@ export const InputTitle = styled.input.attrs({
     outline: none;
 `;
 
-export const InputDesc = styled.textarea.attrs({
-    placeholder: "설명은 되도록 자세히 작성해주세요! (최소 5자)"
-})`
-    width: 440px;
-    min-height: 75px;
-    max-height: 200px;
-    font-size: 13px;
+export const Select = styled.select`
     padding: 10px;
-    background-color: white;
-    border: none;
-    border-radius: 8px;
-    resize: vertical;
-    outline: none;
-`;
-
-export const InputLink = styled.input.attrs({
-    placeholder: "생략 가능"
-})`
-    width: 440px;
     font-size: 13px;
-    padding: 10px;
-    background-color: white;
-    border: none;
-    border-radius: 8px;
-    resize: vertical;
-    outline: none;
-`;
-
-export const InputDate = styled.input.attrs({
-    type: "date"
-})`
-    width: 130px;
-    height: 40px;
-    padding: 10px;
-    background-color: white;
-    border: none;
-    border-radius: 8px;
-`;
-
-export const InputType = styled.select`
-    padding: 4px;
-    font-size: 13px;
+    font-weight: 500;
     border: 1px solid #CCC;
-    width: 180px;
+    width: 100px;
+    border-radius: 8px;
 `;
 
 export const Option = styled.option`
+
 `;
 
 export const SubmitButton = styled.button`
@@ -179,4 +144,17 @@ export const FileItem = styled.img`
 
 export const FileInput = styled.input`
     display: none;
+`;
+
+
+export const Button = styled.button`
+    align-self: center;
+    padding: 10px 50px;
+    background-color: ${({$bg}) => $bg};
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;

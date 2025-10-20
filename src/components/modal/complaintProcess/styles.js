@@ -23,6 +23,7 @@ export const Content = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     gap: 20px;
+    box-shadow: 0px 0px 16px rgb(0, 0, 0, 0.5);
 `;
 
 export const HorizontalWrapper = styled.div`
@@ -42,6 +43,9 @@ export const VerticalWrapper = styled.div`
 
 export const Image = styled.img`
     width: 100%;
+    height: 300px;
+    object-fit: contain;
+    align-self: center;
 `;
 
 export const Icon = styled.img`
@@ -52,6 +56,11 @@ export const Text = styled.span`
     font-size: ${({$size}) => $size || "15px"};
     font-weight: ${({$weight}) => $weight || "400"};
     color: ${({$color}) => $color || "black"};
+`;
+
+export const LinkText = styled.a`
+    font-size: 14px
+    font-weight: 400;
 `;
 
 export const InputReason = styled.input.attrs({
@@ -77,7 +86,6 @@ export const Button = styled.button`
     font-weight: 700;
     font-size: 16px;
     color: white;
-    margin-top: 20px;
     cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 

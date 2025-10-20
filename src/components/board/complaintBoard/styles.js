@@ -54,7 +54,6 @@ export const TableHeader = styled.div`
     justify-content: space-between;
     width: 100%;
     height: 20px;
-    margin-top: 20px;
 `;
 
 export const TextArea = styled.div`
@@ -154,4 +153,20 @@ export const PageButton = styled.div`
     &:hover {
         text-decoration: underline;
     }
+`;
+
+export const UploadButton = styled.button`
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    width: 225px;
+    height: 30px;
+    border: 1px solid #E7E7E7;
+    background-color: white;
+    color: #C6BC73;
+    cursor: pointer;
+    margin-top: 15px;
 `;

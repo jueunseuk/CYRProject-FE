@@ -6,6 +6,7 @@ import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { formatDate } from "@/util/dateFormatter";
 import useUserInfo from "@/hooks/localStorage";
 import ComplaintProcess from "@/components/modal/complaintProcess";
+import ComplaintUpload from "@/components/modal/complaintUpload";
 
 const ComplaintBoard = () => {
     const user = useUserInfo();
@@ -33,6 +34,7 @@ const ComplaintBoard = () => {
 
     const handleCloseModal = () => {
         setOpenComplaintProcessModal(false);
+        setOpenComplaintUploadModal(false);
         fetchComplaints();
     };
 
@@ -97,9 +99,13 @@ const ComplaintBoard = () => {
     return (
         <>
             <S.Wrapper>
+                {openComplaintUploadModal && <ComplaintUpload onClose={handleCloseModal} />}
                 {openComplaintProcessModal && <ComplaintProcess onClose={handleCloseModal} complaintId={selectItem.complaintId} />}
                 <S.Title>{boardInfo.label}</S.Title>
                 <S.Description>{boardInfo.description}</S.Description>
+                <S.UploadButton onClick={() => setOpenComplaintUploadModal(true)}>
+                    신고하기
+                </S.UploadButton>
                 <S.TableHeader>
                     <S.TextArea>
                         <S.Text $size={"11px"} $weight={"700"}>{totalElements}</S.Text>

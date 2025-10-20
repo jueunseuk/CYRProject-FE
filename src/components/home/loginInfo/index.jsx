@@ -20,6 +20,7 @@ const LoginInfo = () => {
     const user = useUserInfo();
     const navigate = useNavigate();
     const [userAmount, setUserAmount] = useState({
+        expCnt: 0,
         glass: 0,
         sand: 0,
         temperature: 0
@@ -101,7 +102,7 @@ const LoginInfo = () => {
                         <S.Text $size={"12px"}>경험치</S.Text>
                     </S.HorizontalWrapper>
                     <S.DotLine />
-                    <S.Text $size={"12px"} $weight={"600"}>{userAmount.expCnt}</S.Text>
+                    <S.Text $size={"12px"} $weight={"600"}>{userAmount.expCnt} exp</S.Text>
                 </S.HorizontalWrapper>
                 <S.HorizontalWrapper $jc={"space-between"}>
                     <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>

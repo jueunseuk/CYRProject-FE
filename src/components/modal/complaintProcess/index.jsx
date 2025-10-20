@@ -68,8 +68,8 @@ const ComplaintProcess = ({onClose, complaintId}) => {
                     :
                     <S.Content>
                         <S.Text $size={"20px"} $weight={"700"} style={{textAlign: "center", width: "100%"}}>신고 내용</S.Text>
-                        <S.VerticalWrapper $gap={"10px"}>
-                            <S.Image src={complaintData.captureUrl}/>
+                        <S.VerticalWrapper $gap={"10px"} style={{width: "100%"}}>
+                            {complaintData.captureUrl && <S.Image src={complaintData.captureUrl}/>}
                             <S.HorizontalWrapper $gap={"10px"}>
                                 <S.Text $size={"16px"} $weight={"700"}>제목</S.Text>
                                 <S.Text>{complaintData.title}</S.Text>
@@ -87,6 +87,10 @@ const ComplaintProcess = ({onClose, complaintId}) => {
                                 <S.Text>{complaintData.categoryKorean}</S.Text>
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"10px"}>
+                                <S.Text $size={"16px"} $weight={"700"}>관련 링크</S.Text>
+                                <S.LinkText href={complaintData.link}>{complaintData.link}</S.LinkText>
+                            </S.HorizontalWrapper>
+                            <S.HorizontalWrapper $gap={"10px"}>
                                 <S.Text $size={"16px"} $weight={"700"}>신고 사유</S.Text>
                                 <S.Text>{complaintData.reason}</S.Text>
                             </S.HorizontalWrapper>
@@ -95,7 +99,7 @@ const ComplaintProcess = ({onClose, complaintId}) => {
                                 <S.Text $size={"12px"} $color={getStatusAttribute(complaintData.status).color} style={{backgroundColor:getStatusAttribute(complaintData.status).bg, borderRadius: "5px", padding: "2px 7px"}}>{complaintData.status}</S.Text>
                             </S.HorizontalWrapper>
                             {complaintData.status !== "WAIT" ?
-                                <S.VerticalWrapper $gap={"6px"}>
+                                <S.VerticalWrapper $gap={"10px"}>
                                     <S.HorizontalWrapper $gap={"10px"}>
                                         <S.Text $size={"16px"} $weight={"700"}>처리자</S.Text>
                                         <S.Text>{complaintData.processorNickname}</S.Text>

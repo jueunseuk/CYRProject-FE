@@ -23,6 +23,7 @@ export const Content = styled.div`
     justify-content: center;
     align-items: center;
     gap: 35px;
+    box-shadow: 0px 0px 16px rgb(0, 0, 0, 0.5);
 `;
 
 export const HorizontalWrapper = styled.div`

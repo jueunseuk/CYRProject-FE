@@ -47,8 +47,7 @@ export const ShareResultMessage = styled.span`
     left: 50%;
     transform: translate(-50%, -50%);
     display: ${({$copy}) => $copy ? "" : "none"};
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
     color: white;
     z-index: 999;
     background-color: rgba(0, 0, 0, 0.6);

@@ -158,7 +158,7 @@ const BasicPost = () => {
                                 <S.Profile src={postData.profileImageUrl} onClick={() => handleImageFullScreen()} />
                                 <S.HorizontalWrapper>
                                     <S.Icon src={author} $width={"10px"} $height={"10px"}/>
-                                    <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}}>{postData.userNickname}</S.Text>
+                                    <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${postData.userId}`)}>{postData.userNickname}</S.Text>
                                 </S.HorizontalWrapper>
                                 <S.HorizontalWrapper>
                                     <S.Icon src={empathy} $width={"10px"} $height={"10px"}/>
