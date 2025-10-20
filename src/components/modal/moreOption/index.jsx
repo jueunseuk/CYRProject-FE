@@ -51,7 +51,7 @@ const MoreOption = ({formData, type}) => {
 
     return (
         <>
-            {isComplaintModalOpen && <ComplaintUpload onClose={() => setIsComplaintModalOpen(false)} resourceUrl={location.pathname} resourceType={"post"} />}
+            {isComplaintModalOpen && <ComplaintUpload onClose={() => setIsComplaintModalOpen(false)} resourceUrl={location.pathname} resourceType={type} />}
             {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={type === "gallery" ? formData.galleryId : formData.postId} type={type}/>}
             {isEditModalOpen && (
                 type === "gallery" 
