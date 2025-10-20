@@ -19,6 +19,7 @@ export const Content = styled.div`
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+    box-shadow: 0px 0px 16px rgb(0, 0, 0, 0.5);
 `;
 
 export const Image = styled.img`

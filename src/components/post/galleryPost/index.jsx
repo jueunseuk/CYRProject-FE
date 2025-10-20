@@ -26,7 +26,7 @@ const GalleryPost = () => {
     const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
     const handleNavigateGallery = () => {
-        navigate("/gallery");
+        navigate(-1);
     }
 
     useEffect(() => {
@@ -69,7 +69,7 @@ const GalleryPost = () => {
                             <S.Profile src={formData.profileImageUrl} onClick={() => handleImageFullScreen()} />
                             <S.HorizontalWrapper $gap={"5px"}>
                                 <S.Icon src={author} $width={"10px"} $height={"10px"}/>
-                                <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}}>{formData.author}</S.Text>
+                                <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${formData.authorId}`)}>{formData.author}</S.Text>
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"5px"}>
                                 <S.Icon src={camera} $width={"10px"} $height={"10px"}/>

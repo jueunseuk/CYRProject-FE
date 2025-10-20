@@ -28,9 +28,17 @@ export const Content = styled.div`
 
 export const HorizontalWrapper = styled.div`
     display: flex;
-    justify-content: ${({$justify}) => $justify || "flex-start"};
-    align-items: center;
-    width: 100%;
+    justify-content: ${({$jc}) => $jc || "flex-start"};
+    align-items: ${({$ai}) => $ai || "flex-start"};
+    gap: ${({$gap}) => $gap};
+`;
+
+export const VerticalWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: ${({$jc}) => $jc || "flex-start"};
+    align-items: ${({$ai}) => $ai || "flex-start"};
+    gap: ${({$gap}) => $gap};
 `;
 
 export const Icon = styled.img`
@@ -45,19 +53,10 @@ export const Text = styled.span`
     color: ${({$color}) => $color || "black"};
 `;
 
-export const InputArea = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-`;
-
-export const InputTitle = styled.input.attrs({
-    type: "text",
-    placeholder: "제목은 간단하게 입력해주세요. (최소 5자, 최대 15자)"
+export const InputText = styled.input.attrs({
+    type: "text"
 })`
     width: 440px;
-    height: 40px;
     font-size: 13px;
     padding: 10px;
     background-color: white;
@@ -66,56 +65,17 @@ export const InputTitle = styled.input.attrs({
     outline: none;
 `;
 
-export const InputDesc = styled.textarea.attrs({
-    placeholder: "설명은 되도록 자세히 작성해주세요! (최소 10자)"
-})`
-    width: 440px;
-    min-height: 100px;
+export const Select = styled.select`
+    padding: 10px;
     font-size: 13px;
-    padding: 10px;
-    background-color: white;
-    border: none;
-    border-radius: 8px;
-    resize: vertical;
-    outline: none;
-`;
-
-export const InputDate = styled.input.attrs({
-    type: "date"
-})`
-    width: 130px;
-    height: 40px;
-    padding: 10px;
-    background-color: white;
-    border: none;
+    font-weight: 500;
+    border: 1px solid #CCC;
+    width: 100px;
     border-radius: 8px;
 `;
 
-export const FileArea = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 10px;
-`;
+export const Option = styled.option`
 
-export const FileItem = styled.img`
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    cursor: pointer;
-    object-fit: cover;
-`;
-
-export const FileUploadButton = styled.div`
-    width: 80px;
-    height: 80px;
-    background-image: url(${props => props.$imageUrl});
-    background-size: cover;
-    cursor: pointer;
-`;
-
-export const FileInput = styled.input`
-    display: none;
 `;
 
 export const SubmitButton = styled.button`
@@ -149,6 +109,7 @@ export const TooltipText = styled.span`
     background-color: white;
     color: white;
     padding: 15px;
+    border: 1px solid #9C9589;
     border-radius: 8px;
     white-space: nowrap;
     z-index: 1;
@@ -156,4 +117,44 @@ export const TooltipText = styled.span`
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease;
+`;
+
+export const FileArea = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+`;
+
+export const FileUploadButton = styled.div`
+    width: 80px;
+    height: 80px;
+    background-image: url(${props => props.$imageUrl});
+    background-size: cover;
+    cursor: pointer;
+`;
+
+export const FileItem = styled.img`
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+    object-fit: cover;
+`;
+
+export const FileInput = styled.input`
+    display: none;
+`;
+
+
+export const Button = styled.button`
+    align-self: center;
+    padding: 10px 50px;
+    background-color: ${({$bg}) => $bg};
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;

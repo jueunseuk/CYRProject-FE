@@ -8,7 +8,7 @@ const LineGraph = ({data, type}) => {
             margin={{ top: 10, right: 30, bottom: 50, left: 60 }}
             yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
             curve="linear"
-            axisBottom={{ legend: '날짜', legendOffset: 40 }}
+            axisBottom={{ legend: '날짜', legendOffset: 40, tickRotation: -25, tickSize: 5, tickValues: 'every 1 week' }}
             axisLeft={{ legend: `${type}`, legendOffset: -50 }}
             lineWidth={3}
             lineColor="black"

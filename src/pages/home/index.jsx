@@ -12,6 +12,7 @@ import Link from "@/components/home/link";
 import LatestPost from "@/components/home/latest";
 import GallerySummary from "@/components/home/gallery";
 import useUserInfo from "@/hooks/localStorage";
+import CommunityInfo from "@/components/home/communityInfo";
 
 const Home = () => {
     const user = useUserInfo();
@@ -28,6 +29,7 @@ const Home = () => {
                     )}
                     <Search></Search>
                     <Board></Board>
+                    <CommunityInfo />
                 </S.SidebarWrapper>
                 <S.ContentWrapper>
                     <AnnouncementSummary />

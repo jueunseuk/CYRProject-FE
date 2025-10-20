@@ -4,16 +4,19 @@ import GalleryUpdate from "@/components/modal/galleryUpdate";
 import more from "@/assets/icon/gallery/more.svg";
 import cancel from "@/assets/icon/etc/cancel.svg";
 import useUserInfo from "@/hooks/localStorage";
+import ComplaintUpload from "../complaintUpload";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const MoreOption = ({formData, type}) => {
     const user = useUserInfo();
     const navigate = useNavigate();
+    const location = useLocation();
     const [isOptionOpen, setIsOptionOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isComplaintModalOpen, setIsComplaintModalOpen] = useState(false);
     const [isCopy, setIsCopy] = useState(false);
     const currentUrl = window.location.href;
     
@@ -33,10 +36,6 @@ const MoreOption = ({formData, type}) => {
         setIsDeleteModalOpen(true);
     };
 
-    const handleComplaint = () => {
-        navigate("/complaint");
-    };
-
     const handleCloseModal = () => {
         setIsDeleteModalOpen(false);
         setIsEditModalOpen(false);
@@ -52,6 +51,7 @@ const MoreOption = ({formData, type}) => {
 
     return (
         <>
+            {isComplaintModalOpen && <ComplaintUpload onClose={() => setIsComplaintModalOpen(false)} resourceUrl={location.pathname} resourceType={type} />}
             {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={type === "gallery" ? formData.galleryId : formData.postId} type={type}/>}
             {isEditModalOpen && (
                 type === "gallery" 
@@ -66,7 +66,7 @@ const MoreOption = ({formData, type}) => {
                                     <S.OptionButton onClick={handleDelete}>삭제</S.OptionButton>
                                 </>
                             )}
-                        <S.OptionButton onClick={handleComplaint}>게시글 신고</S.OptionButton>
+                        <S.OptionButton onClick={() => setIsComplaintModalOpen(true)}>게시글 신고</S.OptionButton>
                         <CopyToClipboard text={currentUrl} onCopy={handleShareClick}>
                             <S.OptionButton>링크 복사</S.OptionButton>
                         </CopyToClipboard>

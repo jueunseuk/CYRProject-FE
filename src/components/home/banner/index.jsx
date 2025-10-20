@@ -1,5 +1,6 @@
 import * as S from "./styles";
 import * as A from "@/apis/authentication";
+import * as UI from "@/apis/inventory";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Pagination, Autoplay} from 'swiper/modules';
 import 'swiper/css';
@@ -9,10 +10,12 @@ import bell from "@/assets/icon/user/bell.svg";
 import banner from "@/assets/image/banner.png";
 import useUserInfo from "@/hooks/localStorage";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Banner = () => {
     const user = useUserInfo();
     const navigate = useNavigate();
+    const [imageData, setImageData] = useState([banner]);
 
     const handleNavigateHome = () => {
         window.location.href = '/';
@@ -28,6 +31,21 @@ const Banner = () => {
             console.error('로그아웃 실패', error);
         }
     };
+
+    useEffect(() => {
+        const fetchBannerImages = async () => {
+            try {
+                const response = await UI.getBuyList(2, {});
+                if (response?.data?.length > 0) {
+                    setImageData(() => [banner, ...response.data]);
+                }
+            } catch (error) {
+
+            }
+        };
+
+        fetchBannerImages();
+    }, []);
 
     return (
         <>
@@ -46,11 +64,19 @@ const Banner = () => {
                         <S.Text>|</S.Text>
                         <S.Text onClick={() => navigate("/auth/login")}>회원가입</S.Text>
                     </S.HorizontalWrapper>}
+
                 <Swiper modules={[Pagination, Autoplay]}
-                loop={true}
-                autoplay={{delay: "10000"}}
-                pagination={{clickable: true}}>
-                    <SwiperSlide><S.BannerImage src={banner} onClick={handleNavigateHome}/></SwiperSlide>
+                    loop={imageData.length > 1}
+                    autoplay={{delay: "10000"}}
+                    pagination={{clickable: true}}>
+                        {imageData.map((img, idx) => (
+                            <SwiperSlide key={idx}>
+                                <S.BannerImage
+                                    src={typeof img === "string" ? img : img.imageUrl}
+                                    onClick={handleNavigateHome}
+                                />
+                            </SwiperSlide>
+                        ))}
                 </Swiper>
             </S.Wrapper>
         </>
