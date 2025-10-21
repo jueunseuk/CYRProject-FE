@@ -62,6 +62,7 @@ const BannerSetting = () => {
             
             await UBS.updateBannerSequence(form);
             alert("배경 순서가 저장되었습니다.");
+            fetchAllBanner();
         } catch (error) {
 
         }

@@ -30,8 +30,9 @@ const Guide = () => {
                         <S.SecondListItem>중요한 일정 추가를 원하는 사용자는 건의하기 게시판 이용 바랍니다.</S.SecondListItem>
                     <S.FirstListItem>d. 투표</S.FirstListItem>
                         <S.SecondListItem>커뮤니티와 관련된 주제 및 아티스트 활동에 대한 의견을 모으는 게시판입니다.</S.SecondListItem>
-                        <S.SecondListItem>투표 개시는 운영자 권한 이상만 가능합니다.</S.SecondListItem>
+                        <S.SecondListItem>투표 개시, 종료, 집계 등의 조작은 매니저 권한 이상만 가능합니다.</S.SecondListItem>
                         <S.SecondListItem>투표 참여는 모든 회원에게 열려 있으며, 의견 작성 시 타인의 의견을 존중해주세요.</S.SecondListItem>
+                        <S.SecondListItem>투표 결과는 추후 컨텐츠 기획이나 이벤트 등에 반영될 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem>e. 자유게시판</S.FirstListItem>
                         <S.SecondListItem>자유로운 주제로 이용자 간 다양한 소통을 할 수 있는 공간입니다.</S.SecondListItem>
                         <S.SecondListItem>정치, 종교 등 민감한 주제의 게시글 및 악의적이거나 공격적인 글은 제한됩니다.</S.SecondListItem>
