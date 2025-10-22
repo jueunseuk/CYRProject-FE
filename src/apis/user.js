@@ -15,6 +15,17 @@ export const getUserSidebar = async () => {
     }
 };
 
+export const getLocalInfo = async () => {
+    try {
+        const response = await instance.get(`/user/me/basic`);
+        return response;
+    } catch (error) {
+        const errorCode = error.response.code;
+
+        throw error;
+    }
+};
+
 export const getUserProfileData = async () => {
     try {
         const response = await instance.get(`/user/me`);

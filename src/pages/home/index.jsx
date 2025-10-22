@@ -12,7 +12,7 @@ import Link from "@/components/home/link";
 import LatestPost from "@/components/home/latest";
 import GallerySummary from "@/components/home/gallery";
 import useUserInfo from "@/hooks/localStorage";
-import CommunityInfo from "@/components/home/communityInfo";
+import CommunityInfo from "@/components/home/communityStatistic";
 
 const Home = () => {
     const user = useUserInfo();
