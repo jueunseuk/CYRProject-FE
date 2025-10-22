@@ -3,6 +3,8 @@ import * as BC from "@/common/basic/BasicComponent";
 import * as P from "@/apis/poll";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/util/dateFormatter";
+import checked from "@/assets/icon/etc/checked.svg";
+import unchecked from "@/assets/icon/etc/unchecked.svg";
 import useUserInfo from "@/hooks/localStorage";
 import AggregatePreview from "@/components/modal/aggregatePreview";
 
@@ -13,6 +15,7 @@ const InProgressPoll = () => {
     const [selectedPollOptionId, setSelectedPollOptionId] = useState(null);
     const [openAggregatePreviewModal, setOpenAggregatePreviewModal] = useState(false);
     const [aggregateData, setAggregateData] = useState([]);
+    const [possibleVote, setPossibleVote] = useState(false);
 
     const fetchPollData = async () => {
         try {
@@ -68,12 +71,22 @@ const InProgressPoll = () => {
 
     return (
         <BC.VerticalWrapper>
-            <BC.HorizontalWrapper $jc={"flex-start"} $ai={"flex-end"} style={{width: "100%", borderBottom: "2px solid black"}}>
-                <BC.Text $size={"19px"} $weight={"600"} style={{marginRight: "10px"}}>진행 중인 투표</BC.Text>
-                <BC.Text $size={"15px"} $weight={"600"}>{pollData.length}개</BC.Text>
+            <BC.HorizontalWrapper $jc={"space-between"} $ai={"flex-end"} style={{width: "100%", borderBottom: "2px solid black"}}>
+                <BC.HorizontalWrapper>
+                    <BC.Text $size={"19px"} $weight={"600"} style={{marginRight: "10px"}}>진행 중인 투표</BC.Text>
+                    <BC.Text $size={"15px"} $weight={"600"}>{pollData.length}개</BC.Text>
+                </BC.HorizontalWrapper>
+                <BC.HorizontalWrapper $ai={"center"} $gap={"10px"} style={{cursor: "pointer"}}>
+                    <BC.Text $size={"14px"}>참여 가능한 투표만 보기</BC.Text>
+                    <BC.Icon src={possibleVote ? checked : unchecked} style={{cursor: "pointer"}} $w={"15px"} $h={"15px"}
+                        onClick={() => setPossibleVote(possibleVote ? false : true)}
+                    />
+                </BC.HorizontalWrapper>
             </BC.HorizontalWrapper>
             <BC.HorizontalWrapper $jc={"flex-start"} $ai={"flex-start"} $gap={"23px"} style={{width: "100%", padding: "15px 0", flexWrap: "wrap"}}>
-                {pollData.map((poll, idx) => (
+                {pollData
+                    .filter((poll) => possibleVote ? !poll.isJoin : true)
+                    .map((poll, idx) => (
                     <S.PollItem key={poll.pollId}>
                         <BC.Text $color={"white"} $bg={poll.isJoin ? "#C6BC73" : "#ccc"} $weight={"800"} style={{width: "100%", textAlign: "center", borderRadius: "5px", padding: "5px 0"}}>{poll.isJoin ? "참여 완료" : "미참여"}</BC.Text>
                         <BC.VerticalWrapper>
@@ -88,7 +101,7 @@ const InProgressPoll = () => {
 
                         <BC.VerticalWrapper>
                             {poll.options.map((option, idx) => (
-                                <S.PollOptionItem key={option.pollOptionId} $target={option.pollOptionId === poll.votePollOptionId} $join={poll.isJoin}
+                                <S.PollOptionItem key={option.pollOptionId} $target={option.pollOptionId === poll.votePollOptionId || selectedPollOptionId === option.pollOptionId} $join={poll.isJoin}
                                     onClick={() => handleOptionClick(poll.pollId, option.pollOptionId)}
                                 >
                                     <BC.Text $size={"14px"} $weight={option.pollOptionId === poll.votePollOptionId ? "700" : "500"} style={{width: "20px", textAlign: "center"}}>{idx+1}</BC.Text>
