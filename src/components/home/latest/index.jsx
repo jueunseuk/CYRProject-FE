@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
-import { SkeletonItem } from "@/common/component/Skeleton";
+import { SkeletonItem } from "@/common/skeleton/Skeleton";
 
 const LatestPost = () => {
     const page = 0;
