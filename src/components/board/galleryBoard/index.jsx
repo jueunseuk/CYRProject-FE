@@ -5,7 +5,7 @@ import GalleryUpload from "@/components/modal/galleryUpload";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { useEffect, useState } from "react";
-import { SkeletonItem } from "@/common/component/Skeleton";
+import { SkeletonItem } from "@/common/skeleton/Skeleton";
 import { formatDate } from "@/util/dateFormatter";
 
 const GalleryBoard = () => {

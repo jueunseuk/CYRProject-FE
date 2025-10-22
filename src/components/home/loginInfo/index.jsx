@@ -75,6 +75,11 @@ const LoginInfo = () => {
         navigate("/user/inventory");
     };
 
+    const handleNavigateSands = () => {
+        alert("개발 예정입니다!")
+        // navigate("/user/sands");
+    };
+
     const handleImageFullScreen = () => {
         setIsProfileModalOpen(true);
     };
@@ -102,7 +107,7 @@ const LoginInfo = () => {
                         <S.Text $size={"12px"}>경험치</S.Text>
                     </S.HorizontalWrapper>
                     <S.DotLine />
-                    <S.Text $size={"12px"} $weight={"600"}>{userAmount.expCnt} exp</S.Text>
+                    <S.Text $size={"12px"} $weight={"600"}>{userAmount.expCnt}</S.Text>
                 </S.HorizontalWrapper>
                 <S.HorizontalWrapper $jc={"space-between"}>
                     <S.HorizontalWrapper $gap={"5px"} $jc={"space-between"}>
@@ -146,7 +151,7 @@ const LoginInfo = () => {
                     <S.Icon src={inventory} />
                     <S.Text $size={"11px"} $weight={"600"}>인벤토리</S.Text>
                 </S.ItemBox>
-                <S.ItemBox onClick={() => handleNavigateInventory()} title="추가 예정">
+                <S.ItemBox onClick={() => handleNavigateSands()} title="추가 예정">
                     <S.Icon src={sandbox} />
                     <S.Text $size={"11px"} $weight={"600"}>모래사장</S.Text>
                 </S.ItemBox>

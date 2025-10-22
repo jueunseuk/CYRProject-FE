@@ -29,7 +29,7 @@ export const BOARD_DESCRIPTIONS = {
     },
     poll: {
       label: "투표",
-      description: "유리와 관련된 주제로 다 함께 의견을 나눠봐요. 소소한 투표부터 중요한 의견까지 모아볼 수 있어요!",
+      description: "유리와 관련된 주제에 대해 본인의 의견을 알려주세요. 투표 결과는 추후 컨텐츠 기획이나 이벤트 등에 반영될 수 있습니다.",
     },
     free: {
       label: "자유게시판",

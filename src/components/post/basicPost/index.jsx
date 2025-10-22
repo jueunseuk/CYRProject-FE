@@ -18,7 +18,7 @@ import MoreOptionComment from "@/components/modal/moreOptionComment";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
-import { SkeletonItem } from "@/common/component/Skeleton";
+import { SkeletonItem } from "@/common/skeleton/Skeleton";
 
 const BasicPost = () => {
     const user = useUserInfo();

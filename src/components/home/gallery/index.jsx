@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useUserInfo from "@/hooks/localStorage";
-import { SkeletonItem } from "@/common/component/Skeleton";
+import { SkeletonItem } from "@/common/skeleton/Skeleton";
 
 const GallerySummary = () => {
     const navigate = useNavigate();
