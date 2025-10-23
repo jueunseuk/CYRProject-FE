@@ -26,6 +26,7 @@ import Activity from "@/pages/activity";
 import Setting from "@/pages/setting";
 import Craftshop from "@/pages/craftshop";
 import ScrollToTop from "./common/act/scrollToTop";
+import Chat from "./pages/chat";
 
 export const RouterList = () => [
     {
@@ -140,6 +141,10 @@ export const RouterList = () => [
                     {
                         path: "/setting",
                         element: <Setting />
+                    },
+                    {
+                        path: "/chat",
+                        element: <Chat />
                     },
 
                     // footer
