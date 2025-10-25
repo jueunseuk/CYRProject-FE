@@ -11,6 +11,7 @@ const ScheduleFullScreen = ({onClose, selectedSchedule}) => {
             case "ANNIVERSARY" : return {"color": "#4CAF50", "name": "기념일"}; // green
             case "BIRTHDAY" : return {"color": "#C6BC73", "name": "생일"}; // signiture
             case "RELEASE" : return {"color": "#FF3399", "name": "앨범 발매"}; // pink
+            case "SALE" : return {"color": "#795548", "name": "판매"}; // brown
             case "ETC" : return {"color": "#878787", "name": "기타"}; // gray
         };
     };

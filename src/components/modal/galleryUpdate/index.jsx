@@ -130,7 +130,7 @@ const GalleryUpdate = ({onClose, prevData}) => {
                                 <S.FileItem key={idx} src={url} alt={`preview-${idx}`} onClick={() => handleRemoveFile(idx)} />
                             ))}
                         </S.FileArea>
-                        <S.FileInput type="file" accept="image/png, image/jpg, image/jpeg" ref={fileInputRef} onChange={handleImageChange}/>
+                        <S.FileInput type="file" accept="image/png, image/jpg, image/jpeg" multiple ref={fileInputRef} onChange={handleImageChange}/>
                     </S.InputArea>
                     <S.InputArea>
                         <S.HorizontalWrapper>

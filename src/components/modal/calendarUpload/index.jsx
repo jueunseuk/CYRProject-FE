@@ -135,6 +135,7 @@ const CalendarUpload = ({onClose}) => {
                             <S.Option value="ANNIERSARY">기념일</S.Option>
                             <S.Option value="BIRTHDAY">생일</S.Option>
                             <S.Option value="RELEASE">앨범 발매</S.Option>
+                            <S.Option value="SALE">판매</S.Option>
                             <S.Option value="ETC">기타</S.Option>
                         </S.InputType>
                     </S.InputArea>

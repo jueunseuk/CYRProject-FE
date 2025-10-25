@@ -12,9 +12,7 @@ const Chat = () => {
 
   useEffect(() => {
     // STOMP 클라이언트 생성
-    const baseUrl = window.location.hostname === "localhost"
-                    ? "http://localhost:8080"
-                    : "https://back.petpick.store";
+    const baseUrl = backendUrl;
     const socket = new SockJS(`${baseUrl}/ws/stomp`);
     const stompClient = new Client({
       webSocketFactory: () => socket,

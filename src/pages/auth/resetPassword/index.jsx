@@ -27,7 +27,6 @@ const ResetPassword = () => {
 
     const handleRequestResetpassword = async () => {
         try {
-            console.log(password)
             await A.requestResetPassword(state.email, password);
             alert("비밀번호 변경 완료!\n새로운 비밀번호를 통해 로그인 해주세요.");
 

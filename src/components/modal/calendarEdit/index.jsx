@@ -136,9 +136,10 @@ const CalendarEdit = ({onClose, item}) => {
                             <S.Option value="CONCERT">콘서트</S.Option>
                             <S.Option value="UNIV">대학 행사</S.Option>
                             <S.Option value="FESTIVAL">페스티벌</S.Option>
-                            <S.Option value="ANNIERSARY">기념일</S.Option>
+                            <S.Option value="ANNIVERSARY">기념일</S.Option>
                             <S.Option value="BIRTHDAY">생일</S.Option>
                             <S.Option value="RELEASE">앨범 발매</S.Option>
+                            <S.Option value="SALE">판매</S.Option>
                             <S.Option value="ETC">기타</S.Option>
                         </S.InputType>
                     </S.InputArea>

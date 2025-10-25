@@ -1,0 +1,62 @@
+import * as S from "./styls";
+import * as BC from "@/common/basic/BasicComponent";
+import * as C from "@/apis/chat";
+import cancel from "@/assets/icon/etc/cancel.svg";
+import { useEffect, useState } from "react";
+
+const Plus = ({onClose}) => {
+    const [name, setName] = useState("");
+    const [maxMember, setMaxMember] = useState(2);
+
+    const handleCreateChatRoom = async () => {
+        try {
+            const form = {
+                name, maxMember
+            };
+            
+            const response = await C.createChatRoom(form);
+            alert("채팅방 생성 완료!");
+        } catch (error) {
+
+        }
+    };
+
+    useEffect(() => {
+        if(maxMember < 2) {
+            alert("그룹의 최소 인원은 2명입니다.");
+            setMaxMember(2);
+        }
+        if(maxMember > 30) {
+            alert("그룹의 최대 인원은 30명입니다.");
+            setMaxMember(30);
+        }
+    }, [maxMember]);
+
+    return (
+        <S.Wrapper>
+            <BC.HorizontalWrapper $jc={"flex-end"} style={{width: "100%", padding: "15px"}}>
+                <S.CancelIcon src={cancel} onClick={onClose} />
+            </BC.HorizontalWrapper>
+            <BC.VerticalWrapper $gap={"75px"} style={{height: "100%"}}>
+                <BC.Text $size={"21px"} $weight={"700"} style={{textAlign: "center", cursor: "default"}}>그룹을 만들고 사람들을 초대해보세요!</BC.Text>
+                <BC.VerticalWrapper $gap={"30px"}>
+                    <BC.VerticalWrapper $gap={"7px"}>
+                        <BC.Text $size={"15px"} $weight={"600"}>그룹 이름</BC.Text>
+                        <S.Input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="그룹의 이름을 입력해주세요.." $width={"75%"} />
+                    </BC.VerticalWrapper>
+                    <BC.VerticalWrapper $gap={"7px"}>
+                        <BC.Text $size={"15px"} $weight={"600"}>최대 수용 인원(2 ~ 30)</BC.Text>
+                        <BC.HorizontalWrapper $gap={"15px"}>
+                            <BC.Text $size={"19px"} style={{cursor: "pointer"}} onClick={() => setMaxMember(maxMember-1)}>◀</BC.Text>
+                            <S.Input value={maxMember} onChange={(e) => setMaxMember(e.target.value)} type="text" placeholder="최대 수용 인원을 입력해주세요.." $width={"30%"} style={{textAlign: "center"}} />
+                            <BC.Text $size={"19px"} style={{cursor: "pointer"}} onClick={() => setMaxMember(maxMember+1)}>▶</BC.Text>
+                        </BC.HorizontalWrapper>
+                    </BC.VerticalWrapper>
+                </BC.VerticalWrapper>
+                <S.Button disabled={name.length < 1 || maxMember < 2} onClick={handleCreateChatRoom}>+ 그룹 만들기</S.Button>
+            </BC.VerticalWrapper>
+        </S.Wrapper>
+    );
+};
+
+export default Plus;
