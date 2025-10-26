@@ -38,14 +38,17 @@ const Plus = ({onClose}) => {
                 <S.CancelIcon src={cancel} onClick={onClose} />
             </BC.HorizontalWrapper>
             <BC.VerticalWrapper $gap={"75px"} style={{height: "100%"}}>
-                <BC.Text $size={"21px"} $weight={"700"} style={{textAlign: "center", cursor: "default"}}>그룹을 만들고 사람들을 초대해보세요!</BC.Text>
+                <BC.VerticalWrapper $gap={"px"}>
+                    <BC.Text $size={"15px"} $weight={"700"}>율톡 <BC.Text $size={"12px"} $weight={"500"} style={{display: "inline", fontFamily: "serif", fontStyle: "italic"}}>beta</BC.Text></BC.Text>
+                    <BC.Text $size={"20px"} $weight={"700"} style={{textAlign: "center", cursor: "default"}}>그룹을 만들고 사람들을 초대해보세요!</BC.Text>
+                </BC.VerticalWrapper>
                 <BC.VerticalWrapper $gap={"30px"}>
                     <BC.VerticalWrapper $gap={"7px"}>
                         <BC.Text $size={"15px"} $weight={"600"}>그룹 이름</BC.Text>
                         <S.Input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="그룹의 이름을 입력해주세요.." $width={"75%"} />
                     </BC.VerticalWrapper>
                     <BC.VerticalWrapper $gap={"7px"}>
-                        <BC.Text $size={"15px"} $weight={"600"}>최대 수용 인원(2 ~ 30)</BC.Text>
+                        <BC.Text $size={"15px"} $weight={"600"}>최대 인원</BC.Text>
                         <BC.HorizontalWrapper $gap={"15px"}>
                             <BC.Text $size={"19px"} style={{cursor: "pointer"}} onClick={() => setMaxMember(maxMember-1)}>◀</BC.Text>
                             <S.Input value={maxMember} onChange={(e) => setMaxMember(e.target.value)} type="text" placeholder="최대 수용 인원을 입력해주세요.." $width={"30%"} style={{textAlign: "center"}} />

@@ -47,3 +47,18 @@ export const createChatRoom = async (form) => {
         throw error;
     }
 };
+
+export const exitChatRoom = async (chatRoomId) => {
+    try {
+        const response = await instance.delete(`/chat/room/user/${chatRoomId}`);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert(error.response.message);
+        }
+
+        throw error;
+    }
+};

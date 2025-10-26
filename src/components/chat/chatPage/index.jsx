@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
 import * as C from "@/apis/chat";
+import * as U from "@/apis/user";
 import * as I from "@/apis/image";
 import back from "@/assets/icon/chat/back.svg";
 import link from "@/assets/icon/chat/link.svg";
@@ -14,6 +15,7 @@ import useUserInfo from "@/hooks/localStorage";
 import TextMessage from "./text";
 import SystemMessage from "./system";
 import ImageMessage from "./image";
+import EmoticonMessage from "./emoticon";
 import { useEffect, useRef, useState } from "react";
 
 import SockJS from "sockjs-client";
@@ -34,6 +36,8 @@ const Chatpage = ({chatRoom, onClose}) => {
     const [size, setSize] = useState(30);
     const sort = "createdAt";
     const direction = "DESC";
+    const [emoticonData, setEmoticonData] = useState([]);
+    const [selectEmoticon, setSelectEmoticon] = useState(null);
 
     const [client, setClient] = useState(null);
     const [connected, setConnected] = useState(false);
@@ -52,7 +56,6 @@ const Chatpage = ({chatRoom, onClose}) => {
 
             stompClient.subscribe(`/topic/chatroom.${chatRoom.chatRoomId}`, (message) => {
                 const body = JSON.parse(message.body);
-                setMessageData((prev) => [body, ...prev]);
             });
         };
 
@@ -71,6 +74,12 @@ const Chatpage = ({chatRoom, onClose}) => {
         }
 
         try {
+            const appendMessage = {
+                "type": type,
+                "content": imagePreview,
+                "userId": user.userId
+            };
+            setMessageData((prev) => [appendMessage, ...prev]);
             setImagePreview("");
 
             const form = new FormData();
@@ -80,13 +89,11 @@ const Chatpage = ({chatRoom, onClose}) => {
             return response.data;
         } catch (error) {
             return null;
-        } finally {
-            setFile(null);
         }
     };
 
     const sendMessage = async () => {
-        if (!client || !connected || (currentMessage.trim().length <= 0 && !file)) return;
+        if (!client || !connected || (currentMessage.trim().length <= 0 && !file && !selectEmoticon)) return;
 
         let deltaContent = currentMessage;
         if(type === "IMAGE") {
@@ -94,10 +101,9 @@ const Chatpage = ({chatRoom, onClose}) => {
             if(!imageUrl) return;
             deltaContent = imageUrl;
         } else if(type === "EMOTICON") {
-
+            deltaContent = selectEmoticon;
         }
 
-        console.log(deltaContent)
         const message = {
             "userId": user.userId,
             "content": deltaContent,
@@ -109,6 +115,8 @@ const Chatpage = ({chatRoom, onClose}) => {
             body: JSON.stringify(message),
         });
 
+        setSelectEmoticon(null);
+        setFile(null);
         setCurrentMessage("");
         setType("TEXT");
     };
@@ -123,8 +131,22 @@ const Chatpage = ({chatRoom, onClose}) => {
         }
     };
 
+    const fetchMoreChatMessage = async () => {
+        
+    }
+
+    const fetchUserEmticon = async () => {
+        try {
+            const response = await U.getUserEmoticon();
+            setEmoticonData(response.data);
+        } catch(error) {
+
+        }
+    };
+
     useEffect(() => {
         fetchChatMessage();
+        fetchUserEmticon();
     }, [page, size]);
 
     const handleImageChange = (event) => {
@@ -143,6 +165,33 @@ const Chatpage = ({chatRoom, onClose}) => {
         setType("TEXT")
     };
 
+    const handleClickEmoticon = (emoticon) => {
+        setSelectEmoticon(emoticon.imageUrl);
+        setType("EMOTICON");
+
+        const appendMessage = {
+            "type": "EMOTICON",
+            "content": emoticon.imageUrl,
+            "userId": user.userId,
+            "createdAt": `${new Date().toISOString()}`
+        };
+        setMessageData((prev) => [appendMessage, ...prev]);
+
+        sendMessage();
+
+        setType("TEXT");
+        setImagePreview("");
+    };
+
+    const handleClickExitChatRoom = async () => {
+        try {
+            await C.exitChatRoom(chatRoom.chatRoomId);
+            onClose();
+        } catch(error) {
+
+        }
+    };
+
     const getMessageComponent = (message) => {
         switch (message.type) {
             case "SYSTEM":
@@ -150,16 +199,13 @@ const Chatpage = ({chatRoom, onClose}) => {
             case "IMAGE":
                 return <ImageMessage message={message} isMine={user.userId === message.userId} />;
             case "EMOTICON":
-                return <ImageMessage message={message} isMine={user.userId === message.userId} />;
+                return <EmoticonMessage message={message} isMine={user.userId === message.userId} />;
             case "LINK":
                 return <LinkMessage message={message} isMine={user.userId === message.userId}/>
             default:
                 return <TextMessage message={message} isMine={user.userId === message.userId} />;
         }
     };
-
-    // 이모티콘 간단하게 가져오기 API 만들어서 이모티콘 사용 모달 만들기
-    // 이모티콘 띄우기 컴포넌트 수정
 
     return (
         <S.Wrapper>
@@ -170,7 +216,7 @@ const Chatpage = ({chatRoom, onClose}) => {
                         <BC.Text $size={"18px"} $weight={"700"}>{chatRoom.name}</BC.Text>
                         <BC.Text $size={"13px"} $weight={"500"}>({chatRoom.totalMember})</BC.Text>
                     </BC.HorizontalWrapper>
-                    <S.TopIcon src={exit} title="그룹에서 나가기"/>
+                    <S.TopIcon src={exit} title="그룹에서 나가기" onClick={handleClickExitChatRoom}/>
                 </BC.HorizontalWrapper>
             </BC.VerticalWrapper>
             
@@ -185,6 +231,13 @@ const Chatpage = ({chatRoom, onClose}) => {
                         <S.ImagePreview src={imagePreview} onClick={handleRemoveImage}/>
                     </S.ImageWrapper>
                 )}
+                {type === "EMOTICON" && (
+                    <S.EmoticonWrapper>
+                        {emoticonData.map((emoticon) => (
+                            <S.EmoticonItem key={emoticon.shopItemId} src={emoticon.imageUrl} onClick={() => handleClickEmoticon(emoticon)} title={emoticon.name}/>
+                        ))}
+                    </S.EmoticonWrapper>
+                )}
             </S.ChatMessageWrapper>
 
             <BC.HorizontalWrapper $ai={"center"} $jc={"space-between"} style={{width: "100%", boxShadow: "0 -1px 8px rgba(0, 0, 0, 0.1)", padding: "0 15px"}}>
@@ -193,7 +246,9 @@ const Chatpage = ({chatRoom, onClose}) => {
                 <BC.Icon src={type === "LINK" ? linkS : link} $w={"25px"} style={{cursor: "pointer", padding: "5px"}} title="눌러서 링크 모드 활성화"
                     onClick={() => setType(type === "LINK" ? "TEXT" : "LINK")}
                 />
-                <BC.Icon src={emoticon} $w={"25px"} style={{cursor: "pointer", padding: "5px"}} title="이모티콘" />
+                <BC.Icon src={emoticon} $w={"25px"} style={{cursor: "pointer", padding: "5px"}} title="이모티콘"
+                    onClick={() => {setType(type === "EMOTICON" ? "TEXT" : "EMOTICON")}}
+                />
                 <S.ChatInput value={currentMessage} onChange={(e) => {setCurrentMessage(e.target.value); setType("TEXT")}}/>
                 <BC.Icon src={currentMessage.length > 0 || file ? send : sendd} $w={"25px"} title="전송하기" style={{cursor: "pointer", padding: "3px"}}
                     onClick={sendMessage}

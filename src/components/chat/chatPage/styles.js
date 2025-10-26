@@ -48,7 +48,6 @@ export const ChatMessageWrapper = styled.div`
     justify-content: flex-start;
     width: 100%;
     overflow: auto;
-    padding-bottom: 10px;
 
     &::-webkit-scrollbar {
         width: 7px;
@@ -73,7 +72,7 @@ export const MessageItem = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0 15px;
+    padding: 0 10px 15px 10px;
 `;
 
 export const ChatInput = styled.input.attrs({
@@ -98,7 +97,44 @@ export const ImageWrapper = styled.div`
 `;
 
 export const ImagePreview = styled.img`
+    max-width: 360px;
     height: 150px;
     cursor: pointer;
     object-fit: contain;
+`;
+
+export const EmoticonWrapper = styled.div`
+    position: fixed;
+    width: 360px;
+    height: 225px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: rgba(0, 0, 0, 0.3);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        border: 2px solid transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+`;
+
+export const EmoticonItem = styled.img`
+    width: 90px;
+    height: 90px;
+    padding: 5px;
+    cursor: pointer;
 `;
