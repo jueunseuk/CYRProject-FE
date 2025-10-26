@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
 import * as C from "@/apis/chat";
+import * as I from "@/apis/image";
 import back from "@/assets/icon/chat/back.svg";
 import link from "@/assets/icon/chat/link.svg";
 import linkS from "@/assets/icon/chat/link_select.svg";
@@ -63,12 +64,43 @@ const Chatpage = ({chatRoom, onClose}) => {
         };
     }, []);
 
-    const sendMessage = () => {
-        if (!client || !connected || !currentMessage.trim()) return;
+    const sendImage = async () => {
+        if(!file || !imagePreview) {
+            alert("전송할 이미지가 없습니다.");
+            return;
+        }
 
+        try {
+            setImagePreview("");
+
+            const form = new FormData();
+            form.append("image", file);
+            const response = await I.uploadImage(form);
+
+            return response.data;
+        } catch (error) {
+            return null;
+        } finally {
+            setFile(null);
+        }
+    };
+
+    const sendMessage = async () => {
+        if (!client || !connected || (currentMessage.trim().length <= 0 && !file)) return;
+
+        let deltaContent = currentMessage;
+        if(type === "IMAGE") {
+            const imageUrl = await sendImage();
+            if(!imageUrl) return;
+            deltaContent = imageUrl;
+        } else if(type === "EMOTICON") {
+
+        }
+
+        console.log(deltaContent)
         const message = {
             "userId": user.userId,
-            "content": currentMessage,
+            "content": deltaContent,
             "type": type
         };
 
@@ -108,6 +140,7 @@ const Chatpage = ({chatRoom, onClose}) => {
     const handleRemoveImage = () => {
         setFile(null);
         setImagePreview("");
+        setType("TEXT")
     };
 
     const getMessageComponent = (message) => {
@@ -116,6 +149,8 @@ const Chatpage = ({chatRoom, onClose}) => {
                 return <SystemMessage message={message} />;
             case "IMAGE":
                 return <ImageMessage message={message} isMine={user.userId === message.userId} />;
+            case "EMOTICON":
+                return <ImageMessage message={message} isMine={user.userId === message.userId} />;
             case "LINK":
                 return <LinkMessage message={message} isMine={user.userId === message.userId}/>
             default:
@@ -123,8 +158,6 @@ const Chatpage = ({chatRoom, onClose}) => {
         }
     };
 
-    // 이미지 보낼 때 이미지 post API 후 response를 content로 받아서 send stomp하기
-    // 이미지 띄우기 컴포넌트 수정
     // 이모티콘 간단하게 가져오기 API 만들어서 이모티콘 사용 모달 만들기
     // 이모티콘 띄우기 컴포넌트 수정
 
@@ -162,7 +195,7 @@ const Chatpage = ({chatRoom, onClose}) => {
                 />
                 <BC.Icon src={emoticon} $w={"25px"} style={{cursor: "pointer", padding: "5px"}} title="이모티콘" />
                 <S.ChatInput value={currentMessage} onChange={(e) => {setCurrentMessage(e.target.value); setType("TEXT")}}/>
-                <BC.Icon src={currentMessage.length > 0 ? send : sendd} $w={"25px"} title="전송하기" style={{cursor: "pointer", padding: "3px"}}
+                <BC.Icon src={currentMessage.length > 0 || file ? send : sendd} $w={"25px"} title="전송하기" style={{cursor: "pointer", padding: "3px"}}
                     onClick={sendMessage}
                 />
             </BC.HorizontalWrapper>

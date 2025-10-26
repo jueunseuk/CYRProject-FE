@@ -1,6 +1,6 @@
-import { formatDate } from "@/util/dateFormatter.js";
 import * as S from "./styles.js";
 import * as BC from "@/common/basic/BasicComponent";
+import { formatDate } from "@/util/dateFormatter.js";
 
 const TextMessage = ({ message, isMine }) => {
   return (
