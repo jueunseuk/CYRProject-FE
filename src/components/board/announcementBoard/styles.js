@@ -68,6 +68,7 @@ export const FirstRow = styled.tr`
 export const Row = styled.tr`
     border-bottom: 1px solid #B8B8B8;
     width: 100%;
+    background-color: ${({$fixed}) => $fixed ? "#fff9f9" : "white"};
 
     &:hover {
         background-color: rgb(250, 250, 250);;
