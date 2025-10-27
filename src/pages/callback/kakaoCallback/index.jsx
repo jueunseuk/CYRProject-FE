@@ -29,7 +29,9 @@ const KakaoCallback = () => {
 
             navigate('/');
         } catch (err) {
-            navigate('/');
+            if(err.response.data.code === "AUTH_014") {
+                navigate('/auth/login');
+            } else navigate('/');
         }
     };
     
