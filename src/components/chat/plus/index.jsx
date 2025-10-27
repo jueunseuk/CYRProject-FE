@@ -3,10 +3,15 @@ import * as BC from "@/common/basic/BasicComponent";
 import * as C from "@/apis/chat";
 import cancel from "@/assets/icon/etc/cancel.svg";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Chatpage from "../chatPage";
 
 const Plus = ({onClose}) => {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [maxMember, setMaxMember] = useState(2);
+    const [openChatPageModal, setOpenChatPageModel] = useState(false);
+    const [selectChatRoom, setSelectChatRoom] = useState({});
 
     const handleCreateChatRoom = async () => {
         try {
@@ -16,6 +21,11 @@ const Plus = ({onClose}) => {
             
             const response = await C.createChatRoom(form);
             alert("채팅방 생성 완료!");
+
+            if(response.data) {
+                setSelectChatRoom(response.data);
+                setOpenChatPageModel(true);
+            }
         } catch (error) {
 
         }
@@ -26,14 +36,15 @@ const Plus = ({onClose}) => {
             alert("그룹의 최소 인원은 2명입니다.");
             setMaxMember(2);
         }
-        if(maxMember > 30) {
-            alert("그룹의 최대 인원은 30명입니다.");
-            setMaxMember(30);
+        if(maxMember > 8) {
+            alert("그룹의 최대 인원은 8명입니다.");
+            setMaxMember(8);
         }
     }, [maxMember]);
 
     return (
         <S.Wrapper>
+            {openChatPageModal && <Chatpage chatRoom={selectChatRoom} onClose={() => setOpenChatPageModel(false)} />}
             <BC.HorizontalWrapper $jc={"flex-end"} style={{width: "100%", padding: "15px"}}>
                 <S.CancelIcon src={cancel} onClick={onClose} />
             </BC.HorizontalWrapper>

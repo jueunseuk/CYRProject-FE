@@ -33,14 +33,14 @@ const Chatpage = ({chatRoom, onClose}) => {
     const [type, setType] = useState("TEXT");
     const [messageData, setMessageData] = useState([]);
     const [page, setPage] = useState(0);
-    const [size, setSize] = useState(30);
+    const [size, setSize] = useState(20);
     const sort = "createdAt";
     const direction = "DESC";
     const [emoticonData, setEmoticonData] = useState([]);
     const [selectEmoticon, setSelectEmoticon] = useState(null);
 
-    const [client, setClient] = useState(null);
-    const [connected, setConnected] = useState(false);
+    const clientRef = useRef(null);
+    const connectedRef = useRef(false);
 
     useEffect(() => {
         const socket = new SockJS(`${backendUrl}/ws/stomp`);
@@ -52,15 +52,20 @@ const Chatpage = ({chatRoom, onClose}) => {
 
         stompClient.onConnect = () => {
             console.log("✅ STOMP 연결 성공");
-            setConnected(true);
+            connectedRef.current = true;
 
             stompClient.subscribe(`/topic/chatroom.${chatRoom.chatRoomId}`, (message) => {
                 const body = JSON.parse(message.body);
             });
         };
 
+        stompClient.onDisconnect = () => {
+            connectedRef.current = false;
+            console.log("❌ STOMP 연결 종료");
+        };
+
         stompClient.activate();
-        setClient(stompClient);
+        clientRef.current = stompClient;
 
         return () => {
             if (stompClient.active) stompClient.deactivate();
@@ -93,7 +98,8 @@ const Chatpage = ({chatRoom, onClose}) => {
     };
 
     const sendMessage = async () => {
-        if (!client || !connected || (currentMessage.trim().length <= 0 && !file && !selectEmoticon)) return;
+        const client = clientRef.current;
+        if (!client || !connectedRef.current || (currentMessage.trim().length <= 0 && !file && !selectEmoticon)) return;
 
         let deltaContent = currentMessage;
         if(type === "IMAGE") {
@@ -102,6 +108,14 @@ const Chatpage = ({chatRoom, onClose}) => {
             deltaContent = imageUrl;
         } else if(type === "EMOTICON") {
             deltaContent = selectEmoticon;
+        } else if(type === "TEXT") {
+            const appendMessage = {
+            "type": "TEXT",
+            "content": currentMessage,
+            "userId": user.userId,
+            "createdAt": `${new Date().toISOString()}`
+            };
+            setMessageData((prev) => [appendMessage, ...prev]);
         }
 
         const message = {
@@ -131,10 +145,6 @@ const Chatpage = ({chatRoom, onClose}) => {
         }
     };
 
-    const fetchMoreChatMessage = async () => {
-        
-    }
-
     const fetchUserEmticon = async () => {
         try {
             const response = await U.getUserEmoticon();
@@ -147,7 +157,7 @@ const Chatpage = ({chatRoom, onClose}) => {
     useEffect(() => {
         fetchChatMessage();
         fetchUserEmticon();
-    }, [page, size]);
+    }, []);
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
@@ -207,6 +217,12 @@ const Chatpage = ({chatRoom, onClose}) => {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            sendMessage();
+        }
+    };
+
     return (
         <S.Wrapper>
             <BC.VerticalWrapper>
@@ -249,7 +265,7 @@ const Chatpage = ({chatRoom, onClose}) => {
                 <BC.Icon src={emoticon} $w={"25px"} style={{cursor: "pointer", padding: "5px"}} title="이모티콘"
                     onClick={() => {setType(type === "EMOTICON" ? "TEXT" : "EMOTICON")}}
                 />
-                <S.ChatInput value={currentMessage} onChange={(e) => {setCurrentMessage(e.target.value); setType("TEXT")}}/>
+                <S.ChatInput value={currentMessage} onChange={(e) => {setCurrentMessage(e.target.value); setType("TEXT")}} onKeyDown={handleKeyDown}/>
                 <BC.Icon src={currentMessage.length > 0 || file ? send : sendd} $w={"25px"} title="전송하기" style={{cursor: "pointer", padding: "3px"}}
                     onClick={sendMessage}
                 />

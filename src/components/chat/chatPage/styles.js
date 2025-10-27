@@ -47,6 +47,7 @@ export const ChatMessageWrapper = styled.div`
     flex-direction: column-reverse;
     justify-content: flex-start;
     width: 100%;
+    height: 80%;
     overflow: auto;
 
     &::-webkit-scrollbar {
@@ -72,7 +73,7 @@ export const MessageItem = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0 10px 15px 10px;
+    padding: 0 10px;
 `;
 
 export const ChatInput = styled.input.attrs({
@@ -106,7 +107,7 @@ export const ImagePreview = styled.img`
 export const EmoticonWrapper = styled.div`
     position: fixed;
     width: 360px;
-    height: 225px;
+    max-height: 225px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
