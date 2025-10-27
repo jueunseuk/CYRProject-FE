@@ -22,13 +22,31 @@ const Login = () => {
         window.location.href = naverLoginUrl;
     };
 
+    const handleNavigateGoogleLogin = () => {
+        const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+        const redirectUri = import.meta.env.VITE_GOOGLE_REDIRECT_URI;
+
+        const googleLoginUrl =`https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile&access_type=offline&include_granted_scopes=true`;
+
+        window.location.href = googleLoginUrl;
+    };
+
+    const handleNavigateKakaoLogin = () => {
+        const clientId = import.meta.env.VITE_KAKAO_CLIENT_ID;
+        const redirectUri = import.meta.env.VITE_KAKAO_REDIRECT_URI;
+
+        const kakaoLoginUrl = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}`
+
+        window.location.href = kakaoLoginUrl;
+    };
+
     return (
         <>
             <S.Logo />
             <S.LoginMethod >
-                <S.KakaoLoginButton>카카오로 로그인하기</S.KakaoLoginButton>
+                <S.KakaoLoginButton onClick={handleNavigateKakaoLogin}>카카오로 로그인하기</S.KakaoLoginButton>
                 <S.NaverLoginButton onClick={handleNavigateNaverLogin}>네이버로 로그인하기</S.NaverLoginButton>
-                <S.GoogleLoginButton>구글로 로그인하기</S.GoogleLoginButton>
+                <S.GoogleLoginButton onClick={handleNavigateGoogleLogin}>구글로 로그인하기</S.GoogleLoginButton>
                 <S.EmailLoginButton onClick={handleNavigateEmailLogin}>이메일로 로그인하기</S.EmailLoginButton>
             </S.LoginMethod>
             <S.SignupArea>
