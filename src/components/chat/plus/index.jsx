@@ -9,7 +9,7 @@ import Chatpage from "../chatPage";
 const Plus = ({onClose}) => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
-    const [maxMember, setMaxMember] = useState(2);
+    const [maxMember, setMaxMember] = useState(3);
     const [openChatPageModal, setOpenChatPageModel] = useState(false);
     const [selectChatRoom, setSelectChatRoom] = useState({});
 
@@ -32,9 +32,9 @@ const Plus = ({onClose}) => {
     };
 
     useEffect(() => {
-        if(maxMember < 2) {
-            alert("그룹의 최소 인원은 2명입니다.");
-            setMaxMember(2);
+        if(maxMember < 3) {
+            alert("그룹의 최소 인원은 3명입니다.");
+            setMaxMember(3);
         }
         if(maxMember > 8) {
             alert("그룹의 최대 인원은 8명입니다.");

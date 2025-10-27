@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
     height: 100%;
     border-radius: 10px;
     overflow: auto;
+    padding: 15px 0;
 
     &::-webkit-scrollbar {
         width: 7px;
@@ -50,4 +51,15 @@ export const UserItem = styled.div`
     &:hover .hover {
         visibility: visible;
     }    
+`;
+
+export const ChatPlusIcon = styled.img`
+    width: 30px;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &: hover {
+        background-color: #ddd;
+    }
 `;

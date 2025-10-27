@@ -47,11 +47,9 @@ const Chatpage = ({chatRoom, onClose}) => {
         const stompClient = new Client({
             webSocketFactory: () => socket,
             reconnectDelay: 5000,
-            debug: (str) => console.log(str),
         });
 
         stompClient.onConnect = () => {
-            console.log("✅ STOMP 연결 성공");
             connectedRef.current = true;
 
             stompClient.subscribe(`/topic/chatroom.${chatRoom.chatRoomId}`, (message) => {
@@ -61,7 +59,6 @@ const Chatpage = ({chatRoom, onClose}) => {
 
         stompClient.onDisconnect = () => {
             connectedRef.current = false;
-            console.log("❌ STOMP 연결 종료");
         };
 
         stompClient.activate();

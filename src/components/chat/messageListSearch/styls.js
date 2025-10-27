@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
     height: 100%;
     border-radius: 10px;
     overflow: auto;
+    padding: 15px 0;
 
     &::-webkit-scrollbar {
         width: 7px;
@@ -26,5 +27,31 @@ export const Wrapper = styled.div`
 
     &::-webkit-scrollbar-thumb:hover {
         background-color: rgba(0, 0, 0, 0.4);
+    }
+`;
+
+export const ChatListItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    padding: 10px 20px;
+    gap: 10px;
+    cursor: pointer;
+
+    &: hover {
+        background-color: #fafafa;
+    }
+`;
+
+export const ChatPlusIcon = styled.img`
+    width: 30px;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &: hover {
+        background-color: #ddd;
     }
 `;

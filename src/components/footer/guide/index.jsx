@@ -21,7 +21,7 @@ const Guide = () => {
                     <S.FirstListItem>a. 공지사항</S.FirstListItem>
                         <S.SecondListItem>운영자가 커뮤니티 내 주요 공지 및 안내 사항을 전달하는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>커뮤니티 운영자 이상의 권한을 가진 사람만 작성 가능합니다.</S.SecondListItem>
-                    <S.FirstListItem>b. 이벤트</S.FirstListItem>
+                    <S.FirstListItem>b. 이벤트(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>커뮤니티에서 진행하는 각종 이벤트 소식을 확인하고 참여할 수 있는 공간입니다.</S.SecondListItem>
                         <S.SecondListItem>이벤트 참여 방법 및 상세 내용을 숙지 후 참여 바랍니다.</S.SecondListItem>
                         <S.SecondListItem>이벤트 당첨자의 경우 가입한 이메일로 별도의 안내가 이루어집니다.</S.SecondListItem>
@@ -62,6 +62,7 @@ const Guide = () => {
                         <S.SecondListItem>공연 중 촬영된 사진이나 영상 공유 시 타인의 초상권을 보호해주세요.</S.SecondListItem>
                     <S.FirstListItem>m. 굿즈 후기</S.FirstListItem>
                         <S.SecondListItem>가수 최유리와 관련된 굿즈 상품의 구매 후기 및 사용 후기를 공유하는 게시판입니다.</S.SecondListItem>
+                        <S.SecondListItem>CD 앨범이나 LP판도 굿즈로 취급합니다.</S.SecondListItem>
                         <S.SecondListItem>상세한 사진 및 사용감 등을 함께 작성하면 다른 이용자들에게 많은 도움이 됩니다.</S.SecondListItem>
                     <S.FirstListItem>n. 건의하기</S.FirstListItem>
                         <S.SecondListItem>커뮤니티 개선 및 발전을 위한 아이디어와 피드백을 제출할 수 있는 게시판입니다.</S.SecondListItem>
@@ -108,13 +109,16 @@ const Guide = () => {
                     <S.FirstListItem>g. 율무위키(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>Archive형 백과사전으로 가수 최유리에 관한 모든 공식/비공식 자료가 정리되어 있습니다.</S.SecondListItem>
                         <S.SecondListItem>율무위키 속 AI 율랑이에게 물어보면 직접 찾지 않아도 편하게 궁금한 내용을 알 수 있습니다.</S.SecondListItem>
-                    <S.FirstListItem>h. 율톡(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem>h. 율톡 <S.Text $size={"12px"} $weight={"700"} style={{display: "inline", fontFamily: "serif", fontStyle: "italic"}}>beta</S.Text></S.FirstListItem>
                         <S.SecondListItem>커뮤니티에 접속한 유저끼리 실시간으로 대화를 주고 받을 수 있는 서비스입니다.</S.SecondListItem>
+                        <S.SecondListItem>자유롭게 채팅 그룹을 만들고, 참여하거나 나갈 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>원하는 상대를 지정해서 1대1 채팅을 만들 수도 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>그룹의 최소 인원은 3명, 최대 인원은 8명입니다.</S.SecondListItem>
                     <S.FirstListItem>i. 율모티콘</S.FirstListItem>
-                        <S.SecondListItem>율모티콘이란 가수 최유리님을 바탕으로 AI를 이용해 생성한 이모티콘입니다.</S.SecondListItem>
+                        <S.SecondListItem>율모티콘이란 AI를 이용해 가수 최유리님을 모티브로 제작한 이모티콘입니다.</S.SecondListItem>
                         <S.SecondListItem>본 커뮤니티에는 생성형 AI로 제작한 가수 최유리님의 이모티콘이 있습니다.</S.SecondListItem>
                         <S.SecondListItem>이모티콘부터 숨겨진 업적을 달성하거나, 유리상점 등에서 이모티콘을 구매해 사용할 수 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>율모티콘은 출석, 게시글, 댓글, 율톡에 한해 사용 가능하고 추후 확장될 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>율모티콘은 출석, 댓글, 율톡에 한해 사용 가능하고 추후 확장될 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem>j. 유리공방</S.FirstListItem>
                         <S.SecondListItem>출석을 통해 화로의 온도를 높이고, 여러 활동(게시글 작성, 댓글 등)을 통해 모래알을 모을 수 있습니다.</S.SecondListItem>
                             <S.ThirdListItem>- 활동별 모래알 획득 수치는 <S.Link href="#sand" style={{fontWeight: "600"}}>III.b.모래알</S.Link>을 참고해주세요.</S.ThirdListItem>
@@ -177,7 +181,7 @@ const Guide = () => {
                             </S.Row>
                             <S.Row>
                                 <S.Column>응원</S.Column>
-                                <S.Column>+2</S.Column>
+                                <S.Column>+1</S.Column>
                                 <S.Column>하루 한 번</S.Column>
                             </S.Row>
                             <S.Row>

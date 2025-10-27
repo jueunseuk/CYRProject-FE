@@ -29,7 +29,7 @@ const ChatModal = ({onClose}) => {
                 <BC.VerticalWrapper>
                     <BC.HorizontalWrapper $jc={"space-between"} $ai={"center"} style={{width: "100%", padding: "10px", borderBottom: "1px solid #ddd"}}>
                         <S.CancelIcon src={cancel} style={{visibility: "hidden"}}/>
-                        <BC.Text $size={"18px"} $weight={"700"}>율톡 <BC.Text $size={"15px"} $weight={"500"} style={{display: "inline", fontFamily: "serif", fontStyle: "italic"}}>beta</BC.Text></BC.Text>
+                        <BC.Text $size={"18px"} $weight={"700"} $color={"#1CA6FC"}>율톡 <BC.Text $size={"15px"} $weight={"500"} $color={"#1CA6FC"} style={{display: "inline", fontFamily: "serif", fontStyle: "italic"}}>beta</BC.Text></BC.Text>
                         <S.CancelIcon src={cancel} onClick={onClose} />
                     </BC.HorizontalWrapper>
                 </BC.VerticalWrapper>

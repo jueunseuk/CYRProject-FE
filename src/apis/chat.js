@@ -18,6 +18,21 @@ export const getChatRoomList = async () => {
     }
 };
 
+export const getOtherChatRoomList = async () => {
+    try {
+        const response = await instance.get(`/chat/room/search`);
+        return response;
+    } catch (error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert(error.response.message);
+        }
+
+        throw error;
+    }
+};
+
 export const getChatMessageList = async (chatRoomId, form) => {
     try {
         const response = await instance.get(`/chat/message/${chatRoomId}`, {params: form});
@@ -38,10 +53,29 @@ export const createChatRoom = async (form) => {
         const response = await instance.post(`/chat/room`, form);
         return response;
     } catch (error) {
-        const errorCode = error.response.code;
+        const errorCode = error.response.data.code;
+        
+        if(errorCode === "USER_001") {
+            alert(error.response.data.message);
+        }
+
+        throw error;
+    }
+};
+
+export const joinChatRoom = async (chatRoomId) => {
+    try {
+        const response = await instance.post(`/chat/room/user/${chatRoomId}`);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.data.code;
         
         if(errorCode === "USER_001") {
             alert(error.response.message);
+        } else if(errorCode === "CUR_002") {
+            alert(error.response.data.message)
+        } else if(errorCode === "CUR_003") {
+            alert(error.response.data.message)
         }
 
         throw error;
