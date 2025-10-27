@@ -23,13 +23,32 @@ export const Text = styled.div`
     background-color: ${({$bg}) => $bg || "none"};
 `;
 
+export const LinkText = styled.a`
+    font-size: ${({$size}) => $size || "13px"};
+    font-weight: ${({$weight}) => $weight || "400"};
+    color: ${({$color}) => $color || "black"};
+    text-decoration: underline;
+`;
+
 export const Image = styled.img`
     width: ${({$w}) => $w};
     height: ${({$h}) => $h};
-    object-fit: contain;
+    object-fit: ${({$fit}) => $fit || "containt"};
 `;
 
 export const Icon = styled.img`
     width: ${({$w}) => $w};
     height: ${({$h}) => $h};
+`;
+
+export const Contour = styled.div`
+    width: 100%;
+    height: 1px;
+    background-color: ${({$bg}) => $bg};
+`;
+
+export const Input = styled.input`
+    width: ${({$w}) => $w};
+    height: ${({$h}) => $h};
+    outline: none;
 `;

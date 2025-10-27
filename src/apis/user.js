@@ -194,3 +194,33 @@ export const postConvertGlass = async () => {
         throw error;
     }
 };
+
+export const getUserList = async () => {
+    try {
+        const response = await instance.get(`/user/list`);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert("해당 사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};
+
+export const getUserEmoticon = async () => {
+    try {
+        const response = await instance.get(`/user/emoticon`);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert("해당 사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};

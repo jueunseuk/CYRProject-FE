@@ -11,6 +11,7 @@ const MyImages = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const page = Number(searchParams.get("page")) || 1;
     const [sort, setSort] = useState("createdAt");
+    const [size, setSize] = useState(32);
     const [totalPage, setTotalPage] = useState(0);
     const [totalElements, setTotalElements] = useState(0);
     const [images, setImages] = useState([]);
@@ -30,7 +31,7 @@ const MyImages = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await U.getUserImages(user.userId, {page: page > 0 ? page - 1 : 0, sort});
+                const response = await U.getUserImages(user.userId, {page: page > 0 ? page - 1 : 0, sort, size});
                 setImages(response.data.content);
                 setTotalElements(response.data.totalElements);
                 setTotalPage(response.data.totalPages);

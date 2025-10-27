@@ -20,6 +20,12 @@ const UserSetting = ({user}) => {
             </S.SettingWrapper>
             <S.SettingWrapper>
                 <S.VerticalWrapper>
+                    <S.Text $size={"16px"} $weight={"600"}>채팅 설정</S.Text>
+                    <S.Text $size={"13px"} style={{marginTop: "5px"}}>율톡 서비스에 관련된 설정을 할 수 있습니다.</S.Text>
+                </S.VerticalWrapper>
+            </S.SettingWrapper>
+            <S.SettingWrapper>
+                <S.VerticalWrapper>
                     <S.Text $size={"16px"} $weight={"600"}>계정 설정</S.Text>
                     <S.Text $size={"13px"} style={{marginTop: "5px"}}>커뮤니티에서 계정을 관리할 수 있습니다.</S.Text>
                 </S.VerticalWrapper>

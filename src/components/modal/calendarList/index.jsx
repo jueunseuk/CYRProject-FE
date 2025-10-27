@@ -117,29 +117,6 @@ const CalendarList = ({onClose}) => {
         }
     }
 
-    const requestCalendarEdit = async (calendarId) => {
-        try {
-            await C.deleteCalendar({calendarId});
-            alert("일정 삭제 완료!");
-            
-            setScheduleMap((prev) => {
-            const newMap = { ...prev };
-            for (const day in newMap) {
-                newMap[day] = newMap[day].filter(
-                    (item) => item.calendarId !== calendarId
-                );
-
-                if (newMap[day].length === 0) {
-                    delete newMap[day];
-                }
-            }
-            return newMap;
-        });
-        } catch(error) {
-
-        }
-    }
-
     const getScheduleColor = (type) => {
         switch(type) {
             case "BROADCAST" : return "#F44336"; // red
@@ -150,7 +127,8 @@ const CalendarList = ({onClose}) => {
             case "ANNIVERSARY" : return "#4CAF50"; // green
             case "BIRTHDAY" : return "#C6BC73"; // signiture
             case "RELEASE" : return "#FF3399"; // pink
-            case "ETC" : return "#878787"; // gray
+            case "SALE" : return "#795548"; // brown
+            case "ETC" : return "#999999ff"; // gray
         };
     };
     

@@ -87,7 +87,8 @@ const CalendarComponent = () => {
             case "ANNIVERSARY" : return "#4CAF50"; // green
             case "BIRTHDAY" : return "#C6BC73"; // signiture
             case "RELEASE" : return "#FF3399"; // pink
-            case "ETC" : return "#878787"; // gray
+            case "SALE" : return "#795548"; // brown
+            case "ETC" : return "#999999ff"; // gray
         };
     };
 
@@ -136,6 +137,10 @@ const CalendarComponent = () => {
                     <S.Legend>
                         <S.Circle $bg={"#FF3399"} />
                         <S.Text $size={"13px"} $weight={"500"}>앨범 발매</S.Text>
+                    </S.Legend>
+                    <S.Legend>
+                        <S.Circle $bg={"#795548"} />
+                        <S.Text $size={"13px"} $weight={"500"}>판매</S.Text>
                     </S.Legend>
                     <S.Legend>
                         <S.Circle $bg={"#878787"} />
