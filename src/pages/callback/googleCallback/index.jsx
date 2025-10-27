@@ -16,7 +16,7 @@ const GoogleCallback = () => {
 
     const handleGoogleLogin = async (code) => {
         try {
-            const response = await A.requestNaverUserInformation(code);
+            const response = await A.requestGoogleUserInformation(code);
 
             localStorage.setItem("userInfo", JSON.stringify({
                 userId: response.data.userId,
