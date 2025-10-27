@@ -10,13 +10,13 @@ const KakaoCallback = () => {
         const code = searchParams.get("code");
 
         if (code) {
-            handleKakaoLogin(state);
+            handleKakaoLogin(code);
         }
     }, []);
 
-    const handleKakaoLogin = async (state) => {
+    const handleKakaoLogin = async (code) => {
         try {
-            const response = await A.requestNaverUserInformation(state);
+            const response = await A.requestNaverUserInformation(code);
 
             localStorage.setItem("userInfo", JSON.stringify({
                 userId: response.data.userId,
