@@ -2,22 +2,21 @@ import * as A from "@/apis/authentication";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-const NaverCallback = () => {
+const KakaoCallback = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         const code = searchParams.get("code");
-        const state = searchParams.get("state");
 
         if (code) {
-            handleNaverLogin(code, state);
+            handleKakaoLogin(state);
         }
     }, []);
 
-    const handleNaverLogin = async (code, state) => {
+    const handleKakaoLogin = async (state) => {
         try {
-            const response = await A.requestNaverUserInformation(code, state);
+            const response = await A.requestNaverUserInformation(state);
 
             localStorage.setItem("userInfo", JSON.stringify({
                 userId: response.data.userId,
@@ -35,6 +34,6 @@ const NaverCallback = () => {
     };
     
     return <div></div>;
-};
+}
 
-export default NaverCallback;
+export default KakaoCallback;

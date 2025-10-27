@@ -15,6 +15,8 @@ import WrongPage from "@/pages/wrong/WrongPage";
 import ResetPassword from "@/pages/auth/resetPassword";
 import HomeLayout from "@/components/layout/HomeLayout";
 import NaverCallback from "@/pages/callback/naverCallback";
+import GoogleCallback from "@/pages/callback/googleCallback";
+import KakaoCallback from "@/pages/callback/kakaoCallback";
 import PostList from "@/pages/posts";
 import Post from "@/pages/post";
 import FooterPage from "@/pages/footerPage";
@@ -72,6 +74,14 @@ export const RouterList = () => [
                 path: "callback-naver",
                 element: <NaverCallback />
             },
+            {
+                path: "callback-google",
+                element: <GoogleCallback />
+            },
+            {
+                path: "callback-kakao",
+                element: <KakaoCallback />
+            }
         ]
     },
     {

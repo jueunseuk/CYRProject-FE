@@ -162,6 +162,56 @@ export const requestNaverUserInformation = async (code, state) => {
     }
 }
 
+export const requestGoogleUserInformation = async (code) => {
+    try {
+        const response = await axios.post(`${backendUrl}/auth/google/callback`, {code}, {withCredentials: true});
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.data.code;
+
+            if(errorCode === 'AUTH_010') {
+                alert("유효하지 않은 네이버 인증 코드입니다.");
+            } else if(errorCode === 'AUTH_001') {
+                alert("네이버에서 사용자의 정보를 불러오는데 실패했습니다.");
+            } else if(errorCode === 'AUTH_006') {
+                alert("현재 활동 중인 사용자가 아닙니다.");
+            } else if(errorCode === 'AUTH_012') {
+                alert("CSRF Exception 발생");
+            }
+
+            throw error;
+        } else {
+            alert("서버가 원활하지 않습니다.\n 다시 시도해주세요.");
+        }
+    }
+}
+
+export const requestKakaoUserInformation = async (code) => {
+    try {
+        const response = await axios.post(`${backendUrl}/auth/kakao/callback`, {code}, {withCredentials: true});
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.data.code;
+
+            if(errorCode === 'AUTH_010') {
+                alert("유효하지 않은 네이버 인증 코드입니다.");
+            } else if(errorCode === 'AUTH_001') {
+                alert("네이버에서 사용자의 정보를 불러오는데 실패했습니다.");
+            } else if(errorCode === 'AUTH_006') {
+                alert("현재 활동 중인 사용자가 아닙니다.");
+            } else if(errorCode === 'AUTH_012') {
+                alert("CSRF Exception 발생");
+            }
+
+            throw error;
+        } else {
+            alert("서버가 원활하지 않습니다.\n 다시 시도해주세요.");
+        }
+    }
+}
+
 export const requestLogout = () => {
     return instance.post("/auth/logout");
 }
