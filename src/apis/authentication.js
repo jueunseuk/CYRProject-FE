@@ -177,7 +177,7 @@ export const requestGoogleUserInformation = async (code) => {
             } else if(errorCode === 'AUTH_006') {
                 alert("현재 활동 중인 사용자가 아닙니다.");
             } else if(errorCode === 'AUTH_012') {
-                alert("CSRF Exception 발생");
+                alert("Google CSRF?");
             }
 
             throw error;
@@ -202,7 +202,7 @@ export const requestKakaoUserInformation = async (code) => {
             } else if(errorCode === 'AUTH_006') {
                 alert("현재 활동 중인 사용자가 아닙니다.");
             } else if(errorCode === 'AUTH_012') {
-                alert("CSRF Exception 발생");
+                alert("Kakao CSRF?");
             }
 
             throw error;

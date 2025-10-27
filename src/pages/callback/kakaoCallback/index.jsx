@@ -16,7 +16,7 @@ const KakaoCallback = () => {
 
     const handleKakaoLogin = async (code) => {
         try {
-            const response = await A.requestNaverUserInformation(code);
+            const response = await A.requestKakaoUserInformation(code);
 
             localStorage.setItem("userInfo", JSON.stringify({
                 userId: response.data.userId,
