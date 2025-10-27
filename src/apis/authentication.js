@@ -147,12 +147,14 @@ export const requestNaverUserInformation = async (code, state) => {
 
             if(errorCode === 'AUTH_010') {
                 alert("유효하지 않은 네이버 인증 코드입니다.");
-            } else if(errorCode === 'AUTH_001') {
+            } else if(errorCode === 'AUTH_011') {
                 alert("네이버 서버에서 사용자의 정보를 불러오는데 실패했습니다.");
             } else if(errorCode === 'AUTH_006') {
                 alert("현재 활동 중인 사용자가 아닙니다.");
             } else if(errorCode === 'AUTH_012') {
                 alert("Naver CSRF 발생\n커뮤니티 관리자에게 문의 바랍니다.");
+            } else if(errorCode === 'AUTH_014') {
+                alert(error.response.data.message);
             }
 
             throw error;
@@ -172,12 +174,14 @@ export const requestGoogleUserInformation = async (code) => {
 
             if(errorCode === 'AUTH_010') {
                 alert("유효하지 않은 구글 인증 코드입니다.");
-            } else if(errorCode === 'AUTH_001') {
+            } else if(errorCode === 'AUTH_011') {
                 alert("구글 서버에서 사용자의 정보를 불러오는데 실패했습니다.");
             } else if(errorCode === 'AUTH_006') {
                 alert("현재 활동 중인 사용자가 아닙니다.");
             } else if(errorCode === 'AUTH_012') {
                 alert("Google CSRF 발생\n커뮤니티 관리자에게 문의 바랍니다.");
+            } else if(errorCode === 'AUTH_014') {
+                alert(error.response.data.message);
             }
 
             throw error;
@@ -197,12 +201,14 @@ export const requestKakaoUserInformation = async (code) => {
 
             if(errorCode === 'AUTH_010') {
                 alert("유효하지 않은 카카오 인증 코드입니다.");
-            } else if(errorCode === 'AUTH_001') {
+            } else if(errorCode === 'AUTH_011') {
                 alert("카카오 서버에서 사용자의 정보를 불러오는데 실패했습니다.");
             } else if(errorCode === 'AUTH_006') {
                 alert("현재 활동 중인 사용자가 아닙니다.");
             } else if(errorCode === 'AUTH_012') {
                 alert("Kakao CSRF 발생\n커뮤니티 관리자에게 문의 바랍니다.");
+            } else if(errorCode === 'AUTH_014') {
+                alert(error.response.data.message);
             }
 
             throw error;
