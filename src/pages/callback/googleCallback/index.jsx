@@ -10,13 +10,13 @@ const GoogleCallback = () => {
         const code = searchParams.get("code");
 
         if (code) {
-            handleGoogleLogin(state);
+            handleGoogleLogin(code);
         }
     }, []);
 
-    const handleGoogleLogin = async (state) => {
+    const handleGoogleLogin = async (code) => {
         try {
-            const response = await A.requestNaverUserInformation(state);
+            const response = await A.requestNaverUserInformation(code);
 
             localStorage.setItem("userInfo", JSON.stringify({
                 userId: response.data.userId,
