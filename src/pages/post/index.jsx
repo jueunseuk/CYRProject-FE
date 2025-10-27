@@ -11,6 +11,7 @@ import BasicPost from "@/components/post/basicPost";
 import GalleryPost from "@/components/post/galleryPost";
 import EventPost from "@/components/post/eventPost";
 import WrongPage from "../wrong/WrongPage";
+import AnnouncementPost from "@/components/post/announcementPost";
 import { useEffect } from "react";
 
 const Post = () => {
@@ -31,7 +32,7 @@ const Post = () => {
             case "popular": return <BasicPost />;
             case "attendance": return <BasicPost />;
             case "gallery": return <GalleryPost />;
-            case "announcement": return <BasicPost />;
+            case "announcement": return <AnnouncementPost />;
             case "event": return <EventPost />;
             case "calendar": return <BasicPost />;
             case "poll": return <BasicPost />;

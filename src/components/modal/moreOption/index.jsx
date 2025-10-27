@@ -27,6 +27,8 @@ const MoreOption = ({formData, type}) => {
     const handleEdit = () => {
         if (type === "gallery") {
             setIsEditModalOpen(true);
+        } else if(type === "announcement") {
+            navigate(`/edit/announcement/${formData.announcementId}`);
         } else {
             navigate(`/edit/post/${formData.postId}`);
         }
@@ -49,10 +51,20 @@ const MoreOption = ({formData, type}) => {
         }, 2000);
     }
 
+    const getId = (type) => {
+        if (type === "gallery") {
+            return formData.galleryId;
+        } else if(type === "announcement") {
+            return formData.announcementId;
+        } else {
+            return formData.postId;
+        }
+    }
+
     return (
         <>
             {isComplaintModalOpen && <ComplaintUpload onClose={() => setIsComplaintModalOpen(false)} resourceUrl={location.pathname} resourceType={type} />}
-            {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={type === "gallery" ? formData.galleryId : formData.postId} type={type}/>}
+            {isDeleteModalOpen && <DeleteModal onClose={handleCloseModal} id={getId(type)} type={type}/>}
             {isEditModalOpen && (
                 type === "gallery" 
                     ? <GalleryUpdate onClose={handleCloseModal} prevData={formData} /> : null)}

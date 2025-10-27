@@ -29,7 +29,7 @@ export const Table = styled.table`
 
 export const Row = styled.tr`
     border-top: 1px solid #B8B8B8;
-    background-color: #FFF9F9;
+    background-color: #fff9f9;
 
     &:hover {
         background-color: white;

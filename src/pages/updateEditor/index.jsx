@@ -9,6 +9,7 @@ import Footer from "@/components/home/footer";
 import useUserInfo from "@/hooks/localStorage";
 import WrongPage from "../wrong/WrongPage";
 import PostUpdateEditor from "@/components/editor/postUpdateEditor";
+import AnnouncementUpdateEditor from "@/components/editor/announcementUpdateEditor";
 
 const UpdateEditor = () => {
     const user = useUserInfo();
@@ -17,6 +18,7 @@ const UpdateEditor = () => {
     const getBoardComponent = () => {
         switch(type) {
             case "post": return <PostUpdateEditor />;
+            case "announcement": return <AnnouncementUpdateEditor />;
             default : return <WrongPage />;
         }
     };

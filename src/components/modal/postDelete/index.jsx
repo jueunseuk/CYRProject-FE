@@ -1,4 +1,5 @@
 import * as G from "@/apis/gallery";
+import * as A from "@/apis/announcement";
 import * as P from "@/apis/post";
 import * as C from "@/apis/comment";
 import * as S from "./styles";
@@ -16,6 +17,9 @@ const DeleteModal = ({onClose, id, type}) => {
             }  else if(type === "comment") {
                 await C.deleteComment(id);
                 window.location.reload();
+            } else if(type === "announcement") {
+                await A.deleteAnnouncement(id);
+                navigate("/announcement");
             } else {
                 await P.deletePost(id);
                 alert("게시글을 성공적으로 삭제했습니다.\n해당 게시판으로 이동합니다.");
