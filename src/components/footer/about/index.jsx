@@ -30,19 +30,23 @@ const About = () => {
                     <S.FirstListItem>Design</S.FirstListItem>
                     <S.SecondListItem>Figma</S.SecondListItem>
                     <S.FirstListItem>Frontend</S.FirstListItem>
-                    <S.SecondListItem>React, Javascript, Recoil, React Query, Vite, Styled Component, Axios, Web Socket</S.SecondListItem>
+                    <S.SecondListItem>React, Javascript, Recoil, React Query, Vite, Styled Component</S.SecondListItem>
                     <S.FirstListItem>Backend</S.FirstListItem>
                     <S.SecondListItem>Spring Boot 3, Spring Security, Spring Data JPA, Lombok, Java 21, Gradle</S.SecondListItem>
                     <S.FirstListItem>Database</S.FirstListItem>
                     <S.SecondListItem>MySQL, ERD Cloud</S.SecondListItem>
+                    <S.FirstListItem>Networking</S.FirstListItem>
+                    <S.SecondListItem>WebSocket, STOMP, Axios</S.SecondListItem>
                     <S.FirstListItem>AI</S.FirstListItem>
                     <S.SecondListItem>OpenAI API (ChatGPT)</S.SecondListItem>
                     <S.FirstListItem>Deployment</S.FirstListItem>
                     <S.SecondListItem>Vercel, Render, AWS (EC2, RDS, S3), Docker</S.SecondListItem>
                     <S.FirstListItem>Authentication</S.FirstListItem>
                     <S.SecondListItem>OAuth 2.0 (Naver, Kakao, Google), Gmail SMTP, JWT</S.SecondListItem>
-                    <S.FirstListItem>Others</S.FirstListItem>
-                    <S.SecondListItem>Postman, Git, Github</S.SecondListItem>
+                    <S.FirstListItem>Test</S.FirstListItem>
+                    <S.SecondListItem>Postman</S.SecondListItem>
+                    <S.FirstListItem>Version Controll</S.FirstListItem>
+                    <S.SecondListItem>Git, Github</S.SecondListItem>
                 </S.List>
                 <S.Blank />
 

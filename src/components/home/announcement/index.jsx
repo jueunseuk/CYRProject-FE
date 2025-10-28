@@ -8,6 +8,7 @@ import { SkeletonItem } from "@/common/skeleton/Skeleton";
 
 const AnnouncementSummary = () => {
     const [announcementData, setAnnouncementData] = useState([]);
+    const [recentData, setRecentData] = useState([]);
     const [skeleton, setSkeleton] = useState(true);
     const navigate = useNavigate();
 
@@ -15,18 +16,35 @@ const AnnouncementSummary = () => {
         navigate(`/announcement/${id}`);
     }
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                setSkeleton(true);
-                const response = await A.getFixedAnnouncementList();
-                setAnnouncementData(response.data);
-            } catch(error) {
-                
-            } finally {
-                setSkeleton(false);
-            }
+    const fetchPosts = async () => {
+        try {
+            setSkeleton(true);
+            const response = await A.getFixedAnnouncementList();
+            setAnnouncementData(response.data);
+        } catch(error) {
+            
+        } finally {
+            setSkeleton(false);
         }
+    }
+
+    const fetchRecentAnnouncement = async () => {
+        try {
+            const form = {
+                "page": 0,
+                "size": 5,
+                "sort": "createdAt",
+                "direction": "DESC"
+            }
+            const response = await A.getAnnouncementList(form);
+            setRecentData(response.data.content);
+        } catch(error) {
+            
+        }
+    };
+    
+    useEffect(() => {
+        fetchRecentAnnouncement();
         fetchPosts();
     }, []);
 
@@ -45,6 +63,14 @@ const AnnouncementSummary = () => {
                         <col style={{ width: "10%" }} />
                     </colgroup>
                     <tbody>
+                        {recentData.map((announcement) => (
+                            <S.Row key={announcement.announcementId}>
+                                    <S.FirstColumn><S.Text>[ {announcement.name} ]</S.Text></S.FirstColumn>
+                                    <S.Column $align={"left"} onClick={() => handleNavigatePost(announcement.announcementId)}><S.Text style={{cursor: "pointer"}}>{announcement.title}</S.Text></S.Column>
+                                    <S.Column $align={"left"}><S.Text onClick={() => navigate(`/users/${announcement.userId}`)} style={{cursor: "pointer"}}>{announcement.nickname}</S.Text></S.Column>
+                                    <S.Column><S.Text $color={"#878787"}>{formatDate(announcement.createdAt, 3)}</S.Text></S.Column>
+                                </S.Row>
+                        ))}
                         {skeleton ? 
                             Array.from({ length: 5 }).map((_, index) => (
                                 <S.Row key={index}>
