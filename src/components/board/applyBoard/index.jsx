@@ -1,14 +1,15 @@
 import * as A from "@/apis/apply";
 import * as S from "./styles";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { formatDate } from "@/util/dateFormatter";
-import { getEmpathyColor } from "@/util/empathySelector";
 import ApplyUpload from "@/components/modal/applyUpload";
 import ApplyConfirm from "@/components/modal/applyConfirm";
+import useUserInfo from "@/hooks/localStorage";
 
 const ApplyBoard = () => {
+    const user = useUserInfo();
     const {subPath} = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
     const page = Number(searchParams.get("page")) || 1;
@@ -97,6 +98,15 @@ const ApplyBoard = () => {
         cursor: "pointer"
     });
 
+    const handleOpenConfirmModal = (apply) => {
+        if(user.role === "MEMBER" || user.role === "GUEST") {
+            alert("신청서를 볼 권한이 부족합니다.");
+            return;
+        }
+        setOpenApplyConfirmModal(true); 
+        setSelectItem(apply);
+    };
+
     return (
         <>
             <S.Wrapper>
@@ -150,7 +160,7 @@ const ApplyBoard = () => {
                         {applyData.map((apply, idx) => (
                             <S.Row key={apply.applyId}>
                                 <S.Column>{applyData.length-idx}</S.Column>
-                                <S.Column $align={"left"} style={{cursor: "pointer"}} onClick={() => {setOpenApplyConfirmModal(true); setSelectItem(apply);}}>{apply.title}</S.Column>
+                                <S.Column $align={"left"} style={{cursor: "pointer"}} onClick={() => handleOpenConfirmModal(apply)}>{apply.title}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"} onClick={() => navigate(`/users/${apply.userId}`)} style={{cursor: "pointer"}}>{apply.nickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(apply.createdAt, 3)}</S.Column>
                                 <S.Column $size={"12px"}>{getPreferenceRole(apply.preferenceRole)}</S.Column>
