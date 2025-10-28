@@ -9,6 +9,13 @@ export const Wrapper = styled.div`
     padding: 20px;
 `;
 
+export const HorizontalWrapper = styled.div`
+    display: flex;
+    justify-content: ${({$jc}) => $jc || "flex-start"};
+    align-items: ${({$ai}) => $ai || "flex-start"};
+    gap: ${({$gap}) => $gap};
+`;
+
 export const Title = styled.div`
     display: flex;
     justify-content: flex-start;
@@ -32,7 +39,6 @@ export const TableHeader = styled.div`
     justify-content: space-between;
     width: 100%;
     height: 20px;
-    margin-top: 20px;
 `;
 
 export const TextArea = styled.div`
@@ -98,6 +104,7 @@ export const Field = styled.th`
 
 export const Column = styled.td`
     font-size: ${({$size}) => $size || "13px"};
+    font-weight: ${({$weight}) => $weight || "400"};
     max-width: 350px;
     padding: 8px;
     text-align: ${({$align}) => $align || "center"};
@@ -132,4 +139,27 @@ export const PageButton = styled.div`
     &:hover {
         text-decoration: underline;
     }
+`;
+
+export const UploadButton = styled.button`
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    width: 225px;
+    height: 30px;
+    border: 1px solid #E7E7E7;
+    background-color: white;
+    color: #C6BC73;
+    cursor: pointer;
+    margin-top: 15px;
+`;
+
+export const CheckBox = styled.div`
+    width: 12px;
+    height: 12px;
+    background-color: ${({$bg}) => $bg};
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 `;

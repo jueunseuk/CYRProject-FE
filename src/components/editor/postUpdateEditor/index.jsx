@@ -92,8 +92,6 @@ const PostUpdateEditor = () => {
                     </S.OptionGroup>
                     <S.OptionGroup label="커뮤니티 이야기">
                         <S.Option value={18}>건의하기</S.Option>
-                        <S.Option value={19}>신고하기</S.Option>
-                        <S.Option value={20}>운영자 신청</S.Option>
                     </S.OptionGroup>
                 </S.Select>
                 <S.Input 

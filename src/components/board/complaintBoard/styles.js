@@ -37,7 +37,7 @@ export const CheckBox = styled.div`
     width: 12px;
     height: 12px;
     background-color: ${({$bg}) => $bg};
-
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 `;
 
 export const Description = styled.div`
