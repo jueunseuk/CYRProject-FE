@@ -49,6 +49,7 @@ export const FirstListItem = styled.li`
     font-size: 15px;
     font-weight: 600;
     color: #505050;
+    list-style: none;
 `;
     
 export const SecondListItem = styled.li`
@@ -56,6 +57,7 @@ export const SecondListItem = styled.li`
     margin-bottom: 5px;
     font-size: 15px;
     color: #505050;
+    list-style: none;
 `;
 
 export const ThirdListItem = styled.li`
@@ -63,7 +65,7 @@ export const ThirdListItem = styled.li`
     margin-bottom: 5px;
     font-size: 15px;
     color: #505050;
-    list-style: 
+    list-style: none;
 `;
 
 export const Link = styled.a`
