@@ -27,7 +27,9 @@ import User from "@/pages/user";
 import Activity from "@/pages/activity";
 import Setting from "@/pages/setting";
 import Craftshop from "@/pages/craftshop";
-import ScrollToTop from "./common/act/scrollToTop";
+import ScrollToTop from "@/common/act/scrollToTop";
+import Manage from "@/pages/manage";
+import SearchPage from "./pages/search";
 
 export const RouterList = () => [
     {
@@ -150,6 +152,14 @@ export const RouterList = () => [
                     {
                         path: "/setting",
                         element: <Setting />
+                    },
+                    {
+                        path: "/manage",
+                        element: <Manage />
+                    },
+                    {
+                        path: "/search",
+                        element: <SearchPage />
                     },
 
                     // footer

@@ -35,6 +35,10 @@ const LoginInfo = () => {
         navigate("/mypage");
     };
 
+    const handleNavigateCommunityControll = () => {
+        navigate("/manage");
+    };
+
     useEffect(() => {
         const fetchExp = async () => {
             try {
@@ -50,10 +54,10 @@ const LoginInfo = () => {
 
     const handleRequestLogout = async () => {
         try {
-            const response = await A.requestLogout();
+            await A.requestLogout();
             localStorage.removeItem("userInfo");
             
-            window.location.reload();
+            navigate("/");
         } catch(error) {
             console.error('로그아웃 실패', error);
         }
@@ -157,6 +161,9 @@ const LoginInfo = () => {
                 </S.ItemBox>
             </S.HorizontalWrapper>
             <S.WriteButton onClick={handleNavigateWrite}>글쓰기</S.WriteButton>
+            {(user.role === "ADMIN" || user.role === "MANAGER") && 
+                <S.WriteButton onClick={handleNavigateCommunityControll} $bg={"#ffffff"} $border={"2px solid #C6BC73"} $color={"#C6BC73"} $weight={"500"}>커뮤니티 관리</S.WriteButton>
+            }
             <S.LinkText onClick={handleRequestLogout}>로그아웃</S.LinkText>
         </S.Wrapper>
     );

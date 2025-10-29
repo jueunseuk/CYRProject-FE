@@ -105,7 +105,7 @@ const Information = ({isOwner, user}) => {
                     <S.FieldWrapper $jc={"space-between"}>
                         <S.Text $size={"13px"} $weight={"700"} style={{width: "35px"}}>나이</S.Text>
                         <S.DotLine />
-                        <S.Text $size={"13px"} >{user.age === 0 ? "미등록" : user.age}</S.Text>
+                        <S.Text $size={"13px"} >{user.age === null ? "미등록" : user.age}</S.Text>
                     </S.FieldWrapper>
                     <S.FieldWrapper $jc={"space-between"}>
                         <S.Text $size={"13px"} $weight={"700"} style={{width: "35px", height: "17px"}}>로그인</S.Text>
