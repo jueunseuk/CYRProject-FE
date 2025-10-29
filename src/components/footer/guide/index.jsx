@@ -161,7 +161,7 @@ const Guide = () => {
                         <tbody>
                             <S.Row>
                                 <S.Column>게시글 작성</S.Column>
-                                <S.Column>+15</S.Column>
+                                <S.Column>+10</S.Column>
                                 <S.Column>게시판에 관계없이</S.Column>
                             </S.Row>
                             <S.Row>
@@ -176,7 +176,7 @@ const Guide = () => {
                             </S.Row>
                             <S.Row>
                                 <S.Column>출석</S.Column>
-                                <S.Column>+10</S.Column>
+                                <S.Column>+15</S.Column>
                                 <S.Column>하루 한 번</S.Column>
                             </S.Row>
                             <S.Row>
@@ -284,7 +284,7 @@ const Guide = () => {
                             </S.Row>
                         </tbody>
                     </S.Table>
-                    <S.FirstListItem id="furnace">c. 화로 온도</S.FirstListItem>
+                    <S.FirstListItem id="furnace">c. 활동 온도</S.FirstListItem>
                     <S.Table>
                         <thead>
                             <S.HRow>

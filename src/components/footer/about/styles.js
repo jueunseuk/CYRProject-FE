@@ -66,6 +66,7 @@ export const FirstListItem = styled.li`
     font-size: 15px;
     font-weight: 600;
     color: #505050;
+    list-style: none;
 `;
     
 export const SecondListItem = styled.li`
@@ -73,4 +74,5 @@ export const SecondListItem = styled.li`
     font-size: 15px;
     color: #505050;
     margin-bottom: 15px;
+    list-style: none;
 `;
