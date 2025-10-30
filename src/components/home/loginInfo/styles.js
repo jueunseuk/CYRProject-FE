@@ -82,11 +82,13 @@ export const Icon = styled.img.attrs((props) => {
 export const WriteButton = styled.button`
     width: 170px;
     height: 30px;
-    background-color: #C6BC73;
+    background-color: ${({$bg}) => $bg || "#C6BC73"};
     color: white;
     font-size: 13px;
-    border: none;
+    border: ${({$border}) => $border || "none"};
     cursor: pointer;
+    color: ${({$color}) => $color || "white"};
+    font-weight: ${({$weight}) => $weight || ""}
 `;
 
 export const LinkText = styled.div`

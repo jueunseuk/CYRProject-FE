@@ -8,15 +8,14 @@ import Chatpage from "../chatPage";
 import { useEffect, useState } from "react";
 import { UserProfileImage } from "@/common/func/UserProfile";
 import useUserInfo from "@/hooks/localStorage";
-import { useNavigate } from "react-router-dom";
 
 const FriendList = () => {
     const user = useUserInfo();
-    const navigate = useNavigate();
     const [friendData, setFriendData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [openChatPageModal, setOpenChatPageModel] = useState(false);
     const [selectChatRoom, setSelectChatRoom] = useState({});
+    const [searchText, setSearchText] = useState("");
 
     const fetchFriendList = async () => {
         try {
@@ -35,8 +34,8 @@ const FriendList = () => {
     const handleSearch = (e) => {
         const value = e.target.value.toLowerCase();
         setSearchText(value);
-        const filtered = chatRoomData.filter((room) =>
-            room.name.toLowerCase().includes(value)
+        const filtered = friendData.filter((room) =>
+            room.nickName.toLowerCase().includes(value)
         );
         setFilteredData(filtered);
     };
@@ -64,7 +63,7 @@ const FriendList = () => {
             {openChatPageModal && <Chatpage chatRoom={selectChatRoom} onClose={() => setOpenChatPageModel(false)} />}
             <BC.HorizontalWrapper $gap={"15px"} style={{width: "100%"}}>
                 <BC.Icon src={search}/>
-                <BC.Input type="text" $w={"70%"} style={{padding: "5px", border: "none", borderBottom: "1px solid black", background: "linear-gradient(0deg, #F8F8F8, white 30%)"}}
+                <BC.Input type="search" $w={"70%"} style={{padding: "5px", border: "none", borderBottom: "1px solid black", background: "linear-gradient(0deg, #F8F8F8, white 30%)"}}
                     placeholder="닉네임으로 검색.."
                     onChange={handleSearch}
                 />

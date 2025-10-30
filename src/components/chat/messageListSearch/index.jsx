@@ -71,7 +71,7 @@ const MessageListSearch = () => {
             {openChatPageModal && <Chatpage chatRoom={selectChatRoom} onClose={() => {setOpenChatPageModel(false); fetchMessageList()}}/>}
             <BC.HorizontalWrapper $gap={"15px"} style={{width: "100%"}}>
                 <BC.Icon src={search}/>
-                <BC.Input type="text" $w={"70%"} style={{padding: "5px", border: "none", borderBottom: "1px solid black", background: "linear-gradient(0deg, #F8F8F8, white 30%)"}}
+                <BC.Input type="search" $w={"70%"} style={{padding: "5px", border: "none", borderBottom: "1px solid black", background: "linear-gradient(0deg, #F8F8F8, white 30%)"}}
                     placeholder="그룹 이름으로 검색.."
                     onChange={handleSearch}
                 />

@@ -123,7 +123,7 @@ export const GalleryItem = styled.div`
         width: 200px;
         height: 200px;
         background-color: rgba(0, 0, 0, 0);
-        transition: background 0.3s ease;
+        transition: background-color 0.3s ease;
     }
 
     &:hover::after {
