@@ -17,7 +17,6 @@ const Management = ({user}) => {
                 <S.ManagementWrapper>
                     <BC.Text $size={"16px"} $weight={"600"}>ADMIN</BC.Text>
                     <BC.Text $size={"13px"} style={{marginTop: "5px"}}>MANAGER의 역할에 더해 모든 사용자의 권한을 조정할 수 있습니다.</BC.Text>
-                    <UserManagement />
                 </S.ManagementWrapper>
             }
         </S.Wrapper>
