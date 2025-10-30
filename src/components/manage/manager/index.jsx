@@ -1,6 +1,8 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
 import * as M from "@/apis/manager";
+import * as A from "@/apis/admin";
+import search from "@/assets/icon/chat/search.svg";
 import { useEffect, useState } from "react";
 import { UserProfileImage } from "@/common/func/UserProfile";
 import { formatDate } from "@/util/dateFormatter";
@@ -13,11 +15,11 @@ const UserManagement = () => {
     const [size, setSize] = useState(100);
     const [page, setPage] = useState(0);
     const [direction, setDirection] = useState("ASC");
-    const [query, setQuery] = useState("");
+    const [searchText, setSearchText] = useState("");
 
     const fetchMemberList = async () => {
         try {
-            const response = await M.getMemberList();
+            const response = await M.getMemberList({page, sort, size, direction});
             setUserData(response.data);
             setFilteredData(response.data);
         } catch(error) {
@@ -33,7 +35,6 @@ const UserManagement = () => {
         try {
             const patchStatus = {status : user.status === "ACTIVE" ? "INACTIVE" : "ACTIVE"};
             await M.updateUserStatus(user.userId, patchStatus);
-
         } catch(error) {
 
         } finally {
@@ -49,6 +50,25 @@ const UserManagement = () => {
         } finally {
             fetchMemberList();
         }
+    };
+
+    const handleUserRole = async (user, role) => {
+        try {
+            await A.updateUserRole(user.userId, {"role": role});
+        } catch(error) {
+
+        } finally {
+            fetchMemberList();
+        }
+    };
+
+    const handleSearch = (e) => {
+        const value = e.target.value.toLowerCase();
+        setSearchText(value);
+        const filtered = userData.filter((user) =>
+            user.nickname.toLowerCase().includes(value)
+        );
+        setFilteredData(filtered);
     };
 
     const getUserStatus = (status) => {
@@ -73,23 +93,30 @@ const UserManagement = () => {
 
     return (
         <BC.VerticalWrapper $jc={"flex-start"} style={{maxHeight: "500px", border: "1px solid #878787", marginTop: "10px", overflow: "auto"}}>
+            <BC.HorizontalWrapper $gap={"15px"} style={{width: "50%", padding: "5px 0"}}>
+                <BC.Icon src={search}/>
+                <BC.Input type="search" $w={"70%"} style={{padding: "5px", border: "none", borderBottom: "1px solid black", background: "linear-gradient(0deg, #F8F8F8, white 30%)"}}
+                    placeholder="닉네임으로 검색.."
+                    onChange={handleSearch}
+                />
+            </BC.HorizontalWrapper>
             <S.Table>
                 <colgroup>
+                    <col style={{ width: "10%" }} />
                     <col style={{ width: "15%" }} />
                     <col style={{ width: "15%" }} />
-                    <col style={{ width: "15%" }} />
-                    <col style={{ width: "15%" }} />
-                    <col style={{ width: "15%" }} />
-                    <col style={{ width: "25%" }} />
+                    <col style={{ width: "20%" }} />
+                    <col style={{ width: "20%" }} />
+                    <col style={{ width: "20%" }} />
                 </colgroup>
                 <thead>
                     <S.FirstRow>
-                        <S.Column>프로필</S.Column>
-                        <S.Column>닉네임</S.Column>
-                        <S.Column>가입일</S.Column>
-                        <S.Column>권한</S.Column>
-                        <S.Column>계정 상태</S.Column>
-                        <S.Column>경고 횟수</S.Column>
+                        <S.Column style={{fontWeight: "600", fontSize: "14px"}}>프로필</S.Column>
+                        <S.Column style={{fontWeight: "600", fontSize: "14px"}}>닉네임</S.Column>
+                        <S.Column style={{fontWeight: "600", fontSize: "14px"}}>가입일</S.Column>
+                        <S.Column style={{fontWeight: "600", fontSize: "14px"}}>권한</S.Column>
+                        <S.Column style={{fontWeight: "600", fontSize: "14px"}}>계정 상태</S.Column>
+                        <S.Column style={{fontWeight: "600", fontSize: "14px"}}>경고 횟수</S.Column>
                     </S.FirstRow>
                 </thead>
                 <tbody>
@@ -98,7 +125,12 @@ const UserManagement = () => {
                             <S.Column><UserProfileImage user={user} width={"30px"} height={"30px"} radius={"30px"}/></S.Column>
                             <S.Column style={{width: "10%"}}>{user.nickname}</S.Column>
                             <S.Column>{formatDate(user.createdAt, 1)}</S.Column>
-                            <S.Column>{user.role}</S.Column>
+                            <S.Column>
+                                <BC.HorizontalWrapper $gap={"10px"}>
+                                    <BC.Text $weight={"600"}>{user.role}</BC.Text>
+                                    <S.Button onClick={() => handleUserRole(user, "MANAGER")}>등업</S.Button>
+                                </BC.HorizontalWrapper>
+                            </S.Column>
                             <S.Column>
                                 <BC.HorizontalWrapper $gap={"10px"}>
                                     <BC.Text $color={getUserStatusColor(user.status)} $weight={"600"}>{getUserStatus(user.status)}</BC.Text>
@@ -106,7 +138,7 @@ const UserManagement = () => {
                                 </BC.HorizontalWrapper>
                             </S.Column>
                             <S.Column>
-                                <BC.HorizontalWrapper $gap={"25px"}>
+                                <BC.HorizontalWrapper $gap={"20px"}>
                                     <S.Button $size={"17px"} onClick={() => handleUserWarnCnt(user, -1)}>-</S.Button>
                                     <BC.Text $weight={"600"} >{user.warn}</BC.Text>
                                     <S.Button $size={"17px"} onClick={() => handleUserWarnCnt(user, 1)}>+</S.Button>
