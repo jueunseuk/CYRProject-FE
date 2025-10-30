@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import * as M from "@/apis/manager";
 import DeleteModal from "@/components/modal/postDelete";
 import more from "@/assets/icon/gallery/more.svg";
 import cancel from "@/assets/icon/etc/cancel.svg";
@@ -7,7 +8,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ComplaintUpload from "../complaintUpload";
 
-const MoreOptionComment = ({formData, type, onEdit}) => {
+const MoreOptionComment = ({formData, onEdit}) => {
     const user = useUserInfo();
     const navigate = useNavigate();
     const location = useLocation();
@@ -15,7 +16,16 @@ const MoreOptionComment = ({formData, type, onEdit}) => {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [isComplaintModalOpen, setIsComplaintModalOpen] = useState(false);
-    const [isEditing, setIsEditing] = useState(false);
+
+    const forceDelete = async () => {
+        try {
+            await M.deleteForce("comment", formData.commentId);
+            alert("강제 삭제 완료");
+            navigate(-1);
+        } catch(error) {
+
+        }
+    };
     
     const handleOpenOption = () => {
         setIsOptionOpen((prev) => !prev);
@@ -28,10 +38,6 @@ const MoreOptionComment = ({formData, type, onEdit}) => {
     
     const handleDelete = () => {
         setIsDeleteModalOpen(true);
-    };
-
-    const handleComplaint = () => {
-        navigate("/complaint");
     };
 
     const handleCloseModal = () => {
@@ -49,11 +55,14 @@ const MoreOptionComment = ({formData, type, onEdit}) => {
                 {isOptionOpen && (
                     <S.OptionBox>
                         {(user.userId === formData.authorId || user.userId === formData.userId) && (
-                                <>
-                                    <S.OptionButton onClick={handleEdit}>수정</S.OptionButton>
-                                    <S.OptionButton onClick={handleDelete}>삭제</S.OptionButton>
-                                </>
-                            )}
+                            <>
+                                <S.OptionButton onClick={handleEdit}>수정</S.OptionButton>
+                                <S.OptionButton onClick={handleDelete}>삭제</S.OptionButton>
+                            </>
+                        )}
+                        {(user.role === "ADMIN" || user.role === "MANAGER") && (
+                            <S.OptionButton onClick={forceDelete}>삭제(관리자용)</S.OptionButton>
+                        )}
                         <S.OptionButton onClick={() => setIsComplaintModalOpen(true)}>댓글 신고</S.OptionButton>
                     </S.OptionBox>
                 )}

@@ -1,11 +1,9 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
-import { useNavigate } from "react-router-dom";
 import UserManagement from "./manager";
 import AdminManagement from "./admin";
 
 const Management = ({user}) => {
-    const navigate = useNavigate();
 
     return (
         <S.Wrapper>
