@@ -8,23 +8,12 @@ const Search = () => {
     const [selectType, setSelectType] = useState("nickname");
     const [query, setQuery] = useState("");
     const [sort, setSort] = useState("createdAt");
+    const [direction, setDirection] = useState("DESC");
     const navigate = useNavigate();
-
-
-
-
-
-
-
-
-
-
-
-
 
     const handleSearch = (e) => {
         if (e.key === "Enter") {
-            navigate(`/search?type=${selectType}&str=${query}`);
+            navigate(`/search?type=${selectType}&keyword=${query}&sort=${sort}&direction=${direction}`);
         }
     };
 
@@ -56,7 +45,7 @@ const Search = () => {
                 </BC.HorizontalWrapper>
                 <BC.HorizontalWrapper>
                     <S.SearchInput onKeyDown={handleSearch} value={query} onChange={(e) => setQuery(e.target.value)} />
-                    <S.SearchButton />
+                    <S.SearchButton onClick={handleSearch} />
                 </BC.HorizontalWrapper>
             </BC.VerticalWrapper>
         </>
