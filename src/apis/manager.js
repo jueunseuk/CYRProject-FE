@@ -47,3 +47,18 @@ export const updateUserWarnCnt = async (memberId, form) => {
         throw error;
     }
 };
+
+export const deleteForce = async (type, id) => {
+    try {
+        const response = await instance.delete(`/manager/${type}/${id}`);
+        return response;
+    } catch (error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert(error.response.message);
+        }
+
+        throw error;
+    }
+};

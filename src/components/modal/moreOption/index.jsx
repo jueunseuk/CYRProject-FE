@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import * as M from "@/apis/manager";
 import DeleteModal from "@/components/modal/postDelete";
 import GalleryUpdate from "@/components/modal/galleryUpdate";
 import more from "@/assets/icon/gallery/more.svg";
@@ -31,6 +32,23 @@ const MoreOption = ({formData, type}) => {
             navigate(`/edit/announcement/${formData.announcementId}`);
         } else {
             navigate(`/edit/post/${formData.postId}`);
+        }
+    };
+
+    const forceDelete = async () => {
+        try {
+            if(type === "announcement") return;
+            
+            if(type === "gallery") {
+                await M.deleteForce("gallery", formData.galleryId);
+            } else {
+                await M.deleteForce("post", formData.postId);
+            }
+
+            alert("강제 삭제 완료");
+            navigate(-1);
+        } catch(error) {
+
         }
     };
     
@@ -73,11 +91,14 @@ const MoreOption = ({formData, type}) => {
                 {isOptionOpen && (
                     <S.OptionBox>
                         {(user.userId === formData.authorId || user.userId === formData.userId) && (
-                                <>
-                                    <S.OptionButton onClick={handleEdit}>수정</S.OptionButton>
-                                    <S.OptionButton onClick={handleDelete}>삭제</S.OptionButton>
-                                </>
-                            )}
+                            <>
+                                <S.OptionButton onClick={handleEdit}>수정</S.OptionButton>
+                                <S.OptionButton onClick={handleDelete}>삭제</S.OptionButton>
+                            </>
+                        )}
+                        {(user.role === "ADMIN" || user.role === "MANAGER") && (
+                            <S.OptionButton onClick={forceDelete}>삭제(관리자용)</S.OptionButton>
+                        )}
                         <S.OptionButton onClick={() => setIsComplaintModalOpen(true)}>게시글 신고</S.OptionButton>
                         <CopyToClipboard text={currentUrl} onCopy={handleShareClick}>
                             <S.OptionButton>링크 복사</S.OptionButton>

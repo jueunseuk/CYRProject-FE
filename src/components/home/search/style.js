@@ -21,6 +21,7 @@ export const SearchButton = styled.img.attrs({
 
 export const SelectItem = styled.div`
     display: flex;
+    justify-content: space-between;
     gap: 3px;
     width: 80px;
     padding: 5px 7px;
