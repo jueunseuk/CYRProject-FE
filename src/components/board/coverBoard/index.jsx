@@ -89,8 +89,8 @@ const CoverBoard = () => {
                         {posts.map((post, idx) => (
                             <S.Row key={post.postId}>
                                 <S.Column>{posts.length-idx}</S.Column>
-                                <S.Column $align={"left"} onClick={() => handleNavigatePost(post.postId)}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
-                                <S.Column $align={"left"} $size={"12px"}>{post.userNickname}</S.Column>
+                                <S.Column $align={"left"} onClick={() => handleNavigatePost(post.postId)} style={{cursor: "pointer"}}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
+                                <S.Column $align={"left"} $size={"12px"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${post.userId}`)}>{post.userNickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(post.createdAt, 3)}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{post.viewCnt}</S.Column>
                                 <S.Column $color={getEmpathyColor(post.empathyCnt)}>{post.empathyCnt}</S.Column>

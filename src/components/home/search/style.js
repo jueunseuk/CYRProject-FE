@@ -17,6 +17,7 @@ export const SearchButton = styled.img.attrs({
 })`
     width: 25px;
     height: 25px;
+    cursor: pointer;
 `;
 
 export const SelectItem = styled.div`
