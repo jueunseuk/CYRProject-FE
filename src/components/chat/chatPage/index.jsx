@@ -172,22 +172,30 @@ const Chatpage = ({chatRoom, onClose}) => {
         setType("TEXT")
     };
 
-    const handleClickEmoticon = (emoticon) => {
-        setSelectEmoticon(emoticon.imageUrl);
-        setType("EMOTICON");
+    const handleClickEmoticon = async (emoticon) => {
+        const client = clientRef.current;
+        if (!client || !connectedRef.current) return;
 
-        const appendMessage = {
-            "type": "EMOTICON",
-            "content": emoticon.imageUrl,
-            "userId": user.userId,
-            "createdAt": `${new Date().toISOString()}`
+        const message = {
+            userId: user.userId,
+            content: emoticon.imageUrl,
+            type: "EMOTICON",
         };
-        setMessageData((prev) => [appendMessage, ...prev]);
 
-        sendMessage();
+        setMessageData((prev) => [message, ...prev]);
+
+        try {
+            client.publish({
+                destination: `/app/chat.send.${chatRoom.chatRoomId}`,
+                body: JSON.stringify(message),
+            });
+            console.log("Emoticon sent:", message);
+        } catch (error) {
+            console.error("Emoticon publish failed:", error);
+        }
 
         setType("TEXT");
-        setImagePreview("");
+        setSelectEmoticon(null);
     };
 
     const handleClickExitChatRoom = async () => {
