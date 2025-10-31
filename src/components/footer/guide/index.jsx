@@ -118,7 +118,7 @@ const Guide = () => {
                         <S.SecondListItem>율모티콘이란 AI를 이용해 가수 최유리님을 모티브로 제작한 이모티콘입니다.</S.SecondListItem>
                         <S.SecondListItem>본 커뮤니티에는 생성형 AI로 제작한 가수 최유리님의 이모티콘이 있습니다.</S.SecondListItem>
                         <S.SecondListItem>이모티콘부터 숨겨진 업적을 달성하거나, 유리상점 등에서 이모티콘을 구매해 사용할 수 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>율모티콘은 출석, 댓글, 율톡에 한해 사용 가능하고 추후 확장될 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>율모티콘은 현재 율톡에 한해 사용 가능하고 추후 확장될 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem>j. 유리공방</S.FirstListItem>
                         <S.SecondListItem>출석을 통해 화로의 온도를 높이고, 여러 활동(게시글 작성, 댓글 등)을 통해 모래알을 모을 수 있습니다.</S.SecondListItem>
                             <S.ThirdListItem>- 활동별 모래알 획득 수치는 <S.Link href="#sand" style={{fontWeight: "600"}}>III.b.모래알</S.Link>을 참고해주세요.</S.ThirdListItem>
@@ -144,6 +144,8 @@ const Guide = () => {
                         <S.SecondListItem>가수 최유리님과 관련된 다양한 주제로 구성된 퀴즈를 풀 수 있는 서비스입니다.</S.SecondListItem>
                         <S.SecondListItem>퀴즈를 맞히면 커뮤니티 활동 보상으로 모래알이 지급됩니다.</S.SecondListItem>
                         <S.SecondListItem>커뮤니티의 매니저 등급 이상의 회원만 문제를 출제할 수 있습니다.</S.SecondListItem>
+                    <S.FirstListItem id="shop">o. 랭킹(개발 예정)</S.FirstListItem>
+                        <S.SecondListItem>다양한 주제에 대해 유저들의 랭킹을 확인할 수 있습니다.</S.SecondListItem>
                 </S.List>
                 <S.Blank />
 
