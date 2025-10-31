@@ -52,3 +52,13 @@ export const Input = styled.input`
     height: ${({$h}) => $h};
     outline: none;
 `;
+
+export const EmptyBox = styled.div`
+    width: ${({$w}) => $w};
+    height: ${({$h}) => $h};
+    font-size: ${({$size}) => $size};
+    color: #878787;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;

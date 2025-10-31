@@ -15,7 +15,7 @@ export const SidebarWrapper = styled.div`
 export const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 20px;
     width: 865px;
 `;
 

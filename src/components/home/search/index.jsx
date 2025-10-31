@@ -11,9 +11,13 @@ const Search = () => {
     const [direction, setDirection] = useState("DESC");
     const navigate = useNavigate();
 
+    const handleSearchNavigate = () => {
+        navigate(`/search?type=${selectType}&keyword=${query}&sort=${sort}&direction=${direction}`);
+    };
+
     const handleSearch = (e) => {
         if (e.key === "Enter") {
-            navigate(`/search?type=${selectType}&keyword=${query}&sort=${sort}&direction=${direction}`);
+            handleSearchNavigate();
         }
     };
 
@@ -45,7 +49,7 @@ const Search = () => {
                 </BC.HorizontalWrapper>
                 <BC.HorizontalWrapper>
                     <S.SearchInput onKeyDown={handleSearch} value={query} onChange={(e) => setQuery(e.target.value)} />
-                    <S.SearchButton onClick={handleSearch} />
+                    <S.SearchButton onClick={handleSearchNavigate} />
                 </BC.HorizontalWrapper>
             </BC.VerticalWrapper>
         </>
