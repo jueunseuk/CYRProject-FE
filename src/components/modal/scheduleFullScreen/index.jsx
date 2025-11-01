@@ -39,7 +39,7 @@ const ScheduleFullScreen = ({onClose, selectedSchedule}) => {
                     <S.HorizontalWrapper $gap={"5px"} $jc>
                         <S.Text>분류</S.Text>
                         <S.Text>:</S.Text>
-                        <S.Text style={{fontWeight: "300", color: getScheduleColor(selectedSchedule.type).color}}>{getScheduleColor(selectedSchedule.type).name}</S.Text>
+                        <S.Text style={{fontWeight: "300", color: getScheduleColor(selectedSchedule.type).color, fontWeight: "800"}}>{getScheduleColor(selectedSchedule.type).name}</S.Text>
                     </S.HorizontalWrapper>
                     {selectedSchedule.link1 && (
                         <S.HorizontalWrapper $gap={"5px"} $jc>
@@ -57,7 +57,7 @@ const ScheduleFullScreen = ({onClose, selectedSchedule}) => {
                     )}
                     <S.VerticalWrapper style={{gap: "5px"}} >
                         <S.Text>설명</S.Text>
-                        <S.Text style={{fontWeight: "300"}}>{selectedSchedule.description}</S.Text>
+                        <S.Text style={{fontWeight: "300", whiteSpace: "pre-line"}}>{selectedSchedule.description}</S.Text>
                     </S.VerticalWrapper>
                 </S.VerticalWrapper>
             </S.Content>

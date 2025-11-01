@@ -70,7 +70,7 @@ const CalendarRequest = () => {
                                 </S.HorizontalWrapper>
                                 {(user.role === "MANAGER" || user.role === "ADMIN") && <S.IconArea title="완료로 표시" src={unchecked} style={{cursor: "pointer", width: "13px", height: "13px"}} onClick={() => handleRequestProcess(request.calendarRequestId)} />}
                             </S.HorizontalWrapper>
-                            <S.RequestTextBox>{request.content}</S.RequestTextBox>
+                            <S.RequestTextBox style={{whiteSpace: "pre-line"}}>{request.content}</S.RequestTextBox>
                         </S.ContentBox>
                     </S.RequestBlock>
                 ))}

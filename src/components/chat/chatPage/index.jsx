@@ -7,6 +7,7 @@ import back from "@/assets/icon/chat/back.svg";
 import link from "@/assets/icon/chat/link.svg";
 import linkS from "@/assets/icon/chat/link_select.svg";
 import emoticon from "@/assets/icon/chat/emoticon.svg";
+import emoticon_select from "@/assets/icon/chat/emoticon_select.svg";
 import exit from "@/assets/icon/chat/exit.svg";
 import send from "@/assets/icon/chat/send.svg";
 import sendd from "@/assets/icon/chat/send_disabled.svg";
@@ -227,7 +228,7 @@ const Chatpage = ({chatRoom, onClose}) => {
             sendMessage();
         }
     };
-
+console.log(type)
     return (
         <S.Wrapper>
             <BC.VerticalWrapper>
@@ -242,8 +243,8 @@ const Chatpage = ({chatRoom, onClose}) => {
             </BC.VerticalWrapper>
             
             <S.ChatMessageWrapper>
-                {messageData.map((message) => (
-                    <S.MessageItem key={message.chatMessageId}>
+                {messageData.map((message, idx) => (
+                    <S.MessageItem key={idx}>
                         {getMessageComponent(message)}
                     </S.MessageItem>
                 ))}
@@ -254,7 +255,10 @@ const Chatpage = ({chatRoom, onClose}) => {
                 )}
                 {type === "EMOTICON" && (
                     <S.EmoticonWrapper>
-                        {emoticonData.map((emoticon) => (
+                        {emoticonData.length === 0 ?
+                        <BC.Text $size={"14px"} $weight={"600"} $color={"white"} style={{textAlign: "center", width: "100%", padding: "50px"}}>보유한 이모티콘이 없습니다.</BC.Text>
+                        :
+                        emoticonData.map((emoticon) => (
                             <S.EmoticonItem key={emoticon.shopItemId} src={emoticon.imageUrl} onClick={() => handleClickEmoticon(emoticon)} title={emoticon.name}/>
                         ))}
                     </S.EmoticonWrapper>
@@ -267,7 +271,7 @@ const Chatpage = ({chatRoom, onClose}) => {
                 <BC.Icon src={type === "LINK" ? linkS : link} $w={"25px"} style={{cursor: "pointer", padding: "5px"}} title="눌러서 링크 모드 활성화"
                     onClick={() => setType(type === "LINK" ? "TEXT" : "LINK")}
                 />
-                <BC.Icon src={emoticon} $w={"25px"} style={{cursor: "pointer", padding: "5px"}} title="이모티콘"
+                <BC.Icon src={type === "EMOTICON" ? emoticon_select : emoticon} $w={"25px"} style={{cursor: "pointer", padding: "5px"}} title="이모티콘"
                     onClick={() => {setType(type === "EMOTICON" ? "TEXT" : "EMOTICON")}}
                 />
                 <S.ChatInput value={currentMessage} onChange={(e) => {setCurrentMessage(e.target.value); setType("TEXT")}} onKeyDown={handleKeyDown}/>

@@ -121,7 +121,7 @@ const Information = ({isOwner, user}) => {
                     </S.FieldWrapper>
                     <S.ColumnFieldWrapper $ai={"flex-start"} style={{padding: "8px 5px"}}>
                         <S.Text $size={"13px"} $weight={"700"} style={{marginBottom: "3px"}}>한 줄 인사</S.Text>
-                        <S.Text $size={"12px"} $color={"#878787"} style={{textAlign: "left"}}>{getIntroductionText(user.introduction)}</S.Text>
+                        <S.Text $size={"12px"} $color={"#878787"} style={{textAlign: "left", whiteSpace: "pre-line"}}>{getIntroductionText(user.introduction)}</S.Text>
                     </S.ColumnFieldWrapper>
                 </S.VerticalWrapper>
 

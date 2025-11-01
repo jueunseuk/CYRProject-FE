@@ -2,6 +2,7 @@ import * as S from "./styls";
 import * as BC from "@/common/basic/BasicComponent";
 import * as C from "@/apis/chat";
 import cancel from "@/assets/icon/etc/cancel.svg";
+import logo from "@/assets/icon/chat/logo.svg";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Chatpage from "../chatPage";
@@ -48,10 +49,10 @@ const Plus = ({onClose}) => {
             <BC.HorizontalWrapper $jc={"flex-end"} style={{width: "100%", padding: "15px"}}>
                 <S.CancelIcon src={cancel} onClick={onClose} />
             </BC.HorizontalWrapper>
-            <BC.VerticalWrapper $gap={"75px"} style={{height: "100%"}}>
-                <BC.VerticalWrapper $gap={"px"}>
-                    <BC.Text $size={"15px"} $weight={"700"}>율톡 <BC.Text $size={"12px"} $weight={"500"} style={{display: "inline", fontFamily: "serif", fontStyle: "italic"}}>beta</BC.Text></BC.Text>
-                    <BC.Text $size={"20px"} $weight={"700"} style={{textAlign: "center", cursor: "default"}}>그룹을 만들고 사람들을 초대해보세요!</BC.Text>
+            <BC.VerticalWrapper $gap={"50px"} style={{height: "100%"}}>
+                <BC.VerticalWrapper $gap={"30px"}>
+                    <BC.Icon $w={"120px"} src={logo} />
+                    <BC.Text $size={"15px"} $weight={"500"} style={{textAlign: "center", cursor: "default"}}>그룹을 만들고 사람들을 초대해보세요!</BC.Text>
                 </BC.VerticalWrapper>
                 <BC.VerticalWrapper $gap={"30px"}>
                     <BC.VerticalWrapper $gap={"7px"}>
