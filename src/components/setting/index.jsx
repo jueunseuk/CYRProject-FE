@@ -1,5 +1,6 @@
 import * as S from "./styles";
 import BannerSetting from "./bannerSetting";
+import AccountSetting from "./accountSetting";
 
 const UserSetting = ({user}) => {
 
@@ -15,7 +16,7 @@ const UserSetting = ({user}) => {
             <S.SettingWrapper>
                 <S.VerticalWrapper>
                     <S.Text $size={"16px"} $weight={"600"}>알림 설정</S.Text>
-                    <S.Text $size={"13px"} style={{marginTop: "5px"}}>내 계정 정보를 확인하고 관리할 수 있습니다.</S.Text>
+                    <S.Text $size={"13px"} style={{marginTop: "5px"}}>알림과 관련된 설정을 할 수 있습니다.</S.Text>
                 </S.VerticalWrapper>
             </S.SettingWrapper>
             <S.SettingWrapper>
@@ -27,7 +28,8 @@ const UserSetting = ({user}) => {
             <S.SettingWrapper>
                 <S.VerticalWrapper>
                     <S.Text $size={"16px"} $weight={"600"}>계정 설정</S.Text>
-                    <S.Text $size={"13px"} style={{marginTop: "5px"}}>커뮤니티에서 계정을 관리할 수 있습니다.</S.Text>
+                    <S.Text $size={"13px"} style={{marginTop: "5px"}}>내 계정 정보를 확인하고 관리할 수 있습니다.</S.Text>
+                    <AccountSetting />
                 </S.VerticalWrapper>
             </S.SettingWrapper>
         </S.Wrapper>
