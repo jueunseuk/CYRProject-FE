@@ -97,7 +97,7 @@ const UserProfileUpdateModal = ({onClose, user}) => {
                     </S.VerticalWrapper>
                 </S.VerticalWrapper>
                 <S.SubmitButton onClick={handleReviseUserInformation} disabled={
-                    userRevision.name.length < 2 || userRevision.nickname.length < 2 || userRevision.age.length == 0 || userRevision.gender.length == 0
+                    userRevision.name.length < 2 || userRevision.nickname.length < 2 || userRevision.age?.length == 0 || userRevision.gender?.length == 0
                 }>수정하기</S.SubmitButton>
             </S.Content>
         </S.Wrapper>

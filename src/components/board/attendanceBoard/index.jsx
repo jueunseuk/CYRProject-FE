@@ -188,7 +188,7 @@ const AttendanceBoard = () => {
                                         <S.Text $size={"12px"}>{attendance.attendanceCnt}</S.Text>
                                     </S.HorizontalWrapper>
                                 </S.HorizontalWrapper>
-                                <S.AttendanceTextBox>{attendance.comment}</S.AttendanceTextBox>
+                                <S.AttendanceTextBox style={{whiteSpace: "pre-line"}}>{attendance.comment}</S.AttendanceTextBox>
                             </S.ContentBox>
                         </S.AttendanceBlock>
                     )))}

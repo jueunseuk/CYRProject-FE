@@ -211,7 +211,7 @@ const BasicPost = () => {
                                         <S.Text $size="14px" $weight="600">{c.userName}</S.Text>
                                         <S.Text $size="12px" $color="#878787">{formatDate(c.createdAt, 3)}</S.Text>
                                     </S.HorizontalWrapper>
-                                    <S.Text $size="13px" style={{textAlign: "left"}}>{c.content}</S.Text>
+                                    <S.Text $size="13px" style={{textAlign: "left", whiteSpace: "pre-line"}}>{c.content}</S.Text>
                                     {editingCommentId === c.commentId && (
                                         <S.VerticalWrapper style={{width: "100px", gap: "5px"}}>
                                             <S.InputField style={{minHeight: "100px", width: "700px"}} value={editingContent.trim()} onChange={(e) => setEditingContent(e.target.value)}/>
