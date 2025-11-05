@@ -1,6 +1,4 @@
 import * as S from "./styles";
-import * as BC from "@/common/basic/BasicComponent";
-import * as U from "@/apis/user";
 import { useState } from "react";
 import SeccessionConfirm from "@/components/modal/secessionConfirm";
 

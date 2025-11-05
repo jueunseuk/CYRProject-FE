@@ -13,6 +13,7 @@ import LatestPost from "@/components/home/latest";
 import GallerySummary from "@/components/home/gallery";
 import useUserInfo from "@/hooks/localStorage";
 import CommunityInfo from "@/components/home/communityStatistic";
+import RankingSummary from "@/components/home/ranking";
 
 const Home = () => {
     const user = useUserInfo();
@@ -40,6 +41,7 @@ const Home = () => {
                     </S.HorizontalWrapper>
                     <LatestPost />
                     <GallerySummary />
+                    <RankingSummary />
                 </S.ContentWrapper>
             </S.HorizontalWrapper>
             <S.Contour />
