@@ -18,12 +18,32 @@ export const Content = styled.div`
     padding: 30px;
     border-radius: 10px;
     width: 500px;
+    max-height: 80%;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 20px;
     box-shadow: 0px 0px 16px rgb(0, 0, 0, 0.5);
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        border: 2px solid transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
 `;
 
 export const HorizontalWrapper = styled.div`

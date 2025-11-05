@@ -163,7 +163,7 @@ const CalendarList = ({onClose}) => {
                                                 <S.Icon $width="12px" $height="12px" src={trash} onClick={() => requestCalendarDelete(item.calendarId)}/>
                                             </S.HorizontalWrapper>
                                             <S.Text $size="16px" $weight="600">{item.title} <S.Text $size="10px" $color={() => getScheduleColor(item.type)} $weight={"600"}>({item.type})</S.Text></S.Text>
-                                            <S.Text $size="14px">{item.description}</S.Text>
+                                            <S.Text $size="14px" style={{whiteSpace: "pre-line"}}>{item.description}</S.Text>
                                         </S.VerticalWrapper>
                                     ))}
                                 </S.VerticalWrapper>

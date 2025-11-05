@@ -64,6 +64,10 @@ export const Link = styled.a`
     font-size: 15px;
     font-weight: 300;
     color: white;
+    width: 80%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 export const NoImage = styled.div`

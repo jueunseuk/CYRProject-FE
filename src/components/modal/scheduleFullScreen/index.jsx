@@ -39,20 +39,20 @@ const ScheduleFullScreen = ({onClose, selectedSchedule}) => {
                     <S.HorizontalWrapper $gap={"5px"} $jc>
                         <S.Text>분류</S.Text>
                         <S.Text>:</S.Text>
-                        <S.Text style={{fontWeight: "300", color: getScheduleColor(selectedSchedule.type).color, fontWeight: "800"}}>{getScheduleColor(selectedSchedule.type).name}</S.Text>
+                        <S.Text style={{fontWeight: "800", color: getScheduleColor(selectedSchedule.type).color}}>{getScheduleColor(selectedSchedule.type).name}</S.Text>
                     </S.HorizontalWrapper>
                     {selectedSchedule.link1 && (
                         <S.HorizontalWrapper $gap={"5px"} $jc>
                             <S.Text>링크 1</S.Text>
                             <S.Text>:</S.Text>
-                            <S.Link href={selectedSchedule.link1} target="_blank">{selectedSchedule.link1}</S.Link>
+                            <S.Link href={selectedSchedule.link1} target="_blank" title="링크로 이동">{selectedSchedule.link1}</S.Link>
                         </S.HorizontalWrapper>
                     )}
                     {selectedSchedule.link2 && (
                         <S.HorizontalWrapper $gap={"5px"} $jc>
                             <S.Text>링크 2</S.Text>
                             <S.Text>:</S.Text>
-                            <S.Link href={selectedSchedule.link2} target="_blank">{selectedSchedule.link2}</S.Link>
+                            <S.Link href={selectedSchedule.link2} target="_blank" title="링크로 이동">{selectedSchedule.link2}</S.Link>
                         </S.HorizontalWrapper>
                     )}
                     <S.VerticalWrapper style={{gap: "5px"}} >
