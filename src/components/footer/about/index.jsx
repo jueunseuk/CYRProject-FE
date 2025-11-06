@@ -53,6 +53,13 @@ const About = () => {
                 <S.SubTitle>시스템 아키텍쳐</S.SubTitle>
                 <S.Image src={SA} onClick={() => setImageModalOpen(true)} style={{cursor: "pointer"}} />
                 {imageModalOpen && <ImageFullScreen onClose={() => setImageModalOpen(false)} profile={SA} />}
+
+                <S.SubTitle>후기</S.SubTitle>
+                <S.Introduce>만약 이 커뮤니티가 정식으로 배포된다면 사라지게 될 개인적인 후기입니다.</S.Introduce>
+                <S.Introduce>개발을 끝내려던 순간마다, 또 욕심이 생겨서 “이거 하나만 더 개발하자…”를 수십번 반복했습니다. 덕분에 개발 기간은 길어졌지만, 율님의 노래가 제 생산성의 90%를 책임졌습니다. 개발하는 내내 유리님의 노래만 들었더니, 기획하다가 막힐 때면 아이디어가 번뜩번뜩 떠오르고, 버그 생겨도 금방 해결하고, 개발하다가 지쳐도 저를 의자에 앉아있도록 붙잡아줬습니다. 물론 너무 오래 앉아있어서 허리 아플 땐 좀 쉬어줬습니다ㅎㅎ</S.Introduce>
+                <S.Introduce>개발하면서 가장 힘들었던 점은 디자인이었습니다. 예술과는 거리가 멀었던 제 삶이 처음으로 후회되더라구요. 어릴 때 디자이너 친구에게 그림 좀 배워볼 걸 그랬습니다. 혹시나 디자인 도움주실 분 있다면 얼마든지 연락주세요..</S.Introduce>
+                <S.Introduce>만들어야하는 게 많다보니 코드가 clean하지 못한 관계로 당분간은 리팩토링을 하려고 합니다. 유지보수와 확정성을 고려해서 리팩토링하고 남은 서비스들은 그 후에 다시 만들어나갈 예정입니다.</S.Introduce>
+                <S.Introduce>긴 시간 쏟아 부어서 만든 커뮤니티인 만큼 많은 사람들이 필요로 했으면 좋겠습니다. 감사합니다.</S.Introduce>
             </S.Wrapper>
         </>
     )
