@@ -30,6 +30,7 @@ import Craftshop from "@/pages/craftshop";
 import ScrollToTop from "@/common/act/scrollToTop";
 import Manage from "@/pages/manage";
 import SearchPage from "./pages/search";
+import Ranking from "./pages/ranking";
 
 export const RouterList = () => [
     {
@@ -160,6 +161,10 @@ export const RouterList = () => [
                     {
                         path: "/search",
                         element: <SearchPage />
+                    },
+                    {
+                        path: "/ranking",
+                        element: <Ranking />
                     },
 
                     // footer
