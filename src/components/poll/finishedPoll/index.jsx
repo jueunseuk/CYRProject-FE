@@ -48,7 +48,7 @@ const FinishedPoll = () => {
     return (
         <BC.VerticalWrapper>
             <BC.HorizontalWrapper $jc={"flex-start"} $ai={"flex-end"} style={{width: "100%", borderBottom: "2px solid black"}}>
-                <BC.Text $size={"19px"} $weight={"600"} style={{marginRight: "10px"}}>종료된 투표</BC.Text>
+                <BC.Text $size={"16px"} $weight={"600"} style={{padding: "0 10px"}}>종료된 투표</BC.Text>
                 <BC.Text $size={"15px"} $weight={"600"}>{pollData.length}개</BC.Text>
             </BC.HorizontalWrapper>
             <BC.HorizontalWrapper $jc={"flex-start"} $ai={"flex-start"} $gap={"23px"} style={{width: "100%", padding: "15px 0", flexWrap: "wrap"}}>

@@ -87,6 +87,7 @@ export const ProfileImage = styled.img`
     width: ${({$w}) => $w || "100%"};
     height: ${({$h}) => $h || "100%"};
     border-radius: ${({$r}) => $r || "100%"};
-    object-fix: cover;
+    object-fit: cover;
     cursor: pointer;
+    border: 3px solid ${({$c}) => $c || "none"};
 `;

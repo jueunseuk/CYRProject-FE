@@ -6,10 +6,6 @@ export const getUserSidebar = async () => {
         return response;
     } catch (error) {
         const errorCode = error.response.code;
-        
-        if(errorCode === "USER_001") {
-            console.log("사용자를 찾을 수 없습니다.");
-        }
 
         throw error;
     }
@@ -20,7 +16,7 @@ export const getLocalInfo = async () => {
         const response = await instance.get(`/user/me/basic`);
         return response;
     } catch (error) {
-        const errorCode = error.response.code;
+        const errorCode = error.response.data.code;
 
         throw error;
     }
@@ -32,10 +28,6 @@ export const getUserProfileData = async () => {
         return response;
     } catch(error) {
         const errorCode = error.response.code;
-        
-        if(errorCode === "USER_001") {
-            console.log("사용자를 찾을 수 없습니다.");
-        }
 
         throw error;
     }
@@ -56,10 +48,6 @@ export const patchUserInformation = async (userData) => {
         return response;
     } catch(error) {
         const errorCode = error.response.code;
-        
-        if(errorCode === "USER_001") {
-            console.log("사용자를 찾을 수 없습니다.");
-        }
 
         throw error;
     }
@@ -71,10 +59,6 @@ export const patchUserProfile = async (formData) => {
         return response;
     } catch(error) {
         const errorCode = error.response.code;
-        
-        if(errorCode === "USER_001") {
-            console.log("사용자를 찾을 수 없습니다.");
-        }
 
         throw error;
     }
@@ -86,10 +70,6 @@ export const getUserActivityData = async (userId) => {
         return response;
     } catch(error) {
         const errorCode = error.response.code;
-        
-        if(errorCode === "USER_001") {
-            console.log("사용자를 찾을 수 없습니다.");
-        }
 
         throw error;
     }
@@ -101,10 +81,6 @@ export const patchUserActivityCntWithSync = async () => {
         return response;
     } catch(error) {
         const errorCode = error.response.code;
-        
-        if(errorCode === "USER_001") {
-            alert("해당 사용자를 찾을 수 없습니다.");
-        }
 
         throw error;
     }
@@ -117,10 +93,6 @@ export const getUserPosts = async (searchId, form) => {
         return response;
     } catch(error) {
         const errorCode = error.response.code;
-        
-        if(errorCode === "USER_001") {
-            alert("해당 사용자를 찾을 수 없습니다.");
-        }
 
         throw error;
     }

@@ -33,6 +33,8 @@ const Banner = () => {
     };
 
     useEffect(() => {
+        if(!user) return;
+        
         const fetchBannerImages = async () => {
             try {
                 const response = await UBS.getUserBannerList({isActive: "true"});

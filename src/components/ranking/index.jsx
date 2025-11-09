@@ -41,7 +41,6 @@ const RankingComponent = () => {
             
         }
     };
-    console.log(rankData)
 
     useEffect(() => {
         fetchRankingData();
@@ -77,42 +76,42 @@ const RankingComponent = () => {
                 <BC.Text style={{textAlign: "left", margin: "10px 0", width: "100%"}}>{RANKINGS[selectedTap].description}</BC.Text>
             </BC.VerticalWrapper>
             <S.TopRankItemWrapper>
-                <S.TopRankItem $bg={""} style={{height: "230px", background: "linear-gradient(135deg, #C0C0C0, #fafafaff)"}}>
+                <S.TopRankItem style={{height: "230px", background: "linear-gradient(0deg, #C0C0C0, #fafafaff)"}}>
                     {(!rankData || rankData.length < 2) ?
                         <BC.EmptyBox $w={"100%"} $h={"100%"} $size={"13px"}>랭킹 정보 없음</BC.EmptyBox>
                         :
                         <BC.VerticalWrapper $jc={"flex-end"} $gap={"15px"} style={{padding: "15px", height: "100%"}}>
                             <BC.Icon src={second} $w={"45px"} style={{position: "absolute", top: "-2px"}}/>
                             <BC.VerticalWrapper $gap={"5px"}>
-                                <S.ProfileImage src={rankData[1]?.profileUrl} $w={"100px"} $h={"100px"} onClick={() => handleNavigateUser(rankData[1].userId)} />
+                                <S.ProfileImage src={rankData[1]?.profileUrl} $w={"100px"} $h={"100px"} $c={"#8A8A8A"} onClick={() => handleNavigateUser(rankData[1].userId)} />
                                 <BC.Text $size={"14px"} style={{cursor: "pointer"}} onClick={() => handleNavigateUser(rankData[1].userId)}>{rankData[1]?.nickname}</BC.Text>
                             </BC.VerticalWrapper>
                             <BC.Text $size={"18px"} $weight={"600"}>{rankData[1].score}회</BC.Text>
                         </BC.VerticalWrapper>
                     }
                 </S.TopRankItem>
-                <S.TopRankItem $bg={""} style={{height: "250px", background: "linear-gradient(135deg, #FFD700, #fffaddff)"}}>
+                <S.TopRankItem style={{height: "250px", background: "linear-gradient(0deg, #FFD700, #fffaddff)"}}>
                     {(!rankData || rankData.length < 1) ?
                         <BC.EmptyBox $w={"100%"} $h={"100%"} $size={"13px"}>랭킹 정보 없음</BC.EmptyBox>
                         :
                         <BC.VerticalWrapper $jc={"flex-end"} $gap={"15px"} style={{padding: "15px", height: "100%"}}>
                             <BC.Icon src={first} $w={"50px"} style={{position: "absolute", top: "-25px"}}/>
                             <BC.VerticalWrapper $gap={"5px"}>
-                                <S.ProfileImage src={rankData[0]?.profileUrl} $w={"100px"} $h={"100px"} onClick={() => handleNavigateUser(rankData[0].userId)} />
+                                <S.ProfileImage src={rankData[0]?.profileUrl} $w={"100px"} $h={"100px"} $c={"#AC9306"} onClick={() => handleNavigateUser(rankData[0].userId)} />
                                 <BC.Text $size={"14px"} style={{cursor: "pointer"}} onClick={() => handleNavigateUser(rankData[0].userId)}>{rankData[0]?.nickname}</BC.Text>
                             </BC.VerticalWrapper>
                             <BC.Text $size={"18px"} $weight={"600"}>{rankData[0].score}회</BC.Text>
                         </BC.VerticalWrapper>
                     }
                 </S.TopRankItem>
-                <S.TopRankItem $bg={""} style={{height: "210px", background: "linear-gradient(135deg, #CD7F32, #ffeed1ff)"}}>
+                <S.TopRankItem style={{height: "210px", background: "linear-gradient(0deg, #CD7F32, #fff3dfff)"}}>
                     {(!rankData || rankData.length < 3) ?
                         <BC.EmptyBox $w={"100%"} $h={"100%"} $size={"13px"}>랭킹 정보 없음</BC.EmptyBox>
                         :
                         <BC.VerticalWrapper $jc={"flex-end"} $gap={"15px"} style={{padding: "15px", height: "100%"}}>
                             <BC.Icon src={third} $w={"40px"} style={{position: "absolute", top: "20px"}}/>
                             <BC.VerticalWrapper $gap={"5px"}>
-                                <S.ProfileImage src={rankData[2]?.profileUrl} $w={"100px"} $h={"100px"} onClick={() => handleNavigateUser(rankData[2].userId)} />
+                                <S.ProfileImage src={rankData[2]?.profileUrl} $w={"100px"} $h={"100px"} $c={"#995B1D"} onClick={() => handleNavigateUser(rankData[2].userId)} />
                                 <BC.Text $size={"14px"} style={{cursor: "pointer"}} onClick={() => handleNavigateUser(rankData[2].userId)}>{rankData[2]?.nickname}</BC.Text>
                             </BC.VerticalWrapper>
                             <BC.Text $size={"18px"} $weight={"600"}>{rankData[2].score}회</BC.Text>

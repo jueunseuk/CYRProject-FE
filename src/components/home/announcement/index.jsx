@@ -29,6 +29,8 @@ const AnnouncementSummary = () => {
     }
 
     const fetchRecentAnnouncement = async () => {
+        const userId = localStorage.getItem("userId");
+        if(!userId) return;
         try {
             const form = {
                 "page": 0,

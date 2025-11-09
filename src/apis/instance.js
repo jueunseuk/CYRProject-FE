@@ -29,7 +29,6 @@ instance.interceptors.response.use(
 
         return instance(originalRequest);
       } catch (refreshError) {
-          console.error("재발급 실패", refreshError);
           localStorage.removeItem("userInfo");
       }
     }
