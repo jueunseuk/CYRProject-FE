@@ -10,7 +10,7 @@ const GallerySummary = () => {
     const [images, setImages] = useState([]);
     const [skeleton, setSkeleton] = useState(true);
     const user = useUserInfo();
-    const [amount, setAmount] = useState(6);
+    const [amount, setAmount] = useState(12);
 
     const handleNavigateGallery = () => {
         navigate("/gallery");

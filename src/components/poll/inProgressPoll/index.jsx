@@ -19,7 +19,6 @@ const InProgressPoll = () => {
 
     const fetchPollData = async () => {
         try {
-            
             const response = await P.getActivePollList({status: "IN_PROGRESS"});
             setPolLData(response.data);
         } catch(error) {
@@ -73,7 +72,7 @@ const InProgressPoll = () => {
         <BC.VerticalWrapper>
             <BC.HorizontalWrapper $jc={"space-between"} $ai={"flex-end"} style={{width: "100%", borderBottom: "2px solid black"}}>
                 <BC.HorizontalWrapper>
-                    <BC.Text $size={"19px"} $weight={"600"} style={{marginRight: "10px"}}>진행 중인 투표</BC.Text>
+                    <BC.Text $size={"16px"} $weight={"600"} style={{padding: "0 10px"}}>진행 중인 투표</BC.Text>
                     <BC.Text $size={"15px"} $weight={"600"}>{pollData.length}개</BC.Text>
                 </BC.HorizontalWrapper>
                 <BC.HorizontalWrapper $ai={"center"} $gap={"10px"} style={{cursor: "pointer"}}>

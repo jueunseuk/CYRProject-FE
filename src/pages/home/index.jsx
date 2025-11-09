@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import * as BC from "@/common/basic/BasicComponent";
 import Board from "@/components/home/board";
 import Banner from "@/components/home/banner";
 import Footer from "@/components/home/footer";
@@ -14,6 +15,7 @@ import GallerySummary from "@/components/home/gallery";
 import useUserInfo from "@/hooks/localStorage";
 import CommunityInfo from "@/components/home/communityStatistic";
 import RankingSummary from "@/components/home/ranking";
+import InProgressPoll from "@/components/poll/inProgressPoll";
 
 const Home = () => {
     const user = useUserInfo();
@@ -41,6 +43,7 @@ const Home = () => {
                     </S.HorizontalWrapper>
                     <LatestPost />
                     <GallerySummary />
+                    {(user && user.userId) && <InProgressPoll />}
                     <RankingSummary />
                 </S.ContentWrapper>
             </S.HorizontalWrapper>

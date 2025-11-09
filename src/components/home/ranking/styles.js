@@ -24,3 +24,13 @@ export const ContentArea = styled.div`
     height: 140px;
     padding: 10px 0;
 `;
+
+export const RankItem = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 5px;
+    padding: 7px 10px;
+    transition: all 0.2s ease;
+`;

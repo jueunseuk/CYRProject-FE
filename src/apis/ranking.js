@@ -17,3 +17,20 @@ export const getRankingData = async (type, form) => {
         throw error;
     }
 };
+
+export const getSummaryRankingData = async () => {
+    try {
+        const response = await axios.get(`${backendUrl}/ranking/summary`, {
+            headers: {Accept: "application/json"}
+        });
+        return response;
+    } catch (error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert(error.response.message);
+        }
+
+        throw error;
+    }
+};

@@ -25,6 +25,7 @@ export const Text = styled.div`
 export const ContentArea = styled.div`
     display:flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 5px;
     width: 100%;
     padding: 10px 0;
