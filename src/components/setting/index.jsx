@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import BannerSetting from "./bannerSetting";
 import AccountSetting from "./accountSetting";
+import BoardSetting from "./boardSetting";
 
 const UserSetting = ({user}) => {
 
@@ -12,6 +13,13 @@ const UserSetting = ({user}) => {
                     <S.Text $size={"13px"} style={{marginTop: "5px"}}>커뮤니티 상단의 배너 이미지를 직접 설정할 수 있습니다.</S.Text>
                     <BannerSetting />
                 </S.VerticalWrapper>
+            </S.SettingWrapper>
+            <S.SettingWrapper>
+                <S.VerticalWrapper>
+                    <S.Text $size={"16px"} $weight={"600"}>즐겨찾기 게시판 설정</S.Text>
+                    <S.Text $size={"13px"} style={{marginTop: "5px"}}>자주 이용하는 게시판을 즐겨찾기 목록에 추가할 수 있습니다.</S.Text>
+                </S.VerticalWrapper>
+                <BoardSetting />
             </S.SettingWrapper>
             <S.SettingWrapper>
                 <S.VerticalWrapper>

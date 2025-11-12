@@ -66,6 +66,6 @@ export const DashArea = styled.img`
 `;
 
 export const IconArea = styled.img`
-    width: 9px;
-    height: 9px;
+    width: ${({$w}) => $w || "9px"};
+    height: ${({$h}) => $h || "9px"};
 `;
