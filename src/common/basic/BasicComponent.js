@@ -66,6 +66,6 @@ export const EmptyBox = styled.div`
 export const DotLine = styled.div`
     flex: 1;
     border-bottom: 1px dotted #999;
-    margin: 0 8px;
+    margin: 0 ${({$margin}) => $margin || "8px"};
     user-select: none;
 `;

@@ -1,15 +1,35 @@
 import * as S from "./styles";
-import { BOARDS } from "@/constants/boards";
+import * as BC from "@/common/basic/BasicComponent";
+import * as UBS from "@/apis/userBoardSetting";
 import dash from "@/assets/icon/etc/dash.svg";
+import bookmark from "@/assets/icon/etc/bookmark.svg";
+import { BOARDS } from "@/constants/boards";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { SERIAL_BOARDS } from "@/constants/serialBoards";
 
 const Board = () => {
     const navigate = useNavigate();
+    const [renderData, setRenderData] = useState([]);
 
     const handleNavigateBoard = (path) => {
         navigate(`/${path}`);
     };
 
+    const fetchUserBoard = async () => {
+        try {
+            const response = await UBS.getUserBoardList();
+            const favoriteBoards = SERIAL_BOARDS.filter((board) => response.data.includes(Number(board.id)));
+            setRenderData(favoriteBoards);
+        } catch(error) {
+
+        }
+    };
+
+    useEffect(() => {
+        fetchUserBoard();
+    }, []);
+console.log(renderData)
     const handleAlert = () => {
         alert("개발 예정입니다!");
     };
@@ -17,6 +37,23 @@ const Board = () => {
     return (
         <>
             <S.Wrapper>
+                <S.BoardBox>
+                    <S.Title onClick={() => handleNavigateBoard(BOARDS[0].path)}>
+                        <BC.Icon src={bookmark} $w={"15px"} />
+                        즐겨찾기 게시판
+                    </S.Title>
+                    {renderData.length > 0 &&
+                        <S.SubBoardBox>
+                            {renderData.map((board) => (
+                                <S.SubTitle onClick={() => handleNavigateBoard(board.path)}>
+                                    <S.DashArea src={dash} />{board.label}
+                                    {board.icon && <S.IconArea src={board.icon} />}
+                                </S.SubTitle>
+                            ))}
+                        </S.SubBoardBox>
+                    }
+                </S.BoardBox>
+                <S.Contour />
                 <S.BoardBox>
                     <S.Title onClick={() => handleNavigateBoard(BOARDS[0].path)}>
                         {BOARDS[0].label}
