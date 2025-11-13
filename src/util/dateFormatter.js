@@ -37,6 +37,10 @@ export const formatDate = (dateString, formatType = 1) => {
         return `${year}년 ${month}월 ${day}일 ${hour}:${minute}:${second}`;
       case 8:
         return `${hour}:${minute}`;
+      case 9:
+        if(isToday) return `${hour}:${minute}:${second}`;
+        else if(isThisYear) return `${month}.${day}`;
+        else return `${year}.${month}.${day}`;
       default:
         return dateString;
     }

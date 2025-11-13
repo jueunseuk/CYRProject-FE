@@ -29,9 +29,3 @@ export const Text = styled.div`
         scale: 1.01;
     }
 `;
-
-export const Icon = styled.img`
-    width: ${({$width}) => $width || "13px"};
-    height: ${({$height}) => $height || "13px"};
-    cursor: pointer;
-`;
