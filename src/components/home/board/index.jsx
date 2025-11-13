@@ -29,7 +29,7 @@ const Board = () => {
     useEffect(() => {
         fetchUserBoard();
     }, []);
-console.log(renderData)
+
     const handleAlert = () => {
         alert("개발 예정입니다!");
     };
@@ -45,7 +45,7 @@ console.log(renderData)
                     {renderData.length > 0 &&
                         <S.SubBoardBox>
                             {renderData.map((board) => (
-                                <S.SubTitle onClick={() => handleNavigateBoard(board.path)}>
+                                <S.SubTitle key={board.id} onClick={() => handleNavigateBoard(board.path)}>
                                     <S.DashArea src={dash} />{board.label}
                                     {board.icon && <S.IconArea src={board.icon} />}
                                 </S.SubTitle>
