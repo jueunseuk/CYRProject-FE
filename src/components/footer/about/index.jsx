@@ -43,6 +43,8 @@ const About = () => {
                     <S.SecondListItem>Vercel, Render, AWS (EC2, RDS, S3), Docker</S.SecondListItem>
                     <S.FirstListItem>Authentication</S.FirstListItem>
                     <S.SecondListItem>OAuth 2.0 (Naver, Kakao, Google), Gmail SMTP, JWT</S.SecondListItem>
+                    <S.FirstListItem>External API</S.FirstListItem>
+                    <S.SecondListItem>Youtube</S.SecondListItem>
                     <S.FirstListItem>Test</S.FirstListItem>
                     <S.SecondListItem>Postman</S.SecondListItem>
                     <S.FirstListItem>Version Controll</S.FirstListItem>
