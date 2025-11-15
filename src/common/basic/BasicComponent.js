@@ -73,3 +73,8 @@ export const DotLine = styled.div`
     margin: 0 ${({$margin}) => $margin || "8px"};
     user-select: none;
 `;
+
+export const Video = styled.video`
+    width: ${({$w}) => $w};
+    height: ${({$h}) => $h};
+`;
