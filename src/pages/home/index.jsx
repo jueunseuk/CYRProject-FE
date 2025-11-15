@@ -16,6 +16,7 @@ import useUserInfo from "@/hooks/localStorage";
 import CommunityInfo from "@/components/home/communityStatistic";
 import RankingSummary from "@/components/home/ranking";
 import InProgressPoll from "@/components/poll/inProgressPoll";
+import YoutubeComponent from "@/components/home/youtube";
 
 const Home = () => {
     const user = useUserInfo();
@@ -23,7 +24,7 @@ const Home = () => {
     return (
         <>
             <Banner></Banner>
-            <S.HorizontalWrapper>
+            <BC.HorizontalWrapper $ai={"flex-start"} $jc={"space-between"} style={{width: "100%"}}>
                 <S.SidebarWrapper>
                     {user && user.userId ? (
                         <LoginInfo></LoginInfo>
@@ -36,17 +37,18 @@ const Home = () => {
                 </S.SidebarWrapper>
                 <S.ContentWrapper>
                     <AnnouncementSummary />
-                    <S.HorizontalWrapper>
+                    <BC.HorizontalWrapper $jc={"space-between"} style={{width: "100%"}}>
                         <Cheer />
                         <CalendarSummary />
                         <Link />
-                    </S.HorizontalWrapper>
+                    </BC.HorizontalWrapper>
                     <LatestPost />
                     <GallerySummary />
                     {(user && user.userId) && <InProgressPoll />}
                     <RankingSummary />
+                    <YoutubeComponent />
                 </S.ContentWrapper>
-            </S.HorizontalWrapper>
+            </BC.HorizontalWrapper>
             <S.Contour />
             <Footer></Footer>
         </>

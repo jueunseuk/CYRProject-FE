@@ -96,7 +96,7 @@ const Guide = () => {
                     <S.FirstListItem>d. <S.Link href="#experience" title="III. 경험치 안내로 이동">경험치</S.Link></S.FirstListItem>
                         <S.SecondListItem>사용자는 해당 커뮤니티 내에서 특정한 활동에 따라 보상으로 경험치를 획득할 수 있습니다.</S.SecondListItem>
                         <S.ThirdListItem>- 활동별 경험치 획득 수치는 <S.Link href="#experience" style={{fontWeight: "600"}}>III.a.경험치</S.Link>를 참고해주세요.</S.ThirdListItem>
-                    <S.FirstListItem>e. 알림(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem>e. 알림</S.FirstListItem>
                         <S.SecondListItem>커뮤니티 내에서 아래와 같은 새로운 소식이나 활동과 관련된 알림을 받을 수 있습니다.</S.SecondListItem>
                             <S.ThirdListItem>- 내 게시글이나 댓글에 새로운 댓글/답글이 달렸을 때</S.ThirdListItem>
                             <S.ThirdListItem>- 운영자의 공지사항이나 이벤트가 등록되었을 때</S.ThirdListItem>
@@ -137,14 +137,11 @@ const Guide = () => {
                         <S.SecondListItem>나만의 모래사장을 상점에서 판매하는 아이템들과 함께 꾸밀 수 있는 공간입니다.</S.SecondListItem>
                         <S.SecondListItem>자신만의 개성을 살려서 다른 사람들에게 자랑해보세요.</S.SecondListItem>
                         <S.SecondListItem></S.SecondListItem>
-                    <S.FirstListItem id="shop">m. 율 Shorts(개발 예정)</S.FirstListItem>
-                        <S.SecondListItem>가수 최유리님과 관련된 유튜브 쇼츠 영상을 모아서 볼 수 있는 서비스입니다.</S.SecondListItem>
-                        <S.SecondListItem></S.SecondListItem>
-                    <S.FirstListItem id="shop">n. 율퀴즈~(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem id="shop">m. 율퀴즈~(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>가수 최유리님과 관련된 다양한 주제로 구성된 퀴즈를 풀 수 있는 서비스입니다.</S.SecondListItem>
                         <S.SecondListItem>퀴즈를 맞히면 커뮤니티 활동 보상으로 모래알이 지급됩니다.</S.SecondListItem>
                         <S.SecondListItem>커뮤니티의 매니저 등급 이상의 회원만 문제를 출제할 수 있습니다.</S.SecondListItem>
-                    <S.FirstListItem id="shop">o. 랭킹(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem id="shop">n. 랭킹</S.FirstListItem>
                         <S.SecondListItem>다양한 주제에 대해 유저들의 랭킹을 확인할 수 있습니다.</S.SecondListItem>
                 </S.List>
                 <S.Blank />
