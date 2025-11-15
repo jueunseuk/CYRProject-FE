@@ -78,13 +78,9 @@ export const ItemArea = styled.div`
     }
 `;
 
-export const Icon = styled.div`
+export const Icon = styled.img`
     width: 13px;
     height: 13px;
-    background-image: url(${props => props.$icon});
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
 `;
 
 export const Link = styled.a`
