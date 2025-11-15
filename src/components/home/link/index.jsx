@@ -9,7 +9,7 @@ import facebook from "@/assets/icon/link/facebook.svg";
 import soundcloud from "@/assets/icon/link/soundcloud.svg";
 import cafe from "@/assets/icon/link/cafe.svg";
 import nave2 from "@/assets/icon/link/nave.svg";
-import x_twitter from "@/assets/icon/link/x_twitter.svg";
+import twitter from "@/assets/icon/link/twitter.svg";
 import namu from "@/assets/icon/link/namu.svg";
 import { useState } from "react";
 
@@ -111,7 +111,7 @@ const Link = () => {
                                     <S.LinkText $color={"#4266F8"} $size={"15px"} $weight={"600"}>Nave</S.LinkText></S.Link>
                             </S.ItemArea>
                             <S.ItemArea>
-                                <S.Icon $icon={x_twitter}/>
+                                <S.Icon $icon={twitter}/>
                                 <S.Link href="https://www.instagram.com/nave_label/" target="_blank" title="네이브 X 바로가기">
                                     <S.LinkText $color={"#000000"} $size={"15px"} $weight={"600"}>X</S.LinkText></S.Link>
                             </S.ItemArea>
