@@ -39,6 +39,10 @@ export const Image = styled.img`
 export const Icon = styled.img`
     width: ${({$w}) => $w};
     height: ${({$h}) => $h};
+
+    &:hover {
+        background-color: ${({$hbg}) => $hbg};
+    }
 `;
 
 export const Contour = styled.div`
