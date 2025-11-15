@@ -10,6 +10,7 @@ import factory from "@/assets/icon/user/factory.svg";
 import mypage from "@/assets/icon/user/mypage.svg";
 import inventory from "@/assets/icon/user/inventory.svg";
 import sandbox from "@/assets/icon/user/sandbox.svg";
+import achievement from "@/assets/icon/user/achievement.svg";
 import useUserInfo from "@/hooks/localStorage";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
@@ -81,6 +82,10 @@ const LoginInfo = () => {
         navigate("/user/inventory");
     };
 
+    const handleNavigateAchievement = () => {
+        navigate("/user/achievement");
+    };
+
     const handleNavigateSands = () => {
         alert("개발 예정입니다!")
         // navigate("/user/sands");
@@ -140,7 +145,7 @@ const LoginInfo = () => {
                     <S.Text $size={"12px"} $weight={"600"}>{userAmount.temperature} ℃</S.Text>
                 </S.HorizontalWrapper>
             </S.IconArea>
-            <S.HorizontalWrapper $jc={"center"} $ai={"center"} style={{width: "170px", flexWrap: "wrap", columnGap: "7px"}}>
+            <S.HorizontalWrapper $jc={"center"} $ai={"center"} style={{width: "180px", flexWrap: "wrap"}}>
                 <S.ItemBox onClick={() => handleNavigateMyPage()} title="마이페이지로 이동">
                     <S.Icon src={mypage} />
                     <S.Text $size={"11px"} $weight={"600"}>마이페이지</S.Text>
@@ -156,6 +161,10 @@ const LoginInfo = () => {
                 <S.ItemBox onClick={() => handleNavigateInventory()} title="인벤토리로 이동">
                     <S.Icon src={inventory} />
                     <S.Text $size={"11px"} $weight={"600"}>인벤토리</S.Text>
+                </S.ItemBox>
+                <S.ItemBox onClick={() => handleNavigateAchievement()} title="업적으로 이동">
+                    <S.Icon src={achievement} />
+                    <S.Text $size={"11px"} $weight={"600"}>업적</S.Text>
                 </S.ItemBox>
                 <S.ItemBox onClick={() => handleNavigateSands()} title="추가 예정">
                     <S.Icon src={sandbox} />
