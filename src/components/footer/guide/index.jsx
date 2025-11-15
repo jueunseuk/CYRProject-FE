@@ -13,7 +13,7 @@ const Guide = () => {
         <>
             <S.Wrapper>
                 <S.Title>커뮤니티 이용 가이드</S.Title>
-                <S.Text>본 커뮤니티는 이용자 모두가 안전하고 즐겁게 활동할 수 있도록 운영 원칙과 이용 규칙을 마련했습니다. 본 이용 가이드는 커뮤니티 내에서의 건전한 소통을 돕고, 모든 이용자가 존중받는 환경을 유지하기 위한 기준이 됩니다. 이용 가이드를 참고하여 더욱 즐겁고 원활한 커뮤니티 활동을 이어가시길 바랍니다.</S.Text>
+                <S.Text>본 커뮤니티는 이용자 모두가 즐겁게 활동할 수 있도록 커뮤니티의 이용 가이드를 제시하고 있습니다. 본 이용 가이드는 커뮤니티 내에서의 원활한 활동을 돕고, 모든 이용자에게 즐거운 커뮤니티 활동을 제공하기 위한 기준이 됩니다. 이용 가이드를 참고하여 더욱 쉽고 재밌는 커뮤니티 활동을 이어가시길 바랍니다.</S.Text>
                 <S.Blank />
 
                 <S.SubTitle>I. 게시판별 목적 안내</S.SubTitle>
@@ -36,15 +36,15 @@ const Guide = () => {
                     <S.FirstListItem>e. 자유게시판</S.FirstListItem>
                         <S.SecondListItem>자유로운 주제로 이용자 간 다양한 소통을 할 수 있는 공간입니다.</S.SecondListItem>
                         <S.SecondListItem>정치, 종교 등 민감한 주제의 게시글 및 악의적이거나 공격적인 글은 제한됩니다.</S.SecondListItem>
-                    <S.FirstListItem>f. 질문게시판</S.FirstListItem>
+                    <S.FirstListItem>f. 질문게시판(업데이트 예정)</S.FirstListItem>
                         <S.SecondListItem>커뮤니티 및 아티스트 관련 궁금한 사항을 질문하고 답변 받을 수 있는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>가수 최유리에 관한 기본적인 질문은 AI 율랑이에게 물어보거나 율무위키를 참고하면 빠르게 답을 얻을 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>질문 시 명확한 제목과 상세한 내용을 기재하면 빠르고 정확한 답변을 받을 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>FAQ에서 자주 묻는 질문을 확인할 수 있습니다.</S.SecondListItem>
-                    <S.FirstListItem>g. 내가 그린 유리</S.FirstListItem>
+                    <S.FirstListItem>g. 내가 그린 유리(업데이트 예정)</S.FirstListItem>
                         <S.SecondListItem>커뮤니티 사용자가 직접 제작한 팬아트를 자유롭게 공유하는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>타인의 작품을 무단 도용하거나 재업로드하는 행위는 엄격히 금지됩니다.</S.SecondListItem>
-                    <S.FirstListItem>h. 내가 부른 유리</S.FirstListItem>
+                    <S.FirstListItem>h. 내가 부른 유리(업데이트 예정)</S.FirstListItem>
                         <S.SecondListItem>커뮤니티 사용자가 직접 부른 가수 최유리의 노래 커버 컨텐츠를 공유할 수 있는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>타인의 콘텐츠를 무단으로 게시하거나 저작권을 침해하는 콘텐츠는 금지됩니다.</S.SecondListItem>
                     <S.FirstListItem>i. To. 유리</S.FirstListItem>
@@ -53,7 +53,7 @@ const Guide = () => {
                     <S.FirstListItem>j. 내가 좋아하는 유리 노래</S.FirstListItem>
                         <S.SecondListItem>가수 최유리의 곡 중 본인이 좋아하는 곡을 소개하고 감상을 공유하는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>곡에 대한 개인적인 경험이나 감상 포인트를 함께 나누면 더욱 좋습니다.</S.SecondListItem>
-                    <S.FirstListItem>k. 미발매곡 가사 탐구</S.FirstListItem>
+                    <S.FirstListItem>k. 미발매곡 가사 탐구(업데이트 예정)</S.FirstListItem>
                         <S.SecondListItem>미발매된 곡의 가사를 함께 듣고 탐구하며 분석할 수 있는 공간입니다.</S.SecondListItem>
                         <S.SecondListItem>동일한 곡에 대한 게시글이 이미 존재하는 경우 작성 불가능합니다.</S.SecondListItem>
                         <S.SecondListItem>이미 작성된 미발매곡에 관한 수정을 원한다면 해당 게시글의 댓글에서 작성자에게 수정 신청을 해야합니다.</S.SecondListItem>
@@ -86,7 +86,7 @@ const Guide = () => {
                 <S.List>
                     <S.FirstListItem>a. 출석</S.FirstListItem>
                         <S.SecondListItem>하루에 한 번씩 출석을 할 수 있는 서비스입니다.</S.SecondListItem>
-                        <S.SecondListItem>하루의 기준은 KST 기준 00:00부터 23:59입니다.</S.SecondListItem>
+                        <S.SecondListItem>하루의 기준은 KST 00:00:00부터 23:59:59입니다.</S.SecondListItem>
                     <S.FirstListItem>b. 응원</S.FirstListItem>
                         <S.SecondListItem>사용자는 메인 화면의 응원 버튼을 눌러서 아티스트를 응원할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>응원은 최대 1분에 1번씩 가능하고 응원을 클릭하는 순간 카운트가 시작됩니다.</S.SecondListItem>
@@ -102,10 +102,10 @@ const Guide = () => {
                             <S.ThirdListItem>- 운영자의 공지사항이나 이벤트가 등록되었을 때</S.ThirdListItem>
                             <S.ThirdListItem>- 받은 뱃지, 업적 달성 등 주요 활동 결과가 발생했을 때</S.ThirdListItem>
                         <S.SecondListItem>알림은 마이페이지 아래의 버튼을 통해 확인할 수 있으며, 동의한 사람에 한해서 이메일 알림 기능도 지원합니다.</S.SecondListItem>
-                    <S.FirstListItem>f. 업적(개발 예정)</S.FirstListItem>
-                        <S.SecondListItem>사용자는 커뮤니티 내에서 특정한 활동을 할 때 특정한 조건을 만족하면 업적 달성과 함께 경험치 및 뱃지를 획득하게 됩니다.</S.SecondListItem>
-                        <S.SecondListItem>획득한 업적과 뱃지는 마이페이지에서 확인할 수 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>업적이 해방되는 조건은 모두 비공개이나 사용자끼리 정보를 공유하는 것은 가능합니다.</S.SecondListItem>
+                    <S.FirstListItem>f. 업적</S.FirstListItem>
+                        <S.SecondListItem>사용자는 커뮤니티 내에서 특정한 활동을 할 때 특정한 조건을 만족하면 업적 달성과 함께 특정 보상들을 획득하게 됩니다.</S.SecondListItem>
+                        <S.SecondListItem>획득한 업적과 뱃지는 왼쪽의 업적을 눌러서 확인할 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>업적이 해방되는 조건은 모두 비공개이나 사용자끼리 숨겨진 업적 정보를 공유하는 것은 가능합니다.</S.SecondListItem>
                     <S.FirstListItem>g. 율무위키(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>Archive형 백과사전으로 가수 최유리에 관한 모든 공식/비공식 자료가 정리되어 있습니다.</S.SecondListItem>
                         <S.SecondListItem>율무위키 속 AI 율랑이에게 물어보면 직접 찾지 않아도 편하게 궁금한 내용을 알 수 있습니다.</S.SecondListItem>
@@ -189,9 +189,19 @@ const Guide = () => {
                                 <S.Column>투표당 한 번</S.Column>
                             </S.Row>
                             <S.Row>
-                                <S.Column>상점 구매</S.Column>
+                                <S.Column>상점 아이템 구매</S.Column>
                                 <S.Column>+3</S.Column>
                                 <S.Column>아이템 구매당 한 번</S.Column>
+                            </S.Row>
+                            <S.Row>
+                                <S.Column>공방 제작</S.Column>
+                                <S.Column>+5</S.Column>
+                                <S.Column>유리 조각 하나 제작당 한 번</S.Column>
+                            </S.Row>
+                            <S.Row>
+                                <S.Column>업적 달성</S.Column>
+                                <S.Column>+5</S.Column>
+                                <S.Column>업적당 한 번</S.Column>
                             </S.Row>
                         </tbody>
                     </S.Table>
@@ -270,6 +280,11 @@ const Guide = () => {
                                 <S.Column colSpan={2}>투표 참여</S.Column>
                                 <S.Column>+3</S.Column>
                                 <S.Column>투표당 한 번</S.Column>
+                            </S.Row>
+                            <S.Row>
+                                <S.Column colSpan={2}>업적 달성</S.Column>
+                                <S.Column>비공개</S.Column>
+                                <S.Column>업적마다 상이</S.Column>
                             </S.Row>
                             <S.Row>
                                 <S.Column colSpan={2}>이용 가이드에 위배된 경우</S.Column>

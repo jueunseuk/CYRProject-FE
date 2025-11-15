@@ -104,7 +104,8 @@ export const ItemBox = styled.div`
     border-radius: 9px;
     align-items: center;
     gap: 3px;
-    padding: 5px;
+    width: 58px;
+    padding: 5px 0;
     cursor: pointer;
 
     &:hover {

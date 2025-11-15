@@ -79,6 +79,7 @@ export const Link = styled.a`
 export const Table = styled.table`
     border-collapse: collapse;
     margin-bottom: 7px;
+    margin-left: 25px;
 `;
 
 export const Row = styled.tr`
