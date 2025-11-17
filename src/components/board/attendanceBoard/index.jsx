@@ -7,11 +7,12 @@ import refresh from "@/assets/icon/user/refresh.svg";
 import useUserInfo from "@/hooks/localStorage";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import { formatDate } from "@/util/dateFormatter";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAttendanceMessage } from "@/util/getAttendanceMessage";
 
 const AttendanceBoard = () => {
+    const navigate = useNavigate();
     const {subPath} = useParams();
     const [comment, setComment] = useState(getAttendanceMessage().message);
     const [cntData, setCntData] = useState({
@@ -51,7 +52,6 @@ const AttendanceBoard = () => {
 
         try {
             await A.requestAttendance(comment);
-            console.log()
             window.location.reload();
         } catch(error) {
 
@@ -172,7 +172,7 @@ const AttendanceBoard = () => {
                         </S.NoAttendanceWrapper>
                     ) : (attendances.map((attendance, idx) => (
                         <S.AttendanceBlock key={idx}>
-                            <S.UserProfile src={attendance.profileImageUrl}/>
+                            <S.UserProfile src={attendance.profileImageUrl} onClick={() => navigate(`/users/${attendance.userId}`)}/>
                             <S.ContentBox>
                                 <S.HorizontalWrapper>
                                     <S.HorizontalWrapper $gap={"5px"}>
