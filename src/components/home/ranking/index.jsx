@@ -81,7 +81,7 @@ const RankingSummary = () => {
                     <BC.Text $size={"12px"} style={{cursor: "pointer"}} onClick={handleNavigateRanking}>더보기</BC.Text>
                 </BC.HorizontalWrapper>
                 <BC.HorizontalWrapper $jc={"flex-start"} $gap={"10px"} style={{overflowX: "auto"}}>
-                    <BC.VerticalWrapper $jc={"flex-start"} $gap={"7px"} style={{width: "220px", height: "100%"}}>
+                    <BC.VerticalWrapper $jc={"flex-start"} $gap={"7px"} style={{width: "220px", height: "150px", marginTop: "5px"}}>
                         <BC.Text $size={"15px"} $weight={"600"} style={{margin: "3px"}}>출석</BC.Text>
                         {attendanceRank.map((rank) => (
                             <S.RankItem key={rank.rankingId} style={{background: getBackground(rank.priority)}}>
@@ -93,7 +93,7 @@ const RankingSummary = () => {
                             </S.RankItem>
                         ))}
                     </BC.VerticalWrapper>
-                    <BC.VerticalWrapper $jc={"flex-start"} $gap={"7px"} style={{width: "220px", height: "100%"}}>
+                    <BC.VerticalWrapper $jc={"flex-start"} $gap={"7px"} style={{width: "220px", height: "150px", marginTop: "5px"}}>
                         <BC.Text $size={"15px"} $weight={"600"} style={{margin: "3px"}}>총 응원</BC.Text>
                         {cheerTotalRank.map((rank) => (
                             <S.RankItem key={rank.rankingId} style={{background: getBackground(rank.priority)}}>
@@ -105,7 +105,7 @@ const RankingSummary = () => {
                             </S.RankItem>
                         ))}
                     </BC.VerticalWrapper>
-                    <BC.VerticalWrapper $jc={"flex-start"} $gap={"7px"} style={{width: "220px", height: "100%"}}>
+                    <BC.VerticalWrapper $jc={"flex-start"} $gap={"7px"} style={{width: "220px", height: "150px", marginTop: "5px"}}>
                         <BC.Text $size={"15px"} $weight={"600"} style={{margin: "3px"}}>일일 응원</BC.Text>
                         {cheerDailyRank.map((rank) => (
                             <S.RankItem key={rank.rankingId} style={{background: getBackground(rank.priority)}}>
@@ -117,7 +117,7 @@ const RankingSummary = () => {
                             </S.RankItem>
                         ))}
                     </BC.VerticalWrapper>
-                    <BC.VerticalWrapper $jc={"flex-start"} $gap={"7px"} style={{width: "220px", height: "100%"}}>
+                    <BC.VerticalWrapper $jc={"flex-start"} $gap={"7px"} style={{width: "220px", height: "150px", marginTop: "5px"}}>
                         <BC.Text $size={"15px"} $weight={"600"} style={{margin: "3px"}}>유리 조각</BC.Text>
                         {glassRank.map((rank) => (
                             <S.RankItem key={rank.rankingId} style={{background: getBackground(rank.priority)}}>

@@ -31,6 +31,7 @@ import ScrollToTop from "@/common/act/scrollToTop";
 import Manage from "@/pages/manage";
 import SearchPage from "./pages/search";
 import Ranking from "./pages/ranking";
+import Achievement from "./pages/achievement";
 
 export const RouterList = () => [
     {
@@ -165,6 +166,10 @@ export const RouterList = () => [
                     {
                         path: "/ranking",
                         element: <Ranking />
+                    },
+                    {
+                        path: "/user/achievement",
+                        element: <Achievement />
                     },
 
                     // footer
