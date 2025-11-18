@@ -13,7 +13,7 @@ export const VerticalWrapper = styled.div`
     gap: ${({$gap}) => $gap};
     justify-content: ${({$jc}) => $jc || "center"};
     align-items: ${({$ai}) => $ai || "center"};
-    width: 100%;
+    width: ${({$w}) => $w || "100%"};
 `;
 
 export const Text = styled.div`
