@@ -2,21 +2,34 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 1060px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1080px;
     margin-bottom: 35px;
+    gap: 90px;
 `;
 
-export const HorizontalWrapper = styled.div`
+export const VerticalWrapper = styled.div`
     display: flex;
-    align-items: center;
-    gap: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
 `;
 
 export const Text = styled.span`
     font-size: 13px;
     cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        font-weight: 500;
+    }
+`;
+
+export const LinkText = styled.a`
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
 
     &:hover {
         text-decoration: underline;
