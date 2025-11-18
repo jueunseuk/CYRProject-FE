@@ -48,7 +48,7 @@ const GallerySummary = () => {
                 </S.TitleArea>
                 <S.ContentArea>
                     {skeleton ? 
-                        Array.from({ length: 6 }).map((_, index) => (
+                        Array.from({ length: 12 }).map((_, index) => (
                             <SkeletonItem key={index} $width={"140px"} $height={"140px"}/>
                         ))
                         : images?.map((image) => (
