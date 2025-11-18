@@ -1,5 +1,6 @@
 import * as C from "@/apis/calendar";
 import * as S from "./styles";
+import * as BC from "@/common/basic/BasicComponent";
 import { useEffect, useState } from "react";
 import ScheduleFullScreen from "@/components/modal/scheduleFullScreen";
 import { useNavigate } from "react-router-dom";
@@ -87,7 +88,7 @@ const CalendarSummary = () => {
                 <S.ContentArea>
                 <S.ContentArea>
                     {currentSchedule.length === 0 ? (
-                        <S.Text>일정이 없습니다.</S.Text>
+                        <BC.EmptyBox $w={"100%"} $h={"100%"} $size={"13px"}>일정이 없습니다..</BC.EmptyBox>
                     ) : (
                         currentSchedule.slice(0, 5).map((item) => {
                             const leftText = getLeft(item.date);

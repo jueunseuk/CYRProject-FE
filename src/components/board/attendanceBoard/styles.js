@@ -139,16 +139,30 @@ export const UserProfile = styled.img`
     max-height: 50px;
     border-radius: 50px;
     object-fit: cover;
+    cursor: pointer;
 `;
 
 export const ContentBox = styled.div`
     display: flex;
+    position: relative;
     flex-direction: column;
     padding: 13px 15px;
     background-color: #F4F3E9;
     width: 750px;
     border-radius: 10px;
     gap: 10px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 18px;
+        left: -10px;
+        width: 0;
+        height: 0;
+        border-right: 10px solid #F4F3E9;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+    }
 `;
 
 export const IconArea = styled.img`

@@ -33,7 +33,7 @@ export const LinkText = styled.a`
 export const Image = styled.img`
     width: ${({$w}) => $w};
     height: ${({$h}) => $h};
-    object-fit: ${({$fit}) => $fit || "containt"};
+    object-fit: ${({$fit}) => $fit || "contain"};
 `;
 
 export const Icon = styled.img`
