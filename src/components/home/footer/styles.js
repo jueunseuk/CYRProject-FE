@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     width: 1080px;
     margin-bottom: 35px;
     gap: 90px;
+    padding: 0px 30px;
 `;
 
 export const VerticalWrapper = styled.div`
