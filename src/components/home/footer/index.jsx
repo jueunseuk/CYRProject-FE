@@ -14,7 +14,7 @@ const Footer = () => {
         <>
             <S.Wrapper>
                 <S.VerticalWrapper $gap={"2px"} $ai={"flex-start"}>
-                    <BC.Text $size={"16px"} $weight={"900"} style={{margin: "5px 0 10px 0", borderBottom: "3px solid black"}}>SERVICES</BC.Text>
+                    <BC.Text $size={"16px"} $weight={"700"} style={{margin: "5px 0 10px 0", borderBottom: "2px solid black"}}>SERVICES</BC.Text>
                     <S.Text onClick={() => handleNavigate("new")}>게시판</S.Text>
                     <S.Text onClick={() => handleNavigate("user/craftshop")}>유리공방</S.Text>
                     <S.Text onClick={() => handleNavigate("user/shop")}>유리상점</S.Text>
@@ -24,20 +24,20 @@ const Footer = () => {
                     <S.Text onClick={() => handleNavigate("ranking")}>랭킹</S.Text>
                 </S.VerticalWrapper>
                 <S.VerticalWrapper $gap={"2px"} $ai={"flex-start"}>
-                    <BC.Text $size={"16px"} $weight={"900"} style={{margin: "5px 0 10px 0", borderBottom: "3px solid black"}}>LEGAL</BC.Text>
+                    <BC.Text $size={"16px"} $weight={"700"} style={{margin: "5px 0 10px 0", borderBottom: "2px solid black"}}>LEGAL</BC.Text>
                     <S.Text onClick={() => handleNavigate("terms")}>서비스 이용약관</S.Text>
                     <S.Text onClick={() => handleNavigate("policy")}>개인정보 보호정책</S.Text>
                     <S.Text onClick={() => handleNavigate("guide")}>커뮤니티 이용가이드</S.Text>
                     <S.Text onClick={() => handleNavigate("about")}>About</S.Text>
                 </S.VerticalWrapper>
                 <S.VerticalWrapper $gap={"2px"} $ai={"flex-start"}>
-                    <BC.Text $size={"16px"} $weight={"900"} style={{margin: "5px 0 10px 0", borderBottom: "3px solid black"}}>CONTACT</BC.Text>
+                    <BC.Text $size={"16px"} $weight={"700"} style={{margin: "5px 0 10px 0", borderBottom: "2px solid black"}}>CONTACT</BC.Text>
                     <BC.Text>Name : 윤준수</BC.Text>
                     <BC.Text>Email : junsu120202@gmail.com</BC.Text>
                     <BC.Text>Tel : 010-6558-4431</BC.Text>
                 </S.VerticalWrapper>
                 <S.VerticalWrapper $gap={"2px"} $ai={"flex-start"}>
-                    <BC.Text $size={"16px"} $weight={"900"} style={{margin: "5px 0 10px 0", borderBottom: "3px solid black"}}>CREATOR</BC.Text>
+                    <BC.Text $size={"16px"} $weight={"700"} style={{margin: "5px 0 10px 0", borderBottom: "2px solid black"}}>CREATOR</BC.Text>
                     <S.LinkText href="https://jundyu.tistory.com/">Blog</S.LinkText>
                     <S.LinkText href="https://github.com/jueunseuk">Github</S.LinkText>
                 </S.VerticalWrapper>
