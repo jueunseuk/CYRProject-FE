@@ -40,7 +40,8 @@ const EmailVerify = () => {
         }
         try {
             setTimer(600);
-            await A.requestEmailCode(email);
+            const purpose = "SIGNUP"
+            await A.requestEmailCode(email, purpose);
             alert("이메일로 인증 코드를 전송했습니다.");
             if(intervalId) clearInterval(intervalId);
         } catch (error) {
