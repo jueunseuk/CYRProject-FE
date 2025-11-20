@@ -21,11 +21,7 @@ instance.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-          await axios.post(
-            `${import.meta.env.VITE_BACKEND_BASE_URL}/auth/token/access/reset`,
-            {},
-            { withCredentials: true }
-          );
+          await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/auth/token/refresh`,{},{ withCredentials: true });
 
         return instance(originalRequest);
       } catch (refreshError) {

@@ -196,18 +196,3 @@ export const getUserEmoticon = async () => {
         throw error;
     }
 };
-
-export const secession = async () => {
-    try {
-        const response = await instance.delete(`/user/me`);
-        return response;
-    } catch(error) {
-        const errorCode = error.response.code;
-        
-        if(errorCode === "USER_001") {
-            alert("해당 사용자를 찾을 수 없습니다.");
-        }
-
-        throw error;
-    }
-};

@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
-import * as U from "@/apis/user";
+import * as A from "@/apis/authentication";
 import useUserInfo from "@/hooks/localStorage";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,8 +12,8 @@ const SecessionConfirm = ({onClose}) => {
 
     const handleClickSecession = async () => {
         try {
-            await U.secession();
-            alert("회원 탈퇴 완료!");
+            await A.secession();
+            alert("회원 탈퇴 완료\n일주일 이내 다시 로그인하면 자동으로 탈퇴가 취소됩니다.\n일주일이 지나면 해당 계정의 활동 정보는 전부 삭제됩니다.");
             navigate("/");
         } catch(error) {
 
