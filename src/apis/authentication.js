@@ -3,9 +3,9 @@ import instance from "./instance";
 
 const backendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
-export const requestEmailCode = async (email) => {
+export const requestEmailCode = async (email, purpose) => {
     try {
-        const response = await axios.post(`${backendUrl}/auth/email/request`, { email });
+        const response = await axios.post(`${backendUrl}/auth/email/verification`, { email, purpose });
         return response.data;
     } catch (error) {
         console.error("인증코드 요청 실패 :", error);
@@ -13,9 +13,9 @@ export const requestEmailCode = async (email) => {
     }
 };
 
-export const requestVerificationCodeSignup = async (email, code) => {
+export const requestVerificationCodeSignup = async (email, code, purpose) => {
     try {
-        const response = await axios.post(`${backendUrl}/auth/email/check-signup`, {email, code});
+        const response = await axios.post(`${backendUrl}/auth/email/verification/validation`, {email, code, purpose});
         return response.data;
     } catch (error) {
         if(error.response && error.response.data) {
@@ -29,29 +29,6 @@ export const requestVerificationCodeSignup = async (email, code) => {
                 alert("이메일 인증 시간을 초과했습니다.");
             } else if(errorCode === "MAIL_006") {
                 alert("이미 가입된 이메일입니다.");
-            }
-
-            throw error;
-        } else {
-            alert("서버 오류가 발생했습니다. 다시 시도해주세요.");
-        }
-    }
-};
-
-export const requestVerificationCode = async (email, code) => {
-    try {
-        const response = await axios.post(`${backendUrl}/auth/email/check`, {email, code});
-        return response.data;
-    } catch (error) {
-        if(error.response && error.response.data) {
-            const errorCode = error.response.data.code;
-            console.log(error.response.data)
-            if(errorCode === 'MAIL_003') {
-                alert("인증 코드가 일치하지 않습니다.");
-            } else if(errorCode === 'MAIL_004') {
-                alert("존재하지 않거나 잘못된 이메일입니다.");
-            } else if(errorCode === 'MAIL_005') {
-                alert("이메일 인증 시간을 초과했습니다.");
             }
 
             throw error;
@@ -116,7 +93,7 @@ export const requestLogin = async (email, password, config) => {
 
 export const requestResetPassword = async (email, password) => {
     try {
-        const response = await axios.post(`${backendUrl}/auth/password/reset`, {email, password}, {withCredentials: true});
+        const response = await axios.patch(`${backendUrl}/auth/password`, {email, password}, {withCredentials: true});
         return response;
     } catch(error) {
         if(error.response && error.response.data) {
@@ -221,3 +198,18 @@ export const requestKakaoUserInformation = async (code) => {
 export const requestLogout = () => {
     return instance.post("/auth/logout");
 }
+
+export const secession = async () => {
+    try {
+        const response = await instance.patch(`/auth/secession`);
+        return response;
+    } catch(error) {
+        const errorCode = error.response.code;
+        
+        if(errorCode === "USER_001") {
+            alert("해당 사용자를 찾을 수 없습니다.");
+        }
+
+        throw error;
+    }
+};

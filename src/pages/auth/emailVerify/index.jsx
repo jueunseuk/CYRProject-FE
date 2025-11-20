@@ -53,7 +53,8 @@ const EmailVerify = () => {
             return;
         }
         try {
-            await A.requestVerificationCodeSignup(email, code);
+            const purpose = "SIGNUP"
+            await A.requestVerificationCodeSignup(email, code, purpose);
             alert("이메일 인증이 완료되었습니다.");
 
             setState((prev) => ({
