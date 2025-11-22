@@ -111,7 +111,7 @@ const Information = ({isOwner, user}) => {
                         <S.Text $size={"13px"} $weight={"700"} style={{width: "35px", height: "17px"}}>로그인</S.Text>
                         <S.DotLine />
                         <S.Text $size={"13px"} $weight={"800"}
-                            $color={getLoginMethodBackgroundColor("EMAIL").font} 
+                            $color={getLoginMethodBackgroundColor(user.method).font} 
                             style={{backgroundColor: getLoginMethodBackgroundColor(user.method).back, padding: "1px 3px", borderRadius: "3px"}}>{user.method}</S.Text>
                     </S.FieldWrapper>
                     <S.FieldWrapper $jc={"space-between"}>
