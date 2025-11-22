@@ -49,7 +49,7 @@ const BasicPost = () => {
                 setSkeleton(true);
                 const response = await P.getPost(postId);
                 setPostData(response.data);
-                setAlreadyEmpathy(postData.alreadyEmpathy);
+                setAlreadyEmpathy(response.data.alreadyEmpathy);
                 const commentRes = await C.getPostCommentList(postId);
                 setCommentData(commentRes);
                 
