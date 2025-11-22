@@ -17,11 +17,11 @@ export const postComment = async (param) => {
             console.log("서버가 응답하지 않습니다.");
         }
     }
-}
+};
 
-export const getPostCommentList = async (postId) => {
+export const getPostCommentList = async (postId, fixed) => {
     try {
-        const response = await instance.get(`${backendUrl}/comment/${postId}`, { headers: { Accept: "application/json" } });
+        const response = await instance.get(`${backendUrl}/comment/${postId}?fixed=${fixed}`, { headers: { Accept: "application/json" } });
         return response.data;
     } catch(error) {
         if(error.response && error.response.data) {
@@ -37,7 +37,6 @@ export const getPostCommentList = async (postId) => {
 
 export const patchComment = async (form, commentId) => {
     try {
-        console.log(form)
         const response = await instance.patch(`/comment/${commentId}`, form, {headers: {Accept: "application/json"}});
         return response;
     } catch(error) {
@@ -53,7 +52,7 @@ export const patchComment = async (form, commentId) => {
             alert("서버가 원활하지 않습니다.\n 다시 시도해주세요.");
         }
     }
-}
+};
 
 export const deleteComment = async (commentId) => {
     try {
@@ -69,4 +68,23 @@ export const deleteComment = async (commentId) => {
             console.log("서버가 응답하지 않습니다.");
         }
     }
-}
+};
+
+export const patchCommentFixed = async (commentId, fixed) => {
+    try {
+        const response = await instance.patch(`/comment/${commentId}/fixed?fixed=${fixed}`);
+        return response;
+    } catch(error) {
+        if(error.response && error.response.data) {
+            const errorCode = error.response.data.code;
+
+            if(errorCode === "POST_001") {
+                alert("작성자가 삭제했거나 차단된 게시글입니다.");
+            }
+
+            throw error;
+        } else {
+            alert("서버가 원활하지 않습니다.\n 다시 시도해주세요.");
+        }
+    }
+};
