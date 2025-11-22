@@ -159,7 +159,7 @@ const ApplyBoard = () => {
                     <tbody>
                         {applyData.map((apply, idx) => (
                             <S.Row key={apply.applyId}>
-                                <S.Column>{applyData.length-idx}</S.Column>
+                                <S.Column>{totalElements - ((page - 1) * (size) + idx)}</S.Column>
                                 <S.Column $align={"left"} style={{cursor: "pointer"}} onClick={() => handleOpenConfirmModal(apply)}>{apply.title}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"} onClick={() => navigate(`/users/${apply.userId}`)} style={{cursor: "pointer"}}>{apply.nickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(apply.createdAt, 3)}</S.Column>

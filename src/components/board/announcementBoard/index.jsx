@@ -105,7 +105,7 @@ const AnnouncementBoard = () => {
                     <tbody>
                         {fixedData.map((announcement, idx) => (
                             <S.Row key={announcement.announcementId} $fixed={true}>
-                                <S.Column>{fixedData.length-idx}</S.Column>
+                                <S.Column>{announcement.announcementId}</S.Column>
                                 <S.Column>[ {announcement.name} ]</S.Column>
                                 <S.Column $align={"left"} onClick={() => handleNavigatePost(announcement.announcementId)} style={{cursor: "pointer"}}>{announcement.title}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"} style={{cursor: "pointer"}}>{announcement.nickname}</S.Column>
@@ -114,7 +114,7 @@ const AnnouncementBoard = () => {
                         ))}
                         {announcementData.map((announcement, idx) => (
                             <S.Row key={announcement.announcementId}>
-                                <S.Column>{announcementData.length-idx}</S.Column>
+                                <S.Column>{announcement.announcementId}</S.Column>
                                 <S.Column>[ {announcement.name} ]</S.Column>
                                 <S.Column $align={"left"} onClick={() => handleNavigatePost(announcement.announcementId)} style={{cursor: "pointer"}}>{announcement.title}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"} style={{cursor: "pointer"}}>{announcement.nickname}</S.Column>
