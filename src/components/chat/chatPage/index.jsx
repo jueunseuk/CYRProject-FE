@@ -190,7 +190,6 @@ const Chatpage = ({chatRoom, onClose}) => {
                 destination: `/app/chat.send.${chatRoom.chatRoomId}`,
                 body: JSON.stringify(message),
             });
-            console.log("Emoticon sent:", message);
         } catch (error) {
             console.error("Emoticon publish failed:", error);
         }
@@ -228,7 +227,7 @@ const Chatpage = ({chatRoom, onClose}) => {
             sendMessage();
         }
     };
-console.log(type)
+
     return (
         <S.Wrapper>
             <BC.VerticalWrapper>

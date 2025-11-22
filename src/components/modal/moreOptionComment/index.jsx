@@ -1,5 +1,6 @@
 import * as S from "./styles";
 import * as M from "@/apis/manager";
+import * as C from "@/apis/comment";
 import DeleteModal from "@/components/modal/postDelete";
 import more from "@/assets/icon/gallery/more.svg";
 import cancel from "@/assets/icon/etc/cancel.svg";
@@ -8,7 +9,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ComplaintUpload from "../complaintUpload";
 
-const MoreOptionComment = ({formData, onEdit}) => {
+const MoreOptionComment = ({formData, postData, fetchComment, fetchFixedComment, onEdit}) => {
     const user = useUserInfo();
     const navigate = useNavigate();
     const location = useLocation();
@@ -29,7 +30,9 @@ const MoreOptionComment = ({formData, onEdit}) => {
     
     const handleOpenOption = () => {
         setIsOptionOpen((prev) => !prev);
-    }
+        fetchComment();
+        fetchFixedComment();
+    };
 
     const handleEdit = () => {
         if (onEdit) onEdit();
@@ -40,10 +43,18 @@ const MoreOptionComment = ({formData, onEdit}) => {
         setIsDeleteModalOpen(true);
     };
 
+    const handleFixed = async (fixed) => {
+        try {
+            await C.patchCommentFixed(formData.commentId, fixed);
+        } catch(error) {
+
+        }
+    };
+
     const handleCloseModal = () => {
         setIsDeleteModalOpen(false);
         setIsEditModalOpen(false);
-    }
+    };
     
     return (
         <>
@@ -54,6 +65,7 @@ const MoreOptionComment = ({formData, onEdit}) => {
                 <S.MoreIcon onClick={handleOpenOption} src={isOptionOpen ? cancel : more} />
                 {isOptionOpen && (
                     <S.OptionBox>
+                        {postData.userId === user.userId && <S.OptionButton onClick={() => handleFixed(formData.fixed ? false : true)}>{formData.fixed ? "고정 해제" : "고정"}</S.OptionButton>}
                         {(user.userId === formData.authorId || user.userId === formData.userId) && (
                             <>
                                 <S.OptionButton onClick={handleEdit}>수정</S.OptionButton>

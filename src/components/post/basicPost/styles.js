@@ -158,12 +158,12 @@ export const CommentList = styled.div`
     min-height: 150px;
     justify-content: center;
     padding: 25px;
-    gap: 25px;
 `;
 
 export const CommentItem = styled.div`
     display: flex;
     width: 100%;
+    padding: 10px;
     height: 100%;
     justify-content: flex-start;
 `;
