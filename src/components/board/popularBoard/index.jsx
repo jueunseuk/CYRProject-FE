@@ -27,9 +27,13 @@ const PopularBoard = () => {
         setSearchParams({ page: pageNum });
     }
 
-    const handleNavigatePost = (boardName, id) => {
-        navigate(`/${boardName}/${id}`);
-    }
+    const handleNavigatePost = (boardName, id, boardId) => {
+        navigate(`/${boardName}/${id}`, {
+            state: {
+                page: page > 0 ? page - 1 : 0, sort, boardId, boardName
+            }
+        });
+    };
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -105,9 +109,9 @@ const PopularBoard = () => {
                     <tbody>
                         {posts.map((post) => (
                             <S.Row key={post.postId}>
-                                <S.Column>{post.boardKorean}</S.Column>
-                                <S.Column $align={"left"} onClick={() => handleNavigatePost(post.boardName, post.postId)}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
-                                <S.Column $align={"left"} $size={"12px"}>{post.userNickname}</S.Column>
+                                <S.Column onClick={() => navigate(`/${post.boardName}`)} style={{cursor: "pointer"}}>{post.boardKorean}</S.Column>
+                                <S.Column $align={"left"} onClick={() => handleNavigatePost(post.boardName, post.postId, post.boardId)} style={{cursor: "pointer"}}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
+                                <S.Column $align={"left"} $size={"12px"} onClick={() => navigate(`/users/${post.userId}`)} style={{cursor: "pointer"}}>{post.userNickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(post.createdAt, 3)}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{post.viewCnt}</S.Column>
                                 <S.Column $color={getEmpathyColor(post.empathyCnt)}>{post.empathyCnt}</S.Column>

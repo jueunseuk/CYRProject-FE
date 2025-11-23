@@ -24,8 +24,12 @@ const LetterBoard = () => {
     }
 
     const handleNavigatePost = (id) => {
-        navigate(`/${subPath}/${id}`);
-    }
+        navigate(`/${subPath}/${id}`, {
+            state: {
+                page: page > 0 ? page - 1 : 0, sort, boardId, boardName: subPath
+            }
+        });
+    };
 
     useEffect(() => {
         const fetchPosts = async () => {

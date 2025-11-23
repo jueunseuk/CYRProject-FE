@@ -4,7 +4,7 @@ import * as E from "@/apis/empathy";
 import * as U from "@/apis/user";
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BOARD_DESCRIPTIONS } from "@/constants/boardsDesc";
 import useUserInfo from "@/hooks/localStorage";
@@ -24,10 +24,12 @@ import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/skeleton/Skeleton";
+import { getEmpathyColor } from "@/util/empathySelector";
 
 const BasicPost = () => {
     const user = useUserInfo();
     const navigate = useNavigate();
+    const { state } = useLocation();
     const {subPath} = useParams();
     const boardInfo = BOARD_DESCRIPTIONS[subPath];
     const {postId} = useParams();
@@ -35,6 +37,8 @@ const BasicPost = () => {
     const [isDisabled, setIsDisabled] = useState(false);
     const [skeleton, setSkeleton] = useState(true);
     const [postData, setPostData] = useState({});
+    const [recommendPostData, setRecommentPostData] = useState([]);
+    const [empathyCnt, setEmpathyCnt] = useState(0);
     const [comment, setComment] = useState("");
     const [selectEmoticon, setSelectEmoticon] = useState(null);
     const [locked, setLocked] = useState(false);
@@ -47,10 +51,11 @@ const BasicPost = () => {
     const [editingLocked, setEditingLocked] = useState(false);
     const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const [openEmoticonModal, setOpenEmoticonModal] = useState(false);
+    const recommendBoardInfo = BOARD_DESCRIPTIONS[state.boardName];
 
     const handleNavigatePostList = () => {
         navigate(`/${subPath}`);
-    }
+    };
 
     const fetchPost = async () => {
         try {
@@ -58,6 +63,28 @@ const BasicPost = () => {
             const response = await P.getPost(postId);
             setPostData(response.data);
             setAlreadyEmpathy(response.data.alreadyEmpathy);
+            setEmpathyCnt(response.data.empathyCnt);
+        } catch(error) {
+            if(error.response.data.code === "POST_001") {
+                setNotFound(true);
+            }
+        } finally {
+            setSkeleton(false);
+        }
+    };
+console.log(state)
+    const fetchRecommendPost = async () => {
+        try {
+            const form = {
+                page: state.page || 0,
+                sort: "createdAt",
+                size: 20,
+                direction: "DESC",
+                boardId: state.boardId
+            };
+            
+            const response = await P.getBoardPosts(form);
+            setRecommentPostData(response.data.content);
         } catch(error) {
             if(error.response.data.code === "POST_001") {
                 setNotFound(true);
@@ -106,6 +133,7 @@ const BasicPost = () => {
         fetchComment();
         fetchFixedComment();
         fetchUserEmoticon();
+        fetchRecommendPost();
     }, []);
     
     const handleClickComment = async () => {
@@ -153,9 +181,11 @@ const BasicPost = () => {
         try {
             if(!alreadyEmpathy) {
                 setAlreadyEmpathy(true);
+                setEmpathyCnt(empathyCnt+1);
                 await E.postEmpathy(postId);
             } else {
                 setAlreadyEmpathy(false);
+                setEmpathyCnt(empathyCnt-1);
                 await E.deleteEmpathy(postId);
             }
         } catch(error) {
@@ -178,7 +208,16 @@ const BasicPost = () => {
     const handleCloseModal = () => {
         setIsProfileModalOpen(false);
     };
-    
+
+    const handleNavigatePost = (id) => {
+        navigate(`/${subPath}/${id}`, {
+            state: {
+                page: state.page, sort: state.sort, boardId: state.boardId, boardName: state.boardName
+            }
+        });
+        window.location.reload();
+    };
+
     return (
         <>
             <S.Wrapper>
@@ -227,7 +266,7 @@ const BasicPost = () => {
                         </S.VerticalWrapper>
                         <S.HorizontalWrapper $gap={"10px"} style={{marginBottom: "30px"}}>
                             <S.NavigateButton onClick={handleNavigatePostList}><S.Icon src={list} $width={"13px"} $height={"10px"}/>목록</S.NavigateButton>
-                            <S.EmpathyButton disabled={isDisabled} $bg={alreadyEmpathy ? "#C6BC73" : "#e2e2e2"} onClick={() => handleClickEmpathy(postId)}><S.Icon src={empathy} $width={"13px"} $height={"10px"}/>공감</S.EmpathyButton>
+                            <S.EmpathyButton disabled={isDisabled} $bg={alreadyEmpathy ? "#C6BC73" : "#e2e2e2"} onClick={() => handleClickEmpathy(postId)}><S.Icon src={empathy} $width={"13px"} $height={"10px"}/>{empathyCnt}</S.EmpathyButton>
                         </S.HorizontalWrapper>
                     </>
                 )}
@@ -327,6 +366,42 @@ const BasicPost = () => {
                     )}
                 </S.CommentList>
             </S.CommentWrapper>
+
+            <BC.VerticalWrapper $ai={"flex-start"}>
+                <BC.Text $size={"15px"} $weight={"600"}><BC.Text $size={"15px"} $weight={"600"} $color={"#C6BC73"} style={{display: "inline"}}>{recommendBoardInfo.label}</BC.Text>의 다른 글</BC.Text>
+                <S.Table>
+                    <colgroup>
+                        <col style={{ width: "80px" }} />
+                        <col style={{ width: "400px" }} />
+                        <col style={{ width: "90px" }} />
+                        <col style={{ width: "90px" }} />
+                        <col style={{ width: "90px" }} />
+                        <col style={{ width: "73px" }} />
+                    </colgroup>
+                    <thead>
+                        <S.FirstRow>
+                            <S.Field>번호</S.Field>
+                            <S.Field>제목</S.Field>
+                            <S.Field $align={"left"}>작성자</S.Field>
+                            <S.Field>작성일</S.Field>
+                            <S.Field>조회</S.Field>
+                            <S.Field>추천</S.Field>
+                        </S.FirstRow>
+                    </thead>
+                    <tbody>
+                        {recommendPostData.map((post) => (
+                            <S.Row key={post.postId} $bg={postData.postId === post.postId ? "#F4F3E9" : ""} >
+                                <S.Column>{post.postId}</S.Column>
+                                <S.Column $align={"left"} onClick={() => handleNavigatePost(post.postId)} style={{cursor: "pointer"}}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>
+                                <S.Column $align={"left"} $size={"12px"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${post.userId}`)}>{post.userNickname}</S.Column>
+                                <S.Column $color={"#878787"} $size={"12px"}>{formatDate(post.createdAt, 3)}</S.Column>
+                                <S.Column $color={"#878787"} $size={"12px"}>{post.viewCnt}</S.Column>
+                                <S.Column $color={getEmpathyColor(post.empathyCnt)}>{post.empathyCnt}</S.Column>
+                            </S.Row>
+                        ))}
+                    </tbody>
+                </S.Table>
+            </BC.VerticalWrapper>
         </>
     );
 }

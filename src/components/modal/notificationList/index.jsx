@@ -34,7 +34,7 @@ const NotificationList = ({onClose}) => {
             case "POLL" : navigate("/poll"); break;
             case "ANNOUNCEMENT" : navigate(`/announcement/${targetId}`); break;
             case "EVENT" : navigate("/event"); break;
-            case "ACHIEVEMENT" : navigate("/"); break;
+            case "ACHIEVEMENT" : navigate("/user/achievement"); break;
         }
     };
 

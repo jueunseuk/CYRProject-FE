@@ -68,26 +68,29 @@ const AchievementComponent = () => {
                     ))}
                     <S.Underline $width={underline.width} $offset={underline.offset} />
                 </S.TabWrapper>
-                <BC.Text style={{textAlign: "left", margin: "10px 0", width: "100%"}}>{ACHIEVEMENTS[selectedTap].description}</BC.Text>
+                <BC.Text style={{textAlign: "left", width: "100%"}}>{ACHIEVEMENTS[selectedTap].description}</BC.Text>
             </BC.VerticalWrapper>
-            <BC.HorizontalWrapper $jc={"flex-start"} $gap={"7px"} style={{flexWrap: "wrap"}}>
-                {(!achieveData || achieveData.length === 0) ?
-                    <BC.EmptyBox $w={"100%"} $h={"100px"}>획득한 업적이 없어요..</BC.EmptyBox>
-                    :
-                    <>
-                        {achieveData.map((a, idx) => (
-                            <S.AchievementItem key={a.achievementLogId}>
-                                <BC.Image src={a.imageUrl} $w={"80%"} />
-                                <BC.VerticalWrapper>
-                                    <BC.Text $size={"15px"} $weight={"600"}>{a.name}</BC.Text>
-                                    <BC.Text $color={"#878787"}>{a.description}</BC.Text>
-                                </BC.VerticalWrapper>
-                                <BC.Text $color={"#878787"}>{formatDate(a.createdAt, 1)}</BC.Text>
-                            </S.AchievementItem>
-                        ))}
-                    </>
-                }
-            </BC.HorizontalWrapper>
+            <BC.VerticalWrapper>
+                <BC.Text style={{textAlign: "left", width: "100%"}}>총 <BC.Text $weight={"600"} style={{display: "inline"}}>{achieveData.length}</BC.Text>개의 업적</BC.Text>
+                <BC.HorizontalWrapper $jc={"flex-start"} $gap={"7px"} style={{flexWrap: "wrap", width: "100%"}}>
+                    {(!achieveData || achieveData.length === 0) ?
+                        <BC.EmptyBox $w={"100%"} $h={"100px"}>획득한 업적이 없어요..</BC.EmptyBox>
+                        :
+                        <>
+                            {achieveData.map((a, idx) => (
+                                <S.AchievementItem key={a.achievementLogId}>
+                                    <BC.Image src={a.imageUrl} $w={"80%"} />
+                                    <BC.VerticalWrapper>
+                                        <BC.Text $size={"15px"} $weight={"600"}>{a.name}</BC.Text>
+                                        <BC.Text $color={"#878787"}>{a.description}</BC.Text>
+                                    </BC.VerticalWrapper>
+                                    <BC.Text $color={"#878787"}>{formatDate(a.createdAt, 1)}</BC.Text>
+                                </S.AchievementItem>
+                            ))}
+                        </>
+                    }
+                </BC.HorizontalWrapper>
+            </BC.VerticalWrapper>
         </S.Wrapper>
     )
 };
