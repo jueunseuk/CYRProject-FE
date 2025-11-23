@@ -1,5 +1,6 @@
 import * as C from "@/apis/cheer";
 import * as S from "./styles";
+import * as BC from "@/common/basic/BasicComponent";
 import information from "@/assets/icon/etc/information.svg";
 import { useEffect, useState } from "react";
 
@@ -44,7 +45,7 @@ const Cheer = () => {
                 <S.TitleArea>
                     <S.Text $size={"16px"} $weight={"600"}>응원하기</S.Text>
                     <S.TooltipWrapper>
-                        <S.IconArea src={information} />
+                        <BC.Icon src={information} />
                         <S.TooltipText>
                             <p style={{fontSize: "16px", fontWeight:"700", marginBottom:"5px"}}>응원이란?</p>
                             <p style={{fontSize:"14px"}}>아래의 응원을 눌러서 유리를 응원해보세요!</p>

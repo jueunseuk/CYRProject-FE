@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
 
 export const TitleArea = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 5px;
     align-items: center;
     padding: 5px 10px;
     height: 100%;

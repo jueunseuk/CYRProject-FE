@@ -1,5 +1,7 @@
 import * as G from "@/apis/gallery";
 import * as S from "./styles";
+import * as BC from "@/common/basic/BasicComponent";
+import information from "@/assets/icon/etc/information.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useUserInfo from "@/hooks/localStorage";
@@ -43,7 +45,10 @@ const GallerySummary = () => {
         <>
             <S.Wrapper>
                 <S.TitleArea>
-                    <S.Text $size={"16px"} $weight={"600"}>유리 갤러리</S.Text>
+                    <BC.HorizontalWrapper $gap={"5px"}>
+                        <S.Text $size={"16px"} $weight={"600"}>유리 갤러리</S.Text>
+                        <BC.Icon src={information} title="갤러리에 업로드 된 사진 중 12장을 랜덤으로 보여줍니다."/>
+                    </BC.HorizontalWrapper>
                     <S.Text $size={"12px"} style={{cursor: "pointer"}} onClick={handleNavigateGallery}>더보기</S.Text>
                 </S.TitleArea>
                 <S.ContentArea>
