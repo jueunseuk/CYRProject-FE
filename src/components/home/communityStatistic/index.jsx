@@ -76,6 +76,16 @@ const CommunityStatistic = () => {
                     <S.DotLine />
                     <BC.Text>{statisticData.todayConvert}</BC.Text>
                 </S.ItemWrapper>
+                <S.ItemWrapper>
+                    <BC.Text>총 응원 수</BC.Text>
+                    <S.DotLine />
+                    <BC.Text>{statisticData.totalCheer}</BC.Text>
+                </S.ItemWrapper>
+                <S.ItemWrapper>
+                    <BC.Text>오늘 응원 수</BC.Text>
+                    <S.DotLine />
+                    <BC.Text>{statisticData.todayCheer}</BC.Text>
+                </S.ItemWrapper>
             </BC.VerticalWrapper>
         </S.Wrapper>
     );
