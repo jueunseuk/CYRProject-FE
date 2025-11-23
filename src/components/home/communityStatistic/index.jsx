@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
 import * as ST from "@/apis/statistic";
+import information from "@/assets/icon/etc/information.svg";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/util/dateFormatter";
 
@@ -22,7 +23,7 @@ const CommunityStatistic = () => {
     return (
         <S.Wrapper>
             <BC.VerticalWrapper $gap={"3px"}>
-                <BC.Text $size={"16px"} $weight={"600"}>커뮤니티 통계</BC.Text>
+                <BC.Text $size={"16px"} $weight={"600"}>커뮤니티 통계<BC.Icon src={information} style={{marginLeft: "5px"}} $w={"11px"} title="2시간 간격으로 업데이트 됩니다."/></BC.Text>
                 <BC.Text $size={"11px"} $color={"#878787"}>{formatDate(statisticData.createdAt, 4)}</BC.Text>
             </BC.VerticalWrapper>
             <BC.VerticalWrapper $gap={"5px"}>

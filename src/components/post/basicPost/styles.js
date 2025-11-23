@@ -177,3 +177,57 @@ export const Button = styled.button`
     font-weight: 700;
     cursor: pointer;
 `;
+
+export const RecommendPostWrapper = styled.div`
+    
+`;
+
+export const RecommendPostItem = styled.div`
+    background-color: #eee;
+`;
+
+export const Table = styled.table`
+    width: 100%;
+    border-collapse: collapse;
+`;
+
+export const Comment = styled.span`
+    padding: 1px 4px;
+    margin-left: 5px;
+    font-size: 10px;
+    color: red;
+    border: 1px solid #B7B7B7;
+    border-radius: 5px;
+`;
+
+export const FirstRow = styled.tr`
+    border-top: 1px solid black;
+    border-bottom: 1px solid #878787;
+`;
+
+export const Row = styled.tr`
+    border-bottom: 1px solid #B8B8B8;
+    width: 100%;
+    background-color: ${({$bg}) => $bg};
+
+    &:hover {
+        background-color: rgb(250, 250, 250);;
+    }
+`;
+
+export const Field = styled.th`
+    font-size: 14px;
+    padding: 8px;
+    text-align: ${({$align}) => $align || "center"};
+`;
+
+export const Column = styled.td`
+    font-size: ${({$size}) => $size || "13px"};
+    max-width: 350px;
+    padding: 8px;
+    text-align: ${({$align}) => $align || "center"};
+    color: ${({$color}) => $color || "black"};
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`;

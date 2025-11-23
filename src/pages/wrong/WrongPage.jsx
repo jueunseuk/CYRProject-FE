@@ -7,6 +7,7 @@ const WrongPage = ({type}) => {
     const getSystemMessage = () => {
         switch(type) {
             case "post" : return "존재하지 않거나 삭제된 게시글입니다.";
+            default : return "존재하지 않는 페이지입니다.";
         }
     };
 
