@@ -76,7 +76,7 @@ const InProgressPoll = () => {
                     <BC.Text $size={"15px"} $weight={"600"}>{pollData.length}개</BC.Text>
                 </BC.HorizontalWrapper>
                 <BC.HorizontalWrapper $ai={"center"} $gap={"10px"} style={{cursor: "pointer"}}>
-                    <BC.Text $size={"14px"}>참여 가능한 투표만 보기</BC.Text>
+                    <BC.Text $size={"13px"}>참여 가능한 투표만 보기</BC.Text>
                     <BC.Icon src={possibleVote ? checked : unchecked} style={{cursor: "pointer"}} $w={"15px"} $h={"15px"}
                         onClick={() => setPossibleVote(possibleVote ? false : true)}
                     />

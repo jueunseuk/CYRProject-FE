@@ -1,5 +1,6 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
+import information from "@/assets/icon/etc/information.svg";
 import { useEffect, useState } from "react";
 
 const YoutubeComponent = () => {
@@ -32,6 +33,7 @@ const YoutubeComponent = () => {
         <S.Wrapper>
             <S.TitleArea>
                 <BC.Text $size={"16px"} $weight={"600"}>NEW YULTUBE</BC.Text>
+                <BC.Icon src={information} title="갤러리에 업로드 된 사진 중 12장을 랜덤으로 보여줍니다."/>
             </S.TitleArea>
             <BC.HorizontalWrapper>
                 {videoId && (
