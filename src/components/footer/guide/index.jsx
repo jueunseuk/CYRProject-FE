@@ -21,7 +21,7 @@ const Guide = () => {
                     <S.FirstListItem>a. 공지사항</S.FirstListItem>
                         <S.SecondListItem>운영자가 커뮤니티 내 주요 공지 및 안내 사항을 전달하는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>커뮤니티 운영자 이상의 권한을 가진 사람만 작성 가능합니다.</S.SecondListItem>
-                    <S.FirstListItem>b. 이벤트(개발 예정)</S.FirstListItem>
+                    <S.FirstListItem>b. 이벤트</S.FirstListItem>
                         <S.SecondListItem>커뮤니티에서 진행하는 각종 이벤트 소식을 확인하고 참여할 수 있는 공간입니다.</S.SecondListItem>
                         <S.SecondListItem>이벤트 참여 방법 및 상세 내용을 숙지 후 참여 바랍니다.</S.SecondListItem>
                         <S.SecondListItem>이벤트 당첨자의 경우 가입한 이메일로 별도의 안내가 이루어집니다.</S.SecondListItem>
