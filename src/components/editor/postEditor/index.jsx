@@ -21,6 +21,7 @@ const PostEditor = ({requestBoard}) => {
     });
     const [announcementCategoryId, setAnnouncementCategoryId] = useState(1);
     const [fix, setFix] = useState(false);
+    const [useComment, setUseComment] = useState(true);
     const [closedAt, setClosedAt] = useState("");
     const [type, setType] = useState("GENERAL");
     
@@ -38,7 +39,7 @@ const PostEditor = ({requestBoard}) => {
                 alert("공지사항 업로드 완료!\n작성한 게시글로 이동합니다.");
                 navigate(`/announcement/${response.data.announcementId}`);
             } else if(formData.boardId === "6") {
-                const response = await E.uploadEvent({...formData, type, fixed: fix, closedAt, locked: false});
+                const response = await E.uploadEvent({...formData, type, fixed: fix, closedAt, locked: false, useComment});
                 alert("이벤트 업로드 완료!\n작성한 게시글로 이동합니다.");
                 navigate(`/event/${response.data.eventId}`);
             } else {
@@ -133,7 +134,7 @@ const PostEditor = ({requestBoard}) => {
                         style={{cursor: "pointer"}}
                     />
                     <S.Text $size={"14px"} $weight={"600"}>나만보기</S.Text>
-                    {formData.boardId === "5" && 
+                    {(formData.boardId === "5" || formData.boardId === "6") && 
                         <>
                             <S.Icon 
                                 src={fix ? checked : unchecked}
@@ -141,6 +142,16 @@ const PostEditor = ({requestBoard}) => {
                                 style={{cursor: "pointer"}}
                             />
                             <S.Text $size={"14px"} $weight={"600"}>고정</S.Text>
+                        </>
+                    }
+                    {formData.boardId === "6" &&
+                        <>
+                            <S.Icon 
+                                src={useComment ? checked : unchecked}
+                                onClick={() => setUseComment(!useComment)}
+                                style={{cursor: "pointer"}}
+                            />
+                            <S.Text $size={"14px"} $weight={"600"}>댓글 사용</S.Text>
                         </>
                     }
                 </S.HorizontalWrapper>
