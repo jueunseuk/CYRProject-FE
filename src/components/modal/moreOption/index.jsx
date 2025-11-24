@@ -26,6 +26,8 @@ const MoreOption = ({formData, type}) => {
     }
 
     const handleEdit = () => {
+        if(type === "event") return "이벤트는 수정할 수 없습니다.";
+        
         if (type === "gallery") {
             setIsEditModalOpen(true);
         } else if(type === "announcement") {
@@ -37,7 +39,7 @@ const MoreOption = ({formData, type}) => {
 
     const forceDelete = async () => {
         try {
-            if(type === "announcement") return;
+            if(type === "announcement" || type === "event") return;
             
             if(type === "gallery") {
                 await M.deleteForce("gallery", formData.galleryId);
@@ -74,6 +76,8 @@ const MoreOption = ({formData, type}) => {
             return formData.galleryId;
         } else if(type === "announcement") {
             return formData.announcementId;
+        } else if(type === "event") {
+            return formData.eventId;
         } else {
             return formData.postId;
         }
