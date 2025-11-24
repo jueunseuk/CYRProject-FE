@@ -30,62 +30,62 @@ const CommunityStatistic = () => {
                 <S.ItemWrapper>
                     <BC.Text>총 회원 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.totalMember}</BC.Text>
+                    <BC.Text>{statisticData.totalMember || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>오늘 가입한 회원 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.todayMember}</BC.Text>
+                    <BC.Text>{statisticData.todayMember || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>총 게시글 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.totalPost}</BC.Text>
+                    <BC.Text>{statisticData.totalPost || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>오늘 올라온 게시글 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.todayPost}</BC.Text>
+                    <BC.Text>{statisticData.todayPost || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>총 댓글 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.totalComment}</BC.Text>
+                    <BC.Text>{statisticData.totalComment || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>오늘 올라온 댓글 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.todayComment}</BC.Text>
+                    <BC.Text>{statisticData.todayComment || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>총 갤러리 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.totalGallery}</BC.Text>
+                    <BC.Text>{statisticData.totalGallery || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>오늘 올라온 갤러리 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.todayGallery}</BC.Text>
+                    <BC.Text>{statisticData.todayGallery || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>총 유리 변환 횟수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.totalConvert}</BC.Text>
+                    <BC.Text>{statisticData.totalConvert || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>오늘 유리 변환된 횟수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.todayConvert}</BC.Text>
+                    <BC.Text>{statisticData.todayConvert || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>총 응원 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.totalCheer}</BC.Text>
+                    <BC.Text>{statisticData.totalCheer || 0}</BC.Text>
                 </S.ItemWrapper>
                 <S.ItemWrapper>
                     <BC.Text>오늘 응원 수</BC.Text>
                     <S.DotLine />
-                    <BC.Text>{statisticData.todayCheer}</BC.Text>
+                    <BC.Text>{statisticData.todayCheer || 0}</BC.Text>
                 </S.ItemWrapper>
             </BC.VerticalWrapper>
         </S.Wrapper>

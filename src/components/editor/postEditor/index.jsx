@@ -19,6 +19,7 @@ const PostEditor = ({requestBoard}) => {
         locked: "PUBLIC"
     });
     const [announcementCategoryId, setAnnouncementCategoryId] = useState(1);
+    const [eventCategoryId, setEventCategoryId] = useState(1);
     const [fix, setFix] = useState(false);
     
     const handleSelectChange = (e) => {
@@ -43,7 +44,7 @@ const PostEditor = ({requestBoard}) => {
 
         }
     }
-    console.log(announcementCategoryId)
+
     useEffect(() => {
         const handleBeforeUnload = (e) => {
           e.preventDefault();
@@ -66,8 +67,6 @@ const PostEditor = ({requestBoard}) => {
                             <S.OptionGroup label="NOTICE">
                                 <S.Option value={5}>공지사항</S.Option>
                                 <S.Option value={6}>이벤트</S.Option>
-                                <S.Option value={7}>캘린더</S.Option>
-                                <S.Option value={8}>투표</S.Option>
                             </S.OptionGroup>
                         )}
                         <S.OptionGroup label="모래 이야기">
@@ -93,6 +92,15 @@ const PostEditor = ({requestBoard}) => {
                             <S.Option value={2}>일정 공지</S.Option>
                             <S.Option value={3}>이벤트 공지</S.Option>
                             <S.Option value={4}>긴급 공지</S.Option>
+                            <S.Option value={5}>기타</S.Option>
+                        </S.Select>
+                    }
+                    {formData.boardId === "6" &&
+                        <S.Select size={"1"} value={eventCategoryId} onChange={(e) => setEventCategoryId(e.target.value)}>
+                            <S.Option value={1}>일반</S.Option>
+                            <S.Option value={2}>선착순</S.Option>
+                            <S.Option value={3}>추첨</S.Option>
+                            <S.Option value={4}>조건</S.Option>
                             <S.Option value={5}>기타</S.Option>
                         </S.Select>
                     }
