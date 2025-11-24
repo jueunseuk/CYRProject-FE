@@ -17,8 +17,8 @@ export const StyledPostContent = styled.div`
   }
 
   p {
-    line-height: 1.7;
-    margin: 0.8rem 0;
+    line-height: 1.5;
+    margin: 0.3rem 0;
   }
 
   ul, ol {
