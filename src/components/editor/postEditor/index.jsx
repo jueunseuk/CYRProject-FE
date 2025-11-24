@@ -1,4 +1,5 @@
 import * as A from "@/apis/announcement";
+import * as E from "@/apis/event";
 import * as P from "@/apis/post";
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
@@ -19,8 +20,9 @@ const PostEditor = ({requestBoard}) => {
         locked: "PUBLIC"
     });
     const [announcementCategoryId, setAnnouncementCategoryId] = useState(1);
-    const [eventCategoryId, setEventCategoryId] = useState(1);
     const [fix, setFix] = useState(false);
+    const [closedAt, setClosedAt] = useState("");
+    const [type, setType] = useState("GENERAL");
     
     const handleSelectChange = (e) => {
         setFormData((prev) => ({
@@ -33,8 +35,12 @@ const PostEditor = ({requestBoard}) => {
         try {
             if(formData.boardId === "5") {
                 const response = await A.uploadAnnouncement({...formData, announcementCategoryId, fix});
-                alert("게시글 업로드 완료!\n작성한 게시글로 이동합니다.");
+                alert("공지사항 업로드 완료!\n작성한 게시글로 이동합니다.");
                 navigate(`/announcement/${response.data.announcementId}`);
+            } else if(formData.boardId === "6") {
+                const response = await E.uploadEvent({...formData, type, fixed: fix, closedAt, locked: false});
+                alert("이벤트 업로드 완료!\n작성한 게시글로 이동합니다.");
+                navigate(`/event/${response.data.eventId}`);
             } else {
                 const response = await P.requestPost(formData);
                 alert("게시글 업로드 완료!\n작성한 게시글로 이동합니다.");
@@ -96,13 +102,16 @@ const PostEditor = ({requestBoard}) => {
                         </S.Select>
                     }
                     {formData.boardId === "6" &&
-                        <S.Select size={"1"} value={eventCategoryId} onChange={(e) => setEventCategoryId(e.target.value)}>
-                            <S.Option value={1}>일반</S.Option>
-                            <S.Option value={2}>선착순</S.Option>
-                            <S.Option value={3}>추첨</S.Option>
-                            <S.Option value={4}>조건</S.Option>
-                            <S.Option value={5}>기타</S.Option>
+                        <S.Select size={"1"} value={type} onChange={(e) => setType(e.target.value)}>
+                            <S.Option value={"GENERAL"}>일반</S.Option>
+                            <S.Option value={"FIRSTCOME"}>선착순</S.Option>
+                            <S.Option value={"RANDOM"}>추첨</S.Option>
+                            <S.Option value={"CONDITION"}>조건</S.Option>
+                            <S.Option value={"ETC"}>기타</S.Option>
                         </S.Select>
+                    }
+                    {formData.boardId === "6" &&
+                        <input type="datetime-local" value={closedAt} style={{height: "100%", padding: "4px", border: "1px solid #CCC", fontSize: "12px"}} onChange={(e) => setClosedAt(e.target.value)}/>
                     }
                 </BC.HorizontalWrapper>
                 <S.Input 

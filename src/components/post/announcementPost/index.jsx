@@ -7,6 +7,7 @@ import MoreOption from "@/components/modal/moreOption";
 import author from "@/assets/icon/post/author.svg";
 import ellipse from "@/assets/icon/post/ellipse.svg";
 import list from "@/assets/icon/gallery/list.svg";
+import view from "@/assets/icon/post/view.svg";
 import WrongPage from "@/pages/wrong/WrongPage";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
@@ -83,6 +84,10 @@ const AnnouncementPost = () => {
                                 <S.HorizontalWrapper>
                                     <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${announcementData.userId}`)}>{announcementData.nickname}</S.Text>
+                                </S.HorizontalWrapper>
+                                <S.HorizontalWrapper>
+                                    <S.Icon src={view} $width={"10px"} $height={"10px"}/>
+                                    <S.Text $size={"12px"} $color={"#878787"} $weight={"600"}>{announcementData.viewCnt}</S.Text>
                                 </S.HorizontalWrapper>
                                 <S.Icon src={ellipse} $width={"3px"} $height={"3px"}/>
                                 <S.Text $size={"12px"} $color={"#878787"}>{formatDate(announcementData.createdAt, 4)}</S.Text>

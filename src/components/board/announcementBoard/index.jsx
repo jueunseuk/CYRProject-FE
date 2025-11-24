@@ -89,8 +89,9 @@ const AnnouncementBoard = () => {
                         <colgroup>
                             <col style={{ width: "70px" }} />
                             <col style={{ width: "110px" }} />
-                            <col style={{ width: "450px" }} />
+                            <col style={{ width: "360px" }} />
                             <col style={{ width: "103px" }} />
+                            <col style={{ width: "90px" }} />
                             <col style={{ width: "90px" }} />
                         </colgroup>
                     <thead>
@@ -100,6 +101,7 @@ const AnnouncementBoard = () => {
                             <S.Field>제목</S.Field>
                             <S.Field $align={"left"}>작성자</S.Field>
                             <S.Field>작성일</S.Field>
+                            <S.Field>조회수</S.Field>
                         </S.FirstRow>
                     </thead>
                     <tbody>
@@ -110,6 +112,7 @@ const AnnouncementBoard = () => {
                                 <S.Column $align={"left"} onClick={() => handleNavigatePost(announcement.announcementId)} style={{cursor: "pointer"}}>{announcement.title}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"} style={{cursor: "pointer"}}>{announcement.nickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(announcement.createdAt, 3)}</S.Column>
+                                <S.Column $color={"#878787"} $size={"12px"}>{announcement.viewCnt}</S.Column>
                             </S.Row>
                         ))}
                         {announcementData.map((announcement, idx) => (
@@ -119,6 +122,7 @@ const AnnouncementBoard = () => {
                                 <S.Column $align={"left"} onClick={() => handleNavigatePost(announcement.announcementId)} style={{cursor: "pointer"}}>{announcement.title}</S.Column>
                                 <S.Column $align={"left"} $size={"12px"} style={{cursor: "pointer"}}>{announcement.nickname}</S.Column>
                                 <S.Column $color={"#878787"} $size={"12px"}>{formatDate(announcement.createdAt, 3)}</S.Column>
+                                <S.Column $color={"#878787"} $size={"12px"}>{announcement.viewCnt}</S.Column>
                             </S.Row>
                         ))}
                     </tbody>

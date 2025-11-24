@@ -30,10 +30,6 @@ const Board = () => {
         fetchUserBoard();
     }, []);
 
-    const handleAlert = () => {
-        alert("개발 예정입니다!");
-    };
-
     return (
         <>
             <S.Wrapper>
@@ -88,7 +84,7 @@ const Board = () => {
                     </S.Title>
                     <S.SubBoardBox>
                         <S.SubTitle onClick={() => handleNavigateBoard(BOARDS[4].children[0].path)}><S.DashArea src={dash} />{BOARDS[4].children[0].label}<S.IconArea src={BOARDS[4].children[0].icon} /></S.SubTitle>
-                        <S.SubTitle onClick={handleAlert}><S.DashArea src={dash} />{BOARDS[4].children[1].label}<S.IconArea src={BOARDS[4].children[1].icon} /></S.SubTitle>
+                        <S.SubTitle onClick={() => handleNavigateBoard(BOARDS[4].children[1].path)}><S.DashArea src={dash} />{BOARDS[4].children[1].label}<S.IconArea src={BOARDS[4].children[1].icon} /></S.SubTitle>
                         <S.SubTitle onClick={() => handleNavigateBoard(BOARDS[4].children[2].path)}><S.DashArea src={dash} />{BOARDS[4].children[2].label}<S.IconArea src={BOARDS[4].children[2].icon} /></S.SubTitle>
                         <S.SubTitle onClick={() => handleNavigateBoard(BOARDS[4].children[3].path)}><S.DashArea src={dash} />{BOARDS[4].children[3].label}<S.IconArea src={BOARDS[4].children[3].icon} /></S.SubTitle>
                     </S.SubBoardBox>

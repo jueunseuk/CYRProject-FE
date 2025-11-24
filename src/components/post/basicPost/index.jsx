@@ -72,7 +72,7 @@ const BasicPost = () => {
             setSkeleton(false);
         }
     };
-console.log(state)
+
     const fetchRecommendPost = async () => {
         try {
             const form = {
