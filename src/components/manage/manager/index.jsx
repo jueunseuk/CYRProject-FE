@@ -16,6 +16,7 @@ const UserManagement = () => {
     const [page, setPage] = useState(0);
     const [direction, setDirection] = useState("ASC");
     const [searchText, setSearchText] = useState("");
+    const [asset, setAsset] = useState("warn");
 
     const fetchMemberList = async () => {
         try {
@@ -42,9 +43,9 @@ const UserManagement = () => {
         }
     };
 
-    const handleUserWarnCnt = async (user, amount) => {
+    const handleUserAsset = async (user, amount) => {
         try {
-            await M.updateUserWarnCnt(user.userId, {"amount": amount});
+            await M.updateUserAsset(user.userId, asset, {"amount": amount});
         } catch(error) {
 
         } finally {
@@ -91,6 +92,22 @@ const UserManagement = () => {
         }
     };
 
+    const getUserAsset = (user) => {
+        switch(asset) {
+            case "warn": return user.warn;
+            case "glass": return user.glass;
+            case "sand": return user.sand;
+            case "temperature": return user.temperature;
+        }
+    };
+
+    const getAssetUnit = () => {
+        switch(asset) {
+            case "temperature": return 50;
+            default: return 1;
+        }
+    };
+
     return (
         <BC.VerticalWrapper $jc={"flex-start"} style={{maxHeight: "500px", border: "1px solid #878787", marginTop: "10px", overflow: "auto"}}>
             <BC.HorizontalWrapper $gap={"15px"} style={{width: "50%", padding: "5px 0"}}>
@@ -116,7 +133,14 @@ const UserManagement = () => {
                         <S.Column style={{fontWeight: "600", fontSize: "14px"}}>가입일</S.Column>
                         <S.Column style={{fontWeight: "600", fontSize: "14px"}}>권한</S.Column>
                         <S.Column style={{fontWeight: "600", fontSize: "14px"}}>계정 상태</S.Column>
-                        <S.Column style={{fontWeight: "600", fontSize: "14px"}}>경고 횟수</S.Column>
+                        <S.Column style={{fontWeight: "600", fontSize: "14px"}}>
+                            <S.Select value={asset} onChange={(e) => setAsset(e.target.value)}>
+                                <S.Option value="warn">경고 횟수</S.Option>
+                                <S.Option value="glass">유리 조각</S.Option>
+                                <S.Option value="sand">모래알</S.Option>
+                                <S.Option value="temperature">활동 온도</S.Option>
+                            </S.Select>
+                        </S.Column>
                     </S.FirstRow>
                 </thead>
                 <tbody>
@@ -139,9 +163,9 @@ const UserManagement = () => {
                             </S.Column>
                             <S.Column>
                                 <BC.HorizontalWrapper $gap={"20px"}>
-                                    <S.Button $size={"17px"} onClick={() => handleUserWarnCnt(user, -1)}>-</S.Button>
-                                    <BC.Text $weight={"600"} >{user.warn}</BC.Text>
-                                    <S.Button $size={"17px"} onClick={() => handleUserWarnCnt(user, 1)}>+</S.Button>
+                                    <S.Button $size={"17px"} onClick={() => handleUserAsset(user, -getAssetUnit())}>-</S.Button>
+                                    <BC.Text $weight={"600"} >{getUserAsset(user)}</BC.Text>
+                                    <S.Button $size={"17px"} onClick={() => handleUserAsset(user, getAssetUnit())}>+</S.Button>
                                 </BC.HorizontalWrapper>
                             </S.Column>
                         </S.Row>

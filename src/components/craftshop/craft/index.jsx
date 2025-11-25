@@ -75,11 +75,10 @@ const Craft = () => {
         } else if(log.name === "상점") {
             const att = {color: "#8D6E63", bg: "#EFEBE9", text: "Shop"};
             return att;
+        } else if(log.name === "업적") {
+            const att = {color: "#6A1B9A", bg: "#F3E5F5", text: "Achievement"};
+            return att;
         }
-    };
-
-    const handleNavigateToShop = () => {
-        navigate("/user/shop");
     };
 
     const handleNavigateToUserPage = (userId) => {
@@ -143,7 +142,7 @@ const Craft = () => {
 
             <S.VerticalWrapper $gap={"10px"}>
                 <S.Text $size={"18px"} $weight={"700"} style={{textAlign: "center"}}>공방 히스토리</S.Text>
-                <S.Text $size={"14px"}>전체 사용자의 공방 활동 중 최근 30건을 표시합니다.</S.Text>
+                <S.Text $size={"14px"}>전체 사용자의 유리 조각 획득/사용 내역의 최근 30건을 표시합니다.</S.Text>
                 <S.LogWrapper>
                     {logData.map((log) => (
                         <S.LogItem key={log.glassLogId}>

@@ -33,9 +33,9 @@ export const updateUserStatus = async (memberId, form) => {
     }
 };
 
-export const updateUserWarnCnt = async (memberId, form) => {
+export const updateUserAsset = async (memberId, asset, form) => {
     try {
-        const response = await instance.patch(`/manager/user/${memberId}/warn`, null, {params: form});
+        const response = await instance.patch(`/manager/user/${memberId}/${asset}`, null, {params: form});
         return response;
     } catch (error) {
         const errorCode = error.response.code;
