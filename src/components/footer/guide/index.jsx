@@ -21,17 +21,24 @@ const Guide = () => {
                     <S.FirstListItem>a. 공지사항</S.FirstListItem>
                         <S.SecondListItem>운영자가 커뮤니티 내 주요 공지 및 안내 사항을 전달하는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>커뮤니티 운영자 이상의 권한을 가진 사람만 작성 가능합니다.</S.SecondListItem>
+                        <S.SecondListItem>공지는 커뮤니티의 업데이트부터 가수 최유리님의 일정, 앨범 발매, 이벤트 등의 내용입니다.</S.SecondListItem>
                     <S.FirstListItem>b. 이벤트</S.FirstListItem>
                         <S.SecondListItem>커뮤니티에서 진행하는 각종 이벤트 소식을 확인하고 참여할 수 있는 공간입니다.</S.SecondListItem>
-                        <S.SecondListItem>이벤트 참여 방법 및 상세 내용을 숙지 후 참여 바랍니다.</S.SecondListItem>
-                        <S.SecondListItem>이벤트 당첨자의 경우 가입한 이메일로 별도의 안내가 이루어집니다.</S.SecondListItem>
+                        <S.SecondListItem>이벤트는 일반형, 조건형, 추첨형, 선착순형으로 나뉘어 있고 분류별 설명은 아래와 같습니다.</S.SecondListItem>
+                            <S.ThirdListItem>- 일반형: 일반적인 이벤트 분류로 이벤트 게시글의 안내에 맞게 참여하는 이벤트</S.ThirdListItem>
+                            <S.ThirdListItem>- 조건형: 경험치, 가입 경과일, 활동 온도 등의 특정 조건을 달성해야 참여 가능한 이벤트</S.ThirdListItem>
+                            <S.ThirdListItem>- 추첨형: 참여는 자유지만 참여한 인원 중에 특정 인원 수만 보상을 받는 이벤트</S.ThirdListItem>
+                            <S.ThirdListItem>- 선착순형: 이벤트에 주어진 인원 수만 선착순으로 참여 가능한 이벤트</S.ThirdListItem>
+                        <S.SecondListItem>이벤트 마감 시간, 참여 방법 및 상세 내용을 숙지 후 참여 바랍니다.</S.SecondListItem>
+                        <S.SecondListItem>이벤트 당첨자의 경우 가입한 이메일과 개인 율톡으로 별도의 안내가 이루어집니다.</S.SecondListItem>
                     <S.FirstListItem>c. 캘린더</S.FirstListItem>
                         <S.SecondListItem>가수의 공식 일정과 커뮤니티 내의 주요 일정을 한눈에 확인할 수 있는 게시판입니다.</S.SecondListItem>
-                        <S.SecondListItem>중요한 일정 추가를 원하는 사용자는 건의하기 게시판 이용 바랍니다.</S.SecondListItem>
+                        <S.SecondListItem>일정은 방송, 라디오, 콘서트, 대학 행사, 페스티벌, 기념일, 생일, 앨범 발매, 판매 등으로 분류됩니다.</S.SecondListItem>
+                        <S.SecondListItem>중요한 일정 추가를 원하는 사용자는 캘린더 하단의 건의하기 게시판 이용 바랍니다.</S.SecondListItem>
                     <S.FirstListItem>d. 투표</S.FirstListItem>
-                        <S.SecondListItem>커뮤니티와 관련된 주제 및 아티스트 활동에 대한 의견을 모으는 게시판입니다.</S.SecondListItem>
+                        <S.SecondListItem>커뮤니티와 관련된 주제 또는 아티스트 활동 등에 대한 전반적인 의견을 모으는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>투표 개시, 종료, 집계 등의 조작은 매니저 권한 이상만 가능합니다.</S.SecondListItem>
-                        <S.SecondListItem>투표 참여는 모든 회원에게 열려 있으며, 의견 작성 시 타인의 의견을 존중해주세요.</S.SecondListItem>
+                        <S.SecondListItem>투표 참여는 모든 사용자에게 열려 있으며, 타인의 의견을 존중해주세요.</S.SecondListItem>
                         <S.SecondListItem>투표 결과는 추후 컨텐츠 기획이나 이벤트 등에 반영될 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem>e. 자유게시판</S.FirstListItem>
                         <S.SecondListItem>자유로운 주제로 이용자 간 다양한 소통을 할 수 있는 공간입니다.</S.SecondListItem>
@@ -87,6 +94,8 @@ const Guide = () => {
                     <S.FirstListItem>a. 출석</S.FirstListItem>
                         <S.SecondListItem>하루에 한 번씩 출석을 할 수 있는 서비스입니다.</S.SecondListItem>
                         <S.SecondListItem>하루의 기준은 KST 00:00:00부터 23:59:59입니다.</S.SecondListItem>
+                        <S.SecondListItem>출석을 통해 활동 온도를 상승시킬 수 있습니다.</S.SecondListItem>
+                        <S.ThirdListItem>- 출석별 활동 온도 획득 수치는 <S.Link href="#furnace" style={{fontWeight: "600"}}>III.c.활동 온도</S.Link>를 참고해주세요.</S.ThirdListItem>
                     <S.FirstListItem>b. 응원</S.FirstListItem>
                         <S.SecondListItem>사용자는 메인 화면의 응원 버튼을 눌러서 아티스트를 응원할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>응원은 최대 1분에 1번씩 가능하고 응원을 클릭하는 순간 카운트가 시작됩니다.</S.SecondListItem>
@@ -98,13 +107,14 @@ const Guide = () => {
                         <S.ThirdListItem>- 활동별 경험치 획득 수치는 <S.Link href="#experience" style={{fontWeight: "600"}}>III.a.경험치</S.Link>를 참고해주세요.</S.ThirdListItem>
                     <S.FirstListItem>e. 알림</S.FirstListItem>
                         <S.SecondListItem>커뮤니티 내에서 아래와 같은 새로운 소식이나 활동과 관련된 알림을 받을 수 있습니다.</S.SecondListItem>
-                            <S.ThirdListItem>- 내 게시글이나 댓글에 새로운 댓글/답글이 달렸을 때</S.ThirdListItem>
-                            <S.ThirdListItem>- 운영자의 공지사항이나 이벤트가 등록되었을 때</S.ThirdListItem>
-                            <S.ThirdListItem>- 받은 뱃지, 업적 달성 등 주요 활동 결과가 발생했을 때</S.ThirdListItem>
-                        <S.SecondListItem>알림은 마이페이지 아래의 버튼을 통해 확인할 수 있으며, 동의한 사람에 한해서 이메일 알림 기능도 지원합니다.</S.SecondListItem>
+                            <S.ThirdListItem>- 새로운 업적을 달성했을 때</S.ThirdListItem>
+                            <S.ThirdListItem>- 새로 랭킹 10위 안에 들었을 때</S.ThirdListItem>
+                            <S.ThirdListItem>- 다른 사람에게 유리 조각을 선물 받았을 때</S.ThirdListItem>
+                            <S.ThirdListItem>- 율톡에 초대됐을 때</S.ThirdListItem>
+                        <S.SecondListItem>알림은 배너 상단의 버튼을 통해 확인할 수 있으며, 동의한 사람에 한해서 이메일 알림 기능도 지원(업데이트 예정)합니다.</S.SecondListItem>
                     <S.FirstListItem>f. 업적</S.FirstListItem>
                         <S.SecondListItem>사용자는 커뮤니티 내에서 특정한 활동을 할 때 특정한 조건을 만족하면 업적 달성과 함께 특정 보상들을 획득하게 됩니다.</S.SecondListItem>
-                        <S.SecondListItem>획득한 업적과 뱃지는 왼쪽의 업적을 눌러서 확인할 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>획득한 업적과 뱃지, 보상 내역은 왼쪽의 업적을 눌러서 확인할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>업적이 해방되는 조건은 모두 비공개이나 사용자끼리 숨겨진 업적 정보를 공유하는 것은 가능합니다.</S.SecondListItem>
                     <S.FirstListItem>g. 율무위키(개발 예정)</S.FirstListItem>
                         <S.SecondListItem>Archive형 백과사전으로 가수 최유리에 관한 모든 공식/비공식 자료가 정리되어 있습니다.</S.SecondListItem>
@@ -113,12 +123,15 @@ const Guide = () => {
                         <S.SecondListItem>커뮤니티에 접속한 유저끼리 실시간으로 대화를 주고 받을 수 있는 서비스입니다.</S.SecondListItem>
                         <S.SecondListItem>자유롭게 채팅 그룹을 만들고, 참여하거나 나갈 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>원하는 상대를 지정해서 1대1 채팅을 만들 수도 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>그룹의 최소 인원은 3명, 최대 인원은 8명입니다.</S.SecondListItem>
-                    <S.FirstListItem>i. 율모티콘</S.FirstListItem>
+                        <S.SecondListItem>채팅 그룹의 최소 인원은 3명, 최대 인원은 8명입니다.</S.SecondListItem>
+                        <S.SecondListItem>아직 간단한 기능만 구현된 상태이고, 율톡의 수요가 많아질 경우 더 많은 기능들을 업데이트할 예정입니다.</S.SecondListItem>
+                    <S.FirstListItem id="emoticon">i. 율모티콘</S.FirstListItem>
                         <S.SecondListItem>율모티콘이란 AI를 이용해 가수 최유리님을 모티브로 제작한 이모티콘입니다.</S.SecondListItem>
                         <S.SecondListItem>본 커뮤니티에는 생성형 AI로 제작한 가수 최유리님의 이모티콘이 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>이모티콘부터 숨겨진 업적을 달성하거나, 유리상점 등에서 이모티콘을 구매해 사용할 수 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>율모티콘은 현재 율톡에 한해 사용 가능하고 추후 확장될 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>숨겨진 업적을 달성하거나, 유리상점 등에서 이모티콘을 구매해 사용할 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>율모티콘을 사용할 수 있는 곳은 현재 다음과 같고, 추후 확장될 경우 공지사항을 통해 안내됩니다.</S.SecondListItem>
+                        <S.ThirdListItem>- 댓글</S.ThirdListItem>
+                        <S.ThirdListItem>- 율톡</S.ThirdListItem>
                     <S.FirstListItem>j. 유리공방</S.FirstListItem>
                         <S.SecondListItem>출석을 통해 화로의 온도를 높이고, 여러 활동(게시글 작성, 댓글 등)을 통해 모래알을 모을 수 있습니다.</S.SecondListItem>
                             <S.ThirdListItem>- 활동별 모래알 획득 수치는 <S.Link href="#sand" style={{fontWeight: "600"}}>III.b.모래알</S.Link>을 참고해주세요.</S.ThirdListItem>
@@ -130,6 +143,18 @@ const Guide = () => {
                             <S.ThirdListItem>- 따라서 유리 조각을 만들 수 있을 때마다 바로 만드는 것이 좋습니다.</S.ThirdListItem>
                     <S.FirstListItem id="shop">k. 유리상점</S.FirstListItem>
                         <S.SecondListItem>공방에서 얻은 유리 조각으로 커뮤니티 내에서 사용할 수 있는 아이템을 살 수 있는 상점입니다.</S.SecondListItem>
+                        <S.SecondListItem>상품의 카테고리에 대한 설명은 아래와 같습니다.</S.SecondListItem>
+                            <S.ThirdListItem>- 이모티콘</S.ThirdListItem>
+                                <S.FourthListItem>커뮤니티에서 사용가능한 이모티콘 아이템입니다.</S.FourthListItem>
+                                <S.FourthListItem>자세한 설명은 <S.Link href="#emoticon" style={{fontWeight: "600"}}>II.i.율모티콘</S.Link>을 참고해주세요.</S.FourthListItem>
+                            <S.ThirdListItem>- 배경사진</S.ThirdListItem>
+                                <S.FourthListItem>커뮤니티의 배너로 사용할 수 있는 아이템입니다.</S.FourthListItem>
+                                <S.FourthListItem>설정에서 배너 설정을 통해 구매한 배경사진을 관리할 수 있습니다.</S.FourthListItem>
+                            <S.ThirdListItem>- 칭호(개발 예정)</S.ThirdListItem>
+                                <S.FourthListItem>커뮤니티에서 닉네임 앞에 표시되는 칭호 아이템입니다.</S.FourthListItem>
+                            <S.ThirdListItem>- 소모품</S.ThirdListItem>
+                                <S.FourthListItem>앞선 카테고리와 다르게 여러번 구매 가능한 소모품 아이템입니다.</S.FourthListItem>
+                                <S.FourthListItem>각 소모품에 대한 설명은 아이템 설명을 참고해주세요.</S.FourthListItem>
                         <S.SecondListItem>소모품을 제외한 모든 아이템은 단 1회만 구매 가능합니다.</S.SecondListItem>
                         <S.SecondListItem>소모품은 인벤토리에서 조회하고 사용할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트 됩니다.</S.SecondListItem>
@@ -143,6 +168,11 @@ const Guide = () => {
                         <S.SecondListItem>커뮤니티의 매니저 등급 이상의 회원만 문제를 출제할 수 있습니다.</S.SecondListItem>
                     <S.FirstListItem id="shop">n. 랭킹</S.FirstListItem>
                         <S.SecondListItem>다양한 주제에 대해 유저들의 랭킹을 확인할 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>현재 보여주는 랭킹 정보는 아래와 같습니다.</S.SecondListItem>
+                            <S.ThirdListItem>- 출석: 현재 연속 출석 수가 가장 높은 사용자의 순위입니다.</S.ThirdListItem>
+                            <S.ThirdListItem>- 총 응원: 지금까지 가장 많은 응원을 보낸 사용자의 순위입니다.</S.ThirdListItem>
+                            <S.ThirdListItem>- 일일 응원: 하루에 가장 많은 응원을 보낸 사용자의 순위입니다.</S.ThirdListItem>
+                            <S.ThirdListItem>- 유리 조각: 유리 조각을 가장 많이 제작한 사용자의 순위입니다.</S.ThirdListItem>
                 </S.List>
                 <S.Blank />
 

@@ -68,6 +68,14 @@ export const ThirdListItem = styled.li`
     list-style: none;
 `;
 
+export const FourthListItem = styled.li`
+    margin-left: 53px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #505050;
+    list-style: none;
+`;
+
 export const Link = styled.a`
     text-decoration: none;
     color: #505050;
