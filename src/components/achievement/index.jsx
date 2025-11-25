@@ -1,6 +1,8 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
 import * as A from "@/apis/achievement";
+import sand from "@/assets/icon/user/sand.svg";
+import glass from "@/assets/icon/user/glass.svg";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ACHIEVEMENTS } from "@/constants/achievements";
@@ -48,6 +50,13 @@ const AchievementComponent = () => {
         fetchAchieveData();
     }, [selectedTap, sort, direction, type]);
 
+    const getRewardIcon = (ar) => {
+        switch(ar.rewardType) {
+            case "SAND" : return sand;
+            case "GLASS" : return glass;
+        }
+    };
+
     return (
         <S.Wrapper>
             <BC.Text $size={"20px"} $weight={"600"} style={{textAlign: "center"}}>업적</BC.Text>
@@ -77,7 +86,7 @@ const AchievementComponent = () => {
                         <BC.EmptyBox $w={"100%"} $h={"100px"}>획득한 업적이 없어요..</BC.EmptyBox>
                         :
                         <>
-                            {achieveData.map((a, idx) => (
+                            {achieveData.map((a) => (
                                 <S.AchievementItem key={a.achievementLogId}>
                                     <BC.Image src={a.imageUrl} $w={"80%"} />
                                     <BC.VerticalWrapper>
@@ -85,6 +94,14 @@ const AchievementComponent = () => {
                                         <BC.Text $color={"#878787"}>{a.description}</BC.Text>
                                     </BC.VerticalWrapper>
                                     <BC.Text $color={"#878787"}>{formatDate(a.createdAt, 1)}</BC.Text>
+                                    <BC.HorizontalWrapper $gap={"10px"}>
+                                        {a.achievementRewards.map((ar) => (
+                                            <BC.HorizontalWrapper key={ar.achievementRewardId} $gap={"5px"}>
+                                                <BC.Icon src={getRewardIcon(ar)} $w={"15px"} />
+                                                <BC.Text>{ar.amount}</BC.Text>
+                                            </BC.HorizontalWrapper>
+                                        ))}
+                                    </BC.HorizontalWrapper>
                                 </S.AchievementItem>
                             ))}
                         </>
