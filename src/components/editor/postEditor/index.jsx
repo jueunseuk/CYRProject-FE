@@ -24,6 +24,7 @@ const PostEditor = ({requestBoard}) => {
     const [useComment, setUseComment] = useState(true);
     const [closedAt, setClosedAt] = useState("");
     const [type, setType] = useState("GENERAL");
+    const [maxUser, setMaxUser] = useState(10);
     
     const handleSelectChange = (e) => {
         setFormData((prev) => ({
@@ -39,7 +40,7 @@ const PostEditor = ({requestBoard}) => {
                 alert("공지사항 업로드 완료!\n작성한 게시글로 이동합니다.");
                 navigate(`/announcement/${response.data.announcementId}`);
             } else if(formData.boardId === "6") {
-                const response = await E.uploadEvent({...formData, type, fixed: fix, closedAt, locked: false, useComment});
+                const response = await E.uploadEvent({...formData, type, fixed: fix, closedAt, locked: false, useComment, maxUser});
                 alert("이벤트 업로드 완료!\n작성한 게시글로 이동합니다.");
                 navigate(`/event/${response.data.eventId}`);
             } else {
@@ -94,7 +95,7 @@ const PostEditor = ({requestBoard}) => {
                         </S.OptionGroup>
                     </S.Select>
                     {formData.boardId === "5" && 
-                        <S.Select size={"1"} value={announcementCategoryId} onChange={(e) => setAnnouncementCategoryId(e.target.value)}>
+                        <S.Select size={"1"} value={announcementCategoryId} onChange={(e) => setAnnouncementCategoryId(e.target.value)} title="카테고리 설정">
                             <S.Option value={1}>커뮤니티 공지</S.Option>
                             <S.Option value={2}>일정 공지</S.Option>
                             <S.Option value={3}>이벤트 공지</S.Option>
@@ -103,7 +104,7 @@ const PostEditor = ({requestBoard}) => {
                         </S.Select>
                     }
                     {formData.boardId === "6" &&
-                        <S.Select size={"1"} value={type} onChange={(e) => setType(e.target.value)}>
+                        <S.Select size={"1"} value={type} onChange={(e) => setType(e.target.value)} title="타입 설정">
                             <S.Option value={"GENERAL"}>일반</S.Option>
                             <S.Option value={"FIRSTCOME"}>선착순</S.Option>
                             <S.Option value={"RANDOM"}>추첨</S.Option>
@@ -112,7 +113,22 @@ const PostEditor = ({requestBoard}) => {
                         </S.Select>
                     }
                     {formData.boardId === "6" &&
-                        <input type="datetime-local" value={closedAt} style={{height: "100%", padding: "4px", border: "1px solid #CCC", fontSize: "12px"}} onChange={(e) => setClosedAt(e.target.value)}/>
+                        <input type="datetime-local"
+                            value={closedAt}
+                            style={{height: "100%", padding: "4px", border: "1px solid #CCC", fontSize: "12px", width: "180px"}}
+                            onChange={(e) => setClosedAt(e.target.value)}
+                            title="마감 기한"
+                        />
+                    }
+                    {(formData.boardId === "6" && (type === "FIRSTCOME" || type === "RANDOM")) &&
+                        <input type="number"
+                            value={maxUser}
+                            min={1}
+                            onChange={(e) => setMaxUser(e.target.value)}
+                            placeholder="인원을 입력해주세요.."
+                            style={{height: "100%", padding: "0 8px", border: "1px solid #CCC", fontSize: "12px", width: "180px"}}
+                            title="인원 설정"
+                        />
                     }
                 </BC.HorizontalWrapper>
                 <S.Input 

@@ -14,6 +14,7 @@ import comments from "@/assets/icon/post/comment.svg";
 import view from "@/assets/icon/post/view.svg";
 import images from "@/assets/icon/user/images.svg";
 import images_select from "@/assets/icon/user/images_select.svg";
+import max_user from "@/assets/icon/user/max_user.svg";
 import WrongPage from "@/pages/wrong/WrongPage";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
@@ -167,24 +168,28 @@ const EventPost = () => {
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"12px"} style={{marginTop: "10px"}}>
                                 <S.Profile src={eventData.profileUrl} onClick={() => handleImageFullScreen(eventData.profileUrl)} />
-                                <S.HorizontalWrapper>
+                                <S.HorizontalWrapper title="작성자">
                                     <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${eventData.userId}`)}>{eventData.nickname}</S.Text>
                                 </S.HorizontalWrapper>
-                                <S.HorizontalWrapper>
+                                <S.HorizontalWrapper title="조회수">
                                     <S.Icon src={view} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"12px"} $color={"#878787"} $weight={"600"}>{eventData.viewCnt}</S.Text>
                                 </S.HorizontalWrapper>
-                                <S.HorizontalWrapper>
+                                <S.HorizontalWrapper title="댓글 수">
                                     <S.Icon src={comments} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"12px"} $color={"#878787"} $weight={"600"}>{eventData.commentCnt}</S.Text>
                                 </S.HorizontalWrapper>
-                                <S.HorizontalWrapper>
+                                <S.HorizontalWrapper title="참여 가능 인원 수 또는 추첨 인원 수">
+                                    <S.Icon src={max_user} $width={"12px"} $height={"12px"}/>
+                                    <S.Text $size={"12px"} $color={"#878787"} $weight={"600"}>{eventData.maxUser > 1000000 ? "∞" : eventData.maxUser}</S.Text>
+                                </S.HorizontalWrapper>
+                                <S.HorizontalWrapper title="이벤트 마감 시각">
                                     <S.Icon src={clock} $width={"12px"} $height={"12px"}/>
                                     <S.Text $size={"12px"} $color={"#878787"} $weight={"600"}>{formatDate(eventData.closedAt, 4)}</S.Text>
                                 </S.HorizontalWrapper>
                                 <S.Icon src={ellipse} $width={"3px"} $height={"3px"}/>
-                                <S.Text $size={"12px"} $color={"#878787"}>{formatDate(eventData.createdAt, 4)}</S.Text>
+                                <S.Text $size={"12px"} $color={"#878787"} title="작성 시각">{formatDate(eventData.createdAt, 4)}</S.Text>
                             </S.HorizontalWrapper>
                         </S.VerticalWrapper>
                         <S.Contour />
