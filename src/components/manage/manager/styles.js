@@ -17,7 +17,7 @@ export const Row = styled.tr`
 `;
 
 export const Column = styled.td`
-    padding: 8px;
+    padding: 8px 0;
     text-align: ${({$align}) => $align || "center"};
     font-size: 13px;
     color: ${({$color}) => $color || "black"};
@@ -38,3 +38,15 @@ export const Button = styled.button`
     justify-content: center;
     align-items: center;
 `; 
+
+export const Select = styled.select`
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    outline: none;
+`;
+    
+export const Option = styled.option`
+    font-size: 13px;
+`;
