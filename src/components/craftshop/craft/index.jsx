@@ -78,6 +78,10 @@ const Craft = () => {
         } else if(log.name === "업적") {
             const att = {color: "#6A1B9A", bg: "#F3E5F5", text: "Achievement"};
             return att;
+        } else if(log.name === "시스템") {
+            return {color: "#494949ff", bg: "#F5F5F5", text: "System"};
+        } else if(log.name === "선물") {
+            return {color: "#D81B60", bg: "#FCE4EC", text: "Gift"};
         }
     };
 

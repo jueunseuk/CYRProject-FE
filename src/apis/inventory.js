@@ -54,9 +54,9 @@ export const getUseList = async (form) => {
     }
 };
 
-export const useInventoryItem = async (userInventoryId) => {
+export const useInventoryItem = async (userInventoryId, form) => {
     try {
-        const response = await instance.post(`/user/inventory/${userInventoryId}/use`);
+        const response = await instance.post(`/user/inventory/${userInventoryId}/use`, form);
         return response;
     } catch (error) {
         const errorCode = error.response.code;
