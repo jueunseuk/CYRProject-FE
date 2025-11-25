@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 999;
+    gap: 10px;
 `;
 
 export const Content = styled.div`
@@ -44,7 +45,7 @@ export const Text = styled.span`
 export const Button = styled.button`
     font-size: 15px;
     font-weight: 600;
-    padding: 12px 20px;
+    padding: 10px 20px;
     background-color: ${({$bg}) => $bg};
     border: none;
     border-radius: 8px;
