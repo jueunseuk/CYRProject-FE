@@ -17,6 +17,7 @@ import CommunityInfo from "@/components/home/communityStatistic";
 import RankingSummary from "@/components/home/ranking";
 import InProgressPoll from "@/components/poll/inProgressPoll";
 import YoutubeComponent from "@/components/home/youtube";
+import LoudSpeakerPost from "@/components/home/loudSpeaker";
 
 const Home = () => {
     const user = useUserInfo();
@@ -42,6 +43,7 @@ const Home = () => {
                         <CalendarSummary />
                         <Link />
                     </BC.HorizontalWrapper>
+                    <LoudSpeakerPost />
                     <LatestPost />
                     <GallerySummary />
                     {(user && user.userId) && <InProgressPoll />}

@@ -23,7 +23,7 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 35px;
+    gap: 15px;
     box-shadow: 0px 0px 16px rgb(0, 0, 0, 0.5);
 `;
 
