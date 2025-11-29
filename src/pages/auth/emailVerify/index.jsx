@@ -64,7 +64,11 @@ const EmailVerify = () => {
                 method: 'EMAIL'
             }));
 
-            navigate('/auth/signup/form');
+            navigate('/auth/signup/form', {
+                state: {
+                    authenticated: true
+                }
+            });
         } catch (error) {
             if(error.response?.data?.code === 'MAIL_006') {
                 navigate('/login/email');

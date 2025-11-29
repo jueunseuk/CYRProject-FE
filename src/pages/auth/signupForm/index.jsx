@@ -1,8 +1,8 @@
 import * as A from "@/apis/authentication"
 import * as S from "./styles";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import defualt from "@/assets/image/default_profile.jpg"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { signupState } from "@/recoil/atom";
 import { useRecoilState } from "recoil";
 
@@ -12,6 +12,8 @@ const MAX_SIZE = 5 * 1024 * 1024;
 
 const SignupForm = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const authenticated = location.state?.authenticated ?? false;
     const [state] = useRecoilState(signupState);
     const fileInputRef = useRef(null);
     const [imagePreview, setImagePreview] = useState(null);
@@ -22,7 +24,15 @@ const SignupForm = () => {
         confirmPassword: "",
         nickname: "",
         profileImage: null,
+        authenticated
     });
+
+    useEffect(() => {
+        if (!authenticated) {
+            alert("올바르지 않은 접근입니다.");
+            navigate("/");
+        }
+    }, []);
 
     const handleNavigateHome = () => {
         navigate(-2);
@@ -72,6 +82,7 @@ const SignupForm = () => {
             formDataToSend.append("name", formData.name);
             formDataToSend.append("password", formData.password);
             formDataToSend.append("nickname", formData.nickname);
+            formDataToSend.append("authenticated", authenticated);
     
             if(formData.profileImage) {
                 formDataToSend.append("profileImage", formData.profileImage);
