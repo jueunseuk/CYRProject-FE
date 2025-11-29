@@ -45,7 +45,7 @@ const LoudSpeakerPost = () => {
                 <S.TitleArea>
                     <BC.Icon src={loudspeaker} $w={"15px"} />
                     <S.Text $size={"16px"} $weight={"600"}>스포트라이트</S.Text>
-                    <S.TooltipWrapper>
+                    <S.TooltipWrapper>%
                         <BC.Icon src={information} />
                         <S.TooltipText>
                             <p style={{fontSize: "16px", fontWeight:"700", marginBottom:"5px"}}>스포트라이트란?</p>
