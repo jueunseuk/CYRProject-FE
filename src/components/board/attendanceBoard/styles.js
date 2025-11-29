@@ -53,7 +53,7 @@ export const TextBox = styled.div`
     font-weight: 700;
     color: #B3A225;
     padding: 7px 13px;
-    background-color: #F4F3E9;
+    background-color: #f4f3e9ff;
     border-radius: 10px;
     margin-top: 10px;
 `;
