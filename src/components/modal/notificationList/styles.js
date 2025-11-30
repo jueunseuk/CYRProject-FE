@@ -61,6 +61,7 @@ export const NotificationItem = styled.div`
     padding: 5px 3px;
     transition: all 0.2s ease;
     border-radius: 5px;
+    cursor: pointer;
 
     &:hover {
         background-color: #eee;

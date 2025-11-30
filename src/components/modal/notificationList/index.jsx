@@ -42,7 +42,10 @@ const NotificationList = ({onClose}) => {
         <S.Wrapper>
             <BC.HorizontalWrapper $jc={"space-between"} style={{width: "100%", borderBottom: "1px solid #eee", paddingBottom: "5px", marginBottom: "5px"}}>
                 <BC.Icon src={cancel} style={{visibility: "hidden"}} />
-                <BC.Text $size={"15px"} $weight={"600"} style={{alignSelf: "center"}}>알림</BC.Text>
+                <BC.VerticalWrapper>
+                    <BC.Text $size={"15px"} $weight={"600"} style={{alignSelf: "center"}}>알림</BC.Text>
+                    <BC.Text $size={"11px"} $color={"#818181ff"}>한 달이 지난 알림은 자동으로 삭제됩니다.</BC.Text>
+                </BC.VerticalWrapper>
                 <BC.Icon src={cancel} style={{cursor: "pointer", borderRadius: "5px"}}
                     onClick={onClose}
                 />
@@ -52,7 +55,7 @@ const NotificationList = ({onClose}) => {
                 <BC.EmptyBox $w={"100%"} $h={"100px"} $size={"13px"}>현재 알림이 없어요..</BC.EmptyBox>
                 :
                 notificationData.map((notification) => (
-                    <S.NotificationItem key={notification.notificationId} style={{cursor: notification.targetId === null ? "default" : "pointer"}}
+                    <S.NotificationItem key={notification.notificationId}
                         onClick={() => handleNavigate(notification.type, notification.targetId)}
                     >
                         <BC.Text $size={"11px"} $weight={"600"}>{formatDate(notification.createdAt, 7)}</BC.Text>
