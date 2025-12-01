@@ -12,9 +12,6 @@ const useUserInfo = () => {
   });
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if(!userId) return;
-    
     const fetchUserInfo = async () => {
       try {
         const response = await U.getLocalInfo();

@@ -16,8 +16,8 @@ export const INVENTORYS = [
     },
     {
         id: 3,
-        name: "칭호",
-        description: "구매한 칭호들을 보여줍니다."
+        name: "닉네임",
+        description: "구매한 닉네임 색상들을 보여줍니다."
     },
     {
         id: 4,

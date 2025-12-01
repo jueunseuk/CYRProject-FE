@@ -6,11 +6,9 @@ import checked from "@/assets/icon/etc/checked.svg";
 import unchecked from "@/assets/icon/etc/unchecked.svg";
 import { SHOPS } from "@/constants/shops";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import ShopBuyModal from "@/components/modal/shopItemBuy";
 
 const Shop = () => {
-    const navigate = useNavigate();
     const [buyModalOpen, setBuyModalOpen] = useState(false);
     const [selectItem, setSelectItem] = useState({});
     const [selectedTap, setSelectedTap] = useState(0);
@@ -119,7 +117,7 @@ const Shop = () => {
                             setSelectItem(item); }}>
                             <S.VerticalWrapper $gap={"5px"}>
                                 <S.ItemImage src={item.imageUrl}/>
-                                <S.Text $size={"15px"} $weight={"700"}>{item.name}</S.Text>
+                                <S.Text $size={"15px"} $weight={"700"} $color={item.shopCategoryId === 3 ? item.description : ""}>{item.name}</S.Text>
                                 <S.Text $size={"13px"} $color={"#878787"}>{item.description}</S.Text>
                             </S.VerticalWrapper>
                             <S.HorizontalWrapper $gap={"5px"} style={{marginTop: "10px"}}>

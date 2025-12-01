@@ -6,7 +6,7 @@ const ImageMessage = ({ message, isMine }) => (
     <S.TextMessageWrapper $isMine={isMine}>
           {!isMine && <BC.Image src={message.profileUrl} $w={"30px"} $h={"30px"} style={{objectFit: "cover", borderRadius: "30px"}}/>}
           <S.ContentWrapper $isMine={isMine}>
-              {!isMine && <BC.Text>{message.nickname}</BC.Text>}
+              {!isMine && <BC.Text $color={message.color}>{message.nickname}</BC.Text>}
               <BC.HorizontalWrapper $ai={"flex-end"} $gap={"3px"} style={{maxWidth: "85%", flexDirection: isMine ? "row-reverse" : "row"}}>
                   <BC.Image
                       src={message.content}

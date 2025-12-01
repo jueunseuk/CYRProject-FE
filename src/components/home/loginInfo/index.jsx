@@ -107,7 +107,7 @@ const LoginInfo = () => {
                 <S.ProfileImage src={user.profileUrl} onClick={() => handleImageFullScreen()}  style={{cursor: "pointer"}}/>
                 <S.VerticalWrapper>
                     <S.Text $size={"12px"} $weight={"300"}>{user.role}</S.Text>
-                    <S.Text $size={"16px"} $weight={"700"} onClick={() => handleNavigateMypage()} style={{cursor: "pointer"}}>{user.nickname ? user.nickname : user.name}</S.Text>
+                    <S.Text $size={"16px"} $color={user.color} $weight={"700"} onClick={() => handleNavigateMypage()} style={{cursor: "pointer"}}>{user.nickname ? user.nickname : user.name}</S.Text>
                     <S.Text $size={"11px"} $color={"#878787"}>{formatDate(user.createdAt, 2)}</S.Text>
                 </S.VerticalWrapper>
             </S.ProfileArea>
