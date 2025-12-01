@@ -1,5 +1,6 @@
 import * as S from "./styles";
 import pencil from "@/assets/icon/post/author.svg";
+import default_profile from "@/assets/image/default_profile.jpg";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
 import UserProfileUpdateModal from "@/components/modal/userProfileUpdate";
 import { formatDate } from "@/util/dateFormatter";
@@ -84,7 +85,7 @@ const Information = ({isOwner, user}) => {
                 </S.HorizontalWrapper>
                 <S.VerticalWrapper>
                     {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={user.profileUrl}/>}
-                    <S.ProfileImage src={user.profileUrl} style={{marginBottom: "10px"}} onClick={() => handleImageFullScreen()} />
+                    <S.ProfileImage src={user.profileUrl ? user.profileUrl : default_profile} style={{marginBottom: "10px"}} onClick={() => handleImageFullScreen()} />
                     <S.HorizontalWrapper $gap={"5px"} style={{height: "16px"}}>
                         <S.Text $size={"12px"} $weight={"400"} $color={"#1f1f1fff"}>{user.role}</S.Text>
                         <S.Text $size={"14px"} $weight={"700"} $color={user.color}>{user.nickname}</S.Text>

@@ -10,6 +10,7 @@ import { formatDate } from "@/util/dateFormatter";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAttendanceMessage } from "@/util/getAttendanceMessage";
+import { UserProfileImage2 } from "@/common/func/UserProfile2";
 
 const AttendanceBoard = () => {
     const navigate = useNavigate();
@@ -175,7 +176,7 @@ const AttendanceBoard = () => {
                         </S.NoAttendanceWrapper>
                     ) : (attendances.map((attendance, idx) => (
                         <S.AttendanceBlock key={idx}>
-                            <S.UserProfile src={attendance.profileImageUrl} onClick={() => navigate(`/users/${attendance.userId}`)}/>
+                            <UserProfileImage2 userId={attendance.userId} profileUrl={attendance.profileImageUrl} width={"50px"} height={"50px"} radius={"50px"} />
                             <S.ContentBox>
                                 <S.HorizontalWrapper>
                                     <S.HorizontalWrapper $gap={"5px"}>

@@ -1,5 +1,7 @@
 import * as S from "./styles";
 import * as U from "@/apis/user";
+import * as BC from "@/common/basic/BasicComponent";
+import default_profile from "@/assets/image/default_profile.jpg";
 import { useRef, useState } from "react";
 import cancel from "@/assets/icon/etc/cancel.svg";
 import useUserInfo from "@/hooks/localStorage";
@@ -15,6 +17,14 @@ const UserProfileUpdateModal = ({onClose, user}) => {
 
     const handleDivClick = () => {
         fileInputRef.current.click();
+    };
+
+    const handleClickDefault = async () => {
+        const response = await fetch(default_profile);
+        const blob = await response.blob();
+        const file = new File([blob], "default_profile.jpg", {type: blob.type});
+        setImagePreview(default_profile);
+        setUserProfileRevisoin(file);
     };
 
     const handleImageChange = (event) => {
@@ -69,6 +79,9 @@ const UserProfileUpdateModal = ({onClose, user}) => {
                     <S.VerticalWrapper $ai={"flex-start"} $gap={"5px"}>
                         <S.Text $size={"15px"} $weight={"600"} style={{paddingLeft: "5px"}} onClick={handleDivClick}>프로필 사진</S.Text>
                         <S.InputImage src={imagePreview ? imagePreview : userRevision.profileUrl} onClick={handleDivClick}></S.InputImage>
+                        <BC.Text $size={"12px"} $color={"#878787"} style={{cursor: "pointer", width: "150px", textAlign: "center"}}
+                            onClick={handleClickDefault}
+                        >기본으로 설정</BC.Text>
                         <S.FileInput type="file" accept="image/png, image/jpg, image/jpeg" ref={fileInputRef} onChange={handleImageChange}/>
                     </S.VerticalWrapper>
                     <S.VerticalWrapper $ai={"flex-start"} $gap={"5px"}>

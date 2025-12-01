@@ -21,6 +21,7 @@ import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/skeleton/Skeleton";
 import useUserInfo from "@/hooks/localStorage";
+import { UserProfileImage2 } from "@/common/func/UserProfile2";
 
 const EventPost = () => {
     const user = useUserInfo();
@@ -167,7 +168,7 @@ const EventPost = () => {
                                 {(user?.role === "MANAGER" || user?.role === "ADMIN") && <MoreOption formData={eventData} type={subPath}/>}
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"12px"} style={{marginTop: "10px"}}>
-                                <S.Profile src={eventData.profileUrl} onClick={() => handleImageFullScreen(eventData.profileUrl)} />
+                                <UserProfileImage2 userId={eventData.userId} profileUrl={eventData.profileUrl} width={"35px"} height={"35px"} radius={"35px"} />
                                 <S.HorizontalWrapper title="작성자">
                                     <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${eventData.userId}`)}>{eventData.nickname}</S.Text>
@@ -231,10 +232,8 @@ const EventPost = () => {
                         commentData.map((c) => (
                         <S.CommentItem key={c.eventCommentId}>
                             <S.HorizontalWrapper $gap={"15px"} style={{width: "100%", alignItems: "flex-start"}}>
-                                <S.Profile src={c.profileUrl} style={{height: "45px", width: "50px", borderRadius: "50px"}}
-                                    onClick={() => handleImageFullScreen(eventData.profileUrl)} 
-                                />
-                                <S.VerticalWrapper style={{height: "50%", justifyContent: "flex-start", gap: "5px"}}>
+                                <UserProfileImage2 userId={c.userId} profileUrl={c.profileUrl} width={"50px"} height={"50px"} radius={"50px"} />
+                                <S.VerticalWrapper style={{height: "50%", flex: "1", justifyContent: "flex-start", gap: "5px"}}>
                                     <S.HorizontalWrapper>
                                         <S.Text $size="14px" $weight="600">{c.nickname}</S.Text>
                                         <S.Text $size="12px" $color="#878787">{formatDate(c.createdAt, 3)}</S.Text>

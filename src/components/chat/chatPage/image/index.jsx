@@ -1,10 +1,11 @@
 import * as S from "./styles.js";
 import * as BC from "@/common/basic/BasicComponent";
+import default_profile from "@/assets/image/default_profile.jpg";
 import { formatDate } from "@/util/dateFormatter";
 
 const ImageMessage = ({ message, isMine }) => (
     <S.TextMessageWrapper $isMine={isMine}>
-          {!isMine && <BC.Image src={message.profileUrl} $w={"30px"} $h={"30px"} style={{objectFit: "cover", borderRadius: "30px"}}/>}
+          {!isMine && <BC.Image src={message.profileUrl || default_profile} $w={"30px"} $h={"30px"} style={{objectFit: "cover", borderRadius: "30px"}}/>}
           <S.ContentWrapper $isMine={isMine}>
               {!isMine && <BC.Text $color={message.color}>{message.nickname}</BC.Text>}
               <BC.HorizontalWrapper $ai={"flex-end"} $gap={"3px"} style={{maxWidth: "85%", flexDirection: isMine ? "row-reverse" : "row"}}>

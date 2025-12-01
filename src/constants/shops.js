@@ -1,7 +1,7 @@
 export const SHOPS = [
     {
         id: 1,
-        name: "이모티콘",
+        name: "율모티콘",
         description: "다양한 곳에서 사용 가능한 이모티콘을 구매할 수 있는 상점입니다."
     },
     {

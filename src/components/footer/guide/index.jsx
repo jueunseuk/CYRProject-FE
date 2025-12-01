@@ -144,17 +144,20 @@ const Guide = () => {
                     <S.FirstListItem id="shop">k. 유리상점</S.FirstListItem>
                         <S.SecondListItem>공방에서 얻은 유리 조각으로 커뮤니티 내에서 사용할 수 있는 아이템을 살 수 있는 상점입니다.</S.SecondListItem>
                         <S.SecondListItem>상품의 카테고리에 대한 설명은 아래와 같습니다.</S.SecondListItem>
-                            <S.ThirdListItem>- 이모티콘</S.ThirdListItem>
+                            <S.ThirdListItem>- 율모티콘</S.ThirdListItem>
                                 <S.FourthListItem>커뮤니티에서 사용가능한 이모티콘 아이템입니다.</S.FourthListItem>
                                 <S.FourthListItem>자세한 설명은 <S.Link href="#emoticon" style={{fontWeight: "600"}}>II.i.율모티콘</S.Link>을 참고해주세요.</S.FourthListItem>
                             <S.ThirdListItem>- 배경사진</S.ThirdListItem>
                                 <S.FourthListItem>커뮤니티의 배너로 사용할 수 있는 아이템입니다.</S.FourthListItem>
                                 <S.FourthListItem>설정에서 배너 설정을 통해 구매한 배경사진을 관리할 수 있습니다.</S.FourthListItem>
-                            <S.ThirdListItem>- 칭호(개발 예정)</S.ThirdListItem>
-                                <S.FourthListItem>커뮤니티에서 닉네임 앞에 표시되는 칭호 아이템입니다.</S.FourthListItem>
+                            <S.ThirdListItem>- 닉네임</S.ThirdListItem>
+                                <S.FourthListItem>커뮤니티에서 닉네임의 색상을 변경할 수 있는 아이템입니다.</S.FourthListItem>
+                                <S.FourthListItem>변경된 닉네임 색상은 현재 마이페이지, 율톡에서만 표시됩니다.</S.FourthListItem>
                             <S.ThirdListItem>- 소모품</S.ThirdListItem>
                                 <S.FourthListItem>앞선 카테고리와 다르게 여러번 구매 가능한 소모품 아이템입니다.</S.FourthListItem>
                                 <S.FourthListItem>각 소모품에 대한 설명은 아이템 설명을 참고해주세요.</S.FourthListItem>
+                            <S.ThirdListItem>- 기타</S.ThirdListItem>
+                                <S.FourthListItem>앞선 카테고리들을 제외한 상품입니다.</S.FourthListItem>
                         <S.SecondListItem>소모품을 제외한 모든 아이템은 단 1회만 구매 가능합니다.</S.SecondListItem>
                         <S.SecondListItem>소모품은 인벤토리에서 조회하고 사용할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>유리상점의 상품은 정기적으로 업데이트 됩니다.</S.SecondListItem>
@@ -386,6 +389,12 @@ const Guide = () => {
                             </S.Row>
                         </tbody>
                     </S.Table>
+                    <S.SecondListItem>ex) 만약 11월 01이 마지막 출석인 경우</S.SecondListItem>
+                        <S.ThirdListItem>- 11.02에 출석하면 +100℃</S.ThirdListItem>
+                        <S.ThirdListItem>- 11.03에 출석하면 +50℃</S.ThirdListItem>
+                        <S.ThirdListItem>- 11.04에 출석하면 +50℃</S.ThirdListItem>
+                        <S.ThirdListItem>- 11.05에 출석하면 -50℃</S.ThirdListItem>
+                        <S.ThirdListItem>- 12.01에 출석하면 0℃으로 초기화</S.ThirdListItem>
                 </S.List>
                 <S.Blank />
             </S.Wrapper>

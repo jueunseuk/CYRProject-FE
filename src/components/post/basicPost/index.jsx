@@ -25,6 +25,7 @@ import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/skeleton/Skeleton";
 import { getEmpathyColor } from "@/util/empathySelector";
+import { UserProfileImage2 } from "@/common/func/UserProfile2";
 
 const BasicPost = () => {
     const user = useUserInfo();
@@ -49,7 +50,6 @@ const BasicPost = () => {
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editingContent, setEditingContent] = useState("");
     const [editingLocked, setEditingLocked] = useState(false);
-    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const [openEmoticonModal, setOpenEmoticonModal] = useState(false);
     const recommendBoardInfo = BOARD_DESCRIPTIONS[state.boardName];
 
@@ -201,14 +201,6 @@ const BasicPost = () => {
         return <WrongPage type={"post"} />;
     };
 
-    const handleImageFullScreen = () => {
-        setIsProfileModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsProfileModalOpen(false);
-    };
-
     const handleNavigatePost = (id) => {
         navigate(`/${subPath}/${id}`, {
             state: {
@@ -236,8 +228,7 @@ const BasicPost = () => {
                                 <MoreOption formData={postData} type={subPath}/>
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"12px"} style={{marginTop: "10px"}}>
-                                {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={postData.profileImageUrl}/>}
-                                <S.Profile src={postData.profileImageUrl} onClick={() => handleImageFullScreen()} />
+                                <UserProfileImage2 userId={postData.userId} profileUrl={postData.profileImageUrl} width={"35px"} height={"35px"} radius={"35px"} />
                                 <S.HorizontalWrapper>
                                     <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${postData.userId}`)}>{postData.userNickname}</S.Text>
@@ -302,8 +293,8 @@ const BasicPost = () => {
                         fixedCommentData.map((c) => (
                         <S.CommentItem key={c.commentId}>
                             <S.HorizontalWrapper $gap={"15px"} style={{width: "100%", alignItems: "flex-start"}}>
-                                <S.Profile src={c.profileUrl} style={{height: "45px", width: "50px", borderRadius: "50px"}}/>
-                                <S.VerticalWrapper style={{height: "50%", justifyContent: "flex-start", gap: "5px"}}>
+                                <UserProfileImage2 userId={c.userId} profileUrl={c.profileUrl} width={"50px"} height={"50px"} radius={"50px"} />
+                                <S.VerticalWrapper style={{height: "50%", flex: "1", justifyContent: "flex-start", gap: "5px"}}>
                                     <S.HorizontalWrapper>
                                         {c.userId === postData.userId && <S.Icon src={author}/>}
                                         <S.Text $size="14px" $weight="600">{c.userName}</S.Text>
@@ -333,15 +324,15 @@ const BasicPost = () => {
                         commentData.map((c) => (
                         <S.CommentItem key={c.commentId}>
                             <S.HorizontalWrapper $gap={"15px"} style={{width: "100%", alignItems: "flex-start"}}>
-                                <S.Profile src={c.profileUrl} style={{height: "45px", width: "50px", borderRadius: "50px"}}/>
-                                <S.VerticalWrapper style={{height: "50%", justifyContent: "flex-start", gap: "5px"}}>
+                                <UserProfileImage2 userId={c.userId} profileUrl={c.profileUrl} width={"50px"} height={"50px"} radius={"50px"} />
+                                <S.VerticalWrapper style={{height: "50%", flex: "1", justifyContent: "flex-start", gap: "5px"}}>
                                     <S.HorizontalWrapper>
                                         {c.userId === postData.userId && <S.Icon src={author}/>}
                                         <S.Text $size="14px" $weight="600">{c.userName}</S.Text>
                                         <S.Text $size="12px" $color="#878787">{formatDate(c.createdAt, 3)}</S.Text>
                                         {c.fixed && <BC.Icon src={fixed} $h={"12px"} />}
                                     </S.HorizontalWrapper>
-                                    {c.emoticonUrl && <BC.Image src={c.emoticonUrl} $w={"100px"} />}
+                                    {c.emoticonUrl && <BC.Image src={c.emoticonUrl} $w={"120px"} />}
                                     <S.Text $size="13px" style={{textAlign: "left", whiteSpace: "pre-line"}}>{c.content}</S.Text>
                                     {editingCommentId === c.commentId && (
                                         <S.VerticalWrapper style={{width: "100px", gap: "5px"}}>

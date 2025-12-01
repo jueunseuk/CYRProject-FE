@@ -76,7 +76,7 @@ const FriendList = () => {
                     filteredData.map((friend) => (
                         <S.UserItem key={friend.userId}>
                             <BC.HorizontalWrapper>
-                                <UserProfileImage user={friend} width={"30px"} height={"30px"} />
+                                <UserProfileImage user={friend} width={"35px"} height={"35px"} radius={"35px"} />
                                 <BC.HorizontalWrapper $gap={"7px"}>
                                     <BC.Text $color={"#878787"} $size={"12px"} style={{width: "60px", textAlign: "right"}}>{friend.role}</BC.Text>
                                     <BC.Text $size={"14px"} $weight={"600"} $color={friend.color}>{friend.nickName}</BC.Text>

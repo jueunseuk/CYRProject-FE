@@ -16,6 +16,7 @@ import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserProfileImage } from "@/common/func/UserProfile";
 
 const LoginInfo = () => {
     const user = useUserInfo();
@@ -104,7 +105,7 @@ const LoginInfo = () => {
             <S.Title>내 정보</S.Title>
             <S.ProfileArea>
                 {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={user.profileUrl}/>}
-                <S.ProfileImage src={user.profileUrl} onClick={() => handleImageFullScreen()}  style={{cursor: "pointer"}}/>
+                <UserProfileImage user={user} width={"70px"} height={"70px"} radius={"70px"} />
                 <S.VerticalWrapper>
                     <S.Text $size={"12px"} $weight={"300"}>{user.role}</S.Text>
                     <S.Text $size={"16px"} $color={user.color} $weight={"700"} onClick={() => handleNavigateMypage()} style={{cursor: "pointer"}}>{user.nickname ? user.nickname : user.name}</S.Text>

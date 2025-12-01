@@ -64,39 +64,32 @@ const Policy = () => {
                 <S.Blank />
 
                 <S.SubTitle>제7조 (쿠키 사용 및 거부)</S.SubTitle>
-                <S.Text>본 커뮤니티는 맞춤형 서비스 제공을 위해 쿠키를 사용하며, 사용자는 웹 브라우저 설정을 통해 쿠키 저장을 거부할 수 있습니다. 다만, 쿠키 거부 시 서비스 이용에 다수 제한이 발생할 수 있습니다.</S.Text>
+                <S.Text>본 커뮤니티는 서비스 제공을 위해 쿠키를 사용합니다.</S.Text>
+                <S.Link>
+                    <S.FirstListItem>a. 필수 쿠키 사용</S.FirstListItem>
+                    <S.SecondListItem>로그인 유지, 보안, 세션 관리 등 서비스 제공에 필수적인 쿠키는 동의 없이도 사용됩니다. 필수 쿠키를 차단할 경우 서비스 이용에 제한이 발생할 수 있습니다.</S.SecondListItem>
+                    <S.FirstListItem>b. 선택 쿠키 안내</S.FirstListItem>
+                    <S.SecondListItem>본 커뮤니티는 현재 광고·분석 목적의 선택 쿠키를 사용하지 않으며, 향후 도입 시 별도 동의를 받겠습니다.</S.SecondListItem>
+                    <S.FirstListItem>c. 사용자 설정</S.FirstListItem>
+                    <S.SecondListItem>사용자는 브라우저 설정을 통해 쿠키 저장을 거부하거나 삭제할 수 있습니다.</S.SecondListItem>
+                </S.Link>
                 <S.Blank />
 
-                <S.SubTitle>제8조 (개인정보 보호책임의 한계)</S.SubTitle>
-                <S.List>
-                    <S.FirstListItem>a. 책임의 한계</S.FirstListItem>
-                    <S.SecondListItem>1. 본 사이트는 링크, 다운로드, 광고 등을 포함하여 본 사이트에 포함되어 있거나, 본 사이트를 통해 배포, 전송되거나, 본 사이트에 포함되어 있는 서비스로부터 접근되는 정보(이하 "자료")의 정확성이나 신뢰성에 대해 어떠한 보증도 하지 않습니다.</S.SecondListItem>
-                    <S.SecondListItem>2. 귀하는 자료에 대한 신뢰 여부가 전적으로 귀하의 책임임을 인정합니다.</S.SecondListItem>
-                    <S.SecondListItem>3. 사이트는 자료 및 서비스의 내용을 수정할 의무를 지지 않으나, 필요에 따라 개선할 수는 있습니다.</S.SecondListItem>
-                    <S.SecondListItem>4. 사이트는 자료와 서비스를 "있는 그대로" 제공하며, 서비스 또는 기타 자료 및 제품과 관련하여 상품성, 특정 목적에의 적합성에 대한 보증을 포함하되 이에 제한되지 않고 모든 명시적 또는 묵시적인 보증을 명시적으로 부인합니다. 어떠한 경우에도 서비스, 자료 및 제품과 관련하여 직접, 간접, 부수적, 징벌적, 파생적인 손해에 대해서 책임을 지지 않습니다.</S.SecondListItem>
-                    <S.SecondListItem>5. 본 사이트는 지적재산권을 포함한 타인의 권리를 존중하며, 사용자들도 마찬가지로 행동해 주시기를 기대합니다. 본 사이트는 필요한 경우 그 재량에 의해 타인의 권리를 침해하거나 위반하는 사용자에 대하여 사전 통지 없이 서비스 이용 제한 조치를 취할 수 있습니다.</S.SecondListItem>
-                    <S.FirstListItem>b. 책임의 한계와 법적 고지의 변경</S.FirstListItem>
-                    <S.SecondListItem>본 사이트는 책임의 한계와 법적고지의 내용을 인터넷산업의 상관례에 맞추어 적절한 방법으로 사전 통지없이 수시로 변경할 수 있습니다.</S.SecondListItem>
-                    <S.FirstListItem>c. 책임의 한계와 법적 고지의 효력</S.FirstListItem>
-                    <S.SecondListItem>책임의 한계와 법적고지사항에서 다루고 있는 세부사항들은 관계당사자들간의 총체적인 합의사항이며, 본 사이트의 개별서비스에서 정하고 있는 별도의 약관, 고지사항 등과 상충되는 경우에는 별도의 약관 또는 고지사항을 우선 적용합니다.</S.SecondListItem>
-                </S.List>
-                <S.Blank />
-                
-                <S.SubTitle>제9조 (개인정보 열람 청구)</S.SubTitle>
+                <S.SubTitle>제8조 (개인정보 열람 청구)</S.SubTitle>
                 <S.Text>이용자는 개인정보 보호법 제35조에 따라 개인정보 열람 청구를 담당자에게 할 수 있으며, 신속히 처리하겠습니다.</S.Text>
                 <S.Text>담당자: 윤준수</S.Text>
                 <S.Text>연락처: <S.Link href="mailto:junsu120202@gmail.com">junsu120202@gmail.com</S.Link></S.Text>
                 <S.Blank />
                 
-                <S.SubTitle>제10조 (권익침해 구제 방법)</S.SubTitle>
+                <S.SubTitle>제9조 (권익침해 구제 방법)</S.SubTitle>
                 <S.Text>개인정보 침해 피해구제 및 상담이 필요한 경우 아래 기관에 문의 가능합니다.</S.Text>
                 <S.Text><S.Link href="https://privacy.kisa.or.kr/main.do" target="_blank" title="홈페이지로 이동">개인정보 침해신고센터(118)</S.Link></S.Text>
                 <S.Text><S.Link href="https://www.kopico.go.kr" target="_blank" title="홈페이지로 이동">개인정보 분쟁조정위원회(1833-6972)</S.Link></S.Text>
                 <S.Text><S.Link href="https://ecrm.police.go.kr/minwon/main" target="_blank" title="홈페이지로 이동">경찰청 사이버범죄 신고시스템(182)</S.Link></S.Text>
                 <S.Blank />
 
-                <S.SubTitle>제11조 (개인정보 처리방침 시행 및 변경)</S.SubTitle>
-                <S.Text>본 방침은 [2025.05.01]부터 적용됩니다.</S.Text>
+                <S.SubTitle>제10조 (개인정보 처리방침 시행 및 변경)</S.SubTitle>
+                <S.Text>본 방침은 커뮤니티 서비스의 시작일인 [2025.11.01]부터 적용됩니다.</S.Text>
                 <S.Blank />
             </S.Wrapper>
         </>
