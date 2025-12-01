@@ -79,7 +79,7 @@ const FriendList = () => {
                                 <UserProfileImage user={friend} width={"30px"} height={"30px"} />
                                 <BC.HorizontalWrapper $gap={"7px"}>
                                     <BC.Text $color={"#878787"} $size={"12px"} style={{width: "60px", textAlign: "right"}}>{friend.role}</BC.Text>
-                                    <BC.Text $size={"14px"} $weight={"600"}>{friend.nickName}</BC.Text>
+                                    <BC.Text $size={"14px"} $weight={"600"} $color={friend.color}>{friend.nickName}</BC.Text>
                                 </BC.HorizontalWrapper>
                             </BC.HorizontalWrapper>
                             <S.ChatPlusIcon src={message} title="개인 채팅 만들기" onClick={() => handleJoinChatRoom(friend)}/>

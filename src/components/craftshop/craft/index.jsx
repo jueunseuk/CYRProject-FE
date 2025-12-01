@@ -157,7 +157,7 @@ const Craft = () => {
                                 onClick={() => handleNavigateToUserPage(log.userId)}>{log.nickname}</S.Text>
                             <S.Text $size={"14px"} $weight={"400"}>님이&nbsp;</S.Text>
                             <S.Text $size={"14px"} $weight={"600"}>{log.description}</S.Text>
-                            <S.Text $size={"14px"} $weight={"400"}>을 통해 유리 조각이&nbsp;</S.Text>
+                            <S.Text $size={"14px"} $weight={"400"}>(을)를 통해 유리 조각이&nbsp;</S.Text>
                             <S.Text $size={"14px"} $weight={"600"} $color={log.amount > 0 ? "#0000ff" : "#ff0000"}>{log.amount > 0 ? `${log.amount} 만큼 증가` : `${-log.amount} 만큼 감소`}</S.Text>
                             <S.Text $size={"14px"} $weight={"400"}>했습니다.</S.Text>
                         </S.LogItem>

@@ -87,7 +87,7 @@ const Information = ({isOwner, user}) => {
                     <S.ProfileImage src={user.profileUrl} style={{marginBottom: "10px"}} onClick={() => handleImageFullScreen()} />
                     <S.HorizontalWrapper $gap={"5px"} style={{height: "16px"}}>
                         <S.Text $size={"12px"} $weight={"400"} $color={"#1f1f1fff"}>{user.role}</S.Text>
-                        <S.Text $size={"14px"} $weight={"700"}>{user.nickname}</S.Text>
+                        <S.Text $size={"14px"} $weight={"700"} $color={user.color}>{user.nickname}</S.Text>
                     </S.HorizontalWrapper>
                     <S.Text $size={"12px"} $color={"#878787"} style={{height: "14px"}}>{user.email}</S.Text>
                 </S.VerticalWrapper>

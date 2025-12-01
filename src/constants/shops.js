@@ -11,8 +11,8 @@ export const SHOPS = [
     },
     {
         id: 3,
-        name: "칭호",
-        description: "이름 옆에 표시할 수 있는 칭호 아이템을 판매하는 상점입니다."
+        name: "닉네임",
+        description: "닉네임의 색상을 변경할 수 있는 아이템을 판매하는 상점입니다. 구매 즉시 적용됩니다."
     },
     {
         id: 4,

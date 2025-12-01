@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import * as BC from "@/common/basic/BasicComponent";
 import * as UI from "@/apis/inventory";
 import { useEffect, useRef, useState } from "react";
 import { INVENTORYS } from "@/constants/inventorys";
@@ -108,8 +109,8 @@ const Inventory = () => {
                             setSelectItem(item);
                         }}>
                             <S.VerticalWrapper $gap={"5px"}>
-                                <S.ItemImage src={item.imageUrl}/>
-                                <S.Text $size="15px" $weight="700">
+                                {item.imageUrl ? <S.ItemImage src={item.imageUrl}/> : <BC.EmptyBox $w={"162px"} $h={"162px"}>No Images</BC.EmptyBox>}
+                                <S.Text $size="15px" $weight="700" $color={item.shopCategoryId === 3 ? item.description : ""}>
                                     {item.name}
                                     {getItemAmount(item)}
                                 </S.Text>
