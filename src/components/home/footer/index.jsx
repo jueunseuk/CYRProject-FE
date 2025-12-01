@@ -27,6 +27,7 @@ const Footer = () => {
                     <BC.Text $size={"16px"} $weight={"700"} style={{margin: "5px 0 10px 0", borderBottom: "2px solid black"}}>LEGAL</BC.Text>
                     <S.Text onClick={() => handleNavigate("terms")}>서비스 이용약관</S.Text>
                     <S.Text onClick={() => handleNavigate("policy")}>개인정보 보호정책</S.Text>
+                    <S.Text onClick={() => handleNavigate("disclaimer")}>책임의 한계 및 법적 고지</S.Text>
                     <S.Text onClick={() => handleNavigate("guide")}>커뮤니티 이용가이드</S.Text>
                     <S.Text onClick={() => handleNavigate("about")}>About</S.Text>
                 </S.VerticalWrapper>

@@ -9,11 +9,11 @@ import ellipse from "@/assets/icon/post/ellipse.svg";
 import list from "@/assets/icon/gallery/list.svg";
 import view from "@/assets/icon/post/view.svg";
 import WrongPage from "@/pages/wrong/WrongPage";
-import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/skeleton/Skeleton";
 import useUserInfo from "@/hooks/localStorage";
+import { UserProfileImage2 } from "@/common/func/UserProfile2";
 
 const AnnouncementPost = () => {
     const user = useUserInfo();
@@ -24,7 +24,6 @@ const AnnouncementPost = () => {
     const [skeleton, setSkeleton] = useState(true);
     const [announcementData, setAnnouncementData] = useState({});
     const [notFound, setNotFound] = useState(false);
-    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
     const handleNavigatePostList = () => {
         navigate(`/${subPath}`);
@@ -53,14 +52,6 @@ const AnnouncementPost = () => {
         return <WrongPage />;
     };
 
-    const handleImageFullScreen = () => {
-        setIsProfileModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsProfileModalOpen(false);
-    };
-    
     return (
         <>
             <S.Wrapper>
@@ -79,8 +70,7 @@ const AnnouncementPost = () => {
                                 {(user?.role === "MANAGER" || user?.role === "ADMIN") && <MoreOption formData={announcementData} type={subPath}/>}
                             </S.HorizontalWrapper>
                             <S.HorizontalWrapper $gap={"12px"} style={{marginTop: "10px"}}>
-                                {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={announcementData.profileUrl}/>}
-                                <S.Profile src={announcementData.profileUrl} onClick={() => handleImageFullScreen()} />
+                                <UserProfileImage2 userId={announcementData.userId} profileUrl={announcementData.profileUrl} profile={announcementData.profileUrl} width={"35px"} height={"35px"} radius={"35px"} />
                                 <S.HorizontalWrapper>
                                     <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                     <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${announcementData.userId}`)}>{announcementData.nickname}</S.Text>

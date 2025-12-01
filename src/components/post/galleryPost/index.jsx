@@ -5,10 +5,10 @@ import author from "@/assets/icon/gallery/author.svg";
 import list from "@/assets/icon/gallery/list.svg";
 import view from "@/assets/icon/post/view.svg";
 import MoreOption from "@/components/modal/moreOption";
-import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
+import { UserProfileImage2 } from "@/common/func/UserProfile2";
 
 const GalleryPost = () => {
     const {postId} = useParams();
@@ -23,7 +23,6 @@ const GalleryPost = () => {
         picturedAt: "",
         imageUrls: []
     });
-    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
     const handleNavigateGallery = () => {
         navigate(-1);
@@ -45,14 +44,6 @@ const GalleryPost = () => {
             fetchGallery();
     }, []);
 
-    const handleImageFullScreen = () => {
-        setIsProfileModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsProfileModalOpen(false);
-    };
-
     return (
         <>
             {skeleton ? 
@@ -65,8 +56,7 @@ const GalleryPost = () => {
                             <MoreOption formData={formData} type="gallery"/>
                         </S.HorizontalWrapper>
                         <S.HorizontalWrapper $gap={"15px"} style={{marginTop: "10px"}}>
-                            {isProfileModalOpen && <ImageFullScreen onClose={handleCloseModal} profile={formData.profileImageUrl}/>}
-                            <S.Profile src={formData.profileImageUrl} onClick={() => handleImageFullScreen()} />
+                            <UserProfileImage2 userId={formData.authorId} profileUrl={formData.profileImageUrl} width={"35px"} height={"35px"} radius={"35px"} />
                             <S.HorizontalWrapper $gap={"5px"}>
                                 <S.Icon src={author} $width={"10px"} $height={"10px"}/>
                                 <S.Text $size={"14px"} $weight={"600"} style={{cursor: "pointer"}} onClick={() => navigate(`/users/${formData.authorId}`)}>{formData.author}</S.Text>

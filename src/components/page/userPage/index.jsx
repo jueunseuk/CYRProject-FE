@@ -35,7 +35,7 @@ const UserPage = () => {
     
     useEffect(() => {
         getUserProfileData();
-    }, []);
+    }, [userId]);
     
     return (
         <S.Wrapper>

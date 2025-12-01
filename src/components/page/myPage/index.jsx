@@ -6,9 +6,11 @@ import ParentGraph from "../parentGraph";
 import ParentRecord from "../parentRecord";
 import refresh from "@/assets/icon/user/refresh.svg";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const MyPage = () => {
     const userInfo = useUserInfo();
+    const location = useLocation();
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     
@@ -41,7 +43,7 @@ const MyPage = () => {
     
     useEffect(() => {
         getUserProfileData();
-    }, []);
+    }, [location]);
 
     return (
         <S.Wrapper>

@@ -28,33 +28,15 @@ export const Title = styled.h1`
 `;
 
 export const SubTitle = styled.span`
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 600;
+    color: red;
 `;
 
 export const Text = styled.span`
-    font-size: ${({$size}) => $size || "14px"};
+    font-size: ${({$size}) => $size || "15px"};
     font-weight: ${({$weight}) => $weight || "500"};
     color: ${({$color}) => $color || "black"};
-`;
-
-export const Link = styled.a`
-    text-decoration: none;
-    color: #505050;
-    font-size: 14px;
-    &: hover {
-        text-decoration: underline;
-    }
-`;
-
-export const Image = styled.img`
-    width: 100%;
-    object-fit: cover;
-`;
-
-export const Introduce = styled.div`
-  color: #505050;
-  font-size: 14px;
 `;
 
 export const List = styled.ol`
@@ -62,19 +44,9 @@ export const List = styled.ol`
 `;
 
 export const FirstListItem = styled.li`
-    border-left: 3px solid #505050;
-    padding-left: 3px;
+    margin-left: 10px;
     margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
     color: #505050;
-    list-style: none;
-`;
-    
-export const SecondListItem = styled.li`
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #505050;
-    margin-bottom: 15px;
     list-style: none;
 `;

@@ -7,6 +7,7 @@ import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { UserProfileImage2 } from "@/common/func/UserProfile2";
 
 const CalendarRequest = () => {
     const user = useUserInfo();
@@ -73,7 +74,7 @@ const CalendarRequest = () => {
 
                 {requests.map((request) => (
                     <S.RequestBlock key={request.calendarRequestId} >
-                        <S.UserProfile src={request.profileImageUrl} onClick={() => {setIsProfileModalOpen(true); setSelectProfileImage(request.profileImageUrl)}} />
+                        <UserProfileImage2 userId={request.userId} profileUrl={request.profileImageUrl} width={"50px"} height={"50px"} radius={"50px"} />
                         <S.ContentBox>
                             <S.HorizontalWrapper $justify={"space-between"}>
                                 <S.HorizontalWrapper $justify={"flex-start"} $gap={"5px"}>

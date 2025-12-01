@@ -6,7 +6,7 @@ export const INVENTORYS = [
     },
     {
         id: 1,
-        name: "이모티콘",
+        name: "율모티콘",
         description: "구매한 이모티콘들을 보여줍니다."
     },
     {
