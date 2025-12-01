@@ -2,6 +2,7 @@ import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
 import UserManagement from "./manager";
 import AdminManagement from "./admin";
+import NotificationManagement from "./notification";
 
 const Management = ({user}) => {
 
@@ -20,6 +21,11 @@ const Management = ({user}) => {
                     <AdminManagement />
                 </S.ManagementWrapper>
             }
+            <S.ManagementWrapper>
+                <BC.Text $size={"16px"} $weight={"600"}>전체 알림 관리</BC.Text>
+                <BC.Text $size={"13px"} style={{marginTop: "5px"}}>커뮤니티의 모든 사용자들에게 알림을 전송합니다.</BC.Text>
+                <NotificationManagement />
+            </S.ManagementWrapper>
         </S.Wrapper>
     );
 };

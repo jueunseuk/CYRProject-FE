@@ -54,3 +54,20 @@ export const patchReadNotification = async (form) => {
     }
 };
 
+export const postNotificationAllUser = async (form) => {
+    try {
+        const response = await instance.post(`/notification/all`, form);
+        return response;
+    } catch (error) {
+        const errorCode = error.response.code;
+        
+        if(error && error.response) {
+
+        } else {
+            console.log("서버가 응답하지 않습니다.");
+        }
+
+        throw error;
+    }
+};
+
