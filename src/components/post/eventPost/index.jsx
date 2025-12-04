@@ -56,7 +56,7 @@ const EventPost = () => {
             setEventData(response.data);
             
         } catch(error) {
-
+            setNotFound(true);
         } finally {
             setSkeleton(false);
         }
@@ -126,7 +126,7 @@ const EventPost = () => {
     };
     
     if(notFound) {
-        return <WrongPage />;
+        return <WrongPage type={"post"}/>;
     };
 
     const handleImageFullScreen = (imageUrl) => {

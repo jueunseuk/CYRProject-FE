@@ -9,8 +9,10 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
 import { UserProfileImage2 } from "@/common/func/UserProfile2";
+import WrongPage from "@/pages/wrong/WrongPage";
 
 const GalleryPost = () => {
+    const [notFound, setNotFound] = useState(false);
     const {postId} = useParams();
     const navigate = useNavigate();
     const [skeleton, setSkeleton] = useState(true);
@@ -35,7 +37,7 @@ const GalleryPost = () => {
                     const response = await G.getGallery(postId);
                     setFormData(response.data);
                 } catch(error) {
-                    
+                    setNotFound(true);
                 } finally {
                     setSkeleton(false);
                 }
@@ -43,6 +45,10 @@ const GalleryPost = () => {
     
             fetchGallery();
     }, []);
+
+    if(notFound) {
+        return <WrongPage type={"post"} />;
+    };
 
     return (
         <>

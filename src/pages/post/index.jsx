@@ -1,30 +1,12 @@
-import * as S from "./styles";
-import { useNavigate, useParams } from "react-router-dom";
-import Board from "@/components/home/board";
-import Banner from "@/components/home/banner";
-import Footer from "@/components/home/footer";
-import GuestInfo from "@/components/home/guestInfo";
-import LoginInfo from "@/components/home/loginInfo";
-import Search from "@/components/home/search";
-import useUserInfo from "@/hooks/localStorage";
+import { useParams } from "react-router-dom";
 import BasicPost from "@/components/post/basicPost";
 import GalleryPost from "@/components/post/galleryPost";
 import EventPost from "@/components/post/eventPost";
 import WrongPage from "../wrong/WrongPage";
 import AnnouncementPost from "@/components/post/announcementPost";
-import { useEffect } from "react";
 
 const Post = () => {
-    const user = useUserInfo();
     const {subPath} = useParams();
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (!user || !user.userId) {
-            alert("로그인이 필요한 서비스입니다.");
-            navigate("/");
-        }
-    }, [user, navigate]);
 
     const getBoardComponent = () => {
         switch(subPath) {
@@ -54,23 +36,7 @@ const Post = () => {
 
     return (
         <>
-            <Banner></Banner>
-            <S.HorizontalWrapper>
-                <S.SidebarWrapper>
-                    {user && user.userId ? (
-                        <LoginInfo></LoginInfo>
-                    ) : (
-                        <GuestInfo></GuestInfo>
-                    )}
-                    <Search></Search>
-                    <Board></Board>
-                </S.SidebarWrapper>
-                <S.ContentWrapper>
-                    {getBoardComponent()}
-                </S.ContentWrapper>
-            </S.HorizontalWrapper>
-            <S.Contour />
-            <Footer></Footer>
+            {getBoardComponent()}
         </>
     );
 }
