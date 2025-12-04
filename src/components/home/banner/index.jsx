@@ -25,7 +25,7 @@ const Banner = () => {
     const [unreadCnt, setUnreadCnt] = useState(0);
 
     const handleNavigateHome = () => {
-        window.location.href = '/';
+        navigate("/");
     };
 
     const handleRequestLogout = async () => {

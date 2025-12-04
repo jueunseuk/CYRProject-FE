@@ -49,7 +49,7 @@ const AnnouncementPost = () => {
     }, []);
     
     if(notFound) {
-        return <WrongPage />;
+        return <WrongPage type={"post"}/>;
     };
 
     return (

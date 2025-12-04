@@ -20,7 +20,6 @@ import fixed from "@/assets/icon/post/fixed.svg";
 import list from "@/assets/icon/gallery/list.svg";
 import WrongPage from "@/pages/wrong/WrongPage";
 import MoreOptionComment from "@/components/modal/moreOptionComment";
-import ImageFullScreen from "@/components/modal/imageFullScreen";
 import { formatDate } from "@/util/dateFormatter";
 import { PostContent } from "../postContent";
 import { SkeletonItem } from "@/common/skeleton/Skeleton";
@@ -29,6 +28,7 @@ import { UserProfileImage2 } from "@/common/func/UserProfile2";
 
 const BasicPost = () => {
     const user = useUserInfo();
+    const location = useLocation().pathname.split("/")[1];
     const navigate = useNavigate();
     const { state } = useLocation();
     const {subPath} = useParams();
@@ -51,7 +51,7 @@ const BasicPost = () => {
     const [editingContent, setEditingContent] = useState("");
     const [editingLocked, setEditingLocked] = useState(false);
     const [openEmoticonModal, setOpenEmoticonModal] = useState(false);
-    const recommendBoardInfo = BOARD_DESCRIPTIONS[state.boardName];
+    const recommendBoardInfo = BOARD_DESCRIPTIONS[state?.boardName || location];
 
     const handleNavigatePostList = () => {
         navigate(`/${subPath}`);

@@ -1,11 +1,52 @@
-import { Outlet } from "react-router-dom";
+import * as BC from "@/common/basic/BasicComponent";
+import { Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import FloatingChatButton from "@/components/chat/floatingChatButton";
+import useUserInfo from "@/hooks/localStorage";
+import { useEffect } from "react";
+import Banner from "@/components/home/banner";
+import Search from "@/components/home/search";
+import GuestInfo from "@/components/home/guestInfo";
+import LoginInfo from "@/components/home/loginInfo";
+import Board from "@/components/home/board";
+import Footer from "@/components/home/footer";
 
 const HomeLayout = () => {
+    const user = useUserInfo();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user?.userId) {
+            alert("로그인 후 이용가능합니다.\n메인화면으로 이동합니다.");
+            navigate("/");
+        }
+        if(user?.role === "MEMBER" || user?.role === "GUEST") {
+            alert("존재하지 않는 페이지입니다.");
+            navigate("/");
+        }
+    }, [user, navigate]);
+
+    if (!user?.userId) return null;
+
     return (
         <HomeBackGround>
-            <Outlet />
+            <Banner />
+            <BC.HorizontalWrapper $ai={"flex-start"}>
+                <SidebarWrapper>
+                    {user && user.userId ? (
+                        <LoginInfo />
+                    ) : (
+                        <GuestInfo />
+                    )}
+                    <Search />
+                    <Board></Board>
+                </SidebarWrapper>
+                <ContentWrapper>
+                    <Outlet />
+                </ContentWrapper>
+            </BC.HorizontalWrapper>
+            <Contour />
+            <Footer />
             <FloatingChatButton />
         </HomeBackGround>
     );
@@ -22,4 +63,25 @@ const HomeBackGround = styled.div`
     align-items: center;
     background-color: white;
     margin: 0px;
+`;
+
+export const SidebarWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+`;
+
+export const ContentWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 865px;
+`;
+
+export const Contour = styled.div`
+    width: 100%;
+    height: 1px;
+    background-color: #E7E7E7;
+    border: none;
+    margin: 50px 0 35px 0;
 `;
