@@ -9,7 +9,6 @@ import Search from "@/components/home/search";
 import GuestInfo from "@/components/home/guestInfo";
 import LoginInfo from "@/components/home/loginInfo";
 import Board from "@/components/home/board";
-import Footer from "@/components/home/footer";
 
 const HomeLayout = () => {
     const user = useUserInfo();
