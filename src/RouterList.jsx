@@ -32,6 +32,7 @@ import Manage from "@/pages/manage";
 import SearchPage from "./pages/search";
 import Ranking from "./pages/ranking";
 import Achievement from "./pages/achievement";
+import Footer from "./components/home/footer";
 
 export const RouterList = () => [
     {
@@ -97,6 +98,7 @@ export const RouterList = () => [
                 element: (
                     <>
                         <HomeLayout />
+                        <Footer />
                         <ScrollToTop />
                     </>),
                 children: [
