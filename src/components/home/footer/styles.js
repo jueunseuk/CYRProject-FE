@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
-    width: 1080px;
-    margin-bottom: 35px;
-    gap: 90px;
-    padding: 0px 30px;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 0;
+    gap: 180px;
+    background-color: #faf7e2ff;
 `;
 
 export const VerticalWrapper = styled.div`

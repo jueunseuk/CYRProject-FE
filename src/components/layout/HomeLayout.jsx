@@ -9,7 +9,6 @@ import Search from "@/components/home/search";
 import GuestInfo from "@/components/home/guestInfo";
 import LoginInfo from "@/components/home/loginInfo";
 import Board from "@/components/home/board";
-import Footer from "@/components/home/footer";
 
 const HomeLayout = () => {
     const user = useUserInfo();
@@ -46,7 +45,6 @@ const HomeLayout = () => {
                 </ContentWrapper>
             </BC.HorizontalWrapper>
             <Contour />
-            <Footer />
             <FloatingChatButton />
         </HomeBackGround>
     );
@@ -83,5 +81,5 @@ export const Contour = styled.div`
     height: 1px;
     background-color: #E7E7E7;
     border: none;
-    margin: 50px 0 35px 0;
+    margin: 75px 0 0 0;
 `;

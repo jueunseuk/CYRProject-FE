@@ -42,7 +42,7 @@ const Footer = () => {
                     <S.LinkText href="https://jundyu.tistory.com/">Blog</S.LinkText>
                     <S.LinkText href="https://github.com/jueunseuk">Github</S.LinkText>
                 </S.VerticalWrapper>
-                <S.VerticalWrapper style={{flex: "1", alignItems: "center"}}>
+                <S.VerticalWrapper style={{alignItems: "center"}}>
                     <BC.Icon src={favicon} $w={"120px"} />
                     <BC.Text $size={"16px"} $weight={"600"} $color={"#BAA644"}>CYR Community</BC.Text>
                 </S.VerticalWrapper>
