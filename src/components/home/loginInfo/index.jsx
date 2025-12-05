@@ -43,6 +43,7 @@ const LoginInfo = () => {
 
     useEffect(() => {
         const fetchExp = async () => {
+            if(!user) return;
             try {
                 const response = await U.getUserSidebar();
                 setUserAmount(response.data);

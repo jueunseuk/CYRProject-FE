@@ -5,28 +5,30 @@ const useUserInfo = () => {
   const [userInfo, setUserInfo] = useState(() => {
     try {
       const str = localStorage.getItem("userInfo");
-      return str ? JSON.parse(str) : { role: "GUEST" };
+      return str ? JSON.parse(str) : null;
     } catch {
       return { role: "GUEST" };
     }
   });
 
+  const fetchUserInfo = async () => {
+    try {
+      const response = await U.getLocalInfo();
+      const data = response.data;
+
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setUserInfo(data);
+    } catch (error) {
+      localStorage.removeItem("userInfo");
+    }
+  };
+
   useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const response = await U.getLocalInfo();
-        const data = response.data;
-
-        localStorage.setItem("userInfo", JSON.stringify(data));
-        setUserInfo(data);
-      } catch (error) {
-        localStorage.removeItem("userInfo");
-        setUserInfo({ role: "GUEST" });
-      }
-    };
-
+    if(userInfo == null) {
+      return;
+    }
     fetchUserInfo();
-  }, []);
+  }, [userInfo]);
 
   return useMemo(() => userInfo, [userInfo]);
 };
