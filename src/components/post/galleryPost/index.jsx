@@ -1,5 +1,6 @@
 import * as G from "@/apis/gallery";
 import * as S from "./styles";
+import * as BC from "@/common/basic/BasicComponent";
 import camera from "@/assets/icon/gallery/camera.svg";
 import author from "@/assets/icon/gallery/author.svg";
 import list from "@/assets/icon/gallery/list.svg";
@@ -23,7 +24,8 @@ const GalleryPost = () => {
         profileImageUrl: "",
         description: "",
         picturedAt: "",
-        imageUrls: []
+        imageUrls: [],
+        tags: []
     });
 
     const handleNavigateGallery = () => {
@@ -79,18 +81,25 @@ const GalleryPost = () => {
                     </S.VerticalWrapper>
                     <S.Contour />
                     <S.VerticalWrapper>
-                    <S.Content>
-                        <S.DescriptionArea>
-                            <S.Text $size={"18px"} $weight={"600"}>&lt; 사진 설명 &gt;</S.Text>
-                            <S.Text $size={"14px"} style={{whiteSpace: "pre-line", lineHeight: "20px"}}>{formData.description}</S.Text>
-                        </S.DescriptionArea>
-                        <S.ImageArea>
-                            {formData.imageUrls.map((url, i) => (
-                                <S.ImageItem key={i} src={url} alt={`gallery-img-${i}`} />
-                            ))}
-                        </S.ImageArea>
-                    </S.Content>
+                        <S.Content>
+                            <S.DescriptionArea>
+                                <S.Text $size={"18px"} $weight={"600"}>&lt; 사진 설명 &gt;</S.Text>
+                                <S.Text $size={"14px"} style={{whiteSpace: "pre-line", lineHeight: "20px"}}>{formData.description}</S.Text>
+                            </S.DescriptionArea>
+                            <S.ImageArea>
+                                {formData.imageUrls.map((url, i) => (
+                                    <S.ImageItem key={i} src={url} alt={`gallery-img-${i}`} />
+                                ))}
+                            </S.ImageArea>
+                        </S.Content>
                     </S.VerticalWrapper>
+                    <BC.HorizontalWrapper $jc={"flex-start"} $gap={"5px"} style={{width: "100%", padding: "20px"}}>
+                        {formData.tags.map((tag, idx) => (
+                            <BC.Text key={idx} $size={"14px"} $color={"#878787"} $weight={"600"} style={{cursor: "pointer"}}
+                                onClick={() => navigate(`/gallery?name=${tag}`)}
+                            >#{tag}</BC.Text>
+                        ))}
+                    </BC.HorizontalWrapper>
                     <S.NaviagateButton onClick={handleNavigateGallery}><S.Icon src={list} $width={"13px"} $height={"10px"}/>목록</S.NaviagateButton>
                 </S.Wrapper>
             }

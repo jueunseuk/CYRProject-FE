@@ -9,6 +9,7 @@ import Search from "@/components/home/search";
 import GuestInfo from "@/components/home/guestInfo";
 import LoginInfo from "@/components/home/loginInfo";
 import Board from "@/components/home/board";
+import CommunityStatistic from "../home/communityStatistic";
 
 const HomeLayout = () => {
     const user = useUserInfo();
@@ -30,7 +31,7 @@ const HomeLayout = () => {
     return (
         <HomeBackGround>
             <Banner />
-            <BC.HorizontalWrapper $ai={"flex-start"}>
+            <BC.HorizontalWrapper $ai={"flex-start"} $jc={"space-between"} style={{width: "100%"}}>
                 <SidebarWrapper>
                     {user && user.userId ? (
                         <LoginInfo />
@@ -38,7 +39,8 @@ const HomeLayout = () => {
                         <GuestInfo />
                     )}
                     <Search />
-                    <Board></Board>
+                    <Board />
+                    <CommunityStatistic />
                 </SidebarWrapper>
                 <ContentWrapper>
                     <Outlet />

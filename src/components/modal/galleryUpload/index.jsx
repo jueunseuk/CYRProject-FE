@@ -1,5 +1,6 @@
 import * as G from "@/apis/gallery";
 import * as S from "./styles";
+import * as BC from "@/common/basic/BasicComponent";
 import cancel from "@/assets/icon/gallery/cancel.svg";
 import upload from "@/assets/icon/gallery/upload.svg";
 import help from "@/assets/icon/gallery/help.svg";
@@ -19,6 +20,7 @@ const GalleryUpload = ({onClose}) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [date, setDate] = useState(today);
+    const [tag, setTag] = useState([]);
 
     const handleClickFileUpload = () => {
         fileInputRef.current.click();
@@ -66,6 +68,12 @@ const GalleryUpload = ({onClose}) => {
             formData.append("description", description);
             formData.append("picturedAt", `${date}T00:00:00`);
             formData.append("type", "CYR");
+            if(tag) {
+                const validTags = tag.filter(t => t.trim() !== "");
+                validTags.forEach(t => {
+                    formData.append("tag", t);
+                });
+            }
 
             uploadedFiles.forEach((file) => {
                 formData.append("images", file);
@@ -77,7 +85,19 @@ const GalleryUpload = ({onClose}) => {
         } catch(error) {
 
         }
-    }
+    };
+
+    const handleAddTag = () => {
+        setTag((prev) => [...prev, ""]);
+    };
+
+    const handleChangeTag = (index, value) => {
+        setTag((prev) => {
+            const updated = [...prev];
+            updated[index] = value;
+            return updated;
+        });
+    };
 
     return (
         <>
@@ -93,6 +113,7 @@ const GalleryUpload = ({onClose}) => {
                                 <p style={{fontSize:"14px"}}>3. 촬영일은 나중에 수정 가능하므로 촬영일이 모호하더라도 일단 업로드 하셔도 됩니다!</p>
                                 <p style={{fontSize:"14px"}}>4. 이미지의 사이즈는 개별 최대 10MB입니다!</p>
                                 <p style={{fontSize:"14px"}}>5. 제목은 가능한 짧게! 설명은 가능한 길게! 부탁드려요.</p>
+                                <p style={{fontSize:"14px"}}>6. 태그는 가능한 많이 사용되는 단어들로 구성해주세요.</p>
                             </S.TooltipText>
                         </S.TooltipWrapper>
                         <S.Icon src={upload} $width={"25px"} $height={"25px"}></S.Icon>
@@ -127,6 +148,21 @@ const GalleryUpload = ({onClose}) => {
                             <S.Text $size={"16px"} $weight={"700"}>촬영일</S.Text>
                         </S.HorizontalWrapper>
                         <S.InputDate value={date} max={today} onChange={(e) => setDate(e.target.value)}></S.InputDate>
+                    </S.InputArea>
+                    <S.InputArea>
+                        <S.HorizontalWrapper>
+                            <S.Text $size={"16px"} $weight={"700"}>관련 태그</S.Text>
+                        </S.HorizontalWrapper>
+                        <BC.HorizontalWrapper $jc={"flex-start"} $gap={"8px"} style={{flexWrap: "wrap", width: "100%"}}>
+                            {tag.map((t, idx) => (
+                                <input key={idx} value={t} type={"text"} style={{width: "100px", height: "40px", borderRadius: "8px", outline: "none", border: "none", padding: "10px"}}
+                                    onChange={(e) => handleChangeTag(idx, e.target.value)}
+                                />
+                            ))}
+                            <BC.EmptyBox $w={"100px"} $h={"40px"} $radius={"8px"} $size={"18px"} style={{backgroundColor: "white", cursor: "pointer"}}
+                                onClick={handleAddTag}
+                            >+</BC.EmptyBox>
+                        </BC.HorizontalWrapper>
                     </S.InputArea>
                     <S.SubmitButton disabled={uploadedFiles.length === 0 ||
                         title.length < 5 ||
