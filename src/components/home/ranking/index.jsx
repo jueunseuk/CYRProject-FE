@@ -4,7 +4,6 @@ import * as R from "@/apis/ranking";
 import first from "@/assets/icon/rank/first.svg";
 import second from "@/assets/icon/rank/second.svg";
 import third from "@/assets/icon/rank/third.svg";
-import { RANKINGS } from "@/constants/rankings";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useUserInfo from "@/hooks/localStorage";
@@ -23,8 +22,6 @@ const RankingSummary = () => {
     };
 
     const fetchRankingData = async () => {
-        if(!user) return;
-
         try {
             const response = await R.getSummaryRankingData();
             setRankData(response.data);
