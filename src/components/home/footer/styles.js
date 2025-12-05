@@ -7,7 +7,13 @@ export const Wrapper = styled.div`
     width: 100%;
     padding: 50px 0;
     gap: 180px;
-    background-color: #faf7e2ff;
+    background:
+        linear-gradient(#f3e6c6, #e9dab3),
+        radial-gradient(circle at 30% 40%, #c8b37a33 0 2px, transparent 2px 8px),
+        radial-gradient(circle at 70% 60%, #c8b37a33 0 2px, transparent 2px 8px),
+        repeating-radial-gradient(circle, #b89d6a22 0 1px, transparent 1px 3px);
+    background-blend-mode: multiply;
+    background-size: cover;
 `;
 
 export const VerticalWrapper = styled.div`

@@ -90,7 +90,7 @@ const SuggestionBoard = () => {
                         </S.FirstRow>
                     </thead>
                     <tbody>
-                        {posts.map((post) => (
+                        {posts.map((post, idx) => (
                             <S.Row key={post.postId}>
                                 <S.Column>{totalElements - ((page - 1) * (20) + idx)}</S.Column>
                                 <S.Column $align={"left"} onClick={() => handleNavigatePost(post.postId)} style={{cursor: "pointer"}}>{post.title}{post.commentCnt > 0 ? (<S.Comment>{post.commentCnt}</S.Comment>) : ""}</S.Column>

@@ -83,8 +83,8 @@ const Banner = () => {
 
     const handleClickNotification = () => {
         setOpenNotificationModal(true);
-        patchNotification();
         fetchUnreadNotification();
+        patchNotification();
     };
 
     return (

@@ -75,6 +75,7 @@ const Guide = () => {
                         <S.SecondListItem>커뮤니티 개선 및 발전을 위한 아이디어와 피드백을 제출할 수 있는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>반드시 건의사항이 반영되는 것은 아니므로 참고 바랍니다.</S.SecondListItem>
                         <S.SecondListItem>건의 시 내용은 최대한 구체적으로 작성해주세요.</S.SecondListItem>
+                        <S.SecondListItem>건의하기를 비롯한 '커뮤니티 이야기'의 하위 게시판들은 전체게시판, 인기게시판 등에서 노출되지 않습니다.</S.SecondListItem>
                     <S.FirstListItem>o. 신고하기</S.FirstListItem>
                         <S.SecondListItem>커뮤니티 규칙 위반사항 발견 시 신고하는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>신고 시 사실관계 확인을 돕는 사진을 첨부할 수 있습니다.</S.SecondListItem>

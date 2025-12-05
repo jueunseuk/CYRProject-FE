@@ -46,7 +46,7 @@ const HomeBackGround = styled.div`
     justify-content: flex-start;
     align-items: center;
     background-color: white;
-    margin: 0px;
+    margin-bottom: 75px;
 `;
 
 export const SidebarWrapper = styled.div`
