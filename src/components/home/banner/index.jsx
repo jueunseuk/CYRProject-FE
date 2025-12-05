@@ -48,6 +48,9 @@ const Banner = () => {
             if(response.data.length > 0) {
                 setBellStatus(true);
                 setUnreadCnt(response.data.length);
+            } else {
+                setBellStatus(false);
+                setUnreadCnt(0);
             }
         } catch(error) {
 
@@ -87,10 +90,16 @@ const Banner = () => {
         patchNotification();
     };
 
+    const handleCloseNotification = () => {
+        setOpenNotificationModal(false);
+        setUnreadCnt(0);
+        setBellStatus(false);
+    };
+
     return (
         <>
             <S.Wrapper>
-                {openNotificatinoModal && <NotificationList onClose={() => setOpenNotificationModal(false)} />}
+                {openNotificatinoModal && <NotificationList onClose={handleCloseNotification} />}
                 {user?.userId ? <S.HorizontalWrapper $gap={"7px"} $jc={"flex-end"}>
                         <S.Text onClick={() => navigate("/mypage")}>{user.nickname}</S.Text>
                         <S.Text>|</S.Text>
