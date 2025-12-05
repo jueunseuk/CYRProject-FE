@@ -61,6 +61,7 @@ export const EmptyBox = styled.div`
     width: ${({$w}) => $w};
     height: ${({$h}) => $h};
     font-size: ${({$size}) => $size};
+    border-radius: ${({$radius}) => $radius};
     color: #878787;
     display: flex;
     justify-content: center;
