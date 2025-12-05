@@ -39,8 +39,8 @@ const Footer = () => {
                 </S.VerticalWrapper>
                 <S.VerticalWrapper $gap={"2px"} $ai={"flex-start"}>
                     <BC.Text $size={"16px"} $weight={"700"} style={{margin: "5px 0 10px 0", borderBottom: "2px solid black"}}>CREATOR</BC.Text>
-                    <S.LinkText href="https://jundyu.tistory.com/">Blog</S.LinkText>
-                    <S.LinkText href="https://github.com/jueunseuk">Github</S.LinkText>
+                    <S.LinkText href="https://jundyu.tistory.com/" target="_blank">Blog</S.LinkText>
+                    <S.LinkText href="https://github.com/jueunseuk" target="_blank">Github</S.LinkText>
                 </S.VerticalWrapper>
                 <S.VerticalWrapper style={{alignItems: "center"}}>
                     <BC.Icon src={favicon} $w={"120px"} />
