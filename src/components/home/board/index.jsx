@@ -7,8 +7,10 @@ import { BOARDS } from "@/constants/boards";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SERIAL_BOARDS } from "@/constants/serialBoards";
+import useUserInfo from "@/hooks/localStorage";
 
 const Board = () => {
+    const user = useUserInfo();
     const navigate = useNavigate();
     const [renderData, setRenderData] = useState([]);
 
@@ -17,6 +19,7 @@ const Board = () => {
     };
 
     const fetchUserBoard = async () => {
+        if(!user) return;
         try {
             const response = await UBS.getUserBoardList();
             const favoriteBoards = SERIAL_BOARDS.filter((board) => response.data.includes(Number(board.id)));

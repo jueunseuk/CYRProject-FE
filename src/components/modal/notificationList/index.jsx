@@ -5,13 +5,16 @@ import cancel from "@/assets/icon/etc/cancel.svg";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/util/dateFormatter";
 import { useNavigate } from "react-router-dom";
+import useUserInfo from "@/hooks/localStorage";
 
 const NotificationList = ({onClose}) => {
+    const user = useUserInfo();
     const navigate = useNavigate();
     const [notificationData, setNotificationData] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const fetchNotificationList = async () => {
+        if(!user) return;
         try {
             const response = await N.getAllNotificationList();
             setNotificationData(response.data);

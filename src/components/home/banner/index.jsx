@@ -42,6 +42,7 @@ const Banner = () => {
     };
 
     const fetchUnreadNotification = async () => {
+        if(!user) return;
         try {
             const response = await N.getUnreadNotificationList();
             if(response.data.length > 0) {
@@ -67,6 +68,7 @@ const Banner = () => {
     };
 
     const patchNotification = async () => {
+        if(!user) return;
         try {
             await N.patchReadNotification();
         } catch(error) {

@@ -1,12 +1,13 @@
 import * as A from "@/apis/announcement";
 import * as S from "./styles";
-import * as BC from "@/common/basic/BasicComponent";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/util/dateFormatter";
 import { SkeletonItem } from "@/common/skeleton/Skeleton";
+import useUserInfo from "@/hooks/localStorage";
 
 const AnnouncementSummary = () => {
+    const user = useUserInfo();
     const [announcementData, setAnnouncementData] = useState([]);
     const [recentData, setRecentData] = useState([]);
     const [skeleton, setSkeleton] = useState(true);
@@ -29,7 +30,7 @@ const AnnouncementSummary = () => {
     }
 
     const fetchRecentAnnouncement = async () => {
-        const userId = localStorage.getItem("userId");
+        if(!user) return;
         try {
             const form = {
                 "page": 0,

@@ -7,8 +7,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
 import { SkeletonItem } from "@/common/skeleton/Skeleton";
+import useUserInfo from "@/hooks/localStorage";
 
 const LoudSpeakerPost = () => {
+    const user = useUserInfo();
     const page = 0;
     const sort = "createdAt";
     const [posts, setPosts] = useState([]);
@@ -24,6 +26,7 @@ const LoudSpeakerPost = () => {
     };
 
     useEffect(() => {
+        if(!user) return;
         const fetchPosts = async () => {
             try {
                 setSkeleton(true);
