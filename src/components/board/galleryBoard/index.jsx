@@ -95,9 +95,12 @@ const GalleryBoard = () => {
     };
 
     useEffect(() => {
-        fetchGalleryTags();
         fetchImages();
-    }, [searchParams, sort, isToggleOpen, name]);
+    }, [searchParams, sort, name]);
+
+    useEffect(() => {
+        fetchGalleryTags();
+    }, [isToggleOpen])
 
     const getPageComponent = () => {
         const pages = Array.from({length: totalPage}, (_, i) => i+1);
