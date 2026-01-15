@@ -43,7 +43,6 @@ const FinishedPoll = () => {
         setSelectedPollId(pollId);
         setSelectedPollOptionId(optionId);
     };
-    console.log(pollData)
 
     return (
         <BC.VerticalWrapper>

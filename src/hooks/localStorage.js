@@ -28,7 +28,7 @@ const useUserInfo = () => {
       return;
     }
     fetchUserInfo();
-  }, [userInfo]);
+  }, []);
 
   return useMemo(() => userInfo, [userInfo]);
 };
