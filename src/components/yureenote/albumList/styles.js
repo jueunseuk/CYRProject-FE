@@ -28,12 +28,14 @@ export const SearchArea = styled.div`
 
 export const SearchButton = styled.button`
     height: 36px;
-    padding: 0 17px;
+    padding: 0 10px;
     border: none;
     border-radius: 5px;
     background-color: #c6bc73;
     color: white;
     cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
 `;
 
 export const FilterArea = styled.div`

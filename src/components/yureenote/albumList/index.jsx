@@ -2,6 +2,7 @@ import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
 import { useNavigate, useParams } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
+import { useState } from "react";
 
 const albums = [
     {
@@ -30,6 +31,7 @@ const albums = [
 
 const AlbumList = () => {
     const navigate = useNavigate();
+    const [albumData, setAlbumData] = useState(albums);
 
     const handleAlbumClick = (albumId) => {
         navigate(`/yureenote/albums/${albumId}`);
@@ -63,10 +65,11 @@ const AlbumList = () => {
                 <S.FilterButton>미니</S.FilterButton>
                 <S.FilterButton>EP</S.FilterButton>
                 <S.FilterButton>싱글</S.FilterButton>
+                <S.FilterButton>미발매</S.FilterButton>
             </S.FilterArea>
 
             <S.AlbumGrid>
-                {albums.map((album) => (
+                {albumData.map((album) => (
                     <S.AlbumCard key={album.albumId} onClick={() => handleAlbumClick(album.albumId)}>
                         {album.imageUrl ?
                             <BC.Image
