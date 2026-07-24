@@ -35,4 +35,22 @@ export const ACHIEVEMENTS = [
         type: "CHEER",
         description: "응원과 관련된 업적입니다.",
     },
+    {
+        id: 7,
+        name: "유리공방",
+        type: "CRAFTSHOP",
+        description: "유리공방과 관련된 업적입니다.",
+    },
+    {
+        id: 8,
+        name: "질문",
+        type: "QUESTION",
+        description: "질문과 관련된 업적입니다.",
+    },
+    {
+        id: 9,
+        name: "답변",
+        type: "ANSWER",
+        description: "질문의 답변과 관련된 업적입니다.",
+    },
 ];
