@@ -1,5 +1,7 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
+import * as A from "@/apis/album";
+import * as SO from "@/apis/song";
 import { useNavigate, useParams } from "react-router-dom";
 
 const SongDetail = () => {

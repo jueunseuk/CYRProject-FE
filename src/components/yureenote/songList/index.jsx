@@ -1,33 +1,39 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
+import * as A from "@/apis/album";
+import * as SO from "@/apis/song";
 import { formatDate } from "@/util/dateFormatter";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const SongList = () => {
     const navigate = useNavigate();
+    const [albumData, setAlbumData] = useState();
+    const [songData, setSongData] = useState([]);
     const { albumId } = useParams();
 
-    const album = {
-        albumId: Number(albumId),
-        title: "동그라미",
-        releasedAt: "2023.07.05",
-        imageUrl: "",
+    const fetchAlbum = async () => {
+        try {
+            const response = await A.getAlbum(albumId);
+            setAlbumData(response.data);
+        } catch (error) {
+
+        }
     };
 
-    const songs = [
-        {
-            songId: 1,
-            sequence: 1,
-            title: "동그라미",
-            titleSong: true,
-        },
-        {
-            songId: 2,
-            sequence: 2,
-            title: "바람",
-            titleSong: false,
-        },
-    ];
+    const fetchSongs = async () => {
+        try {
+            const response = await SO.getAllSongsByAlbum(albumId);
+            setSongData(response.data);
+        } catch (error) {
+
+        }
+    };
+    
+    useEffect(() => {
+        fetchAlbum();
+        fetchSongs();
+    }, []);
 
     const handleBack = () => {
         navigate("/yureenote/albums");
@@ -44,8 +50,8 @@ const SongList = () => {
             </S.BackButton>
 
             <S.AlbumHeader>
-                {album.imageUrl ?
-                    <BC.Image src={album.imageUrl} $w={"140px"} $h={"140px"} $fit={"cover"}/>
+                {albumData?.imageUrl ?
+                    <BC.Image src={albumData.imageUrl} $w={"140px"} $h={"140px"} $fit={"cover"}/>
                     :
                     <S.AlbumImagePlaceholder>
                         앨범 이미지
@@ -57,16 +63,19 @@ const SongList = () => {
                         앨범
                     </BC.Text>
                     <BC.Text $size={"25px"} $weight={"700"}>
-                        {album.title}
+                        {albumData?.title}
                     </BC.Text>
                     <BC.Text $size={"13px"} $color={"#777"}>
-                        {album.releasedAt}
+                        {formatDate(albumData?.releasedAt, 10)}
+                    </BC.Text>
+                    <BC.Text $size={"13px"} $color={"#777"} style={{lineHeight: "19px"}}>
+                        {albumData?.introduction}
                     </BC.Text>
                 </BC.VerticalWrapper>
             </S.AlbumHeader>
 
             <S.SongBox>
-                {songs.map((song) => (
+                {songData.map((song) => (
                     <S.SongRow
                         key={song.songId}
                         onClick={() => handleSongClick(song.songId)}
@@ -84,7 +93,7 @@ const SongList = () => {
                         </BC.HorizontalWrapper>
 
                         <BC.Text $size={"12px"} $color={"#999"}>
-                            창작자 보기 →
+                            자세히 →
                         </BC.Text>
                     </S.SongRow>
                 ))}
