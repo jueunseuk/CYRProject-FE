@@ -10,6 +10,8 @@ import factory from "@/assets/icon/user/factory.svg";
 import mypage from "@/assets/icon/user/mypage.svg";
 import inventory from "@/assets/icon/user/inventory.svg";
 import sandbox from "@/assets/icon/user/sandbox.svg";
+import note from "@/assets/icon/user/note.svg";
+import yulmuwiki from "@/assets/icon/user/yulmuwiki.svg";
 import achievement from "@/assets/icon/user/achievement.svg";
 import useUserInfo from "@/hooks/localStorage";
 import ImageFullScreen from "@/components/modal/imageFullScreen";
@@ -93,6 +95,15 @@ const LoginInfo = () => {
         // navigate("/user/sands");
     };
 
+    const handleNavigateNote = () => {
+        navigate("/yureenote/albums");
+    };
+
+    const handleNavigateYulmuwiki = () => {
+        alert("개발 예정입니다!")
+        // navigate("/yulmuwiki");
+    };
+
     const handleImageFullScreen = () => {
         setIsProfileModalOpen(true);
     };
@@ -171,6 +182,15 @@ const LoginInfo = () => {
                 <S.ItemBox onClick={() => handleNavigateSands()} title="추가 예정">
                     <S.Icon src={sandbox} />
                     <S.Text $size={"11px"} $weight={"600"}>모래사장</S.Text>
+                </S.ItemBox>
+                {/* 임시로 여기에 둠 */}
+                <S.ItemBox onClick={() => handleNavigateNote()} title="유리노트로 이동">
+                    <S.Icon src={note} />
+                    <S.Text $size={"11px"} $weight={"600"}>유리노트</S.Text>
+                </S.ItemBox>
+                <S.ItemBox onClick={() => handleNavigateYulmuwiki()} title="율무위키로 이동">
+                    <S.Icon src={yulmuwiki} />
+                    <S.Text $size={"11px"} $weight={"600"}>율무위키</S.Text>
                 </S.ItemBox>
             </S.HorizontalWrapper>
             <S.WriteButton onClick={handleNavigateWrite}>글쓰기</S.WriteButton>
