@@ -97,6 +97,14 @@ export const patchUserActivityCntWithSync = async () => {
     }
 };
 
+export const refreshUserAchievement = async () => {
+    try {
+        const response = await instance.post(`/user/achievement/refresh`);
+    } catch(error) {
+        throw error;
+    }
+}
+
 export const getUserPosts = async (searchId, form) => {
     try {
         const response = await instance.get(`/user/${searchId}/posts`, 

@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
 import * as A from "@/apis/achievement";
+import * as U from "@/apis/user";
 import sand from "@/assets/icon/user/sand.svg";
 import glass from "@/assets/icon/user/glass.svg";
 import { useEffect, useRef, useState } from "react";
@@ -46,6 +47,16 @@ const AchievementComponent = () => {
         }
     };
 
+    const handleRefreshAchievement = async () => {
+        try {
+            const response = await U.refreshUserAchievement();
+            alert("새로고침 완료!");
+            fetchAchieveData();
+        } catch(error) {
+            
+        }
+    };
+
     useEffect(() => {
         fetchAchieveData();
     }, [selectedTap, sort, direction, type]);
@@ -63,6 +74,7 @@ const AchievementComponent = () => {
             <S.QuoteWrapper>
                 <BC.Text $size={"15px"} $weight={"600"}>모든 업적의 해방 조건은 비공개입니다.</BC.Text>
                 <BC.Text $size={"14px"}>단, 사용자끼리 업적 조건을 공유하는 것은 자유입니다.</BC.Text>
+                <BC.Text $size={"14px"}><span onClick={() => handleRefreshAchievement()} style={{textDecoration: "underline", cursor: "pointer", fontWeight: "500"}}>여기</span>를 눌러 미해금된 업적을 해금할 수 있습니다.</BC.Text>
             </S.QuoteWrapper>
             <BC.VerticalWrapper>
                 <S.TabWrapper>
