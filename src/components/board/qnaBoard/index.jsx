@@ -91,8 +91,8 @@ const QnABoard = () => {
                     <S.UploadButton onClick={() => setOpenQuestionUploadModal(true)}>
                         질문하기
                     </S.UploadButton>
-                    <S.UploadButton onClick={() => navigate("faq")} style={{width: "50px", backgroundColor: "#C6BC73", color: "white"}} >
-                        FAQ
+                    <S.UploadButton onClick={() => navigate("/faq")} style={{width: "100px", backgroundColor: "#C6BC73", color: "white"}} >
+                        FAQ 바로가기
                     </S.UploadButton>
                 </S.HorizontalWrapper>
                 <S.TableHeader>
