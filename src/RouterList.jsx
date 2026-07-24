@@ -29,10 +29,11 @@ import Setting from "@/pages/setting";
 import Craftshop from "@/pages/craftshop";
 import ScrollToTop from "@/common/act/scrollToTop";
 import Manage from "@/pages/manage";
-import SearchPage from "./pages/search";
-import Ranking from "./pages/ranking";
-import Achievement from "./pages/achievement";
-import Footer from "./components/home/footer";
+import SearchPage from "@/pages/search";
+import Ranking from "@/pages/ranking";
+import Achievement from "@/pages/achievement";
+import Footer from "@/components/home/footer";
+import YureeNote from "@/pages/yureenote";
 
 export const RouterList = () => [
     {
@@ -172,6 +173,18 @@ export const RouterList = () => [
                     {
                         path: "/user/achievement",
                         element: <Achievement />
+                    },
+                    {
+                        path: "/yureenote/albums/:albumId/songs/:songId",
+                        element: <YureeNote/>
+                    },
+                    {
+                        path: "/yureenote/albums/:albumId",
+                        element: <YureeNote/>
+                    },
+                    {
+                        path: "/yureenote/:subPath",
+                        element: <YureeNote/>
                     },
 
                     // footer

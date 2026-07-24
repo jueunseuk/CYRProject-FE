@@ -47,8 +47,7 @@ export const BOARD_GROUPS = [
   },
   {
     key: "notice",
-    label: "알림",
-    icon: notificationAnnouncement,
+    label: "NOTICE",
     type: "group",
     boards: [
       {
@@ -83,7 +82,7 @@ export const BOARD_GROUPS = [
   },
   {
     key: "community",
-    label: "커뮤니티",
+    label: "모래 이야기",
     type: "group",
     boards: [
       {
@@ -126,7 +125,7 @@ export const BOARD_GROUPS = [
       {
         id: 14,
         path: "favorite",
-        label: "내가 좋아하는 유리 노래",
+        label: "좋아하는 유리 노래",
         description: "유리의 곡 중 가장 좋아하는 노래를 소개해보세요. 노래와 관련된 추억도 함께 나누면 좋구요 🎶",
         icon: yureeSong,
       },
@@ -155,7 +154,7 @@ export const BOARD_GROUPS = [
   },
   {
     key: "management",
-    label: "운영",
+    label: "커뮤니티 이야기",
     type: "group",
     boards: [
       {
@@ -188,4 +187,8 @@ export const BOARD_BY_PATH = Object.fromEntries(
 
 export const BOARD_BY_ID = Object.fromEntries(
   SERIAL_BOARDS.map((board) => [board.id, board])
+);
+
+export const BOARD_GROUP_BY_KEY = Object.fromEntries(
+  BOARD_GROUPS.map((group) => [group.key, group])
 );

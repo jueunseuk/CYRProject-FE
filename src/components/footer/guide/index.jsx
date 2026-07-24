@@ -193,7 +193,7 @@ const Guide = () => {
                         <tbody>
                             <S.Row>
                                 <S.Column>게시글 작성</S.Column>
-                                <S.Column>+10</S.Column>
+                                <S.Column>+7</S.Column>
                                 <S.Column>모래 이야기 및 유리 이야기</S.Column>
                             </S.Row>
                             <S.Row>
@@ -234,12 +234,12 @@ const Guide = () => {
                             <S.Row>
                                 <S.Column>업적 달성</S.Column>
                                 <S.Column>+5</S.Column>
-                                <S.Column>업적당 한 번</S.Column>
+                                <S.Column>-</S.Column>
                             </S.Row>
                             <S.Row>
                                 <S.Column>답변 작성</S.Column>
                                 <S.Column>+3</S.Column>
-                                <S.Column>질문 게시글 내</S.Column>
+                                <S.Column>질문 게시글에 해당</S.Column>
                             </S.Row>
                         </tbody>
                     </S.Table>
