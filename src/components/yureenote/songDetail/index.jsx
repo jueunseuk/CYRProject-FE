@@ -1,130 +1,168 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
-import * as A from "@/apis/album";
 import * as SO from "@/apis/song";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { formatDate } from "@/util/dateFormatter";
+
+const CREATOR_ROLE_NAME = {
+    LYRICS: "작사",
+    COMPOSITION: "작곡",
+    ARRANGEMENT: "편곡",
+    VOCAL: "보컬",
+    CHORUS: "코러스",
+    INSTRUMENT: "연주",
+    MIDI_PROGRAMMING: "미디 프로그래밍",
+    SOUND_EFFECTS: "사운드 이펙트",
+    STRING_ARRANGEMENT: "스트링 편곡",
+    CONDUCTING: "지휘",
+    RECORDING: "레코딩",
+    MIXING: "믹싱",
+    MASTERING: "마스터링",
+    PRODUCER: "프로듀서",
+    EXECUTIVE_PRODUCER: "총괄 프로듀서",
+    A_AND_R: "A&R",
+    MANAGEMENT: "매니지먼트",
+    DESIGN: "디자인",
+    CONTENTS: "콘텐츠",
+};
 
 const SongDetail = () => {
     const navigate = useNavigate();
     const { albumId, songId } = useParams();
 
-    const song = {
-        songId: Number(songId),
-        sequence: 1,
-        title: "동그라미",
-        albumTitle: "동그라미",
-        albumImageUrl: "",
-        releasedAt: "2023.07.05",
-        titleSong: true,
-        lyrics: `난 동그란 마음을 가지고 있어
-여기에 노래 가사가 표시됩니다.
+    const [songData, setSongData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-줄바꿈도 그대로 유지됩니다.`,
-        creators: [
-            {
-                creatorId: 1,
-                name: "최유리",
-                role: "LYRICS",
-                roleName: "작사",
-            },
-            {
-                creatorId: 2,
-                name: "최유리",
-                role: "COMPOSITION",
-                roleName: "작곡",
-            },
-            {
-                creatorId: 3,
-                name: "최유리",
-                role: "VOCAL",
-                roleName: "보컬",
-            },
-            {
-                creatorId: 4,
-                name: "박문치",
-                role: "ARRANGEMENT",
-                roleName: "편곡",
-            },
-            {
-                creatorId: 5,
-                name: "홍소진",
-                role: "PIANO",
-                roleName: "피아노",
-            },
-            {
-                creatorId: 6,
-                name: "곽진언",
-                role: "GUITAR",
-                roleName: "기타",
-            },
-            {
-                creatorId: 7,
-                name: "김대성",
-                role: "MIXING",
-                roleName: "믹싱",
-            },
-            {
-                creatorId: 8,
-                name: "권남우",
-                role: "MASTERING",
-                roleName: "마스터링",
-            },
-        ],
+    const fetchSong = async () => {
+        try {
+            setLoading(true);
+            const response = await SO.getSongInformation(albumId, songId);
+            setSongData(response.data);
+        } catch(error) {
+            console.error("노래 상세정보 조회 실패", error);
+            setSongData(null);
+        } finally {
+            setLoading(false);
+        }
     };
 
-    const groupedCreators = song.creators.reduce((groups, creator) => {
-        if(!groups[creator.roleName]) {
-            groups[creator.roleName] = [];
-        }
+    const groupedCreators = useMemo(() => {
+        if(!songData?.creatorResponse) return {};
 
-        groups[creator.roleName].push(creator);
-        return groups;
-    }, {});
+        return songData.creatorResponse.reduce((groups, creator) => {
+            const role = creator.creatorRole;
+
+            if(!groups[role]) {
+                groups[role] = [];
+            }
+
+            groups[role].push(creator);
+            return groups;
+        }, {});
+    }, [songData]);
+
+    const creatorCount = useMemo(() => {
+        if(!songData?.creatorResponse) return 0;
+
+        return new Set(
+            songData.creatorResponse.map((creator) => creator.name)
+        ).size;
+    }, [songData]);
 
     const handleBack = () => {
-        navigate(`/yureenote/albums/${albumId}`);
+        navigate(`/note/album/${albumId}`);
     };
+
+    useEffect(() => {
+        fetchSong();
+    }, [songId]);
+
+    if(loading) {
+        return (
+            <S.Wrapper>
+                <S.MessageBox>
+                    노래 정보를 불러오는 중이에요.
+                </S.MessageBox>
+            </S.Wrapper>
+        );
+    }
+
+    if(!songData) {
+        return (
+            <S.Wrapper>
+                <S.BackButton onClick={handleBack}>
+                    ← 수록곡 목록
+                </S.BackButton>
+
+                <S.MessageBox>
+                    노래 정보를 불러오지 못했어요.
+                </S.MessageBox>
+            </S.Wrapper>
+        );
+    }
 
     return (
         <S.Wrapper>
             <S.BackButton onClick={handleBack}>
-                ← {song.albumTitle} 수록곡
+                ← {songData.albumTitle} 수록곡
             </S.BackButton>
 
             <S.SongHeader>
-                {song.albumImageUrl ?
+                {songData.imageUrl ?
                     <BC.Image
-                        src={song.albumImageUrl}
+                        src={songData.imageUrl}
                         $w={"160px"}
                         $h={"160px"}
                         $fit={"cover"}
+                        style={{ borderRadius: "8px", flexShrink: 0 }}
                     />
                     :
-                    <S.AlbumImagePlaceholder>
-                        앨범 이미지
-                    </S.AlbumImagePlaceholder>
+                    <S.SongImagePlaceholder>
+                        곡 이미지
+                    </S.SongImagePlaceholder>
                 }
 
                 <BC.VerticalWrapper $ai={"flex-start"} $gap={"10px"} $w={"auto"}>
                     <BC.HorizontalWrapper $jc={"flex-start"} $gap={"7px"}>
                         <BC.Text $size={"26px"} $weight={"700"}>
-                            {song.title}
+                            {songData.title}
                         </BC.Text>
 
-                        {song.titleSong && <S.TitleBadge>타이틀</S.TitleBadge>}
+                        {songData.isTitle &&
+                            <S.TitleBadge>
+                                TITLE
+                            </S.TitleBadge>
+                        }
                     </BC.HorizontalWrapper>
 
                     <BC.Text $size={"14px"} $color={"#666"}>
-                        {song.albumTitle}
+                        {songData.albumTitle}
                     </BC.Text>
 
                     <BC.Text $size={"13px"} $color={"#888"}>
-                        {song.sequence}번 트랙
+                        {songData.sequence}번 트랙
                     </BC.Text>
 
                     <BC.Text $size={"13px"} $color={"#888"}>
-                        {song.releasedAt}
+                        {formatDate(songData.releasedAt, 10)}
                     </BC.Text>
+
+                    {songData.introduction &&
+                        <S.Introduction>
+                            {songData.introduction}
+                        </S.Introduction>
+                    }
+
+                    {songData.link &&
+                        <S.MusicLink
+                            href={songData.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            노래 들으러 가기
+                        </S.MusicLink>
+                    }
                 </BC.VerticalWrapper>
             </S.SongHeader>
 
@@ -135,27 +173,33 @@ const SongDetail = () => {
                     </BC.Text>
 
                     <BC.Text $size={"12px"} $color={"#888"}>
-                        참여 인원 {song.creators.length}명
+                        참여 인원 {creatorCount}명
                     </BC.Text>
                 </BC.HorizontalWrapper>
 
-                <S.CreditBox>
-                    {Object.entries(groupedCreators).map(([roleName, creators]) => (
-                        <S.CreditRow key={roleName}>
-                            <BC.Text $size={"13px"} $weight={"600"} $color={"#777"}>
-                                {roleName}
-                            </BC.Text>
+                {Object.keys(groupedCreators).length > 0 ?
+                    <S.CreditBox>
+                        {Object.entries(groupedCreators).map(([role, creators]) => (
+                            <S.CreditRow key={role}>
+                                <BC.Text $size={"13px"} $weight={"600"} $color={"#777"}>
+                                    {CREATOR_ROLE_NAME[role] ?? role}
+                                </BC.Text>
 
-                            <BC.HorizontalWrapper $jc={"flex-start"} $gap={"7px"} style={{ flexWrap: "wrap" }}>
-                                {creators.map((creator) => (
-                                    <S.CreatorName key={creator.creatorId}>
-                                        {creator.name}
-                                    </S.CreatorName>
-                                ))}
-                            </BC.HorizontalWrapper>
-                        </S.CreditRow>
-                    ))}
-                </S.CreditBox>
+                                <S.CreatorBox>
+                                    {creators.map((creator) => (
+                                        <S.CreatorName key={creator.creatorId}>
+                                            {creator.name}
+                                        </S.CreatorName>
+                                    ))}
+                                </S.CreatorBox>
+                            </S.CreditRow>
+                        ))}
+                    </S.CreditBox>
+                    :
+                    <S.EmptySection>
+                        등록된 크레딧 정보가 없어요.
+                    </S.EmptySection>
+                }
             </S.Section>
 
             <S.Section>
@@ -163,9 +207,15 @@ const SongDetail = () => {
                     가사
                 </BC.Text>
 
-                <S.Lyrics>
-                    {song.lyrics}
-                </S.Lyrics>
+                {songData.lyrics ?
+                    <S.Lyrics>
+                        {songData.lyrics}
+                    </S.Lyrics>
+                    :
+                    <S.EmptySection>
+                        등록된 가사가 없어요.
+                    </S.EmptySection>
+                }
             </S.Section>
         </S.Wrapper>
     );

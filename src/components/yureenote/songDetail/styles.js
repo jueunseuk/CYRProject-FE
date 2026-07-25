@@ -23,30 +23,58 @@ export const BackButton = styled.button`
 
 export const SongHeader = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 25px;
     padding-bottom: 30px;
     border-bottom: 1px solid #ddd;
 `;
 
-export const AlbumImagePlaceholder = styled.div`
+export const SongImagePlaceholder = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 160px;
     height: 160px;
     flex-shrink: 0;
+    border-radius: 8px;
     background-color: #f3f1e8;
     color: #999;
     font-size: 13px;
 `;
 
 export const TitleBadge = styled.div`
-    padding: 3px 7px;
-    border-radius: 4px;
-    background-color: #c6bc73;
-    color: white;
-    font-size: 10px;
+    padding: 2px 5px;
+    border: 1px solid #C6BC73;
+    border-radius: 5px;
+    color: #C6BC73;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+`;
+
+export const Introduction = styled.div`
+    max-width: 650px;
+    color: #666;
+    font-size: 13px;
+    line-height: 20px;
+    white-space: pre-wrap;
+`;
+
+export const MusicLink = styled.a`
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 12px;
+    border: 1px solid #c6bc73;
+    border-radius: 5px;
+    color: #766c32;
+    font-size: 12px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #f7f5e9;
+    }
 `;
 
 export const Section = styled.div`
@@ -64,17 +92,25 @@ export const CreditBox = styled.div`
 
 export const CreditRow = styled.div`
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 130px 1fr;
     align-items: center;
     gap: 20px;
-    min-height: 45px;
-    padding: 8px 12px;
+    min-height: 47px;
+    padding: 9px 12px;
     box-sizing: border-box;
     border-bottom: 1px solid #eee;
 
     &:hover {
         background-color: #faf9f4;
     }
+`;
+
+export const CreatorBox = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 7px;
 `;
 
 export const CreatorName = styled.div`
@@ -86,11 +122,29 @@ export const CreatorName = styled.div`
 `;
 
 export const Lyrics = styled.div`
-    padding: 20px;
+    padding: 22px;
     border-radius: 8px;
     background-color: #fafafa;
     color: #555;
     font-size: 14px;
-    line-height: 27px;
+    line-height: 28px;
     white-space: pre-wrap;
+`;
+
+export const EmptySection = styled.div`
+    width: 100%;
+    padding: 35px 0;
+    border-radius: 8px;
+    background-color: #fafafa;
+    color: #999;
+    font-size: 13px;
+    text-align: center;
+`;
+
+export const MessageBox = styled.div`
+    width: 100%;
+    padding: 80px 0;
+    color: #888;
+    font-size: 14px;
+    text-align: center;
 `;

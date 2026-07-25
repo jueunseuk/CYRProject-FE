@@ -11,6 +11,7 @@ const SongList = () => {
     const [albumData, setAlbumData] = useState();
     const [songData, setSongData] = useState([]);
     const { albumId } = useParams();
+    const [showIntroduction, setShowIntroduction] = useState(false);
 
     const fetchAlbum = async () => {
         try {
@@ -68,9 +69,20 @@ const SongList = () => {
                     <BC.Text $size={"13px"} $color={"#777"}>
                         {formatDate(albumData?.releasedAt, 10)}
                     </BC.Text>
-                    <BC.Text $size={"13px"} $color={"#777"} style={{lineHeight: "19px"}}>
-                        {albumData?.introduction}
-                    </BC.Text>
+                    {albumData?.introduction &&
+                        <S.IntroductionArea>
+                            <S.AlbumIntroduction $expanded={showIntroduction}>
+                                {albumData.introduction}
+                            </S.AlbumIntroduction>
+
+                            <S.IntroductionButton
+                                type="button"
+                                onClick={() => setShowIntroduction((prev) => !prev)}
+                            >
+                                {showIntroduction ? "접기" : "앨범 소개 더보기"}
+                            </S.IntroductionButton>
+                        </S.IntroductionArea>
+                    }
                 </BC.VerticalWrapper>
             </S.AlbumHeader>
 
@@ -89,7 +101,7 @@ const SongList = () => {
                                 {song.title}
                             </BC.Text>
 
-                            {song.titleSong && <S.TitleBadge>타이틀</S.TitleBadge>}
+                            {song.isTitle && <S.TitleBadge>TITLE</S.TitleBadge>}
                         </BC.HorizontalWrapper>
 
                         <BC.Text $size={"12px"} $color={"#999"}>
