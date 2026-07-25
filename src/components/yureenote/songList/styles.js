@@ -23,7 +23,7 @@ export const BackButton = styled.button`
 
 export const AlbumHeader = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
     margin-bottom: 30px;
 `;
@@ -35,6 +35,7 @@ export const AlbumImagePlaceholder = styled.div`
     width: 140px;
     height: 140px;
     flex-shrink: 0;
+    border-radius: 8px;
     background-color: #f3f1e8;
     color: #999;
     font-size: 13px;
@@ -60,9 +61,48 @@ export const SongRow = styled.div`
 `;
 
 export const TitleBadge = styled.div`
-    padding: 3px 7px;
-    border-radius: 4px;
-    background-color: #c6bc73;
-    color: white;
-    font-size: 10px;
+    padding: 2px 5px;
+    border: 1px solid #C6BC73;
+    border-radius: 5px;
+    color: #C6BC73;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+`;
+
+export const IntroductionArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    max-width: 700px;
+`;
+
+export const AlbumIntroduction = styled.div`
+    color: #777;
+    font-size: 13px;
+    line-height: 21px;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    overflow: hidden;
+
+    ${({$expanded}) => !$expanded && `
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    `}
+`;
+
+export const IntroductionButton = styled.button`
+    padding: 0;
+    border: none;
+    background: none;
+    color: #8D7D4F;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
 `;
