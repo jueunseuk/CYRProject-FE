@@ -1,41 +1,30 @@
 import * as S from "./styles";
 import * as BC from "@/common/basic/BasicComponent";
+import * as A from "@/apis/album";
 import { useNavigate, useParams } from "react-router-dom";
 import { formatDate } from "@/util/dateFormatter";
-import { useState } from "react";
-
-const albums = [
-    {
-        albumId: 1,
-        title: "동그라미",
-        albumType: "정규",
-        releasedAt: "2023.07.05",
-        publisher: "카카오엔터테인먼트",
-        agency: "네이브",
-        imageUrl: "",
-        introduction: "최유리의 감성과 이야기를 담아낸 앨범입니다.",
-        songCount: 10,
-    },
-    {
-        albumId: 2,
-        title: "욕심의 반대편으로",
-        albumType: "EP",
-        releasedAt: "2022.05.26",
-        publisher: "카카오엔터테인먼트",
-        agency: "네이브",
-        imageUrl: "",
-        introduction: "따뜻한 목소리와 섬세한 가사가 담긴 앨범입니다.",
-        songCount: 6,
-    },
-];
+import { useEffect, useState } from "react";
 
 const AlbumList = () => {
     const navigate = useNavigate();
-    const [albumData, setAlbumData] = useState(albums);
+    const [albumData, setAlbumData] = useState([]);
 
     const handleAlbumClick = (albumId) => {
         navigate(`/yureenote/albums/${albumId}`);
     };
+
+    const fetchAlbums = async () => {
+        try {
+            const response = await A.getAllAlbums();
+            setAlbumData(response.data);
+        } catch (error) {
+
+        }
+    };
+
+    useEffect(() => {
+        fetchAlbums();
+    }, []);
 
     return (
         <S.Wrapper>
@@ -74,8 +63,8 @@ const AlbumList = () => {
                         {album.imageUrl ?
                             <BC.Image
                                 src={album.imageUrl}
-                                $w={"100%"}
-                                $h={"100%"}
+                                $w={"255px"}
+                                $h={"255px"}
                                 $fit={"cover"}
                             />
                             :
@@ -90,7 +79,7 @@ const AlbumList = () => {
                                     {album.albumType}
                                 </BC.Text>
                                 <BC.Text $size={"12px"} $color={"#999"}>
-                                    {album.releasedAt}
+                                    {formatDate(album.releasedAt, 2)}
                                 </BC.Text>
                             </BC.HorizontalWrapper>
 
@@ -105,17 +94,6 @@ const AlbumList = () => {
                             <S.Introduction>
                                 {album.introduction}
                             </S.Introduction>
-
-                            <BC.Contour $bg={"#eee"}/>
-
-                            <BC.VerticalWrapper $ai={"flex-start"} $gap={"4px"}>
-                                <BC.Text $size={"12px"} $color={"#888"}>
-                                    기획사 · {album.agency}
-                                </BC.Text>
-                                <BC.Text $size={"12px"} $color={"#888"}>
-                                    유통사 · {album.publisher}
-                                </BC.Text>
-                            </BC.VerticalWrapper>
                         </S.AlbumContent>
                     </S.AlbumCard>
                 ))}

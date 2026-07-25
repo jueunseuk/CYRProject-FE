@@ -110,6 +110,6 @@ export const Introduction = styled.div`
     line-height: 19px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 `;
