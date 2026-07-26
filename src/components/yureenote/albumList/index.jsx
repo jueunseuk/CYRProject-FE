@@ -87,10 +87,6 @@ const AlbumList = () => {
                                 {album.title}
                             </BC.Text>
 
-                            <BC.Text $size={"13px"} $color={"#666"}>
-                                수록곡 {album.songCount}곡
-                            </BC.Text>
-
                             <S.Introduction>
                                 {album.introduction}
                             </S.Introduction>
