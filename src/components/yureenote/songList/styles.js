@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     width: 100%;
+    border: 1px solid #E7E7E7;
     padding: 30px;
-    box-sizing: border-box;
 `;
 
 export const BackButton = styled.button`

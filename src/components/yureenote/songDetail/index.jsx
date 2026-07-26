@@ -71,7 +71,7 @@ const SongDetail = () => {
     }, [songData]);
 
     const handleBack = () => {
-        navigate(`/note/album/${albumId}`);
+        navigate(`/yureenote/albums/${albumId}`);
     };
 
     useEffect(() => {
@@ -142,10 +142,6 @@ const SongDetail = () => {
 
                     <BC.Text $size={"13px"} $color={"#888"}>
                         {songData.sequence}번 트랙
-                    </BC.Text>
-
-                    <BC.Text $size={"13px"} $color={"#888"}>
-                        {formatDate(songData.releasedAt, 10)}
                     </BC.Text>
 
                     {songData.introduction &&
