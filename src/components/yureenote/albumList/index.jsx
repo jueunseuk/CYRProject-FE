@@ -11,6 +11,7 @@ const ALBUM_FILTERS = [
     { label: "EP", value: "EP" },
     { label: "싱글", value: "SINGLE" },
     { label: "OST", value: "OST" },
+    { label: "컴필레이션", value: "COMPILATION" },
     { label: "미발매", value: "UNRELEASED" },
 ];
 

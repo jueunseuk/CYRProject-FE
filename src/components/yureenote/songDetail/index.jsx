@@ -3,7 +3,6 @@ import * as BC from "@/common/basic/BasicComponent";
 import * as SO from "@/apis/song";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { formatDate } from "@/util/dateFormatter";
 
 const CREATOR_ROLE_NAME = {
     LYRICS: "작사",

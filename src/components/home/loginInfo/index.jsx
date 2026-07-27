@@ -158,6 +158,7 @@ const LoginInfo = () => {
                     <S.Text $size={"12px"} $weight={"600"}>{userAmount.temperature} ℃</S.Text>
                 </S.HorizontalWrapper>
             </S.IconArea>
+            <S.Text $size={"12px"} $weight={"600"}>&lt; 바로가기 &gt;</S.Text>
             <S.HorizontalWrapper $jc={"center"} $ai={"center"} style={{width: "180px", flexWrap: "wrap"}}>
                 <S.ItemBox onClick={() => handleNavigateMyPage()} title="마이페이지로 이동">
                     <S.Icon src={mypage} />
