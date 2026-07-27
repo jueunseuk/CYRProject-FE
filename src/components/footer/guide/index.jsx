@@ -113,9 +113,10 @@ const Guide = () => {
                         <S.SecondListItem>사용자는 커뮤니티 내에서 특정한 활동을 할 때 특정한 조건을 만족하면 업적 달성과 함께 특정 보상들을 획득하게 됩니다.</S.SecondListItem>
                         <S.SecondListItem>획득한 업적과 뱃지, 보상 내역은 왼쪽의 업적을 눌러서 확인할 수 있습니다.</S.SecondListItem>
                         <S.SecondListItem>업적이 해방되는 조건은 모두 비공개이나 사용자끼리 숨겨진 업적 정보를 공유하는 것은 가능합니다.</S.SecondListItem>
-                    <S.FirstListItem>g. 율무위키(개발 예정)</S.FirstListItem>
-                        <S.SecondListItem>Archive형 백과사전으로 가수 최유리에 관한 모든 공식/비공식 자료가 정리되어 있습니다.</S.SecondListItem>
-                        <S.SecondListItem>율무위키 속 AI 율랑이에게 물어보면 직접 찾지 않아도 편하게 궁금한 내용을 알 수 있습니다.</S.SecondListItem>
+                    <S.FirstListItem>g. 유리노트</S.FirstListItem>
+                        <S.SecondListItem>가수 최유리의 음악이 정리되어 있는 공간입니다.</S.SecondListItem>
+                        <S.SecondListItem>앨범 정보부터 수록곡, 곡 크레딧까지 보기 쉽게 정리했습니다.</S.SecondListItem>
+                        <S.SecondListItem>미발매곡도 하나의 앨범에 정리되어 있고, 미발매곡의 가사는 <S.Link href="#unreleased" style={{fontWeight: "600"}}>I.k.미발매곡 가사 탐구</S.Link>에서 토론한 결과를 바탕으로 작성됩니다.</S.SecondListItem>
                     <S.FirstListItem>h. 율톡 <S.Text $size={"12px"} $weight={"700"} style={{display: "inline", fontFamily: "serif", fontStyle: "italic"}}>beta</S.Text></S.FirstListItem>
                         <S.SecondListItem>커뮤니티에 접속한 유저끼리 실시간으로 대화를 주고 받을 수 있는 서비스입니다.</S.SecondListItem>
                         <S.SecondListItem>자유롭게 채팅 그룹을 만들고, 참여하거나 나갈 수 있습니다.</S.SecondListItem>
@@ -173,10 +174,6 @@ const Guide = () => {
                             <S.ThirdListItem>- 총 응원: 지금까지 가장 많은 응원을 보낸 사용자의 순위입니다.</S.ThirdListItem>
                             <S.ThirdListItem>- 일일 응원: 하루에 가장 많은 응원을 보낸 사용자의 순위입니다.</S.ThirdListItem>
                             <S.ThirdListItem>- 유리 조각: 유리 조각을 가장 많이 제작한 사용자의 순위입니다.</S.ThirdListItem>
-                    <S.FirstListItem id="shop">o. 유리노트(개발 예정)</S.FirstListItem>
-                        <S.SecondListItem>가수 최유리의 음악이 정리되어 있는 공간입니다.</S.SecondListItem>
-                        <S.SecondListItem>앨범 정보부터 수록곡, 곡 크레딧까지 보기 쉽게 정리했습니다.</S.SecondListItem>
-                        <S.SecondListItem>미발매곡도 하나의 앨범에 정리되어 있고, 미발매곡의 가사는 <S.Link href="#unreleased" style={{fontWeight: "600"}}>I.k.미발매곡 가사 탐구</S.Link>에서 토론한 결과를 바탕으로 작성됩니다.</S.SecondListItem>
                 </S.List>
                 <S.Blank />
 
