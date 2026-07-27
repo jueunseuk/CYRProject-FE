@@ -57,10 +57,9 @@ const Guide = () => {
                     <S.FirstListItem>j. 내가 좋아하는 유리 노래</S.FirstListItem>
                         <S.SecondListItem>가수 최유리의 곡 중 본인이 좋아하는 곡을 소개하고 감상을 공유하는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>곡에 대한 개인적인 경험이나 감상 포인트를 함께 나누면 더욱 좋습니다.</S.SecondListItem>
-                    <S.FirstListItem>k. 미발매곡 가사 탐구(업데이트 예정)</S.FirstListItem>
-                        <S.SecondListItem>미발매된 곡의 가사를 함께 듣고 탐구하며 분석할 수 있는 공간입니다.</S.SecondListItem>
-                        <S.SecondListItem>동일한 곡에 대한 게시글이 이미 존재하는 경우 작성 불가능합니다.</S.SecondListItem>
-                        <S.SecondListItem>이미 작성된 미발매곡에 관한 수정을 원한다면 해당 게시글의 댓글에서 작성자에게 수정 신청을 해야합니다.</S.SecondListItem>
+                    <S.FirstListItem id="unreleased">k. 미발매곡 가사 탐구(업데이트 예정)</S.FirstListItem>
+                        <S.SecondListItem>미발매된 곡의 가사를 함께 탐구하며 분석할 수 있는 공간입니다.</S.SecondListItem>
+                        <S.SecondListItem>동일한 곡에 대한 게시글이 이미 존재하는 경우 새로 작성 불가능하며 해당 게시글의 댓글에서 토론 부탁드립니다.</S.SecondListItem>
                     <S.FirstListItem>l. 콘서트 후기</S.FirstListItem>
                         <S.SecondListItem>가수 최유리의 콘서트 참여 후기를 공유하고 소감을 나누는 게시판입니다.</S.SecondListItem>
                         <S.SecondListItem>공연 중 촬영된 사진이나 영상 공유 시 타인의 초상권을 보호해주세요.</S.SecondListItem>
@@ -175,7 +174,9 @@ const Guide = () => {
                             <S.ThirdListItem>- 일일 응원: 하루에 가장 많은 응원을 보낸 사용자의 순위입니다.</S.ThirdListItem>
                             <S.ThirdListItem>- 유리 조각: 유리 조각을 가장 많이 제작한 사용자의 순위입니다.</S.ThirdListItem>
                     <S.FirstListItem id="shop">o. 유리노트(개발 예정)</S.FirstListItem>
-                        <S.SecondListItem>가수 최유리의 발매된 음악을 Spotify 서비스와 연계하여 조회 및 감상할 수 있습니다.</S.SecondListItem>
+                        <S.SecondListItem>가수 최유리의 음악이 정리되어 있는 공간입니다.</S.SecondListItem>
+                        <S.SecondListItem>앨범 정보부터 수록곡, 곡 크레딧까지 보기 쉽게 정리했습니다.</S.SecondListItem>
+                        <S.SecondListItem>미발매곡도 하나의 앨범에 정리되어 있고, 미발매곡의 가사는 <S.Link href="#unreleased" style={{fontWeight: "600"}}>I.k.미발매곡 가사 탐구</S.Link>에서 토론한 결과를 바탕으로 작성됩니다.</S.SecondListItem>
                 </S.List>
                 <S.Blank />
 
